@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load place_extras %}
+{% load i18n %}
+
+{% block head_title %}Add Photo{% endblock %}
+
+{% block extraheader %}
+{% endblock %}
+
+{% block template_id %}index{% endblock %}
+
+{% block main_content %}
+<h1>{% trans "Add photo" %}: {{ place.name }}</h1>
+
+<div class="comment_form">
+<form enctype="multipart/form-data" action="" method="post" id="mphoto">
+     {% csrf_token %}
+      <p><label for="id_image">{% trans "Select your photo" %}</label>
+      <input type="file" name="image" id="id_image" />
+      </p>
+      <p><label for="id_name">{% trans "Name of the photo" %}</label>
+      <input type="text" name="name" id="id_name" />
+      </p>
+      
+      <input type="submit" name="post" class="button" value="{% trans "Add photo" %}" />
+</form>
+</div>
+   
+{% endblock %}

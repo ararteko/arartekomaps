@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title%}{% trans "Not Found error" %}: {{q}} - {% trans "Ararteko maps" %}{% endblock %}
+
+{% block extraheader %}
+{% endblock %}
+
+
+{% block breadcrumb %}
+<p id="breadcrumb">
+   <a href="/">{% trans "Home" %}</a>
+   &gt;
+   {% trans "NotFound" %}
+</p>
+{% endblock %}
+
+{% block mainmenu %}
+{% endblock %}
+
+{% block main_content %}
+<div id="locacol1">
+
+<h1>{% trans "Not Found error" %}:</h1>
+
+<p>
+{% blocktrans %}Sorry, we didn't found what you requested.{% endblocktrans %}
+</p>
+
+</div>
+<!-- locacol1 end -->
+
+<div id="locacol2">
+</div>
+<!-- locacol2 end -->
+
+{% endblock main_content %}

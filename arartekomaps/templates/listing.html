@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title%}Ararteko maps{% endblock %}
+
+{% block breadcrumb %}
+<p id="breadcrumb">
+   <a href="/">Home</a>
+   &gt;
+   {{mystate.name}}
+</p>
+{% endblock %}
+
+
+
+{% block mainmenu %}
+    <form method="get" action="/search/" id="bigsf">
+        <label for="q">{% trans "Go to..." %}</label> <input type="text" name="q" id="q" value="{{q}}" />
+        <input type="submit" value="{% trans "Search" %}" class="searchbutton" />
+        <p><a href="/filter/">{% trans "Advanced filter" %}</a></p>
+    </form>
+{% endblock %}
+
+
+
+{% block main_content %}
+
+<h1>{{mystate.name}}</h1>
+  
+   {% for slice in city_slices %}
+   <ul class="locationlist">
+   {% for city in slice %}
+    <li><a href="{{city.get_absolute_url}}">{{city.name}}</a></li>
+   {% endfor %}
+   </ul>
+   {% endfor %}  
+
+{% endblock main_content %}

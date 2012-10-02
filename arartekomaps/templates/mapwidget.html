@@ -1,0 +1,106 @@
+{% load place_extras %}
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var geocoder;
+  var map;
+  var marker;
+  var latlng;
+
+  function initialize() {
+    document.getElementById("map_area").style.display='block';
+    var w = document.getElementById("id_parent").selectedIndex;
+    var selected_text = document.getElementById("id_parent").options[w].text;
+    full_address = document.getElementById("id_name").value + ' ' + selected_text + ', ES';
+    document.getElementById('address').value = full_address;   
+    geocoder = new google.maps.Geocoder();
+    lat = document.getElementById("id_lat").value;
+    lon = document.getElementById("id_lon").value;
+    
+    if (lat) {
+        latlng = new google.maps.LatLng(lat,lon);
+    }
+    else {
+        geocoder.geocode( { 'address': full_address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          coords = results[0].geometry.location;
+          latlng = new google.maps.LatLng(coords.lat(),coords.lng());
+          marker.setPosition(latlng);
+          map.setCenter(latlng);
+          document.getElementById("id_lat").value=latlng.lat().toFixed(8);
+          document.getElementById("id_lon").value=latlng.lng().toFixed(8);
+        } 
+        else {
+          alert("Geocode was not successful for the following reason: " + status);
+          var latlng = new google.maps.LatLng(43.1,-1.1);
+          marker.setPosition(latlng);
+        }
+    });
+    }
+     
+     if (latlng){
+        a = 1;
+     }
+     else{
+        latlng = new google.maps.LatLng(43.1,-1.1);
+     }    
+     
+     var myOptions = {
+      zoom: 16,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    marker = new google.maps.Marker({
+              map: map, 
+              position: latlng,
+              draggable: true
+          });
+          
+    google.maps.event.addListener(marker, "dragend", function(event) {
+        var latlon = marker.getPosition();
+        document.getElementById("id_lat").value=latlon.lat().toFixed(8);
+        document.getElementById("id_lon").value=latlon.lng().toFixed(8);
+    });
+    
+    google.maps.event.addListener(map, "click", function(event) {
+        var latlon = event.latLng;            
+        document.getElementById("id_lat").value=latlon.lat().toFixed(8);
+        document.getElementById("id_lon").value=latlon.lng().toFixed(8);
+        marker.setPosition(latlon);
+        });
+    
+  }
+
+  function codeAddress() {
+    var address = document.getElementById("address").value;
+    if (geocoder) {
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          latlon = results[0].geometry.location;
+          map.setCenter(latlon); 
+          map.setZoom(16);
+          document.getElementById("id_lat").value=latlon.lat().toFixed(8);
+          document.getElementById("id_lon").value=latlon.lng().toFixed(8);
+          marker.setPosition(latlon);
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+  }
+</script>
+
+<a href="#" onclick="initialize();">Erakutsi mapa</a>
+  
+<div id="map_area" style="display:none;">
+<input type="text" size="40" id="address" name="address" value="" />
+<input type="button" value="Bilatu" onclick="codeAddress()"/>
+
+<div id="map_canvas" style="width: 500px; height: 300px"></div>
+
+</div>
+<!-- /map_area -->
+   
+   

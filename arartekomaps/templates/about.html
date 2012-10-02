@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title%}{% trans "About" %}: {{q}} - {% trans "Ararteko maps" %}{% endblock %}
+
+{% block extraheader %}
+{% endblock %}
+
+
+{% block breadcrumb %}
+<p id="breadcrumb">
+   <a href="/">{% trans "Home" %}</a>
+   &gt;
+   {% trans "About" %}
+</p>
+{% endblock %}
+
+{% block mainmenu %}
+{% endblock %}
+
+{% block main_content %}
+<div id="locacol1">
+
+<h1>{% trans "About the maps" %}:</h1>
+
+<p>
+{% blocktrans %}About: Paragraph 1{% endblocktrans %}
+</p>
+
+<p>
+{% blocktrans %}About: Paragraph 2{% endblocktrans %}
+</p>
+
+</div>
+<!-- locacol1 end -->
+
+<div id="locacol2">
+<img src="{{STATIC_URL}}img/mapscreenshot.png" alt="" />
+
+</div>
+<!-- locacol2 end -->
+
+{% endblock main_content %}

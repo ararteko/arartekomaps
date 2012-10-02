@@ -1,0 +1,6 @@
+{% load comments %}name,url,user_name,comment,submit_date
+{% for place in places %}"{{ place.name|addslashes }}","http://www.ararteko.net{{ place.get_absolute_url }}"
+{% get_comment_list for place as comment_list %}{% for comment in comment_list %}
+,,"{{ comment.user_name|addslashes }}","{{ comment.comment|addslashes }}","{{ comment.submit_date|addslashes }}"
+{% endfor %}
+{% endfor %}

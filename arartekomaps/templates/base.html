@@ -1,0 +1,92 @@
+{% load i18n %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block head_title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{STATIC_URL}}css/global.css" />
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</script>
+
+    {% block extraheader %}
+    {% endblock %}
+
+</head>
+
+<body id="tpl_{{template_name}}" onload="initialize()">
+
+<header>
+    <a href="/">
+      <img src="{{STATIC_URL}}img/armap_logoa.gif" alt="{% trans "Ararteko maps" %}" />
+    </a>
+    <span class="tagline">{% trans "Discover and share accessible places" %}</span>
+    <div id="utils">
+     {% for code,lang in LANGUAGES %}
+       {% if code != LANGUAGE_CODE %}
+          <a href="{% url set_lang %}?language={{code}}&next={{request.path}}">{{lang}}</a>
+       {% endif %}
+     {% endfor %}    
+<!--         <a href="{% url set_lang %}?language=es&next={{request.path}}">Español</a> -->
+      {% if not hidesearch %}
+      <form method="get" action="/search/">
+        <label for="q">{% trans "Go to..." %}</label>
+        <input type="text" name="q" id="q" value="" />
+        <input type="submit" value="{% trans "Search" %}" class="hsearchbutton" />
+      </form>
+      {% endif %}
+    </div>
+</header>
+
+<div id="maincontainer">
+<div id="mainmenu">
+
+
+    <!-- mainmenu start -->
+    {% block mainmenu %}
+
+    {% endblock %}
+    <!-- mainmenu end -->
+</div>
+
+<!-- main_content start -->
+<div id="maincontent">
+    <!-- userinfo start -->
+    <div id="userinfo">
+    {% include "useroptions.html" %}
+    </div>
+    <!-- userinfo end -->
+
+    <!-- breadcrumb start -->
+    {% block breadcrumb %}
+
+    {% endblock %}
+    <!-- breadcrumb end -->
+
+    {% block main_content %}
+
+    {% endblock %}
+</div>
+<!-- main_content end -->
+</div>
+<!-- main_container end -->
+
+<footer>
+    <div id="footutils">
+        <p><a href="/pg/about/">{% trans "About the maps" %}</a> | <a href="/pg/accessibility/">{% trans "Accessibility" %}</a>
+        <a href="/pg/privacy/">{% trans "Privacy" %}</a></p>
+    </div>
+    
+<p>{% trans "Project supported by" %} <a href="http://www.ararteko.net/"><img src="{{STATIC_URL}}img/ararteko.gif" alt="Ararteko logo" /></a></p>
+
+    <address>
+        Prado 9<br />
+        01005 Vitoria-Gasteiz<br />
+        Tel: 945 13 51 18
+    </address>
+</footer> 
+
+</body>
+</html>

@@ -1,0 +1,707 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-01 16:32+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: settings.py:58
+msgid "Espanol"
+msgstr "Español"
+
+#: settings.py:59
+msgid "Euskara"
+msgstr "Euskara"
+
+#: views.py:10 templates/search.html:82 templates/search.html.py:93
+msgid "Any"
+msgstr "Todos"
+
+#: views.py:11
+msgid "Practicable"
+msgstr "Practicable"
+
+#: views.py:12
+msgid "Accesible"
+msgstr "Accesible"
+
+#: views.py:16 places/models.py:34
+msgid "aphysic"
+msgstr "Física"
+
+#: views.py:17 places/models.py:35
+msgid "avisual"
+msgstr "Visual"
+
+#: views.py:18 places/models.py:36
+msgid "aaudio"
+msgstr "Auditiva"
+
+#: views.py:19 places/models.py:37
+msgid "aintelec"
+msgstr "Intelectual"
+
+#: views.py:20 places/models.py:38
+msgid "aorganic"
+msgstr "Orgánica"
+
+#: locations/views.py:49
+#, python-format
+msgid "%(parentcatname)s: %(childcatname)s in %(cityname)s"
+msgstr "%(parentcatname)s: %(childcatname)s en %(cityname)s"
+
+#: locations/views.py:49 locations/views.py:53
+#, python-format
+msgid "cat_%s"
+msgstr "cat_%s"
+
+#: locations/views.py:53
+#, python-format
+msgid "%(parentcatname)s in %(cityname)s"
+msgstr "%(parentcatname)s en %(cityname)s"
+
+#: places/models.py:34 places/models.py:35 places/models.py:36
+#: places/models.py:37 places/models.py:38
+#, python-format
+msgid "access_%s"
+msgstr ""
+
+#: templates/404.html:4 templates/404.html.py:24
+msgid "Not Found error"
+msgstr ""
+
+#: templates/404.html:4 templates/about.html:4 templates/base.html:23
+#: templates/home.html:4 templates/location.html:4 templates/place.html:5
+#: templates/search.html:4
+msgid "Ararteko maps"
+msgstr "Mapas de Ararteko"
+
+#: templates/404.html:12 templates/about.html:12 templates/location.html:52
+#: templates/place.html:43 templates/search.html:59
+#: templates/pages/index.html:10
+msgid "Home"
+msgstr "Home"
+
+#: templates/404.html:14
+msgid "NotFound"
+msgstr ""
+
+#: templates/404.html:27
+msgid "Sorry, we didn't found what you requested."
+msgstr ""
+
+#: templates/about.html:4 templates/about.html.py:14
+msgid "About"
+msgstr "Sobre esto"
+
+#: templates/about.html:24 templates/base.html:78 templates/home.html:59
+msgid "About the maps"
+msgstr "Sobre los mapas"
+
+#: templates/about.html:27 templates/home.html:61
+msgid "About: Paragraph 1"
+msgstr ""
+"¡Infórmate para llegar a donde quieres! Con tu colaboración conseguiremos "
+"unos espacios más accesibles…"
+
+#: templates/about.html:31
+msgid "About: Paragraph 2"
+msgstr ""
+"Los mapas  colaborativos del Ararteko  nos van a  ayudar a geolocalizar con "
+"vuestras aportaciones.  En este que os presentamos hemos reunido puntos "
+"turísticos, de transporte, bibliotecas… ¡Comenta  sobre su accesibilidad! La "
+"información que contiene es abierta y reutilizable. Úsala. "
+
+#: templates/addphoto.html:13 templates/addphoto.html.py:25
+msgid "Add photo"
+msgstr "Añadir foto"
+
+#: templates/addphoto.html:18
+msgid "Select your photo"
+msgstr "Selecciona tu foto"
+
+#: templates/addphoto.html:21
+msgid "Name of the photo"
+msgstr "Nombre de la foto"
+
+#: templates/base.html:25
+msgid "Discover and share accessible places"
+msgstr "Descubre y comparte lugares accesibles"
+
+#: templates/base.html:35 templates/home.html:51 templates/listing.html:18
+#: templates/search.html:67
+msgid "Go to..."
+msgstr "Ir a..."
+
+#: templates/base.html:37 templates/home.html:52 templates/listing.html:19
+#: templates/search.html:68 templates/search.html.py:114
+msgid "Search"
+msgstr "Buscar"
+
+#: templates/base.html:78 templates/place.html:95
+msgid "Accessibility"
+msgstr "Accesibilidad"
+
+#: templates/base.html:79
+msgid "Privacy"
+msgstr "Privacidad"
+
+#: templates/base.html:82
+msgid "Project supported by"
+msgstr "Proyecto impulsado por"
+
+#: templates/comments.html:23
+msgid "tell us what you think"
+msgstr "dinos lo que piensas sobre las condiciones de accesibilidad del lugar."
+
+#: templates/comments.html:29
+msgid "Comment"
+msgstr "Comenta"
+
+#: templates/comments.html:33
+msgid "Add comment"
+msgstr "Añadir comentario"
+
+#: templates/comments.html:35
+msgid "Add a photo"
+msgstr "Añadir foto"
+
+#: templates/comments.html:38
+msgid "Login to comment"
+msgstr "Entra para comentar"
+
+#: templates/dummy_texts.html:3
+msgid "cat_tourism"
+msgstr "Turismo"
+
+#: templates/dummy_texts.html:5
+msgid "cat_sleep"
+msgstr "Alojamiento"
+
+#: templates/dummy_texts.html:6
+msgid "cat_hotel"
+msgstr "Hotel"
+
+#: templates/dummy_texts.html:7
+msgid "cat_agroturismo"
+msgstr "Agroturismo"
+
+#: templates/dummy_texts.html:8
+msgid "cat_apartamento"
+msgstr "Apartamentos"
+
+#: templates/dummy_texts.html:9
+msgid "cat_camping"
+msgstr "Camping"
+
+#: templates/dummy_texts.html:10
+msgid "cat_casa-particular"
+msgstr "Casa particular"
+
+#: templates/dummy_texts.html:11
+msgid "cat_casa-rural"
+msgstr "Casa rural"
+
+#: templates/dummy_texts.html:12
+msgid "cat_hotel-apartamento"
+msgstr "Hotel-apartamento"
+
+#: templates/dummy_texts.html:13
+msgid "cat_pension"
+msgstr "Pensión"
+
+#: templates/dummy_texts.html:15
+msgid "cat_eat"
+msgstr "Comer"
+
+#: templates/dummy_texts.html:16
+msgid "cat_restaurant"
+msgstr "Restaurante"
+
+#: templates/dummy_texts.html:17
+msgid "cat_sidreria"
+msgstr "Sidrería"
+
+#: templates/dummy_texts.html:18
+msgid "cat_asador"
+msgstr "Asador"
+
+#: templates/dummy_texts.html:20
+msgid "cat_transportation"
+msgstr "Transporte"
+
+#: templates/dummy_texts.html:21
+msgid "cat_bus"
+msgstr "Autobús"
+
+#: templates/dummy_texts.html:22
+msgid "cat_train"
+msgstr "Tren"
+
+#: templates/dummy_texts.html:23
+msgid "cat_tram"
+msgstr "Tranvía"
+
+#: templates/dummy_texts.html:25
+msgid "cat_culture"
+msgstr "Cultura"
+
+#: templates/dummy_texts.html:26
+msgid "cat_library"
+msgstr "Biblioteca"
+
+#: templates/dummy_texts.html:27
+msgid "cat_museum"
+msgstr "Museo"
+
+#: templates/dummy_texts.html:29
+msgid "access_a"
+msgstr "Accesible"
+
+#: templates/dummy_texts.html:30
+msgid "access_p"
+msgstr "Practicable"
+
+#: templates/dummy_texts.html:31
+msgid "access_n"
+msgstr "No accesible"
+
+#: templates/dummy_texts.html:32
+msgid "access_s"
+msgstr "Sin datos"
+
+#: templates/dummy_texts.html:34
+msgid "acceso_bbdd"
+msgstr "Acceso a bases de datos"
+
+#: templates/dummy_texts.html:35
+msgid "prestamo"
+msgstr "Préstamo"
+
+#: templates/dummy_texts.html:36
+msgid "hemeroteca"
+msgstr "Hemeroteca"
+
+#: templates/dummy_texts.html:37
+msgid "consulta"
+msgstr "Consulta"
+
+#: templates/dummy_texts.html:38
+msgid "wifi"
+msgstr "Wi-fi"
+
+#: templates/dummy_texts.html:39
+msgid "reprografia"
+msgstr "Reprografía"
+
+#: templates/dummy_texts.html:40
+msgid "infor_bibliografica"
+msgstr "Información bibliográfica"
+
+#: templates/dummy_texts.html:41
+msgid "prestamo_domic"
+msgstr "Préstamo domiciliario"
+
+#: templates/dummy_texts.html:42
+msgid "internet_usuarios"
+msgstr "Internet para usuarios"
+
+#: templates/dummy_texts.html:43
+msgid "prestamo_inter"
+msgstr "Préstamo interbibliotecario"
+
+#: templates/dummy_texts.html:44
+msgid "bol_novedades"
+msgstr "Boletín de novedades"
+
+#: templates/dummy_texts.html:45
+msgid "selectiva"
+msgstr "Selectiva"
+
+#: templates/dummy_texts.html:47
+msgid "general"
+msgstr "General"
+
+#: templates/dummy_texts.html:49
+msgid "ayto"
+msgstr "Ayuntamiento"
+
+#: templates/dummy_texts.html:50
+msgid "auto"
+msgstr "Autónomo"
+
+#: templates/dummy_texts.html:51
+msgid "priv"
+msgstr "Privado"
+
+#: templates/dummy_texts.html:53
+msgid "l"
+msgstr "Libre"
+
+#: templates/dummy_texts.html:54
+msgid "r"
+msgstr "Restringido"
+
+#: templates/dummy_texts.html:56
+msgid "p"
+msgstr "Público"
+
+#: templates/dummy_texts.html:58
+msgid "filter"
+msgstr "Filtro avanzado"
+
+#: templates/dummy_texts.html:59
+msgid "search"
+msgstr "Buscar"
+
+#: templates/dummy_texts.html:62
+msgid "ejgv_biblio"
+msgstr ""
+
+#: templates/dummy_texts.html:63
+msgid "ejgv-tur-rest"
+msgstr ""
+
+#: templates/dummy_texts.html:64
+msgid "ejgv-tur-aloj"
+msgstr ""
+
+#: templates/dummy_texts.html:65
+msgid "ejgv-tur-infos"
+msgstr ""
+
+#: templates/dummy_texts.html:66
+msgid "Consultrans"
+msgstr ""
+
+#: templates/home.html:53 templates/listing.html:20 templates/search.html:69
+#: templates/search.html.py:118
+msgid "Advanced filter"
+msgstr "Filtro avanzado"
+
+#: templates/home.html:63
+msgid "Read more"
+msgstr "Leer más"
+
+#: templates/home.html:71
+msgid "Visit this places"
+msgstr "Visita estos lugares:"
+
+#: templates/home.html:85
+msgid "Last places"
+msgstr "Últimos lugares"
+
+#: templates/location.html:96
+#, python-format
+msgid "Visit full %(cityname)s"
+msgstr "Visita %(cityname)s completa"
+
+#: templates/place.html:86
+msgid "Website"
+msgstr "Sitio web"
+
+#: templates/place.html:108
+msgid "detailed file"
+msgstr "Ficha detallada"
+
+#: templates/place.html:115
+msgid "Library"
+msgstr "Biblioteca"
+
+#: templates/place.html:117
+msgid "btype"
+msgstr "Tipo"
+
+#: templates/place.html:119
+msgid "start_year"
+msgstr "Año apertura"
+
+#: templates/place.html:121
+msgid "institution"
+msgstr "Institución"
+
+#: templates/place.html:123
+msgid "open_times"
+msgstr "Horario"
+
+#: templates/place.html:125
+msgid "access_type"
+msgstr "Tipo de acceso"
+
+#: templates/place.html:127
+msgid "center_type"
+msgstr "Tipo de centro"
+
+#: templates/place.html:129
+msgid "topics"
+msgstr "Temas"
+
+#: templates/place.html:131
+msgid "services"
+msgstr "Servicios"
+
+#: templates/place.html:141
+msgid "data_source"
+msgstr "Fuente de los datos"
+
+#: templates/place.html:157
+msgid "Comments"
+msgstr "Comentarios"
+
+#: templates/place.html:191
+msgid "Map"
+msgstr "Mapa"
+
+#: templates/place.html:196
+msgid "Nearest places"
+msgstr "Lugares cercanos"
+
+#: templates/search.html:4 templates/search.html.py:61
+msgid "Search results"
+msgstr "Buscar"
+
+#: templates/search.html:80
+msgid "City"
+msgstr "Municipio"
+
+#: templates/search.html:91
+msgid "Category"
+msgstr "Categoría"
+
+#: templates/search.html:98
+msgid "Minimal accessibility"
+msgstr "Accesibilidad mínima"
+
+#: templates/search.html:121
+msgid "Total results:"
+msgstr "Total resultados"
+
+#: templates/search.html:141
+msgid "Previous"
+msgstr "Anteriores"
+
+#: templates/search.html:145
+msgid "Next"
+msgstr "Siguientes"
+
+#: templates/useroptions.html:5
+msgid "User's photo"
+msgstr "Foto del usuario"
+
+#: templates/useroptions.html:10
+msgid "Your profile"
+msgstr "Perfil"
+
+#: templates/useroptions.html:11
+msgid "Sign out"
+msgstr "Salir"
+
+#: templates/useroptions.html:16
+msgid "Sign in"
+msgstr "Entrar"
+
+#~ msgid "Account"
+#~ msgstr "Cuenta"
+
+#~ msgid "Basic account"
+#~ msgstr "Datos básicos"
+
+#~ msgid "Photo"
+#~ msgstr "Foto"
+
+#~ msgid "Social networks"
+#~ msgstr "Redes sociales"
+
+#~ msgid "Your account has been activated"
+#~ msgstr "Tu cuenta ha sido activada"
+
+#~ msgid ""
+#~ "Your account has been properly created. You can use the username and "
+#~ "password that you entered"
+#~ msgstr ""
+#~ "Tu cuenta ya ha sido creada. Ahora puedes utilizar el usuario y "
+#~ "lacontraseña que nos has dado"
+
+#~ msgid "to login in the site"
+#~ msgstr "para entrar en el sitio web"
+
+#~ msgid "Your account could not be activated"
+#~ msgstr "Tu cuenta no ha podido ser activada"
+
+#~ msgid ""
+#~ "We had a problem while activating your account. The link was probably "
+#~ "outdated. Please, try again"
+#~ msgstr ""
+#~ "Hemos tenido un problema con la activación de tu cuenta. Puede que "
+#~ "estécaducada. Inténtalo otra vez, por favor."
+
+#~ msgid "Your account has been successfully activated"
+#~ msgstr "Tu cuenta ha sido activada"
+
+#~ msgid ""
+#~ "Your account is activated. Now you can login with the username and "
+#~ "password you provided"
+#~ msgstr ""
+#~ "Tu cuenta ya ha sido creada. Ahora puedes utilizar el usuario y "
+#~ "lacontraseña que nos has dado"
+
+#~ msgid "Log in"
+#~ msgstr "Entrar"
+
+#~ msgid "Hello"
+#~ msgstr "Hola"
+
+#~ msgid "You have requested joining %(sitename)s."
+#~ msgstr "Has solicitado el registro en %(sitename)s."
+
+#~ msgid "Please click in this activation link before %(expirationdays)s days:"
+#~ msgstr ""
+#~ "Por favor, haz click en este enlace de activación antes de "
+#~ "%(expirationdays)s días:"
+
+#~ msgid "The team at %(site_name)s."
+#~ msgstr "El equipo de %(site_name)s."
+
+#~ msgid "Account activation on"
+#~ msgstr "Activación de la cuenta de"
+
+#~ msgid "I'm new here. Create account"
+#~ msgstr "Soy nuevo aquí. Crear cuenta"
+
+#~ msgid "Create account"
+#~ msgstr "Crear una cuenta"
+
+#~ msgid "Sign in using Facebook or Twitter"
+#~ msgstr "Entrar utilizando Facebook o Twitter"
+
+#~ msgid "You can use your Facebook or Twitter accounts to log in"
+#~ msgstr "Puedes utilizar tu cuenta de Twitter o Facebook para entrar"
+
+#~ msgid "You are already logged in"
+#~ msgstr "Ya estás dentro"
+
+#~ msgid "Your username and password do not match. Please try again."
+#~ msgstr "Tu usuario y contraseña no coinciden. Por favor inténtalo otra vez."
+
+#~ msgid "Username"
+#~ msgstr "Usuario"
+
+#~ msgid "Password"
+#~ msgstr "Contraseña"
+
+#~ msgid "I have forgotten my password"
+#~ msgstr "He olvidado mi contraseña"
+
+#~ msgid "Reset password"
+#~ msgstr "Cambiar la contraseña"
+
+#~ msgid "Enter your email to reset your password"
+#~ msgstr "Introduce tu email para cambiar la contraseña"
+
+#~ msgid "Submit"
+#~ msgstr "Enviar"
+
+#~ msgid "You have reset your password"
+#~ msgstr "Has cambiado tu contraseña"
+
+#~ msgid "New password"
+#~ msgstr "Nueva contraseña"
+
+#~ msgid "Please enter twice the new password"
+#~ msgstr "Por favor, introduce dos veces la contraseña"
+
+#~ msgid "Password reset failed"
+#~ msgstr "Falló la recuperación de la contraseña"
+
+#~ msgid ""
+#~ "We have sent to your email the needed information to reset your password"
+#~ msgstr ""
+#~ "Te hemos enviado un email con la información necesaria para cambiar la "
+#~ "contraseña"
+
+#~ msgid ""
+#~ "You are receiving this email because you requested resetting the password "
+#~ "at %(site_name)s."
+#~ msgstr ""
+#~ "Recibes este mensaje porque has solicitado cambiar la contraseña en "
+#~ "%(site_name)s."
+
+#~ msgid "All you have to do is click in this link and set your new password:"
+#~ msgstr ""
+#~ "Sólo tienes que hacer click en este enlace y definir tu nueva contraseña:"
+
+#~ msgid "Remember that you used the username: %(username)s."
+#~ msgstr "Recuerda que has utilizado el usuario: %(username)s."
+
+#~ msgid "Please write your email to reset your password"
+#~ msgstr "Por favor, escribe tu email para cambiar la contraseña"
+
+#~ msgid "Activate your account"
+#~ msgstr "Activa tu cuenta"
+
+#~ msgid ""
+#~ "In order to confirm your email, we have sent you by email the needed "
+#~ "information to activate your account. Please, read your email and "
+#~ "activate your account."
+#~ msgstr ""
+#~ "Con objeto de confirmar tu email, te hemos enviado un mensaje con toda la "
+#~ "información necesaria para activar tu cuenta. Por favor, revisa tu email "
+#~ "y activa la cuenta"
+
+#~ msgid "Check your email."
+#~ msgstr "Mira tu email."
+
+#~ msgid "Remember:"
+#~ msgstr "Recuerda"
+
+#~ msgid "Check your spam folder if you don't find our email."
+#~ msgstr "Mira también en la carpeta de spam si no encuentras el mensaje"
+
+#~ msgid "Contact us if you don't receive the email."
+#~ msgstr "Contacta con nosotros si definitivamente no encuentras el mensaje."
+
+#~ msgid "Register"
+#~ msgstr "Registro"
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "Confirm password"
+#~ msgstr "Confirma la contraseña"
+
+#~ msgid "Register using Facebook or Twitter"
+#~ msgstr "Regístrate utilizando Facebook o Twitter"
+
+#~ msgid "Tus datos personales"
+#~ msgstr "Perfil"
+
+#~ msgid "Save"
+#~ msgstr "Guardar"
+
+#~ msgid "You don't have a photo yet"
+#~ msgstr "Todavía no tienes foto"
+
+#~ msgid "Twitter linked"
+#~ msgstr "Enlazado con Twitter"
+
+#~ msgid "Link Twitter for this user"
+#~ msgstr "Enlazar Twitter a este usuario"
+
+#~ msgid "Facebook linked"
+#~ msgstr "Enlazado con Facebook"
+
+#~ msgid "Enlazar Facebook para este usuario"
+#~ msgstr "Entrar utilizando Facebook o Twitter"
