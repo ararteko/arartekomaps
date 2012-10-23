@@ -32,7 +32,6 @@ function checkForm(form){
             <input type="hidden" name="next" value="{{request.path}}" />
             <input type="submit" name="post" onClick="return checkForm(this.form)" class="button addcomment" value="{% trans "Add comment" %}" />
          </form>
-         <a href="{{place.get_absolute_url}}addphoto/" class="button addcomment">{% trans "Add a photo" %}</a>
 </div>
 {%else%}
 <p><a href="{%url cssocialprofile_user_login %}?next={{request.path}}#commentlist">{% trans "Login to comment" %}</a></p> 

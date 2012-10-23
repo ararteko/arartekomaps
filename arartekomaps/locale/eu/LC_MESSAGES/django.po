@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-01 16:32+0200\n"
+"POT-Creation-Date: 2012-10-16 11:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: settings.py:58
+#: settings.py:60
 msgid "Espanol"
 msgstr "Español"
 
-#: settings.py:59
+#: settings.py:61
 msgid "Euskara"
 msgstr "Euskara"
 
@@ -38,23 +38,23 @@ msgstr "Nahikoa irisg."
 msgid "Accesible"
 msgstr "Irisgarria"
 
-#: views.py:16 places/models.py:34
+#: views.py:16 places/models.py:43
 msgid "aphysic"
 msgstr "Fisikoa"
 
-#: views.py:17 places/models.py:35
+#: views.py:17 places/models.py:44
 msgid "avisual"
 msgstr "Ikusizkoa"
 
-#: views.py:18 places/models.py:36
+#: views.py:18 places/models.py:45
 msgid "aaudio"
 msgstr "Entzutezkoa"
 
-#: views.py:19 places/models.py:37
+#: views.py:19 places/models.py:46
 msgid "aintelec"
 msgstr "Intelektuala"
 
-#: views.py:20 places/models.py:38
+#: views.py:20 places/models.py:47
 msgid "aorganic"
 msgstr "Organikoa"
 
@@ -73,8 +73,8 @@ msgstr "cat_%s"
 msgid "%(parentcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s (%(cityname)s)"
 
-#: places/models.py:34 places/models.py:35 places/models.py:36
-#: places/models.py:37 places/models.py:38
+#: places/models.py:43 places/models.py:44 places/models.py:45
+#: places/models.py:46 places/models.py:47
 #, python-format
 msgid "access_%s"
 msgstr ""
@@ -90,7 +90,7 @@ msgid "Ararteko maps"
 msgstr "Ararteko mapak"
 
 #: templates/404.html:12 templates/about.html:12 templates/location.html:52
-#: templates/place.html:43 templates/search.html:59
+#: templates/place.html:46 templates/search.html:59
 #: templates/pages/index.html:10
 msgid "Home"
 msgstr "Home"
@@ -152,7 +152,7 @@ msgstr "Nora joan:"
 msgid "Search"
 msgstr "Bilatu"
 
-#: templates/base.html:78 templates/place.html:95
+#: templates/base.html:78 templates/place.html:98
 msgid "Accessibility"
 msgstr "Irisgarritasuna"
 
@@ -176,11 +176,7 @@ msgstr "Iruzkindu"
 msgid "Add comment"
 msgstr "Gehitu iruzkina"
 
-#: templates/comments.html:35
-msgid "Add a photo"
-msgstr "Argazkia gehitu"
-
-#: templates/comments.html:38
+#: templates/comments.html:37
 msgid "Login to comment"
 msgstr "Sartu iruzkinak bidaltzeko"
 
@@ -385,7 +381,6 @@ msgid "ejgv-tur-infos"
 msgstr ""
 
 #: templates/dummy_texts.html:66
-#, fuzzy
 msgid "Consultrans"
 msgstr ""
 
@@ -411,63 +406,71 @@ msgstr "Azken tokiak"
 msgid "Visit full %(cityname)s"
 msgstr "Bisitatu %(cityname)s osoa"
 
-#: templates/place.html:86
+#: templates/place.html:89
 msgid "Website"
 msgstr "Webgunea"
 
-#: templates/place.html:108
+#: templates/place.html:111
 msgid "detailed file"
 msgstr "Fitxa zehatza"
 
-#: templates/place.html:115
+#: templates/place.html:118
 msgid "Library"
 msgstr "Liburutegia"
 
-#: templates/place.html:117
+#: templates/place.html:120
 msgid "btype"
 msgstr "Mota"
 
-#: templates/place.html:119
+#: templates/place.html:122
 msgid "start_year"
 msgstr "Irekiera urtea"
 
-#: templates/place.html:121
+#: templates/place.html:124
 msgid "institution"
 msgstr "Erakundea"
 
-#: templates/place.html:123
+#: templates/place.html:126
 msgid "open_times"
 msgstr "Ordutegia"
 
-#: templates/place.html:125
+#: templates/place.html:128
 msgid "access_type"
 msgstr "Sarrera mota"
 
-#: templates/place.html:127
+#: templates/place.html:130
 msgid "center_type"
 msgstr "Zentru mota"
 
-#: templates/place.html:129
+#: templates/place.html:132
 msgid "topics"
 msgstr "Gaiak"
 
-#: templates/place.html:131
+#: templates/place.html:134
 msgid "services"
 msgstr "Zerbitzuak"
 
-#: templates/place.html:141
+#: templates/place.html:144
 msgid "data_source"
 msgstr "Datuen jatorria"
 
-#: templates/place.html:157
+#: templates/place.html:160
+msgid "User Images"
+msgstr "Erabiltzaileen irudiak"
+
+#: templates/place.html:172
+msgid "Add a photo"
+msgstr "Argazkia gehitu"
+
+#: templates/place.html:176
 msgid "Comments"
 msgstr "Iruzkinak"
 
-#: templates/place.html:191
+#: templates/place.html:210
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:196
+#: templates/place.html:215
 msgid "Nearest places"
 msgstr "Gertuko tokiak"
 
@@ -595,9 +598,6 @@ msgstr "Sartu"
 #~ msgid "Your username and password do not match. Please try again."
 #~ msgstr ""
 #~ "Zure erabiltzaile eta pasahitza ez datoz bat. Saiatu berriro mesedez."
-
-#~ msgid "Username"
-#~ msgstr "Erabiltzailea"
 
 #~ msgid "Password"
 #~ msgstr "Pasahitza"

@@ -45,13 +45,28 @@
 </script>
 {% endblock %}
 
+{% block searchbox%}{% endblock %}
 
-{% block mainmenu %}   
+
+{% block mainmenu %}  
+   {% comment %} 
     <form method="get" action="/search/" id="bigsf">
         <label for="q">{% trans "Go to..." %}</label> <input type="text" name="q" id="q" value="{{q}}" />
         <input type="submit" value="{% trans "Search" %}" class="searchbutton" />
         <p><a href="/filter/">{% trans "Advanced filter" %}</a></p>
     </form>
+    {% endcomment %}
+    <div id="searchbox">		
+          <!-- Google CSE Search Box Begins -->
+          <form id="searchbox_001098326678246934980:fr8fiqutrzm" action="{%url bilaketa%}">
+              <input type="hidden" name="cx" value="002318387713884704423:4pwcgf1wug4" />
+              <input name="q" type="text" size="20" />
+              <input class="lupa" type="submit" name="sa" value="" />
+              <input type="hidden" name="cof" value="FORID:11" /> 
+          </form>
+          <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_001098326678246934980%3Afr8fiqutrzm"></script>
+          <!-- Google CSE Search Box Ends -->
+      </div>
 {% endblock %}
 
 {% block main_content %}

@@ -16,7 +16,9 @@ urlpatterns = patterns('',
     url(r'^p/(?P<slug>[^/]+)/locateme$', 'arartekomaps.places.views.locateme', name='locateme'),
     url(r'^p/(?P<slug>[^/]+)/addphoto/$', 'arartekomaps.places.views.addPhoto', name='addPhoto'),
     
-    url(r'^search/$', 'arartekomaps.views.search', name='search'),
+    #url(r'^search/$', 'arartekomaps.views.search', name='search'),
+    url(r'^bilatzailea/$','arartekomaps.views.bilaketa',name='bilaketa'),    
+    
     url(r'^filter/$', 'arartekomaps.views.filter', name='filter'),
 
     url(r'^l/', include('arartekomaps.locations.urls')),

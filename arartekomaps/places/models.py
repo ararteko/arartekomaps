@@ -8,6 +8,15 @@ from photologue.models import ImageModel
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
+from django.conf import settings
+from django.core.mail import send_mail
+from django.contrib.comments.models import Comment
+from django.contrib.comments.signals import comment_was_posted
+from django.db.models.signals import post_save
+
+DEFAULT_FROM_EMAIL = getattr(settings,'DEFAULT_FROM_EMAIL', '')
+EMAIL_NOTIFICATION = getattr(settings,'EMAIL_NOTIFICATION', '')
+
 class Place(models.Model):
     slug=models.SlugField(max_length=255, blank=True, null=True, unique=True, help_text="Sí está vacio se actualiza al guardar")
     name=models.CharField(max_length=255, verbose_name='Nombre')
@@ -169,7 +178,8 @@ class Biblio(models.Model):
 class MPhoto(ImageModel):
     name=models.CharField(max_length=255, verbose_name='Nombre', blank=True)
     place=models.ForeignKey(Place, verbose_name='Place')
-    user=models.ForeignKey(User, verbose_name='User', blank=True)
+    user=models.ForeignKey(User, verbose_name='User', blank=True, null=True)
+    def_img = models.BooleanField(verbose_name='Default',default=False)    
     
     def __unicode__(self):
         return self.name or self.place.name
@@ -183,3 +193,20 @@ def generate_place_slug(sender, instance, **kwargs):
             slug_proposal += u'-%s' % len(prev_slug)
         instance.slug = slug_proposal
 pre_save.connect(generate_place_slug, sender=Place)
+
+
+def send_comment_notification(sender, comment, **kwargs):
+    if comment:
+        send_mail('[IRUZKIN BERRIA] ', 'Iruzkin berri bat gorde da: '+comment.comment+'\n\nhttp://beta.arartekomapas.cs/admin/comments/comment/' + str(comment.id), DEFAULT_FROM_EMAIL,
+            [EMAIL_NOTIFICATION], fail_silently=False)	
+	return True
+	
+def send_image_notification(sender, instance, created, **kwargs):
+    if created:
+        send_mail('[IRUDI BERRIA] ', 'Irudi berri bat gorde da: '+instance.name+'\n\nhttp://beta.arartekomapas.cs/admin/places/mphoto/' + str(instance.id), DEFAULT_FROM_EMAIL,
+            [EMAIL_NOTIFICATION], fail_silently=False)	
+	return True
+
+
+comment_was_posted.connect(send_comment_notification, sender=Comment)
+post_save.connect(send_image_notification, sender=MPhoto)

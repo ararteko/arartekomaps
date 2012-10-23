@@ -162,3 +162,7 @@ def set_language(request):
 
 def useroptions(request):
     return render_to_response('useroptions.html', locals(), context_instance=RequestContext(request))
+    
+def bilaketa(request):
+       hitza=request.GET.get('q','')
+       return render_to_response('bilaketa.html', locals(), context_instance=RequestContext(request))
