@@ -199,13 +199,13 @@ def send_comment_notification(sender, comment, **kwargs):
     if comment:
         send_mail('[IRUZKIN BERRIA] ', 'Iruzkin berri bat gorde da: '+comment.comment+'\n\nhttp://beta.arartekomapas.cs/admin/comments/comment/' + str(comment.id), DEFAULT_FROM_EMAIL,
             [EMAIL_NOTIFICATION], fail_silently=False)	
-	return True
+    return True
 	
 def send_image_notification(sender, instance, created, **kwargs):
     if created:
         send_mail('[IRUDI BERRIA] ', 'Irudi berri bat gorde da: '+instance.name+'\n\nhttp://beta.arartekomapas.cs/admin/places/mphoto/' + str(instance.id), DEFAULT_FROM_EMAIL,
             [EMAIL_NOTIFICATION], fail_silently=False)	
-	return True
+    return True
 
 
 comment_was_posted.connect(send_comment_notification, sender=Comment)

@@ -165,4 +165,5 @@ def useroptions(request):
     
 def bilaketa(request):
        hitza=request.GET.get('q','')
+       hidesearch = True
        return render_to_response('bilaketa.html', locals(), context_instance=RequestContext(request))

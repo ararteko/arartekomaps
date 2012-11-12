@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load comments %}
 {% load i18n %}
+{% load place_extras %}
 
 {% block head_title%}{{place.name}} - {% trans "Ararteko maps" %}{% endblock %}
-
-{% block searchbox%}{% endblock %}
 
 {% block extraheader %}
 <link rel="stylesheet" href="{{STATIC_URL}}css/slimbox2.css" type="text/css" media="screen" />
@@ -76,8 +75,10 @@
 {% endfor %}
 </dl>
 
-{% if def_image %}
-<a href="{{def_image.image.url}}" rel="lightbox-group" title="{{def_image.name}}"><img src="{{def_image.get_admin_thumbnail_url}}" alt="{{def_image.name}} ({{def_image.user}})" title="{{def_image.name}} ({{def_image.user}})" class="placethumb" /></a>
+{% if def_images %}
+  {% for image in def_images %}
+  <a href="{{image.image.url}}" rel="lightbox-group" title="{{image.name}}"><img src="{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
+  {% endfor %}
 {% endif %}
 
 <address>
@@ -160,15 +161,21 @@
 
 <div id="imagelist">
 <h3>{% trans "User Images" %}</h3>
-{% for user in users %}
-<div class="userImages">
-{% for image in  user %}
-<div class="imageBox">
-{{image.user}}
-<a href="{{image.image.url}}" rel="lightbox-group" title="{{image.name}}"><img src="{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
-{{image.name}}
-</div>
-{% endfor %}
+{% for box in users %}
+<div class="comment">
+      <div class="commentimg">
+      {% if box.user.get_profile.get_photo %}
+          <img class="userlogged" width="66" height="66" src="{{box.user.get_profile.get_photo.get_profile_medium_url}}" alt="{{ box.user.get_profile.get_fullname }}" />
+      {% endif %}
+      </div>
+      <div class="commenttxt">
+          <p class="username">{{box.user.get_full_name}}</p>
+          {% for image in  box.images %}
+          <div class="imageBox">
+              <a href="{{image.image.url}}" rel="lightbox-group-user" title="{{image.name}}"><img src="{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
+          </div>
+          {% endfor %}
+      </div>
 </div>
 {% endfor %}
 <a href="{{place.get_absolute_url}}addphoto/" class="button addcomment">{% trans "Add a photo" %}</a>

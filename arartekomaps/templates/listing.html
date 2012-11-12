@@ -3,8 +3,6 @@
 
 {% block head_title%}Ararteko maps{% endblock %}
 
-{% block searchbox%}{% endblock %}
-
 {% block breadcrumb %}
 <p id="breadcrumb">
    <a href="/">Home</a>
@@ -23,13 +21,14 @@
         <p><a href="/filter/">{% trans "Advanced filter" %}</a></p>
     </form>
     {% endcomment %}
-          <div id="searchbox">		
+      <div id="searchbox">    
           <!-- Google CSE Search Box Begins -->
-          <form id="searchbox_002318387713884704423:4pwcgf1wug4" action="{%url bilaketa%}">
+          <form id="bigsf" action="{%url bilaketa%}">
               <input type="hidden" name="cx" value="002318387713884704423:4pwcgf1wug4" />
-              <input name="q" type="text" size="20" />
-              <input class="lupa" type="submit" name="sa" value="" />
-              <input type="hidden" name="cof" value="FORID:11" /> 
+              <label for="q">{% trans "Go to..." %}</label> <input id="q" name="q" type="text" />
+              <input class="searchbutton" type="submit" name="sa" value="{% trans "Search" %}" />
+              <input type="hidden" name="cof" value="FORID:11" />
+              <p><a href="/filter/">Filtro aurreratua</a></p>
           </form>
           <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_001098326678246934980%3Afr8fiqutrzm"></script>
           <!-- Google CSE Search Box Ends -->

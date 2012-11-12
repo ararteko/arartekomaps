@@ -14,22 +14,23 @@ def placeview(request, slug=''):
     template_name='place'
     users = []
     place = get_object_or_404(Place, slug=slug)
-    def_image = get_object_or_404(MPhoto, place=place, def_img=True)
+    if MPhoto.objects.filter(place=place, def_img=True).exists():
+        def_images = MPhoto.objects.filter(place=place, def_img=True)
     images = MPhoto.objects.filter(place=place,def_img=False).order_by('user')
-    user = None
+    username = None
     imgs = []  
     for i, image in enumerate(images):
         if not users:
-            user = image.user
+            username = image.user
             imgs.append(image)
-        elif user == image.user.id:
+        elif username == image.user:
             imgs.append(image)     
         else:
-            users.append(imgs)
+            users.append({'user': username, 'images': imgs})
             imgs = image
-            user = image.user.id
+            username = image.user
         if i == len(images)-1:
-            users.append(imgs)
+            users.append({'user': username, 'images': imgs})
     return render_to_response('place.html', locals(), context_instance=RequestContext(request)
     )
 
