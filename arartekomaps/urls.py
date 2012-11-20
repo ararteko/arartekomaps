@@ -36,7 +36,7 @@ urlpatterns = patterns('',
     (r'^u/', include('cssocialprofile.urls')),
     (r'^photologue/', include('photologue.urls')),
     url(r'^pg/', include('pages.urls')),
-    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': MEDIA_ROOT}),
+    (r'^media/places/(?P<path>.*)$', 'django.views.static.serve',{'document_root': MEDIA_ROOT}),
 )
 
 urlpatterns += staticfiles_urlpatterns()

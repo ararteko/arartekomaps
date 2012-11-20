@@ -1,12 +1,13 @@
 from django.core.management.base import BaseCommand
 from django.utils.html import strip_tags
 import csv
+import time
 from arartekomaps.places.models import Place
 
 def export_places():
     places = Place.objects.all()
 
-    with open('../media/places.csv', 'wb') as csvfile:
+    with open('../media/places/places_'+str(time.strftime("%Y-%m-%d"))+'.csv', 'wb') as csvfile:
         str_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
         str_writer.writerow(["Name","Category","Address 1","Address 2","City","Postal Code","Locality","Telephone","Fax","URL","Email","Latitude","Longitude","Description"])
