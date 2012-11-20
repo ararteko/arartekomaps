@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.simple import redirect_to
+from django.http import HttpResponse
 from django.contrib import admin
 from settings import MEDIA_ROOT
 
@@ -9,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     url(r'^$', 'arartekomaps.views.home', name='home'),
+    (r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", mimetype="text/plain")),
     url(r'^set_lang/$', 'arartekomaps.views.set_language', name='set_lang'),
     
     url(r'^p/save_location/$', 'arartekomaps.places.views.save_location', name='savelocation'),

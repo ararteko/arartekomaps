@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-16 11:26+0200\n"
+"POT-Creation-Date: 2012-11-19 16:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: settings.py:60
+#: settings.py:61
 msgid "Espanol"
 msgstr "Español"
 
-#: settings.py:61
+#: settings.py:62
 msgid "Euskara"
 msgstr "Euskara"
 
@@ -83,15 +83,15 @@ msgstr ""
 msgid "Not Found error"
 msgstr ""
 
-#: templates/404.html:4 templates/about.html:4 templates/base.html:23
-#: templates/home.html:4 templates/location.html:4 templates/place.html:5
-#: templates/search.html:4
+#: templates/404.html:4 templates/about.html:4 templates/base.html:37
+#: templates/home.html:4 templates/listing.html:4 templates/location.html:4
+#: templates/place.html:6 templates/search.html:4
 msgid "Ararteko maps"
 msgstr "Ararteko mapak"
 
-#: templates/404.html:12 templates/about.html:12 templates/location.html:52
-#: templates/place.html:46 templates/search.html:59
-#: templates/pages/index.html:10
+#: templates/404.html:12 templates/about.html:12 templates/location.html:54
+#: templates/place.html:47 templates/search.html:59
+#: templates/pages/index.html:12
 msgid "Home"
 msgstr "Home"
 
@@ -101,17 +101,17 @@ msgstr ""
 
 #: templates/404.html:27
 msgid "Sorry, we didn't found what you requested."
-msgstr ""
+msgstr "Sentitzen dugu. Ez dugu bila ari zarena aurkitu."
 
 #: templates/about.html:4 templates/about.html.py:14
 msgid "About"
 msgstr "Honi buruz"
 
-#: templates/about.html:24 templates/base.html:78 templates/home.html:59
+#: templates/about.html:24 templates/base.html:113 templates/home.html:73
 msgid "About the maps"
 msgstr "Mapa hauen inguruan"
 
-#: templates/about.html:27 templates/home.html:61
+#: templates/about.html:27 templates/home.html:75
 msgid "About: Paragraph 1"
 msgstr ""
 "Informa zaitez nahi duzun lekura iristeko! Zure laguntzarekin, erraz "
@@ -138,29 +138,32 @@ msgstr "Aukeratu argazkia"
 msgid "Name of the photo"
 msgstr "Argazkiaren deskribapena"
 
-#: templates/base.html:25
+#: templates/base.html:39
 msgid "Discover and share accessible places"
 msgstr "Aurkitu eta ezagutarazi toki irisgarriak"
 
-#: templates/base.html:35 templates/home.html:51 templates/listing.html:18
-#: templates/search.html:67
+#: templates/base.html:61 templates/base.html.py:68
+#: templates/google_search.html:5 templates/home.html:61
+#: templates/listing.html:29 templates/search.html:67
 msgid "Go to..."
 msgstr "Nora joan:"
 
-#: templates/base.html:37 templates/home.html:52 templates/listing.html:19
-#: templates/search.html:68 templates/search.html.py:114
+#: templates/base.html:63 templates/base.html.py:69
+#: templates/google_search.html:6 templates/home.html:62
+#: templates/listing.html:30 templates/search.html:68
+#: templates/search.html.py:114
 msgid "Search"
 msgstr "Bilatu"
 
-#: templates/base.html:78 templates/place.html:98
+#: templates/base.html:113 templates/place.html:101
 msgid "Accessibility"
 msgstr "Irisgarritasuna"
 
-#: templates/base.html:79
+#: templates/base.html:114
 msgid "Privacy"
 msgstr "Pribatutasuna"
 
-#: templates/base.html:82
+#: templates/base.html:117
 msgid "Project supported by"
 msgstr "Proiektuaren bultzatzailea"
 
@@ -252,231 +255,234 @@ msgstr "Trena"
 msgid "cat_tram"
 msgstr "Tranbia"
 
-#: templates/dummy_texts.html:25
+#: templates/dummy_texts.html:24
+msgid "cat_metro"
+msgstr "Metroa"
+
+#: templates/dummy_texts.html:26
 msgid "cat_culture"
 msgstr "Kultura"
 
-#: templates/dummy_texts.html:26
+#: templates/dummy_texts.html:27
 msgid "cat_library"
 msgstr "Liburutegia"
 
-#: templates/dummy_texts.html:27
+#: templates/dummy_texts.html:28
 msgid "cat_museum"
 msgstr "Museoa"
 
-#: templates/dummy_texts.html:29
+#: templates/dummy_texts.html:30
 msgid "access_a"
 msgstr "Irisgarria"
 
-#: templates/dummy_texts.html:30
+#: templates/dummy_texts.html:31
 msgid "access_p"
 msgstr "Erabilgarria"
 
-#: templates/dummy_texts.html:31
+#: templates/dummy_texts.html:32
 msgid "access_n"
 msgstr "Ez irisgarria"
 
-#: templates/dummy_texts.html:32
+#: templates/dummy_texts.html:33
 msgid "access_s"
 msgstr "Daturik gabe"
 
-#: templates/dummy_texts.html:34
+#: templates/dummy_texts.html:35
 msgid "acceso_bbdd"
 msgstr "Datubaseetara sarrera"
 
-#: templates/dummy_texts.html:35
+#: templates/dummy_texts.html:36
 msgid "prestamo"
 msgstr "Mailegua"
 
-#: templates/dummy_texts.html:36
+#: templates/dummy_texts.html:37
 msgid "hemeroteca"
 msgstr "Hemeroteka"
 
-#: templates/dummy_texts.html:37
+#: templates/dummy_texts.html:38
 msgid "consulta"
 msgstr "Kontsulta"
 
-#: templates/dummy_texts.html:38
+#: templates/dummy_texts.html:39
 msgid "wifi"
 msgstr "Wi-fi"
 
-#: templates/dummy_texts.html:39
+#: templates/dummy_texts.html:40
 msgid "reprografia"
 msgstr "Erreprografia"
 
-#: templates/dummy_texts.html:40
+#: templates/dummy_texts.html:41
 msgid "infor_bibliografica"
 msgstr "Informazio bibliografikoa"
 
-#: templates/dummy_texts.html:41
+#: templates/dummy_texts.html:42
 msgid "prestamo_domic"
 msgstr "Etxerako mailegua"
 
-#: templates/dummy_texts.html:42
+#: templates/dummy_texts.html:43
 msgid "internet_usuarios"
 msgstr "Internet erabiltzaileentzat"
 
-#: templates/dummy_texts.html:43
+#: templates/dummy_texts.html:44
 msgid "prestamo_inter"
 msgstr "Liburutegi arteko mailegua"
 
-#: templates/dummy_texts.html:44
+#: templates/dummy_texts.html:45
 msgid "bol_novedades"
 msgstr "Berritasunen boletina"
 
-#: templates/dummy_texts.html:45
+#: templates/dummy_texts.html:46
 msgid "selectiva"
 msgstr "Aukeraketa"
 
-#: templates/dummy_texts.html:47
+#: templates/dummy_texts.html:48
 msgid "general"
 msgstr "Orokorra"
 
-#: templates/dummy_texts.html:49
+#: templates/dummy_texts.html:50
 msgid "ayto"
 msgstr "Udala"
 
-#: templates/dummy_texts.html:50
+#: templates/dummy_texts.html:51
 msgid "auto"
 msgstr "Autonomoa"
 
-#: templates/dummy_texts.html:51
+#: templates/dummy_texts.html:52
 msgid "priv"
 msgstr "Pribatua"
 
-#: templates/dummy_texts.html:53
+#: templates/dummy_texts.html:54
 msgid "l"
 msgstr "Librea"
 
-#: templates/dummy_texts.html:54
+#: templates/dummy_texts.html:55
 msgid "r"
 msgstr "Mugatua"
 
-#: templates/dummy_texts.html:56
+#: templates/dummy_texts.html:57
 msgid "p"
 msgstr "Publikoa"
 
-#: templates/dummy_texts.html:58
+#: templates/dummy_texts.html:59
 msgid "filter"
 msgstr "Filtro aurreratua"
 
-#: templates/dummy_texts.html:59
+#: templates/dummy_texts.html:60
 msgid "search"
 msgstr "Bilatu"
 
-#: templates/dummy_texts.html:62
-msgid "ejgv_biblio"
-msgstr ""
-
 #: templates/dummy_texts.html:63
-msgid "ejgv-tur-rest"
-msgstr ""
+msgid "ejgv_biblio"
+msgstr "Eusko jaurlaritza. Liburutegi zerbitzua"
 
 #: templates/dummy_texts.html:64
-msgid "ejgv-tur-aloj"
-msgstr ""
+msgid "ejgv-tur-rest"
+msgstr "Optaría por Eusko Jaurlaritza. Tursmo zuzendaritza"
 
 #: templates/dummy_texts.html:65
-msgid "ejgv-tur-infos"
-msgstr ""
+msgid "ejgv-tur-aloj"
+msgstr "Optaría por Eusko Jaurlaritza. Tursmo zuzendaritza"
 
 #: templates/dummy_texts.html:66
+msgid "ejgv-tur-infos"
+msgstr "Optaría por Eusko Jaurlaritza. Tursmo zuzendaritza"
+
+#: templates/dummy_texts.html:67
 msgid "Consultrans"
-msgstr ""
+msgstr "Ararteko"
 
-#: templates/home.html:53 templates/listing.html:20 templates/search.html:69
-#: templates/search.html.py:118
-msgid "Advanced filter"
-msgstr "Filtro aurreratua"
-
-#: templates/home.html:63
+#: templates/home.html:77
 msgid "Read more"
 msgstr "Gehiago irakurri"
 
-#: templates/home.html:71
+#: templates/home.html:85
 msgid "Visit this places"
 msgstr "Bisitatu toki hauek"
 
-#: templates/home.html:85
+#: templates/home.html:99
 msgid "Last places"
 msgstr "Azken tokiak"
 
-#: templates/location.html:96
+#: templates/location.html:98
 #, python-format
 msgid "Visit full %(cityname)s"
 msgstr "Bisitatu %(cityname)s osoa"
 
-#: templates/place.html:89
+#: templates/place.html:92
 msgid "Website"
 msgstr "Webgunea"
 
-#: templates/place.html:111
+#: templates/place.html:114
 msgid "detailed file"
 msgstr "Fitxa zehatza"
 
-#: templates/place.html:118
+#: templates/place.html:121
 msgid "Library"
 msgstr "Liburutegia"
 
-#: templates/place.html:120
+#: templates/place.html:123
 msgid "btype"
 msgstr "Mota"
 
-#: templates/place.html:122
+#: templates/place.html:125
 msgid "start_year"
 msgstr "Irekiera urtea"
 
-#: templates/place.html:124
+#: templates/place.html:127
 msgid "institution"
 msgstr "Erakundea"
 
-#: templates/place.html:126
+#: templates/place.html:129
 msgid "open_times"
 msgstr "Ordutegia"
 
-#: templates/place.html:128
+#: templates/place.html:131
 msgid "access_type"
 msgstr "Sarrera mota"
 
-#: templates/place.html:130
+#: templates/place.html:133
 msgid "center_type"
 msgstr "Zentru mota"
 
-#: templates/place.html:132
+#: templates/place.html:135
 msgid "topics"
 msgstr "Gaiak"
 
-#: templates/place.html:134
+#: templates/place.html:137
 msgid "services"
 msgstr "Zerbitzuak"
 
-#: templates/place.html:144
+#: templates/place.html:147
 msgid "data_source"
 msgstr "Datuen jatorria"
 
-#: templates/place.html:160
+#: templates/place.html:163
 msgid "User Images"
 msgstr "Erabiltzaileen irudiak"
 
-#: templates/place.html:172
+#: templates/place.html:181
 msgid "Add a photo"
 msgstr "Argazkia gehitu"
 
-#: templates/place.html:176
+#: templates/place.html:185
 msgid "Comments"
 msgstr "Iruzkinak"
 
-#: templates/place.html:210
+#: templates/place.html:219
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:215
+#: templates/place.html:224
 msgid "Nearest places"
 msgstr "Gertuko tokiak"
 
 #: templates/search.html:4 templates/search.html.py:61
 msgid "Search results"
 msgstr "Bilaketa"
+
+#: templates/search.html:69 templates/search.html.py:118
+msgid "Advanced filter"
+msgstr "Filtro aurreratua"
 
 #: templates/search.html:80
 msgid "City"
