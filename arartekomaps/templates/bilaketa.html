@@ -11,7 +11,9 @@
 <script>
   (function() {
     var cx = '002318387713884704423:4pwcgf1wug4';
-    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript'; 
+    gcse.async = true;
     gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
         '//www.google.com/cse/cse.js?cx=' + cx;
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
@@ -19,6 +21,6 @@
 </script>
 
 <!-- Place this tag where you want both of the search box and the search results to render -->
-<gcse:search></gcse:search>
+<gcse:search linkTarget='_self'></gcse:search>
       
 {%endblock%}

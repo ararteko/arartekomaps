@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load place_extras %}
 
-{% block head_title%}{{place.name}} - {% trans "Ararteko maps" %}{% endblock %}
+{% block head_title%}{{place.name}} ({% trans place.category.str2trans %})- {% trans "Ararteko maps" %}{% endblock %}
 
 {% block extraheader %}
 <link rel="stylesheet" href="{{STATIC_URL}}css/slimbox2.css" type="text/css" media="screen" />
@@ -70,8 +70,8 @@
 <p class="category_name">{% trans place.category.str2trans %}</p>
 <dl class="accessibility">
 {% for key,value,vkey,vvalue in place.access_list %}
-<dt class="access_term">{{ key }}</dt>
-<dd class="access_definition {{key}}_{{value}}" title="{{ vkey }} {{ vvalue }}"><span>{{ vvalue }}</span></dd>
+<dt class="access_term">{{ vkey }}:</dt>
+<dd class="access_definition {{key}}_{{value}}" title="{{ vkey }}: {{ vvalue }}"><span>{{ vvalue }}</span></dd>
 {% endfor %}
 </dl>
 

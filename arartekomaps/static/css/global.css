@@ -143,6 +143,7 @@ header img{
     -webkit-box-shadow:0 0 8px rgba(0,0,0,0.3) inset;
     background-color:#ccc;
     behavior: url("/static/css/PIE.htc");
+    position:relative;
 }
 
 
@@ -172,9 +173,12 @@ header img{
 }
 .searchbutton{
     background:url("../img/botoisearch.png") no-repeat top left;
-    padding:5px 10px 32px 10px;
+    padding:5px 15px 32px 15px;
     border:none;
     position:absolute;
+    font-size:14px;
+    display:inline-block;
+    width:68px;
 }
 
 .searchbutton:hover{
@@ -363,7 +367,7 @@ header img{
 .itemlist li{
     background:#f5f5f5 url("../img/fonditem.gif") repeat-x top left;
     height:50px;
-    padding:10px;
+    padding:10px 10px 15px 10px;
     margin-bottom:5px;
 }
 .listicon{
@@ -467,12 +471,14 @@ body#tpl_place #mainmenu{
     behavior: url("/static/css/PIE.htc");
     width:97%;
     clear:both;
+    border:1px solid #ddd;
 }
 #biblio{
     clear:left;
     padding:8px 8px 15px 8px;
     margin-top:10px;
     background-color:#efefef;
+    position:relative;
     color:#333;
     box-shadow: 0 0 10px rgba(204,204,204,1) inset;
     -moz-box-shadow:0 0 10px rgba(204,204,204,1) inset;
@@ -709,7 +715,7 @@ dl.accesstext dt{
     -webkit-box-shadow:0 2px 5px rgba(0,0,0,0.7);
     behavior: url("/static/css/PIE.htc");
     cursor:pointer;
-    text-transform:uppercase;searchbutton
+    text-transform:uppercase;
     margin-left:85px;
     position:relative;
 }
@@ -731,6 +737,7 @@ dl.accesstext dt{
     -webkit-box-shadow:0 2px 5px rgba(0,0,0,0.7);
     behavior: url("/static/css/PIE.htc");
     cursor:pointer;
+    position:relative;
 }
 /****************bilaketa************/
 
@@ -741,14 +748,11 @@ dl.accesstext dt{
 }
 #advsearch ul{
     margin:10px 0;
-    width:100%;
-    clear:both;
-    height:70px;
 }
 #advsearch ul li{
     display:inline-block;
     float:left;
-    margin-right:15px;
+    margin-right:10px;
     margin-bottom:10px;
 }
 #advsearch li label{
@@ -769,11 +773,15 @@ dl.accesstext dt{
     border-radius:5px;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
+    position:relative;
+    display:block !important;
+    clear:both;
     box-shadow:2px 2px 2px rgba(1,1,1,0.5), 0 2px 2px rgba(1,1,1,0.7) inset;
     -moz-box-shadow:2px 2px 2px rgba(1,1,1,0.5), 0 2px 2px rgba(1,1,1,0.7) inset;
     -webkit-box-shadow:2px 2px 2px rgba(1,1,1,0.5), 0 2px 2px rgba(1,1,1,0.7) inset;
     behavior: url("/static/css/PIE.htc");
     cursor:pointer;
+    position:relative;
 }
 .frm_help{
     margin-top:20px;
@@ -834,7 +842,7 @@ footer address{
 
 .accessibility {
     float: right;
-    margin-top:-5px;
+    margin-top:-2px;
 }
 .access_term {
     display: none;
