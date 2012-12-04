@@ -1,2 +1,5 @@
 local_settings.py
 settings.py
+*.pyc
+arartekomaps.egg-info/
+dist/
