@@ -10,7 +10,7 @@ DEFAULT_FROM_EMAIL = ''
 EMAIL_NOTIFICATION = ''
 
 ADMINS = (
-    
+    ('Admin', 'admin@your_email.com'),
 )
 
 MANAGERS = ADMINS
