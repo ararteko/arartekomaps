@@ -20,7 +20,7 @@
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     var infowindow = new google.maps.InfoWindow();
 
-    {% for place in places %}{% if place.lat %}    
+    {% for place in p_places %}{% if place.lat %}    
         var center = new google.maps.LatLng({{place.lat}}, {{place.lon}});
         bounds.extend(center);
         var image = '{{STATIC_URL}}icn/{{place.icon}}.png';        
@@ -46,6 +46,8 @@
 
   }
 </script>
+
+<link rel="canonical" href="{{request.path}}"/>
 {% endblock %}
 
 
@@ -99,7 +101,7 @@
 {% endif %}
 
   <ul class="itemlist">
-  {% for place in places %}
+  {% for place in p_places %}
     <li>
     <img src="{{STATIC_URL}}icn/{{place.icon}}.png" alt="{% trans place.category.str2trans %}" class="mainicon" />
     <h4><a href="{{ place.get_absolute_url }}">{{ place.name }}</a></h4>
@@ -113,6 +115,14 @@
     </li>
    {% endfor %}    
   </ul>
+
+  {% if thispage.has_previous %}
+ <a href="{{prev_url}}">{% trans "Previous" %}</a>
+  {% endif %}
+  
+  {% if thispage.has_next %}
+ <a href="{{next_url}}">{% trans "Next" %}</a>
+  {% endif %}
 </div>
 <!-- locacol1 end -->
 

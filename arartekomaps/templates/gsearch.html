@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block searchbox%}{% endblock %}
 
 {% block main_content %} 
 <div class="inner">
 
-<h1 class="jarduna">Bilaketaren emaitzak</h1>
+<h1>{% trans action %}: {{q}}</h1>
 
 <!-- Put the following javascript before the closing </head> tag. -->
 <script>

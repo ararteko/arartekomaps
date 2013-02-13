@@ -1,10 +1,12 @@
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404
 from django.template import RequestContext
 from arartekomaps.settings import STATIC_URL
 from arartekomaps.locations.models import Location
 from arartekomaps.places.models import Place
 from arartekomaps.categories.models import Category
+from django.core.paginator import Paginator
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -28,6 +30,10 @@ def listing(request, state):
     
 def location(request,state,city,maincat='',subcat=''):
     """ Default view for a city """
+
+    pagenumber = request.GET.get('page','1')
+    if int(pagenumber)<1:
+        pagenumber = 1
     
     city = get_object_or_404(Location, slug=city)
 
@@ -56,7 +62,23 @@ def location(request,state,city,maincat='',subcat=''):
     else:
         places = Place.objects.filter(city=city)[:20]
         pagetitle = city.name     
-        
-            
+
+    pages = Paginator(places,10)
+    try:
+        thispage = pages.page(int(pagenumber))
+    except:
+        raise Http404
+
+    p_places = thispage.object_list
+
+    prev_pars = request.GET.copy()
+    next_pars = request.GET.copy()
+    prev_pars.update({'page':thispage.previous_page_number()})
+    next_pars.update({'page':thispage.next_page_number()})
+    prev_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in prev_pars.items()])
+    next_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in next_pars.items()])
+
+    prev_url = "%s?page=%d" % (request.path,thispage.previous_page_number())
+    next_url = "%s?page=%d" % (request.path,thispage.next_page_number())
     return render_to_response('location.html', locals(), context_instance=RequestContext(request)
     )

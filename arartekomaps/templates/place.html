@@ -108,7 +108,7 @@
     {% endfor %}
     </dl>
     {% if place.access_data.description %}
-    <p>{{place.access_data.description}}</p>
+    <p>{{place.access_data.description|linebreaks}}</p>
     {% endif %}
     {% if place.access_data.fileurl %}
     <p><a href="{{place.access_data.fileurl}}">{% trans "detailed file" %}</a> (PDF)</p>

@@ -163,7 +163,8 @@ def set_language(request):
 def useroptions(request):
     return render_to_response('useroptions.html', locals(), context_instance=RequestContext(request))
     
-def bilaketa(request):
-       hitza=request.GET.get('q','')
+def gsearch(request):
+       q = request.GET.get('q','')
        hidesearch = True
-       return render_to_response('bilaketa.html', locals(), context_instance=RequestContext(request))
+       action = 'search'
+       return render_to_response('gsearch.html', locals(), context_instance=RequestContext(request))
