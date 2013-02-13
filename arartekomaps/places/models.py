@@ -159,6 +159,7 @@ class Biblio(models.Model):
         ('ayto', 'Ayuntamiento'),
         ('auto', 'Autónoma'),
         ('priv', 'Privado'),
+        ('foral', 'Foral'),
     )
     institution_type = models.CharField(max_length=4, choices=INST_TYPE_CHOICES, blank=True, verbose_name='Tipo institución')
     open_times = models.CharField(max_length=255, null=True,blank=True, verbose_name='Horario apertura')
@@ -197,14 +198,14 @@ pre_save.connect(generate_place_slug, sender=Place)
 
 def send_comment_notification(sender, comment, **kwargs):
     if comment:
-        send_mail('[IRUZKIN BERRIA] ', 'Iruzkin berri bat gorde da: '+comment.comment+'\n\nhttp://beta.arartekomapas.cs/admin/comments/comment/' + str(comment.id), DEFAULT_FROM_EMAIL,
-            [EMAIL_NOTIFICATION], fail_silently=False)	
+        send_mail('[IRUZKIN BERRIA] ', 'Iruzkin berri bat gorde da: '+comment.comment+'\n\n'+settings.HOST+'/admin/comments/comment/' + str(comment.id), DEFAULT_FROM_EMAIL,
+            [EMAIL_NOTIFICATION], fail_silently=True)	
     return True
 	
 def send_image_notification(sender, instance, created, **kwargs):
     if created:
-        send_mail('[IRUDI BERRIA] ', 'Irudi berri bat gorde da: '+instance.name+'\n\nhttp://beta.arartekomapas.cs/admin/places/mphoto/' + str(instance.id), DEFAULT_FROM_EMAIL,
-            [EMAIL_NOTIFICATION], fail_silently=False)	
+        send_mail('[IRUDI BERRIA] ', 'Irudi berri bat gorde da: '+instance.name+'\n\n'+settings.HOST+'/admin/places/mphoto/' + str(instance.id), DEFAULT_FROM_EMAIL,
+            [EMAIL_NOTIFICATION], fail_silently=True)	
     return True
 
 
