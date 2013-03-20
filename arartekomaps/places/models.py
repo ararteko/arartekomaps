@@ -159,7 +159,7 @@ class Biblio(models.Model):
         ('ayto', 'Ayuntamiento'),
         ('auto', 'Autónoma'),
         ('priv', 'Privado'),
-        ('foral', 'Foral'),
+        ('fora', 'Foral'),
     )
     institution_type = models.CharField(max_length=4, choices=INST_TYPE_CHOICES, blank=True, verbose_name='Tipo institución')
     open_times = models.CharField(max_length=255, null=True,blank=True, verbose_name='Horario apertura')

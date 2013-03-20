@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-19 16:32+0100\n"
+"POT-Creation-Date: 2013-03-20 12:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: settings.py:61
+#: settings.py:60
 msgid "Espanol"
 msgstr "Español"
 
-#: settings.py:62
+#: settings.py:61
 msgid "Euskara"
 msgstr "Euskara"
 
@@ -58,17 +58,17 @@ msgstr "Intelectual"
 msgid "aorganic"
 msgstr "Orgánica"
 
-#: locations/views.py:49
+#: locations/views.py:55
 #, python-format
 msgid "%(parentcatname)s: %(childcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s: %(childcatname)s en %(cityname)s"
 
-#: locations/views.py:49 locations/views.py:53
+#: locations/views.py:55 locations/views.py:59
 #, python-format
 msgid "cat_%s"
 msgstr "cat_%s"
 
-#: locations/views.py:53
+#: locations/views.py:59
 #, python-format
 msgid "%(parentcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s en %(cityname)s"
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Ararteko maps"
 msgstr "Mapas de Ararteko"
 
-#: templates/404.html:12 templates/about.html:12 templates/location.html:54
+#: templates/404.html:12 templates/about.html:12 templates/location.html:56
 #: templates/place.html:47 templates/search.html:59
 #: templates/pages/index.html:12
 msgid "Home"
@@ -340,55 +340,73 @@ msgstr "General"
 
 #: templates/dummy_texts.html:50
 msgid "ayto"
-msgstr "Ayuntamiento"
+msgstr "Municipal"
 
 #: templates/dummy_texts.html:51
 msgid "auto"
-msgstr "Autónomo"
+msgstr "Autonómica"
 
 #: templates/dummy_texts.html:52
 msgid "priv"
-msgstr "Privado"
+msgstr "Privada"
 
-#: templates/dummy_texts.html:54
+#: templates/dummy_texts.html:53
+msgid "fora"
+msgstr "Foral"
+
+#: templates/dummy_texts.html:55
 msgid "l"
 msgstr "Libre"
 
-#: templates/dummy_texts.html:55
+#: templates/dummy_texts.html:56
 msgid "r"
 msgstr "Restringido"
 
-#: templates/dummy_texts.html:57
+#: templates/dummy_texts.html:58
 msgid "p"
 msgstr "Público"
 
-#: templates/dummy_texts.html:59
+#: templates/dummy_texts.html:60 templates/home.html:64
+#: templates/listing.html:32
 msgid "filter"
 msgstr "Filtro avanzado"
 
-#: templates/dummy_texts.html:60
+#: templates/dummy_texts.html:61
 msgid "search"
 msgstr "Buscar"
 
-#: templates/dummy_texts.html:63
+#: templates/dummy_texts.html:64
 msgid "ejgv_biblio"
 msgstr "Gobierno vasco. Servicio de Bibliotecas"
 
-#: templates/dummy_texts.html:64
+#: templates/dummy_texts.html:65
 msgid "ejgv-tur-rest"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:65
+#: templates/dummy_texts.html:66
 msgid "ejgv-tur-aloj"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:66
+#: templates/dummy_texts.html:67
 msgid "ejgv-tur-infos"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:67
+#: templates/dummy_texts.html:68
 msgid "Consultrans"
 msgstr "Ararteko"
+
+#: templates/dummy_texts.html:69
+msgid "dfa"
+msgstr "Diputación Foral de Álava"
+
+#: templates/dummy_texts.html:70
+msgid "fekoor"
+msgstr "FEKOOR"
+
+#: templates/google_search.html:8 templates/search.html:69
+#: templates/search.html.py:118
+msgid "Advanced filter"
+msgstr "Filtro avanzado"
 
 #: templates/home.html:77
 msgid "Read more"
@@ -402,10 +420,18 @@ msgstr "Visita estos lugares:"
 msgid "Last places"
 msgstr "Últimos lugares"
 
-#: templates/location.html:98
+#: templates/location.html:100
 #, python-format
 msgid "Visit full %(cityname)s"
 msgstr "Visita %(cityname)s completa"
+
+#: templates/location.html:120 templates/search.html:141
+msgid "Previous"
+msgstr "Anteriores"
+
+#: templates/location.html:124 templates/search.html:145
+msgid "Next"
+msgstr "Siguientes"
 
 #: templates/place.html:92
 msgid "Website"
@@ -479,10 +505,6 @@ msgstr "Lugares cercanos"
 msgid "Search results"
 msgstr "Buscar"
 
-#: templates/search.html:69 templates/search.html.py:118
-msgid "Advanced filter"
-msgstr "Filtro avanzado"
-
 #: templates/search.html:80
 msgid "City"
 msgstr "Municipio"
@@ -498,14 +520,6 @@ msgstr "Accesibilidad mínima"
 #: templates/search.html:121
 msgid "Total results:"
 msgstr "Total resultados"
-
-#: templates/search.html:141
-msgid "Previous"
-msgstr "Anteriores"
-
-#: templates/search.html:145
-msgid "Next"
-msgstr "Siguientes"
 
 #: templates/useroptions.html:5
 msgid "User's photo"
