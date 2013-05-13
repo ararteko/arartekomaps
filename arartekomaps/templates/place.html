@@ -151,12 +151,12 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/eu_ES/all.js#xfbml=1&appId=348250811907648";
+  js.src = "//connect.facebook.net/{{LANGUAGE_CODE}}_ES/all.js#xfbml=1&appId=348250811907648";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-like" data-href="{{place.get_absolute_url}}" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
-<a href="https://twitter.com/share" class="twitter-share-button" data-via="arartekomapak" data-text="{% trans place.category.str2trans %} {{place.name}}, {{place.city}}" data-lang="es">Twittear</a>
+<div class="fb-like" data-href="http://mapak.ararteko.net{{place.get_absolute_url}}" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="arartekomapak" data-text="{% trans place.category.str2trans %} {{place.name}}, {{place.city}}" data-lang="{{LANGUAGE_CODE}}">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 <div id="imagelist">
