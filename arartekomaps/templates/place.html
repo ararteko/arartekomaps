@@ -144,7 +144,13 @@
 <!-- biblio end -->
 {% endif %}
 
-<p><em>{% trans "data_source" %}: {% trans place.source %}</em></p>
+<p><em>{% trans "data_source" %}: 
+
+  {% ifequal place.source "nombre" %}
+      {{place.name}}
+  {% else %}
+    {% trans place.source %}
+  {% endifequal %}</em></p>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

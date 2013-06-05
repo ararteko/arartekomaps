@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-20 12:59+0100\n"
+"POT-Creation-Date: 2013-06-05 17:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -223,184 +223,248 @@ msgstr "Hotel-apartamentuak"
 msgid "cat_pension"
 msgstr "Pentsioa"
 
-#: templates/dummy_texts.html:15
+#: templates/dummy_texts.html:14
+msgid "cat_albergue"
+msgstr "Aterpetxea"
+
+#: templates/dummy_texts.html:16
 msgid "cat_eat"
 msgstr "Jan"
 
-#: templates/dummy_texts.html:16
+#: templates/dummy_texts.html:17
 msgid "cat_restaurant"
 msgstr "Jatetxea"
 
-#: templates/dummy_texts.html:17
+#: templates/dummy_texts.html:18
 msgid "cat_sidreria"
 msgstr "Sagardotegia"
 
-#: templates/dummy_texts.html:18
+#: templates/dummy_texts.html:19
 msgid "cat_asador"
 msgstr "Erretegia"
 
-#: templates/dummy_texts.html:20
+#: templates/dummy_texts.html:21
 msgid "cat_transportation"
 msgstr "Garraioa"
 
-#: templates/dummy_texts.html:21
+#: templates/dummy_texts.html:22
 msgid "cat_bus"
 msgstr "Autobusa"
 
-#: templates/dummy_texts.html:22
+#: templates/dummy_texts.html:23
 msgid "cat_train"
 msgstr "Trena"
 
-#: templates/dummy_texts.html:23
+#: templates/dummy_texts.html:24
 msgid "cat_tram"
 msgstr "Tranbia"
 
-#: templates/dummy_texts.html:24
+#: templates/dummy_texts.html:25
 msgid "cat_metro"
 msgstr "Metroa"
 
-#: templates/dummy_texts.html:26
+#: templates/dummy_texts.html:27
 msgid "cat_culture"
 msgstr "Kultura"
 
-#: templates/dummy_texts.html:27
+#: templates/dummy_texts.html:28
 msgid "cat_library"
 msgstr "Liburutegia"
 
-#: templates/dummy_texts.html:28
+#: templates/dummy_texts.html:29
 msgid "cat_museum"
 msgstr "Museoa"
 
-#: templates/dummy_texts.html:30
+#: templates/dummy_texts.html:31
 msgid "access_a"
 msgstr "Irisgarria"
 
-#: templates/dummy_texts.html:31
+#: templates/dummy_texts.html:32
 msgid "access_p"
 msgstr "Erabilgarria"
 
-#: templates/dummy_texts.html:32
+#: templates/dummy_texts.html:33
 msgid "access_n"
 msgstr "Ez irisgarria"
 
-#: templates/dummy_texts.html:33
+#: templates/dummy_texts.html:34
 msgid "access_s"
 msgstr "Daturik gabe"
 
-#: templates/dummy_texts.html:35
+#: templates/dummy_texts.html:36
 msgid "acceso_bbdd"
 msgstr "Datubaseetara sarrera"
 
-#: templates/dummy_texts.html:36
+#: templates/dummy_texts.html:37
 msgid "prestamo"
 msgstr "Mailegua"
 
-#: templates/dummy_texts.html:37
+#: templates/dummy_texts.html:38
 msgid "hemeroteca"
 msgstr "Hemeroteka"
 
-#: templates/dummy_texts.html:38
+#: templates/dummy_texts.html:39
 msgid "consulta"
 msgstr "Kontsulta"
 
-#: templates/dummy_texts.html:39
+#: templates/dummy_texts.html:40
 msgid "wifi"
 msgstr "Wi-fi"
 
-#: templates/dummy_texts.html:40
+#: templates/dummy_texts.html:41
 msgid "reprografia"
 msgstr "Erreprografia"
 
-#: templates/dummy_texts.html:41
+#: templates/dummy_texts.html:42
 msgid "infor_bibliografica"
 msgstr "Informazio bibliografikoa"
 
-#: templates/dummy_texts.html:42
+#: templates/dummy_texts.html:43
 msgid "prestamo_domic"
 msgstr "Etxerako mailegua"
 
-#: templates/dummy_texts.html:43
+#: templates/dummy_texts.html:44
 msgid "internet_usuarios"
 msgstr "Internet erabiltzaileentzat"
 
-#: templates/dummy_texts.html:44
+#: templates/dummy_texts.html:45
 msgid "prestamo_inter"
 msgstr "Liburutegi arteko mailegua"
 
-#: templates/dummy_texts.html:45
+#: templates/dummy_texts.html:46
 msgid "bol_novedades"
 msgstr "Berritasunen boletina"
 
-#: templates/dummy_texts.html:46
+#: templates/dummy_texts.html:47
 msgid "selectiva"
 msgstr "Aukeraketa"
 
 #: templates/dummy_texts.html:48
+msgid "infantil"
+msgstr "Umeentzako funtsa"
+
+#: templates/dummy_texts.html:49
+msgid "seccion_local"
+msgstr "Bertako funtsa"
+
+#: templates/dummy_texts.html:50
+msgid "comiteca"
+msgstr "Komikitegia"
+
+#: templates/dummy_texts.html:51
+msgid "fondo_antiguo"
+msgstr "Antzinako funtsa"
+
+#: templates/dummy_texts.html:52
+msgid "formacion"
+msgstr "Erabiltzaileen prestakuntza"
+
+#: templates/dummy_texts.html:53
+msgid "sala_estudio"
+msgstr "Ikasteko gela"
+
+#: templates/dummy_texts.html:54
+msgid "sala_investigacion"
+msgstr "Ikertzaileen gela"
+
+#: templates/dummy_texts.html:55
+msgid "visitas_guiadas"
+msgstr "Bisita gidatuak"
+
+#: templates/dummy_texts.html:56
+msgid "publicaciones"
+msgstr "Argitalpenak"
+
+#: templates/dummy_texts.html:58
+msgid "mediateca"
+msgstr "Hemeroteka"
+
+#: templates/dummy_texts.html:59
+msgid "lectura_facil"
+msgstr "Irakurketa erraza"
+
+#: templates/dummy_texts.html:60
+msgid "seccion_xl"
+msgstr "XL Saila"
+
+#: templates/dummy_texts.html:61
+msgid "audiolibros"
+msgstr "Entzuteko liburuak"
+
+#: templates/dummy_texts.html:63
 msgid "general"
 msgstr "Orokorra"
 
-#: templates/dummy_texts.html:50
+#: templates/dummy_texts.html:65
 msgid "ayto"
 msgstr "Udalarena"
 
-#: templates/dummy_texts.html:51
+#: templates/dummy_texts.html:66
 msgid "auto"
 msgstr "Erkidegokoa"
 
-#: templates/dummy_texts.html:52
+#: templates/dummy_texts.html:67
 msgid "priv"
 msgstr "Pribatua"
 
-#: templates/dummy_texts.html:53
+#: templates/dummy_texts.html:68
 msgid "fora"
 msgstr "Aldundiarena"
 
-#: templates/dummy_texts.html:55
+#: templates/dummy_texts.html:70
 msgid "l"
 msgstr "Librea"
 
-#: templates/dummy_texts.html:56
+#: templates/dummy_texts.html:71
 msgid "r"
 msgstr "Mugatua"
 
-#: templates/dummy_texts.html:58
+#: templates/dummy_texts.html:73
 msgid "p"
 msgstr "Publikoa"
 
-#: templates/dummy_texts.html:60 templates/home.html:64
+#: templates/dummy_texts.html:75 templates/home.html:64
 #: templates/listing.html:32
 msgid "filter"
 msgstr "Filtro aurreratua"
 
-#: templates/dummy_texts.html:61
+#: templates/dummy_texts.html:76
 msgid "search"
 msgstr "Bilatu"
 
-#: templates/dummy_texts.html:64
+#: templates/dummy_texts.html:79
 msgid "ejgv_biblio"
 msgstr "Eusko jaurlaritza. Liburutegi zerbitzua"
 
-#: templates/dummy_texts.html:65
+#: templates/dummy_texts.html:80
 msgid "ejgv-tur-rest"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:66
+#: templates/dummy_texts.html:81
 msgid "ejgv-tur-aloj"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:67
+#: templates/dummy_texts.html:82
 msgid "ejgv-tur-infos"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:68
+#: templates/dummy_texts.html:83
 msgid "Consultrans"
 msgstr "Ararteko"
 
-#: templates/dummy_texts.html:69
+#: templates/dummy_texts.html:84
 msgid "dfa"
 msgstr "Arabako Foru Aldundia"
 
-#: templates/dummy_texts.html:70
+#: templates/dummy_texts.html:85
+msgid "dfb"
+msgstr "Bizkaiko Foru Aldundia"
+
+#: templates/dummy_texts.html:86
+msgid "dfg"
+msgstr "Gipuzkoako Foru Aldundia"
+
+#: templates/dummy_texts.html:87
 msgid "fekoor"
 msgstr "FEKOOR"
 
@@ -482,23 +546,23 @@ msgstr "Zerbitzuak"
 msgid "data_source"
 msgstr "Datuen jatorria"
 
-#: templates/place.html:163
+#: templates/place.html:169
 msgid "User Images"
 msgstr "Erabiltzaileen irudiak"
 
-#: templates/place.html:181
+#: templates/place.html:187
 msgid "Add a photo"
 msgstr "Argazkia gehitu"
 
-#: templates/place.html:185
+#: templates/place.html:191
 msgid "Comments"
 msgstr "Iruzkinak"
 
-#: templates/place.html:219
+#: templates/place.html:225
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:224
+#: templates/place.html:230
 msgid "Nearest places"
 msgstr "Gertuko tokiak"
 
