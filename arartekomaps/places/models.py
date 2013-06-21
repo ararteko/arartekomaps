@@ -151,6 +151,8 @@ class Biblio(models.Model):
         ('p', 'Publico'),
         ('r', 'Privado'),
         ('i', 'Infantil'),
+        ('v', 'Investigacion'),
+        ('t', 'Patrimonial'),
     )
     btype = models.CharField(max_length=1, choices=BTYPE_CHOICES, blank=True, verbose_name='Tipo')   
     start_year = models.DecimalField(max_digits=4, decimal_places=0,null=True,blank=True, verbose_name='Año inicio')

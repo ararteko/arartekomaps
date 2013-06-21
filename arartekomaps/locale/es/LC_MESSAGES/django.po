@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-05 17:15+0200\n"
+"POT-Creation-Date: 2013-06-21 11:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -290,182 +290,234 @@ msgstr "No accesible"
 msgid "access_s"
 msgstr "Sin datos"
 
-#: templates/dummy_texts.html:36
+#: templates/dummy_texts.html:39
 msgid "acceso_bbdd"
 msgstr "Acceso a bases de datos"
 
-#: templates/dummy_texts.html:37
+#: templates/dummy_texts.html:40
 msgid "prestamo"
 msgstr "Préstamo"
 
-#: templates/dummy_texts.html:38
+#: templates/dummy_texts.html:41
 msgid "hemeroteca"
 msgstr "Hemeroteca"
 
-#: templates/dummy_texts.html:39
+#: templates/dummy_texts.html:42
 msgid "consulta"
 msgstr "Consulta"
 
-#: templates/dummy_texts.html:40
+#: templates/dummy_texts.html:43
 msgid "wifi"
 msgstr "Wi-fi"
 
-#: templates/dummy_texts.html:41
+#: templates/dummy_texts.html:44
 msgid "reprografia"
 msgstr "Reprografía"
 
-#: templates/dummy_texts.html:42
+#: templates/dummy_texts.html:45
 msgid "infor_bibliografica"
 msgstr "Información bibliográfica"
 
-#: templates/dummy_texts.html:43
+#: templates/dummy_texts.html:46
 msgid "prestamo_domic"
 msgstr "Préstamo domiciliario"
 
-#: templates/dummy_texts.html:44
+#: templates/dummy_texts.html:47
 msgid "internet_usuarios"
 msgstr "Internet para usuarios"
 
-#: templates/dummy_texts.html:45
+#: templates/dummy_texts.html:48
 msgid "prestamo_inter"
 msgstr "Préstamo interbibliotecario"
 
-#: templates/dummy_texts.html:46
+#: templates/dummy_texts.html:49
 msgid "bol_novedades"
 msgstr "Boletín de novedades"
 
-#: templates/dummy_texts.html:47
+#: templates/dummy_texts.html:50
 msgid "selectiva"
 msgstr "Selectiva"
 
-#: templates/dummy_texts.html:48
+#: templates/dummy_texts.html:51
 msgid "infantil"
 msgstr "Fondo infantil"
 
-#: templates/dummy_texts.html:49
+#: templates/dummy_texts.html:52
 msgid "seccion_local"
 msgstr "Fondo local"
 
-#: templates/dummy_texts.html:50
+#: templates/dummy_texts.html:53
 msgid "comiteca"
 msgstr "Comiteca"
 
-#: templates/dummy_texts.html:51
+#: templates/dummy_texts.html:54
 msgid "fondo_antiguo"
 msgstr "Fondo antiguo"
 
-#: templates/dummy_texts.html:52
+#: templates/dummy_texts.html:55
 msgid "formacion"
 msgstr "Formación de usuarios"
 
-#: templates/dummy_texts.html:53
+#: templates/dummy_texts.html:56
 msgid "sala_estudio"
 msgstr "Sala de estudio"
 
-#: templates/dummy_texts.html:54
+#: templates/dummy_texts.html:57
 msgid "sala_investigacion"
 msgstr "Sala de investigación"
 
-#: templates/dummy_texts.html:55
+#: templates/dummy_texts.html:58
 msgid "visitas_guiadas"
 msgstr "Visitas guiadas"
 
-#: templates/dummy_texts.html:56
+#: templates/dummy_texts.html:59
 msgid "publicaciones"
 msgstr "Publicaciones"
 
-#: templates/dummy_texts.html:58
+#: templates/dummy_texts.html:60
+msgid "audicion"
+msgstr "Audición"
+
+#: templates/dummy_texts.html:62
 msgid "mediateca"
 msgstr "Mediateca"
 
-#: templates/dummy_texts.html:59
+#: templates/dummy_texts.html:63
 msgid "lectura_facil"
 msgstr "Lectura fácil"
 
-#: templates/dummy_texts.html:60
+#: templates/dummy_texts.html:64
 msgid "seccion_xl"
 msgstr "Sección XL"
 
-#: templates/dummy_texts.html:61
+#: templates/dummy_texts.html:65
 msgid "audiolibros"
 msgstr "Audiolibros"
 
-#: templates/dummy_texts.html:63
+#: templates/dummy_texts.html:67
 msgid "general"
 msgstr "General"
 
-#: templates/dummy_texts.html:65
+#: templates/dummy_texts.html:68
+msgid "euskalkultura"
+msgstr "Cultura vasca"
+
+#: templates/dummy_texts.html:69
+msgid "especializada"
+msgstr "Especializada"
+
+#: templates/dummy_texts.html:71
 msgid "ayto"
 msgstr "Municipal"
 
-#: templates/dummy_texts.html:66
+#: templates/dummy_texts.html:72
 msgid "auto"
 msgstr "Autonómica"
 
-#: templates/dummy_texts.html:67
+#: templates/dummy_texts.html:73
 msgid "priv"
 msgstr "Privada"
 
-#: templates/dummy_texts.html:68
+#: templates/dummy_texts.html:74
 msgid "fora"
 msgstr "Foral"
 
-#: templates/dummy_texts.html:70
+#: templates/dummy_texts.html:78
+msgid "i"
+msgstr "Infantil"
+
+#: templates/dummy_texts.html:79
+msgid "v"
+msgstr "Investigación"
+
+#: templates/dummy_texts.html:80
+msgid "t"
+msgstr "Patrimonial"
+
+#: templates/dummy_texts.html:84
 msgid "l"
 msgstr "Libre"
 
-#: templates/dummy_texts.html:71
+#: templates/dummy_texts.html:85
 msgid "r"
 msgstr "Restringido"
 
-#: templates/dummy_texts.html:73
+#: templates/dummy_texts.html:89
 msgid "p"
 msgstr "Público"
 
-#: templates/dummy_texts.html:75 templates/home.html:64
+#: templates/dummy_texts.html:91 templates/home.html:64
 #: templates/listing.html:32
 msgid "filter"
 msgstr "Filtro avanzado"
 
-#: templates/dummy_texts.html:76
+#: templates/dummy_texts.html:92
 msgid "search"
 msgstr "Buscar"
 
-#: templates/dummy_texts.html:79
+#: templates/dummy_texts.html:97
 msgid "ejgv_biblio"
 msgstr "Gobierno vasco. Servicio de Bibliotecas"
 
-#: templates/dummy_texts.html:80
+#: templates/dummy_texts.html:98
 msgid "ejgv-tur-rest"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:81
+#: templates/dummy_texts.html:99
 msgid "ejgv-tur-aloj"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:82
+#: templates/dummy_texts.html:100
 msgid "ejgv-tur-infos"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:83
+#: templates/dummy_texts.html:101
 msgid "Consultrans"
 msgstr "Ararteko"
 
-#: templates/dummy_texts.html:84
+#: templates/dummy_texts.html:102
 msgid "dfa"
 msgstr "Diputación Foral de Álava"
 
-#: templates/dummy_texts.html:85
+#: templates/dummy_texts.html:103
 msgid "dfb"
 msgstr "Diputación Foral de Bizkaia"
 
-#: templates/dummy_texts.html:86
+#: templates/dummy_texts.html:104
 msgid "dfg"
 msgstr "Diputación Foral de Gipuzkoa"
 
-#: templates/dummy_texts.html:87
+#: templates/dummy_texts.html:105
 msgid "fekoor"
 msgstr "FEKOOR"
+
+#: templates/dummy_texts.html:107
+msgid "agi"
+msgstr "AGI"
+
+#: templates/dummy_texts.html:108
+msgid "gorrak"
+msgstr "Euskalgorrak"
+
+#: templates/dummy_texts.html:109
+msgid "itxaropena"
+msgstr "Asociación Itxaropena"
+
+#: templates/dummy_texts.html:110
+msgid "eginaren"
+msgstr "Eginaren eginez"
+
+#: templates/dummy_texts.html:111
+msgid "once"
+msgstr "ONCE"
+
+#: templates/dummy_texts.html:112
+msgid "fevapas"
+msgstr "Fevapas"
+
+#: templates/dummy_texts.html:113
+msgid "elkartu"
+msgstr "Elkartu"
 
 #: templates/google_search.html:8 templates/search.html:69
 #: templates/search.html.py:118
