@@ -172,6 +172,7 @@ INSTALLED_APPS = (
     'photologue',
     'pages',
     'gunicorn',
+    'piston',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
