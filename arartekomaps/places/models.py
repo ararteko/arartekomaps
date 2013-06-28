@@ -17,6 +17,14 @@ from django.db.models.signals import post_save
 DEFAULT_FROM_EMAIL = getattr(settings,'DEFAULT_FROM_EMAIL', '')
 EMAIL_NOTIFICATION = getattr(settings,'EMAIL_NOTIFICATION', '')
 
+ACCESS_CHOICES = (
+        ('a', 'Accesible'),
+        ('p', 'Practicable'),
+        ('n', 'No accesible'),
+        ('s', 'Sin datos'),
+    )
+
+
 class Place(models.Model):
     slug=models.SlugField(max_length=255, blank=True, null=True, unique=True, help_text="Sí está vacio se actualiza al guardar")
     name=models.CharField(max_length=255, verbose_name='Nombre')
@@ -49,6 +57,21 @@ class Place(models.Model):
         else:
             access_tuple = ()
         return access_tuple
+
+    def access_dict_list(self):
+        if self.access.count()>0:
+            access = self.access.all()[0]
+            acc = dict(ACCESS_CHOICES)
+            access_dict = {
+                'aphysic': acc[access.aphysic],
+                'avisual': acc[access.avisual],
+                'aaudio': acc[access.aaudio],
+                'aintelec': acc[access.aintelec],
+                'aorganic': acc[access.aorganic]
+            }
+        else:
+            access_dict = {}
+        return access_dict
 
     def access_data(self):
         if self.access.count()==1:
@@ -116,12 +139,6 @@ class Place(models.Model):
 
 
 class Access(models.Model):   
-    ACCESS_CHOICES = (
-        ('a', 'Accesible'),
-        ('p', 'Practicable'),
-        ('n', 'No accesible'),
-        ('s', 'Sin datos'),
-    )
     aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Física')
     avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Visual')
     aaudio = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Audio')
