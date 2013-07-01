@@ -4,9 +4,8 @@ import json
 from arartekomaps.locations.models import Location
 from arartekomaps.places.models import Place, MPhoto
 import base64, urllib
+from math import radians, cos, sin, asin, sqrt, degrees
 
-
-from math import radians, cos, sin, asin, sqrt
 def haversine(lon1, lat1, lon2, lat2):
     """
     Calculate the great circle distance between two points 
@@ -19,12 +18,17 @@ def haversine(lon1, lat1, lon2, lat2):
     dlat = lat2 - lat1 
     a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
     c = 2 * asin(sqrt(a)) 
-    km = 6367 * c
-    if km < 1:
-        km = str(km * 1000)+"m"
-    else:
-        km = str(km)+"km"
+    km = 6371 * c
     return km
+
+def get_gps_box(lat, lon):
+    R = 6371
+    radius = 50 
+    maxLon = lon - degrees(float(radius)/R/cos(radians(lat)))
+    minLon = lon + degrees(float(radius)/R/cos(radians(lat)))
+    maxLat = lat + degrees(float(radius)/R)
+    minLat = lat - degrees(float(radius)/R)
+    return maxLat, minLat, maxLon, minLon
 
 
 class LocationsHandler(BaseHandler):
@@ -100,10 +104,16 @@ class PlacesHandler(BaseHandler):
                 loc = Location.objects.get(slug=location)
                 lon1 = loc.lon
                 lat1 = loc.lat
-                if category:
-                    args['category__slug'] = category
-            
-            print lon1,lat1
+            else:
+                lat1 = float(request.GET.get("lat",""))
+                lon1 = float(request.GET.get("lon",""))
+                maxLat,minLat,maxLon,minLon = get_gps_box(lat1,lon1)
+                args['lat__range'] = (minLat,maxLat)
+                args['lon__range'] = (maxLon,minLon)
+
+            if category:
+                args['category__slug'] = category
+
             places = Place.objects.filter(**args)
             for place in places:
                 json = {
@@ -119,9 +129,13 @@ class PlacesHandler(BaseHandler):
                     "lat": place.lat,
                     "lon": place.lon,
                     "distance": haversine(place.lon, place.lat, lon1, lat1),
-                    "accesibility": place.access_dict_list(),  
+                    "accesibility": place.access_dict_list(),
+                    "comment_count": 0, 
                 }
                 json_list.append(json)
+            json_list = sorted(json_list, key=lambda k: k['distance'])
+            if not json_list:
+                return {'lang': lang, 'action': 'get_places', 'result': 'empty'}
             return {'lang': lang, 'action': 'get_places', 'result': 'success', 'values': json_list}
         except:
             return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
