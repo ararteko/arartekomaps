@@ -1,8 +1,17 @@
-from piston.handler import BaseHandler
+from piston.handler import AnonymousBaseHandler, BaseHandler
 from django.conf import settings
 import json
 from arartekomaps.locations.models import Location
 from arartekomaps.places.models import Place, MPhoto
+from django.contrib.auth.models import User
+from django.contrib.comments.models import Comment
+from django.contrib.auth import authenticate, login
+from django.contrib.sites.models import Site
+from django.contrib.auth.tokens import default_token_generator
+from django.db import IntegrityError, transaction
+
+from registration.models import RegistrationProfile
+
 import base64, urllib
 from math import radians, cos, sin, asin, sqrt, degrees
 
@@ -31,7 +40,7 @@ def get_gps_box(lat, lon):
     return maxLat, minLat, maxLon, minLon
 
 
-class LocationsHandler(BaseHandler):
+class LocationsHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
     fields = ('name', 'slug')
     model = Location
@@ -48,7 +57,7 @@ class LocationsHandler(BaseHandler):
         except:
             return {'lang': lang, 'action': 'get_cities', 'result': 'failed'}
 
-class PlaceHandler(BaseHandler):
+class PlaceHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
     model = Place
 
@@ -88,7 +97,7 @@ class PlaceHandler(BaseHandler):
             return {'lang': lang, 'action': 'get_place', 'result': 'failed'}
   
 
-class PlacesHandler(BaseHandler):
+class PlacesHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
     model = Place
 
@@ -135,7 +144,72 @@ class PlacesHandler(BaseHandler):
                 json_list.append(json)
             json_list = sorted(json_list, key=lambda k: k['distance'])
             if not json_list:
-                return {'lang': lang, 'action': 'get_places', 'result': 'empty'}
+                return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
             return {'lang': lang, 'action': 'get_places', 'result': 'success', 'values': json_list}
         except:
             return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
+
+
+class UserHandler(AnonymousBaseHandler):
+    allowed_methods = ('POST',)
+    model = User
+
+    def create(self, request):
+        username = request.POST.get("username","")
+        email = request.POST.get("email","")
+        passw = request.POST.get("pass","")
+        origin = request.POST.get("origin","")
+
+        if origin:
+            if origin == "0": 
+                if not username:
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
+                elif passw and email:
+                    try:
+                        with transaction.atomic():
+                            site = Site.objects.get(id=settings.SITE_ID)
+                            RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
+                            return {'action': 'login_or_register', 'result': 'success'}
+                    except IntegrityError:
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error'}
+                    except:
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error'}
+                elif passw and not email:
+                    user = authenticate(username=username, password=passw)
+                    if user is not None:
+                        if user.is_active:
+                            login(request, user)
+                            token = default_token_generator.make_token(user)
+                            # Redirect to a success page.
+                            return {'action': 'login_or_register', 'result': 'success', 'value': token}
+                        else:
+                            # Return a 'disabled account' error message
+                            return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
+                    else:
+                        # Return an 'invalid login' error message.
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated'}
+                else:
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
+        else:
+            return {'action': 'login_or_register', 'result': 'failed', 'value': 'origin_not_found'}
+
+class CommentHandler(BaseHandler):
+    allowed_methods = ('POST',)
+    model = Comment
+
+    def create(self, request):
+        username = request.POST.get("username","")
+        token = request.POST.get("token","")
+        text = request.POST.get("text","")
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username'}
+        if default_token_generator.check_token(user,token):
+            if text:
+                return {'action': 'post_comment', 'result': 'success'}
+            else:
+                return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found'}
+        else:
+            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token'}
