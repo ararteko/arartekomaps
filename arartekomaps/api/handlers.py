@@ -133,8 +133,8 @@ class PlacesHandler(AnonymousBaseHandler):
                 return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
 
             maxLat,minLat,maxLon,minLon = get_gps_box(lat1,lon1)
-            args['lat__range'] = (minLat,maxLat)
-            args['lon__range'] = (maxLon,minLon)
+            # args['lat__range'] = (minLat,maxLat)
+            # args['lon__range'] = (maxLon,minLon)
 
             if category:
                 args['category__slug'] = category
@@ -182,7 +182,7 @@ class PlacesHandler(AnonymousBaseHandler):
                     "lon": place.lon,
                     "distance": haversine(place.lon, place.lat, lon1, lat1),
                     "accesibility": place.access_dict_list(),
-                    "comment_count": 0, 
+                    "comment_count": "0", 
                 }
                 json_list.append(json)
             json_list = sorted(json_list, key=lambda k: k['distance'])
