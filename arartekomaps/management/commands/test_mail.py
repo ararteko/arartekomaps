@@ -14,5 +14,5 @@ class Command(BaseCommand):
     
     def handle(self, *args, **options):
         send_mail('Testing email', 'If you receive this message, everything is all right', 
-            DEFAULT_FROM_EMAIL, ['garaolaza@codesyntax.com'], fail_silently=False)
+            DEFAULT_FROM_EMAIL, ['uodriozola@codesyntax.com'], fail_silently=False)
     

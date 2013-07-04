@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.sites.models import Site
 from django.contrib.auth.tokens import default_token_generator
 from django.db import IntegrityError, transaction
-
+from smtplib import SMTPResponseException
 from registration.models import RegistrationProfile
 
 import base64, urllib
@@ -168,12 +168,15 @@ class UserHandler(AnonymousBaseHandler):
                     try:
                         with transaction.atomic():
                             site = Site.objects.get(id=settings.SITE_ID)
+                            print "hemen"
                             RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
                             return {'action': 'login_or_register', 'result': 'success'}
                     except IntegrityError:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error'}
-                    except:
+                    except SMTPResponseException:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error'}
+                    except:
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error'}
                 elif passw and not email:
                     user = authenticate(username=username, password=passw)
                     if user is not None:
