@@ -180,8 +180,8 @@ class PlacesHandler(AnonymousBaseHandler):
             if not json_list:
                 return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
             return {'lang': lang, 'action': 'get_places', 'result': 'success', 'values': json_list}
-        except:
-            return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
+        except Exception, e:
+            return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': str(e)}
 
 
 class UserHandler(AnonymousBaseHandler):
