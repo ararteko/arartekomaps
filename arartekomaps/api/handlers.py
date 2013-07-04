@@ -124,8 +124,8 @@ class PlacesHandler(AnonymousBaseHandler):
                 loc = Location.objects.get(slug=location)
                 if not loc.lon or not loc.lat:
                     return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'location_not_geolocalized'}
-                lon1 = loc.lon
-                lat1 = loc.lat
+                lon1 = float(loc.lon)
+                lat1 = float(loc.lat)
             elif lat and lon:
                 lat1 = float(lat)
                 lon1 = float(lon)
@@ -180,7 +180,7 @@ class PlacesHandler(AnonymousBaseHandler):
                     "locality": place.locality,
                     "lat": place.lat,
                     "lon": place.lon,
-                    "distance": haversine(place.lon, place.lat, lon1, lat1),
+                    #"distance": haversine(place.lon, place.lat, lon1, lat1),
                     "accesibility": place.access_dict_list(),
                     "comment_count": 0, 
                 }
