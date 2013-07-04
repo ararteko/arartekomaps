@@ -158,6 +158,7 @@ class PlacesHandler(AnonymousBaseHandler):
                     args['access__aorganic__in'] = ACCESS_KEYS
 
             places = Place.objects.filter(**args)
+
             for place in places:
                 json = {
                     "name": place.name,
@@ -178,7 +179,7 @@ class PlacesHandler(AnonymousBaseHandler):
                 json_list.append(json)
             json_list = sorted(json_list, key=lambda k: k['distance'])
             if not json_list:
-                return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
+                return {'lang': lang, 'action': 'get_places', 'result': 'empty'}
             return {'lang': lang, 'action': 'get_places', 'result': 'success', 'values': json_list}
         except Exception, e:
             return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': str(e)}

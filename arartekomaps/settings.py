@@ -50,7 +50,9 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = False
 
-DECIMAL_SEPARATOR = '.'
+USE_THOUSAND_SEPARATOR = True
+NUMBER_GROUPING = 3
+THOUSAND_SEPARATOR = '.'
 
 # This is defined here as a do-nothing function because we can't import
 # django.utils.translation -- that module depends on the settings.
