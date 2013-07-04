@@ -34,7 +34,7 @@ def haversine(lon1, lat1, lon2, lat2):
 
 def get_gps_box(lat, lon):
     R = float(6371)
-    radius = float(50) 
+    radius = float(10) 
     maxLon = lon - degrees(radius/R/cos(radians(lat)))
     minLon = lon + degrees(radius/R/cos(radians(lat)))
     maxLat = lat + degrees(radius/R)
