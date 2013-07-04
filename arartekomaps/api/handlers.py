@@ -174,9 +174,9 @@ class UserHandler(AnonymousBaseHandler):
                     except IntegrityError:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error'}
                     except SMTPException, e:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+e}
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+str(e)}
                     except Exception as e:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error: '+e}
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error: '+str(e)}
                 elif passw and not email:
                     user = authenticate(username=username, password=passw)
                     if user is not None:
