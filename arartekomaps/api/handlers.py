@@ -169,8 +169,8 @@ class UserHandler(AnonymousBaseHandler):
                         site = Site.objects.get(id=settings.SITE_ID)
                         RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
                         return {'action': 'login_or_register', 'result': 'success'}
-                    except IntegrityError:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error'}
+                    except IntegrityError, e:
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: 'str(e)}
                     except SMTPException, e:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+str(e)}
                     except Exception as e:
