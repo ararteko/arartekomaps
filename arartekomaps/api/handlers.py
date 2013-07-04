@@ -1,6 +1,7 @@
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from django.conf import settings
 import json
+import sys
 from arartekomaps.locations.models import Location
 from arartekomaps.places.models import Place, MPhoto
 from django.contrib.auth.models import User
@@ -176,7 +177,7 @@ class UserHandler(AnonymousBaseHandler):
                     except SMTPException, e:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+e}
                     except:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error'}
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error: '+ str(sys.exc_info()[0])}
                 elif passw and not email:
                     user = authenticate(username=username, password=passw)
                     if user is not None:
