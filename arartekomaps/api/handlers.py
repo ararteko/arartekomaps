@@ -165,7 +165,7 @@ class PlacesHandler(AnonymousBaseHandler):
                 else:
                     args['access__aorganic__in'] = ACCESS_KEYS
 
-            places = Place.objects.filter(**args)
+            places = Place.objects.filter(**args)[:10]
 
             for place in places:
                 json = {
