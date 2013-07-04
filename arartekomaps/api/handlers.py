@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.sites.models import Site
 from django.contrib.auth.tokens import default_token_generator
 from django.db import IntegrityError, transaction
-from smtplib import SMTPResponseException
+from smtplib import SMTPException
 from registration.models import RegistrationProfile
 
 import base64, urllib
@@ -173,8 +173,8 @@ class UserHandler(AnonymousBaseHandler):
                             return {'action': 'login_or_register', 'result': 'success'}
                     except IntegrityError:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error'}
-                    except SMTPResponseException:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error'}
+                    except SMTPException, e:
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+e}
                     except:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error'}
                 elif passw and not email:
