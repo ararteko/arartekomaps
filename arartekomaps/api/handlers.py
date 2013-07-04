@@ -112,21 +112,27 @@ class PlacesHandler(AnonymousBaseHandler):
         aaudio = request.GET.get("aaudio","")
         aintelec = request.GET.get("aintelec","")
         aorganic = request.GET.get("aorganic","")
+        lat = request.GET.get("lat","")
+        lon = request.GET.get("lon","")
 
         args = {}
         json_list = []
         try:
             if location:
-                args['city__slug'] = location
                 loc = Location.objects.get(slug=location)
-                lon1 = loc.lon
-                lat1 = loc.lat
+                lon1 = float(loc.lon)
+                lat1 = float(loc.lat)
+                if not lon1 or not lat1:
+                    return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'location_not_geolocalized'}
+            elif lat and lon:
+                lat1 = float(lat)
+                lon1 = float(lon)
             else:
-                lat1 = float(request.GET.get("lat",""))
-                lon1 = float(request.GET.get("lon",""))
-                maxLat,minLat,maxLon,minLon = get_gps_box(lat1,lon1)
-                args['lat__range'] = (minLat,maxLat)
-                args['lon__range'] = (maxLon,minLon)
+                return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
+
+            maxLat,minLat,maxLon,minLon = get_gps_box(lat1,lon1)
+            args['lat__range'] = (minLat,maxLat)
+            args['lon__range'] = (maxLon,minLon)
 
             if category:
                 args['category__slug'] = category
