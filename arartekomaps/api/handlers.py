@@ -170,7 +170,7 @@ class UserHandler(AnonymousBaseHandler):
                         RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
                         return {'action': 'login_or_register', 'result': 'success'}
                     except IntegrityError, e:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: 'str(e)}
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
                     except SMTPException, e:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+str(e)}
                     except Exception as e:
