@@ -15,6 +15,8 @@ from registration.models import RegistrationProfile
 import base64, urllib
 from math import radians, cos, sin, asin, sqrt, degrees
 
+ACCESS_KEYS = ("a","p")
+
 def haversine(lon1, lat1, lon2, lat2):
     """
     Calculate the great circle distance between two points 
@@ -105,6 +107,12 @@ class PlacesHandler(AnonymousBaseHandler):
         location = request.GET.get("location","")
         category = request.GET.get("category","")
         lang = request.GET.get("lang","eu")
+        aphysic = request.GET.get("aphysic","")
+        avisual = request.GET.get("avisual","")
+        aaudio = request.GET.get("aaudio","")
+        aintelec = request.GET.get("aintelec","")
+        aorganic = request.GET.get("aorganic","")
+
         args = {}
         json_list = []
         try:
@@ -122,6 +130,32 @@ class PlacesHandler(AnonymousBaseHandler):
 
             if category:
                 args['category__slug'] = category
+
+            if aphysic in ACCESS_KEYS:
+                if aphysic == "a":
+                    args['access__aphysic'] = aphysic
+                else:
+                    args['access__aphysic__in'] = ACCESS_KEYS
+            if avisual in ACCESS_KEYS:
+                if avisual == "a":
+                    args['access__avisual'] = avisual
+                else:
+                    args['access__avisual__in'] = ACCESS_KEYS
+            if aaudio in ACCESS_KEYS:
+                if aaudio == "a":
+                    args['access__aaudio'] = aaudio
+                else:
+                    args['access__aaudio__in'] = ACCESS_KEYS
+            if aintelec in ACCESS_KEYS:
+                if aintelec == "a":
+                    args['access__aintelec'] = aintelec
+                else:
+                    args['access__aintelec__in'] = ACCESS_KEYS
+            if aorganic in ACCESS_KEYS:
+                if aorganic == "a":
+                    args['access__aorganic'] = aphysic
+                else:
+                    args['access__aorganic__in'] = ACCESS_KEYS
 
             places = Place.objects.filter(**args)
             for place in places:
