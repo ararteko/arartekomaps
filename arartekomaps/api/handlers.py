@@ -166,11 +166,9 @@ class UserHandler(AnonymousBaseHandler):
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
                 elif passw and email:
                     try:
-                        with transaction.atomic():
-                            site = Site.objects.get(id=settings.SITE_ID)
-                            print "hemen"
-                            RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
-                            return {'action': 'login_or_register', 'result': 'success'}
+                        site = Site.objects.get(id=settings.SITE_ID)
+                        RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
+                        return {'action': 'login_or_register', 'result': 'success'}
                     except IntegrityError:
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error'}
                     except SMTPException, e:
