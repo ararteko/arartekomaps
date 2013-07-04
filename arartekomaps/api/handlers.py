@@ -33,12 +33,12 @@ def haversine(lon1, lat1, lon2, lat2):
     return km
 
 def get_gps_box(lat, lon):
-    R = 6371
-    radius = 50 
-    maxLon = lon - degrees(float(radius)/R/cos(radians(lat)))
-    minLon = lon + degrees(float(radius)/R/cos(radians(lat)))
-    maxLat = lat + degrees(float(radius)/R)
-    minLat = lat - degrees(float(radius)/R)
+    R = float(6371)
+    radius = float(50) 
+    maxLon = lon - degrees(radius/R/cos(radians(lat)))
+    minLon = lon + degrees(radius/R/cos(radians(lat)))
+    maxLat = lat + degrees(radius/R)
+    minLat = lat - degrees(radius/R)
     return maxLat, minLat, maxLon, minLon
 
 
@@ -180,7 +180,7 @@ class PlacesHandler(AnonymousBaseHandler):
                     "locality": place.locality,
                     "lat": place.lat,
                     "lon": place.lon,
-                    #"distance": haversine(place.lon, place.lat, lon1, lat1),
+                    "distance": haversine(place.lon, place.lat, lon1, lat1),
                     "accesibility": place.access_dict_list(),
                     "comment_count": 0, 
                 }
