@@ -124,8 +124,8 @@ class PlacesHandler(AnonymousBaseHandler):
                 loc = Location.objects.get(slug=location)
                 if not loc.lon or not loc.lat:
                     return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'location_not_geolocalized'}
-                lon1 = float(loc.lon)
-                lat1 = float(loc.lat)
+                lon1 = loc.lon
+                lat1 = loc.lat
             elif lat and lon:
                 lat1 = float(lat)
                 lon1 = float(lon)
