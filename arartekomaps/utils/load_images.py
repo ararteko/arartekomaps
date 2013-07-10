@@ -1,7 +1,8 @@
 from arartekomaps.places.models import MPhoto
+from photologue.models import Photo
 from urllib2 import urlopen
 from django.core.files.base import ContentFile
-
+from arartekomaps.utils.slug import time_slug, time_slug_long, time_slug_string
 
 from cStringIO import StringIO
 try:
@@ -72,5 +73,14 @@ def handle_uploaded_file(f,name):
     photo.title = name 
     photo.image = f
     photo.save()
-    return photo    
+    return photo
+
+def handle_photo_file(f,title):
+    """ """
+    photo = Photo()
+    photo.title = u'%s %s' % (time_slug_string(), title) 
+    photo.title_slug = time_slug_string()
+    photo.image = f
+    photo.save()
+    return photo
     

@@ -13,6 +13,10 @@ from django.db import IntegrityError, transaction
 from smtplib import SMTPException
 from registration.models import RegistrationProfile
 
+from datetime import datetime
+from arartekomaps.utils.load_images import handle_photo_file
+from django.core.files.base import ContentFile
+
 from social_auth.backends.pipeline.social import associate_user
 from social_auth.backends.facebook import FacebookBackend
 from social_auth.backends.twitter import TwitterBackend
@@ -218,12 +222,13 @@ class UserHandler(AnonymousBaseHandler):
         biography = request.POST.get("biography","")
         oauth_token_secret = request.POST.get("secret","")
         oauth_token = request.POST.get("token","")
+        expires = request.POST.get("expires","")
         social_id = request.POST.get("id","")
         photo = request.POST.get("photo","")
 
 
         if origin:
-            if origin == "0": 
+            if origin == "": 
                 if not username:
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
                 elif passw and email:
@@ -255,7 +260,7 @@ class UserHandler(AnonymousBaseHandler):
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
             elif origin in tuple(SOCIAL_ORIGIN.keys()):
                 if origin == "1":
-                    access_token = u'{"access_token": "'+oauth_token+'", "id": '+social_id+'}'
+                    access_token = u'{"access_token": "'+oauth_token+'", "expires": "'+expires+'", "id": '+social_id+'}'
                 else:
                     access_token = u'{"access_token": "oauth_token_secret='+oauth_token_secret+'&oauth_token='+oauth_token+'", "id": '+social_id+'}'
                 if not User.objects.filter(username=username).exists():
@@ -278,8 +283,9 @@ class UserHandler(AnonymousBaseHandler):
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error: '+str(e)}
                 if user and user.is_active:
                     login(request, user)
+                    token = default_token_generator.make_token(user)
                     # Redirect to a success page.
-                    return {'action': 'login_or_register', 'result': 'success'}
+                    return {'action': 'login_or_register', 'result': 'success', 'value': token}
                 else:
                     # Return a 'disabled account' error message
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
@@ -296,15 +302,35 @@ class CommentHandler(BaseHandler):
         username = request.POST.get("username","")
         token = request.POST.get("token","")
         text = request.POST.get("text","")
+        slug = request.POST.get("slug","")
 
         try:
             user = User.objects.get(username=username)
         except:
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username'}
         if default_token_generator.check_token(user,token):
+            try:
+                place = Place.objects.get(slug=slug)
+            except Exception as e:
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'place_error: '+str(e)}
             if text:
+                comment = Comment()
+                comment.author = user
+                comment.is_public = True
+                comment.public_date = datetime.today()  
+                comment.parent = place     
+                comment.body = text
+                comment.ip_address = request.META.get("REMOTE_ADDR", None)
+                if photo:
+                    try:
+                        photo = handle_photo_file(request.FILES['photo'], user.username) 
+                    except Exception, e:
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'decoding_error: '+str(e)}           
+                    comment.photo = photo
+                comment.save()
                 return {'action': 'post_comment', 'result': 'success'}
             else:
                 return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found'}
         else:
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token'}
+

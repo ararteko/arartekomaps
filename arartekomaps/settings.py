@@ -168,6 +168,7 @@ INSTALLED_APPS = (
     'arartekomaps.places',
     'arartekomaps.locations',
     'arartekomaps.categories',
+    'arartekomaps.mycomment',
     'cssocialprofile',
     'social_auth',
     'registration',

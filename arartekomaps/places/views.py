@@ -5,12 +5,14 @@ from arartekomaps.locations.models import Location
 from arartekomaps.places.models import Place, MPhoto
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-
-from django.contrib.comments.forms import CommentForm
-
+from datetime import datetime
+from arartekomaps.utils.load_images import handle_photo_file
+from arartekomaps.mycomment.forms import CommentForm
+from arartekomaps.mycomment.models import Comment
 
 def placeview(request, slug=''):
     """ """
+
     template_name='place'
     users = []
     place = get_object_or_404(Place, slug=slug)
@@ -31,6 +33,26 @@ def placeview(request, slug=''):
             username = image.user
         if i == len(images)-1:
             users.append({'user': username, 'images': imgs})
+
+    if request.method == 'POST':
+        kopia=request.POST.copy()
+        kopia['author_id']=request.user.id
+        kopia['is_public']=True
+        form = CommentForm(kopia)
+        if form.is_valid():
+              comment = Comment()
+              comment.author = request.user
+              comment.is_public = True
+              comment.public_date = datetime.today()  
+              comment.parent = place     
+              comment.body = form.cleaned_data['body']
+              comment.ip_address = request.META.get("REMOTE_ADDR", None)
+              if request.FILES.get('photo',''):
+                 photo = handle_photo_file(request.FILES['photo'], request.user.username)              
+                 comment.photo= photo
+              comment.save()
+    form = CommentForm()
+    
     return render_to_response('place.html', locals(), context_instance=RequestContext(request)
     )
 
