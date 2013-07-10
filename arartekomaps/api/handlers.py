@@ -1,6 +1,7 @@
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from django.conf import settings
 import json
+import ast
 from arartekomaps.locations.models import Location
 from arartekomaps.places.models import Place, MPhoto
 from django.contrib.auth.models import User
@@ -12,10 +13,19 @@ from django.db import IntegrityError, transaction
 from smtplib import SMTPException
 from registration.models import RegistrationProfile
 
+from social_auth.backends.pipeline.social import associate_user
+from social_auth.backends.facebook import FacebookBackend
+from social_auth.backends.twitter import TwitterBackend
+from social_auth.models import UserSocialAuth
+from social_auth.backends import get_backend
+
 import base64, urllib
 from math import radians, cos, sin, asin, sqrt, degrees
 
 ACCESS_KEYS = ("a","p")
+
+SOCIAL_ORIGIN = {"1": "facebook", "2": "twitter"}
+SOCIAL_BACKEND = {"1": FacebookBackend, "2": TwitterBackend}
 
 def haversine(lon1, lat1, lon2, lat2):
     """
@@ -198,10 +208,19 @@ class UserHandler(AnonymousBaseHandler):
     model = User
 
     def create(self, request):
+        
         username = request.POST.get("username","")
         email = request.POST.get("email","")
         passw = request.POST.get("pass","")
         origin = request.POST.get("origin","")
+
+        full_name = request.POST.get("full_name","")
+        biography = request.POST.get("biography","")
+        oauth_token_secret = request.POST.get("secret","")
+        oauth_token = request.POST.get("token","")
+        social_id = request.POST.get("id","")
+        photo = request.POST.get("photo","")
+
 
         if origin:
             if origin == "0": 
@@ -234,6 +253,36 @@ class UserHandler(AnonymousBaseHandler):
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated'}
                 else:
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
+            elif origin in tuple(SOCIAL_ORIGIN.keys()):
+                import pdb;pdb.set_trace()
+                if origin == "1":
+                    access_token = u'{"access_token": "'+oauth_token+'", "id": '+social_id+'}'
+                else:
+                    access_token = u'{"access_token": "oauth_token_secret='+oauth_token_secret+'&oauth_token='+oauth_token+'", "id": '+social_id+'}'
+                if not User.objects.filter(username=username).exists():
+                    try:
+                        user = User()
+                        user.username = username
+                        user.is_active = True
+                        user.save()
+                        usa, created = UserSocialAuth.objects.get_or_create(user=user, provider = SOCIAL_ORIGIN[origin], uid=int(social_id))
+                        usa.extra_data = access_token
+                        usa.save()
+                    except IntegrityError, e:
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
+
+                access_token = ast.literal_eval(access_token)
+                backend = get_backend(SOCIAL_ORIGIN[origin], request, request.path)
+                user = backend.do_auth(access_token['access_token'])
+                if user and user.is_active:
+                    login(request, user)
+                    # Redirect to a success page.
+                    return {'action': 'login_or_register', 'result': 'success'}
+                else:
+                    # Return a 'disabled account' error message
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
+            else:
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'wrong_origin'}
         else:
             return {'action': 'login_or_register', 'result': 'failed', 'value': 'origin_not_found'}
 
