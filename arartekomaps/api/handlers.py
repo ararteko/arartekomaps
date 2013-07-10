@@ -254,7 +254,6 @@ class UserHandler(AnonymousBaseHandler):
                 else:
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
             elif origin in tuple(SOCIAL_ORIGIN.keys()):
-                import pdb;pdb.set_trace()
                 if origin == "1":
                     access_token = u'{"access_token": "'+oauth_token+'", "id": '+social_id+'}'
                 else:
