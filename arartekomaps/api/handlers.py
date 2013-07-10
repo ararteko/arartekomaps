@@ -271,8 +271,11 @@ class UserHandler(AnonymousBaseHandler):
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
 
                 access_token = ast.literal_eval(access_token)
-                backend = get_backend(SOCIAL_ORIGIN[origin], request, request.path)
-                user = backend.do_auth(access_token['access_token'])
+                try:
+                    backend = get_backend(SOCIAL_ORIGIN[origin], request, request.path)
+                    user = backend.do_auth(access_token['access_token'])
+                except Exception as e:
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error: '+str(e)}
                 if user and user.is_active:
                     login(request, user)
                     # Redirect to a success page.
