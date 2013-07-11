@@ -4,7 +4,7 @@
 } 
 
 body {
-    background: white url("../img/fond1.gif") repeat-x top left;
+    background:white url("../img/fond1.gif") repeat-x top left;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size:90%;
 }
@@ -241,6 +241,7 @@ header img{
 }
 #useroptionsname{
     padding-top:5px;
+    padding-left:35px;
 }
 #userinfo a:hover{
     color:#d021d8 !important;
@@ -550,6 +551,9 @@ dl.accesstext dt{
     background:url("../img/h4comment.gif") no-repeat bottom left;
     padding-bottom:30px;   
 }
+#comment_list{
+    margin-top:2em;
+}
 .comment{
     clear:both;
     border-bottom:1px dotted #ccc;
@@ -563,6 +567,16 @@ dl.accesstext dt{
     -webkit-border-radius:8px;
     padding:8px;
     behavior: url("/static/css/PIE.htc");
+}
+#communityform label{
+    width:auto !important;
+}
+.helptext{
+    clear:both;
+    font-size:90%;
+    display:block;
+    font-style: italic;
+    color:#333;
 }
 .commentimg{
     float:left;
@@ -605,6 +619,22 @@ dl.accesstext dt{
 }
 #commentlist input, #commentlist textarea{
     border:1px solid #ccc;
+}
+#commentlist .botoia{
+    color:white;
+    background-color:#d021d8;
+    border:none;
+    padding:5px;
+    margin-top:10px;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.7);
+    -moz-box-shadow:0 2px 5px rgba(0,0,0,0.7);
+    -webkit-box-shadow:0 2px 5px rgba(0,0,0,0.7);
+    behavior: url("/static/css/PIE.htc");
+    cursor:pointer;
+    position:relative;
 }
 /*******************************login************************/
 #sidebar{

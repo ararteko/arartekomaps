@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from photologue.models import Photo
 from arartekomaps.places.models import Place
 from arartekomaps.utils.slug import *
+from django.db.models.signals import post_save
 
 class Comment(models.Model):
     """ """
@@ -38,5 +39,14 @@ class Comment(models.Model):
     class Meta:
         ordering = ['-added']
         verbose_name = 'Erantzuna'        
-        verbose_name_plural = 'Erantzunak'   
+        verbose_name_plural = 'Erantzunak'
+
+
+def send_comment_notification(sender, comment, **kwargs):
+    if comment:
+        send_mail('[IRUZKIN BERRIA] ', 'Iruzkin berri bat gorde da: '+comment.body+'\n\n'+settings.HOST+'/admin/mycomment/comment/' + str(comment.id), DEFAULT_FROM_EMAIL,
+            [EMAIL_NOTIFICATION], fail_silently=True)   
+    return True
+
+post_save.connect(send_comment_notification, sender=Comment)
         

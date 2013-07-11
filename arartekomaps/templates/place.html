@@ -165,65 +165,25 @@
 <a href="https://twitter.com/share" class="twitter-share-button" data-via="arartekomapak" data-text="{% trans place.category.str2trans %} {{place.name}}, {{place.city}}" data-lang="{{LANGUAGE_CODE}}">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-<!-- <div id="imagelist">
-<h3>{% trans "User Images" %}</h3>
-{% for box in users %}
-<div class="comment">
-      <div class="commentimg">
-      {% if box.user.get_profile.get_photo %}
-          <img class="userlogged" width="66" height="66" src="{{box.user.get_profile.get_photo.get_profile_medium_url}}" alt="{{ box.user.get_profile.get_fullname }}" />
-      {% endif %}
-      </div>
-      <div class="commenttxt">
-          <p class="username">{{box.user.get_full_name}}</p>
-          {% for image in  box.images %}
-          <div class="imageBox">
-              <a href="{{image.image.url}}" rel="lightbox-group-user" title="{{image.name}}"><img src="{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
-          </div>
-          {% endfor %}
-      </div>
-</div>
-{% endfor %}
-<a href="{{place.get_absolute_url}}addphoto/" class="button addcomment">{% trans "Add a photo" %}</a>
-</div> -->
-
 <div id="commentlist">
- <h3>{% trans "Comments" %}</h3>
-<!--
-{% include "comments.html" %}
+    <h3>{% trans "Comments" %}</h3>
 
-{% get_comment_list for place as comment_list %}
-{% for comment in comment_list %}
-<div class="comment">
-    <div class="commentimg">
-    {% if comment.user.get_profile.get_photo %}
-        <img class="userlogged" width="66" height="66" src="{{comment.user.get_profile.get_photo.get_profile_medium_url}}" alt="{{ comment.user.get_profile.get_fullname }}" />
+    {% if user.is_authenticated %}
+    <form method="post" action="" id="communityform" ENCTYPE="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="fieldWrapper">
+            <input type="submit" value="{% trans 'Gehitu' %}" class="botoia" />
+            </div>
+
+    </form>
     {% endif %}
-    </div>
-    <div class="commenttxt">
-        <p class="username">{{comment.user_name}}</p>
-        <p>{{comment.comment}}</p>
-        <p class="date">{{comment.submit_date}}</p>
-    </div>
+
+    {% include "mycomment/list.html" %}
 </div>
 
-{% endfor %} -->
-
-<form method="post" action="" id="communityform" ENCTYPE="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        <div class="fieldWrapper">
-        <input type="submit" value="Gehitu" class="botoia" />
-        </div>
-
-</form>
-
 </div>
-<!-- commentlist end -->
 
-
-</div>
-<!-- placecol1 end -->
 
 <div id="placecol2">
 

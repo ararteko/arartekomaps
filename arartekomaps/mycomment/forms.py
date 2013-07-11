@@ -1,10 +1,11 @@
 from django import forms
 from models import *
+from django.utils.translation import ugettext_lazy as _
 
 class CommentForm(forms.Form):
     """ """
     body = forms.CharField(label='',widget=forms.Textarea)
-    photo  = forms.ImageField(label='Irudia',help_text='Onartutako formatuak: jpg, png, gif.',required=False)
+    photo  = forms.ImageField(label=_('Irudia'),help_text=_('Onartutako formatuak: jpg, png, gif.'),required=False)
 
     def clean_body(self):
         """ """
@@ -32,7 +33,7 @@ class CommentForm(forms.Form):
 
         format = name.split('.')[-1]
         if format.lower().strip() not in (u'jpg',u'png',u'gif'):
-            raise forms.ValidationError(u'Argazkiaren formatua ez da egokia. Aldatu formatua, mesedez!')        
+            raise forms.ValidationError(_(u'Argazkiaren formatua ez da egokia. Aldatu formatua, mesedez!'))        
       
         return photo
 

@@ -52,7 +52,8 @@ def placeview(request, slug=''):
                  comment.photo= photo
               comment.save()
     form = CommentForm()
-    
+    comments = Comment.objects.filter(parent=place)
+
     return render_to_response('place.html', locals(), context_instance=RequestContext(request)
     )
 

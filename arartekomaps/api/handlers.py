@@ -5,7 +5,7 @@ import ast
 from arartekomaps.locations.models import Location
 from arartekomaps.places.models import Place, MPhoto
 from django.contrib.auth.models import User
-from django.contrib.comments.models import Comment
+from arartekomaps.mycomment.models import Comment
 from django.contrib.auth import authenticate, login
 from django.contrib.sites.models import Site
 from django.contrib.auth.tokens import default_token_generator
@@ -22,6 +22,7 @@ from social_auth.backends.facebook import FacebookBackend
 from social_auth.backends.twitter import TwitterBackend
 from social_auth.models import UserSocialAuth
 from social_auth.backends import get_backend
+from django.utils.translation import ugettext_lazy as _
 
 import base64, urllib
 from math import radians, cos, sin, asin, sqrt, degrees
@@ -89,6 +90,17 @@ class PlaceHandler(AnonymousBaseHandler):
             else:
                 image_64 = ""
 
+            comments = Comment.objects.filter(parent=place)
+            comment_list = []
+            for comment in comments:
+                comment_list.append({
+                    "name": comment.author.get_profile().get_fullname(),
+                    "user_photo": "",
+                    "public_date": comment.public_date.date(),
+                    "text": comment.body,
+                    "photo": "",
+                })
+
             json = {
                 "name": place.name,
                 "slug": place.slug,
@@ -108,7 +120,8 @@ class PlaceHandler(AnonymousBaseHandler):
                 "url": place.url,
                 "email": place.email,
                 "accesibility": place.access_dict_list(),
-                "photo": image_64,   
+                "photo": image_64,
+                "comments": comment_list
             }
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
         except:
@@ -196,7 +209,7 @@ class PlacesHandler(AnonymousBaseHandler):
                     "lon": place.lon,
                     "distance": haversine(place.lon, place.lat, lon1, lat1),
                     "accesibility": place.access_dict_list(),
-                    "comment_count": "0", 
+                    "comment_count": place.get_comments_count(), 
                 }
                 json_list.append(json)
             json_list = sorted(json_list, key=lambda k: k['distance'])

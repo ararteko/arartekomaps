@@ -7,11 +7,9 @@ from arartekomaps.categories.models import Category
 from photologue.models import ImageModel
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-
+from django.db.models import Count
 from django.conf import settings
 from django.core.mail import send_mail
-from django.contrib.comments.models import Comment
-from django.contrib.comments.signals import comment_was_posted
 from django.db.models.signals import post_save
 
 DEFAULT_FROM_EMAIL = getattr(settings,'DEFAULT_FROM_EMAIL', '')
@@ -44,6 +42,9 @@ class Place(models.Model):
     url=models.CharField(max_length=255, blank=True, verbose_name='URL')
     email=models.CharField(max_length=255, blank=True, verbose_name='Email')
     
+    def get_comments_count(self):
+        return self.parent.all().count()
+
     def access_list(self):
         if self.access.count()>0:
             access = self.access.all()[0]
@@ -214,12 +215,6 @@ def generate_place_slug(sender, instance, **kwargs):
         instance.slug = slug_proposal
 pre_save.connect(generate_place_slug, sender=Place)
 
-
-def send_comment_notification(sender, comment, **kwargs):
-    if comment:
-        send_mail('[IRUZKIN BERRIA] ', 'Iruzkin berri bat gorde da: '+comment.comment+'\n\n'+settings.HOST+'/admin/comments/comment/' + str(comment.id), DEFAULT_FROM_EMAIL,
-            [EMAIL_NOTIFICATION], fail_silently=True)	
-    return True
 	
 def send_image_notification(sender, instance, created, **kwargs):
     if created:
@@ -227,6 +222,4 @@ def send_image_notification(sender, instance, created, **kwargs):
             [EMAIL_NOTIFICATION], fail_silently=True)	
     return True
 
-
-comment_was_posted.connect(send_comment_notification, sender=Comment)
 post_save.connect(send_image_notification, sender=MPhoto)
