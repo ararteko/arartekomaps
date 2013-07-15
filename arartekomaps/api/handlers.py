@@ -240,72 +240,69 @@ class UserHandler(AnonymousBaseHandler):
         photo = request.POST.get("photo","")
 
 
-        if origin:
-            if origin == "": 
-                if not username:
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
-                elif passw and email:
-                    try:
-                        site = Site.objects.get(id=settings.SITE_ID)
-                        RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
-                        return {'action': 'login_or_register', 'result': 'success'}
-                    except IntegrityError, e:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
-                    except SMTPException, e:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+str(e)}
-                    except Exception as e:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error: '+str(e)}
-                elif passw and not email:
-                    user = authenticate(username=username, password=passw)
-                    if user is not None:
-                        if user.is_active:
-                            login(request, user)
-                            token = default_token_generator.make_token(user)
-                            # Redirect to a success page.
-                            return {'action': 'login_or_register', 'result': 'success', 'value': token}
-                        else:
-                            # Return a 'disabled account' error message
-                            return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
-                    else:
-                        # Return an 'invalid login' error message.
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated'}
-                else:
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
-            elif origin in tuple(SOCIAL_ORIGIN.keys()):
-                if origin == "1":
-                    access_token = u'{"access_token": "'+oauth_token+'", "expires": "'+expires+'", "id": '+social_id+'}'
-                else:
-                    access_token = u'{"access_token": "oauth_token_secret='+oauth_token_secret+'&oauth_token='+oauth_token+'", "id": '+social_id+'}'
-                if not User.objects.filter(username=username).exists():
-                    try:
-                        user = User()
-                        user.username = username
-                        user.is_active = True
-                        user.save()
-                        usa, created = UserSocialAuth.objects.get_or_create(user=user, provider = SOCIAL_ORIGIN[origin], uid=int(social_id))
-                        usa.extra_data = access_token
-                        usa.save()
-                    except IntegrityError, e:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
-
-                access_token = ast.literal_eval(access_token)
+        if origin == "": 
+            if not username:
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
+            elif passw and email:
                 try:
-                    backend = get_backend(SOCIAL_ORIGIN[origin], request, request.path)
-                    user = backend.do_auth(access_token['access_token'])
+                    site = Site.objects.get(id=settings.SITE_ID)
+                    RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
+                    return {'action': 'login_or_register', 'result': 'success'}
+                except IntegrityError, e:
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
+                except SMTPException, e:
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+str(e)}
                 except Exception as e:
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error: '+str(e)}
-                if user and user.is_active:
-                    login(request, user)
-                    token = default_token_generator.make_token(user)
-                    # Redirect to a success page.
-                    return {'action': 'login_or_register', 'result': 'success', 'value': token}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error: '+str(e)}
+            elif passw and not email:
+                user = authenticate(username=username, password=passw)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        token = default_token_generator.make_token(user)
+                        # Redirect to a success page.
+                        return {'action': 'login_or_register', 'result': 'success', 'value': token}
+                    else:
+                        # Return a 'disabled account' error message
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
                 else:
-                    # Return a 'disabled account' error message
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
+                    # Return an 'invalid login' error message.
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated'}
             else:
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'wrong_origin'}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
+        elif origin in tuple(SOCIAL_ORIGIN.keys()):
+            if origin == "1":
+                access_token = u'{"access_token": "'+oauth_token+'", "expires": "'+expires+'", "id": '+social_id+'}'
+            else:
+                access_token = u'{"access_token": "oauth_token_secret='+oauth_token_secret+'&oauth_token='+oauth_token+'", "id": '+social_id+'}'
+            if not User.objects.filter(username=username).exists():
+                try:
+                    user = User()
+                    user.username = username
+                    user.is_active = True
+                    user.save()
+                    usa, created = UserSocialAuth.objects.get_or_create(user=user, provider = SOCIAL_ORIGIN[origin], uid=int(social_id))
+                    usa.extra_data = access_token
+                    usa.save()
+                except IntegrityError, e:
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
+
+            access_token = ast.literal_eval(access_token)
+            try:
+                backend = get_backend(SOCIAL_ORIGIN[origin], request, request.path)
+                user = backend.do_auth(access_token['access_token'])
+            except Exception as e:
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error: '+str(e)}
+            if user and user.is_active:
+                login(request, user)
+                token = default_token_generator.make_token(user)
+                # Redirect to a success page.
+                return {'action': 'login_or_register', 'result': 'success', 'value': token}
+            else:
+                # Return a 'disabled account' error message
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
         else:
-            return {'action': 'login_or_register', 'result': 'failed', 'value': 'origin_not_found'}
+            return {'action': 'login_or_register', 'result': 'failed', 'value': 'wrong_origin'}
 
 class CommentHandler(BaseHandler):
     allowed_methods = ('POST',)
