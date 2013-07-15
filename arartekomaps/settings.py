@@ -72,6 +72,10 @@ PAGE_LANGUAGES = (
 
 LANGUAGES = list(PAGE_LANGUAGES)
 
+TRANSMETA_DEFAULT_LANGUAGE = 'es'
+TRANSMETA_LANGUAGES = LANGUAGES
+
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = '/home/csmant/django/ararteko/media/'
@@ -173,6 +177,7 @@ INSTALLED_APPS = (
     'social_auth',
     'registration',
     'photologue',
+    'transmeta',
     'pages',
     'gunicorn',
     'piston',
@@ -248,6 +253,8 @@ FACEBOOK_API_KEY = ''
 FACEBOOK_API_SECRET = ''
 
 PAGE_DEFAULT_TEMPLATE = 'pages/index.html'
+
+USE_X_FORWARDED_HOST = True
 
 try:
     from server_settings import *
