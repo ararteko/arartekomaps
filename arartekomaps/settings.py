@@ -177,7 +177,6 @@ INSTALLED_APPS = (
     'social_auth',
     'registration',
     'photologue',
-    'transmeta',
     'pages',
     'gunicorn',
     'piston',
