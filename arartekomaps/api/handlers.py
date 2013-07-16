@@ -214,10 +214,10 @@ class PlacesHandler(AnonymousBaseHandler):
                 json_list.append(json)
             json_list = sorted(json_list, key=lambda k: k['distance'])
             if not json_list:
-                return {'lang': lang, 'action': 'get_places', 'result': 'empty'}
-            return {'lang': lang, 'action': 'get_places', 'result': 'success', 'values': json_list[:10]}
+                return {'lang': lang, 'action': 'get_filtered_places', 'result': 'empty'}
+            return {'lang': lang, 'action': 'get_filtered_places', 'result': 'success', 'values': json_list[:10]}
         except Exception, e:
-            return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': str(e)}
+            return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': str(e)}
 
 
 class UserHandler(AnonymousBaseHandler):
