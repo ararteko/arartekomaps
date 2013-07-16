@@ -3,6 +3,7 @@ from django.conf import settings
 import json
 import ast
 from arartekomaps.locations.models import Location
+from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, MPhoto
 from django.contrib.auth.models import User
 from arartekomaps.mycomment.models import Comment
@@ -73,6 +74,22 @@ class LocationsHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_cities', 'result': 'success', 'values': json_loc}
         except:
             return {'lang': lang, 'action': 'get_cities', 'result': 'failed'}
+
+class CategoriesHandler(AnonymousBaseHandler):
+    allowed_methods = ('GET',)
+    model = Category
+
+    def read(self, request):
+        lang = request.GET.get("lang","eu")
+        try:
+            categories = Category.objects.all().order_by('name')
+            json_loc = []
+            for cat in categories:
+                h = {'name': cat.name, 'slug': cat.slug}
+                json_loc.append(h)
+            return {'lang': lang, 'action': 'get_categories', 'result': 'success', 'values': json_loc}
+        except:
+            return {'lang': lang, 'action': 'get_categories', 'result': 'failed'}
 
 class PlaceHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
