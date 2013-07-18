@@ -102,20 +102,28 @@ class PlaceHandler(AnonymousBaseHandler):
             place = Place.objects.get(slug=slug)
             if MPhoto.objects.filter(place=place, def_img=True).exists():
                 image = MPhoto.objects.filter(place=place, def_img=True)[0]
-                image = urllib.urlopen(settings.HOST+image.image.url)
-                image_64 = base64.encodestring(image.read())
+            #     image = urllib.urlopen(settings.HOST+image.image.url)
+            #     image_64 = base64.encodestring(image.read())
             else:
-                image_64 = ""
+                image = ""
 
             comments = Comment.objects.filter(parent=place)
             comment_list = []
             for comment in comments:
+                if comment.photo:
+                    c_img = settings.HOST+comment.photo.image.url
+                else:
+                    c_img = ""
+                if comment.author.get_profile().get_photo():
+                    u_img = settings.HOST+comment.author.get_profile().get_photo().image.url
+                else:
+                    u_img = ""
                 comment_list.append({
                     "name": comment.author.get_profile().get_fullname(),
-                    "user_photo": "",
+                    "user_photo": u_img,
                     "public_date": comment.public_date.date(),
                     "text": comment.body,
-                    "photo": "",
+                    "photo": c_img,
                 })
 
             json = {
@@ -137,7 +145,7 @@ class PlaceHandler(AnonymousBaseHandler):
                 "url": place.url,
                 "email": place.email,
                 "accesibility": place.access_dict_list(),
-                "photo": image_64,
+                "photo": settings.HOST+image.image.url,
                 "comments": comment_list
             }
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
