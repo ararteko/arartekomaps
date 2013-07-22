@@ -145,7 +145,7 @@ class PlaceHandler(AnonymousBaseHandler):
                 "url": place.url,
                 "email": place.email,
                 "accesibility": place.access_dict_list(),
-                "photo": settings.HOST+image.image.url,
+                "photo": settings.HOST+image.get_place_API_url(),
                 "comments": comment_list
             }
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
