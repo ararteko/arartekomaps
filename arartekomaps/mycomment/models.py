@@ -48,5 +48,5 @@ def send_comment_notification(sender, comment, **kwargs):
             [EMAIL_NOTIFICATION], fail_silently=True)   
     return True
 
-post_save.connect(send_comment_notification, sender=Comment)
+#post_save.connect(send_comment_notification, sender=Comment)
         
