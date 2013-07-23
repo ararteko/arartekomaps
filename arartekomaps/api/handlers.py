@@ -85,7 +85,11 @@ class CategoriesHandler(AnonymousBaseHandler):
             categories = Category.objects.all().order_by('name')
             json_loc = []
             for cat in categories:
-                h = {'name': cat.name, 'slug': cat.slug}
+                h = {
+                    'name': cat.name,
+                    'slug': cat.slug,
+                    'icon': cat.icon()+'.png',
+                }
                 json_loc.append(h)
             return {'lang': lang, 'action': 'get_categories', 'result': 'success', 'values': json_loc}
         except:
