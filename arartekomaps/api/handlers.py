@@ -361,7 +361,7 @@ class CommentHandler(BaseHandler):
                     comment.parent = place     
                     comment.body = text
                     comment.ip_address = request.META.get("REMOTE_ADDR", None)
-                    if photo:
+                    if request.FILES['photo']:
                         try:
                             photo = handle_photo_file(request.FILES['photo'], user.username) 
                         except Exception, e:
