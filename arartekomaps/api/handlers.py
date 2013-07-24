@@ -342,8 +342,6 @@ class CommentHandler(BaseHandler):
         token = request.POST.get("token","")
         text = request.POST.get("text","")
         slug = request.POST.get("slug","")
-
-        import pdb;pdb.set_trace()
          
         try:
             user = User.objects.get(username=username)
