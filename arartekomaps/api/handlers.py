@@ -343,6 +343,8 @@ class CommentHandler(BaseHandler):
         text = request.POST.get("text","")
         slug = request.POST.get("slug","")
 
+        import pdb;pdb.set_trace()
+         
         try:
             user = User.objects.get(username=username)
         except:
@@ -350,26 +352,28 @@ class CommentHandler(BaseHandler):
         if default_token_generator.check_token(user,token):
             try:
                 place = Place.objects.get(slug=slug)
+
+                if text:
+                    comment = Comment()
+                    comment.author = user
+                    comment.is_public = True
+                    comment.public_date = datetime.today()  
+                    comment.parent = place     
+                    comment.body = text
+                    comment.ip_address = request.META.get("REMOTE_ADDR", None)
+                    if photo:
+                        try:
+                            photo = handle_photo_file(request.FILES['photo'], user.username) 
+                        except Exception, e:
+                            return {'action': 'login_or_register', 'result': 'failed', 'value': 'decoding_error: '+str(e)}           
+                        comment.photo = photo
+                    comment.save()
+                    return {'action': 'post_comment', 'result': 'success'}
+                else:
+                    return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found'}
+
             except Exception as e:
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'place_error: '+str(e)}
-            if text:
-                comment = Comment()
-                comment.author = user
-                comment.is_public = True
-                comment.public_date = datetime.today()  
-                comment.parent = place     
-                comment.body = text
-                comment.ip_address = request.META.get("REMOTE_ADDR", None)
-                if photo:
-                    try:
-                        photo = handle_photo_file(request.FILES['photo'], user.username) 
-                    except Exception, e:
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'decoding_error: '+str(e)}           
-                    comment.photo = photo
-                comment.save()
-                return {'action': 'post_comment', 'result': 'success'}
-            else:
-                return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found'}
         else:
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token'}
 
