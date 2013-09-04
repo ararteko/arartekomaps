@@ -134,7 +134,6 @@ class PlaceHandler(AnonymousBaseHandler):
             if place.tlf.find('-'):
                 place.tlf = place.tlf.split('-')[0].strip()
 
-            import pdb;pdb.set_trace()
             json = {
                 "name": place.name,
                 "slug": place.slug,
