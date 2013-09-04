@@ -109,7 +109,7 @@ class PlaceHandler(AnonymousBaseHandler):
             #     image = urllib.urlopen(settings.HOST+image.image.url)
             #     image_64 = base64.encodestring(image.read())
             else:
-                image = ""
+                image = None
 
             comments = Comment.objects.filter(parent=place)
             comment_list = []
@@ -130,6 +130,11 @@ class PlaceHandler(AnonymousBaseHandler):
                     "photo": c_img,
                 })
 
+            
+            if place.tlf.find('-'):
+                place.tlf = place.tlf.split('-')[0].strip()
+
+            import pdb;pdb.set_trace()
             json = {
                 "name": place.name,
                 "slug": place.slug,
