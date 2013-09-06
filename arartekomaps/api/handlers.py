@@ -106,8 +106,7 @@ class PlaceHandler(AnonymousBaseHandler):
             place = Place.objects.get(slug=slug)
             if MPhoto.objects.filter(place=place, def_img=True).exists():
                 image = MPhoto.objects.filter(place=place, def_img=True)[0]
-            #     image = urllib.urlopen(settings.HOST+image.image.url)
-            #     image_64 = base64.encodestring(image.read())
+                image = settings.HOST+image.get_place_API_url()
             else:
                 image = None
 
@@ -153,7 +152,7 @@ class PlaceHandler(AnonymousBaseHandler):
                 "url": place.url,
                 "email": place.email,
                 "accesibility": place.access_dict_list(),
-                "photo": settings.HOST+image.get_place_API_url(),
+                "photo": image,
                 "comments": comment_list
             }
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
