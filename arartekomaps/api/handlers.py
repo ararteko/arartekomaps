@@ -362,11 +362,11 @@ class CommentHandler(BaseHandler):
                     comment.parent = place     
                     comment.body = text
                     comment.ip_address = request.META.get("REMOTE_ADDR", None)
-                    if request.FILES['photo']:
+                    if 'photo' in request.FILES:
                         try:
                             photo = handle_photo_file(request.FILES['photo'], user.username) 
                         except Exception, e:
-                            return {'action': 'login_or_register', 'result': 'failed', 'value': 'decoding_error: '+str(e)}           
+                            return {'action': 'post_comment', 'result': 'failed', 'value': 'decoding_error: '+str(e)}           
                         comment.photo = photo
                     comment.save()
                     return {'action': 'post_comment', 'result': 'success'}
@@ -374,7 +374,7 @@ class CommentHandler(BaseHandler):
                     return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found'}
 
             except Exception as e:
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'place_error: '+str(e)}
+                return {'action': 'post_comment', 'result': 'failed', 'value': 'place_error: '+str(e)}
         else:
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token'}
 
