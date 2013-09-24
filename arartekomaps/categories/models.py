@@ -1,15 +1,11 @@
 from django.db import models
 from mptt.models import MPTTModelBase, MPTTModel
-from transmeta import TransMeta
 
 class Category(MPTTModel):
-    __metaclass__ = TransMeta
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
     name = models.CharField(max_length=50, unique=True)
     slug = models.CharField(max_length=255,unique=True, blank=True, null=True, help_text="Se actualiza al guardar")
     
-    class Meta:
-        translate = ('name',)
 
     class MPTTMeta:
         order_insertion_by = ['name']
