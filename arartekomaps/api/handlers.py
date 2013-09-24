@@ -95,6 +95,36 @@ class CategoriesHandler(AnonymousBaseHandler):
         except:
             return {'lang': lang, 'action': 'get_categories', 'result': 'failed'}
 
+class GetCommentHandler(AnonymousBaseHandler):
+    allowed_methods = ('GET',)
+    model = Comment
+
+    slug = request.GET.get("slug","")
+    try:
+        place = Place.objects.get(slug=slug)
+        comments = Comment.objects.filter(parent=place)
+        comment_list = []
+        for comment in comments:
+            if comment.photo:
+                c_img = settings.HOST+comment.photo.get_place_API_url()
+            else:
+                c_img = ""
+            if comment.author.get_profile().get_photo():
+                u_img = settings.HOST+comment.author.get_profile().get_photo().get_profile_API_url()
+            else:
+                u_img = ""
+            comment_list.append({
+                "name": comment.author.get_profile().get_fullname(),
+                "user_photo": u_img,
+                "public_date": comment.public_date.date(),
+                "text": comment.body,
+                "photo": c_img,
+            })
+        if comment_list:    
+            return {'lang': lang, 'action': 'get_comments', 'result': 'success', 'value': comment_list}
+        else:
+            return {'lang': lang, 'action': 'get_comments', 'result': 'failed'}
+
 class PlaceHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
     model = Place
