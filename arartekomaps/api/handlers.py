@@ -105,7 +105,7 @@ class PlaceHandler(AnonymousBaseHandler):
         try:
             place = Place.objects.get(slug=slug)
             if MPhoto.objects.filter(place=place, def_img=True).exists():
-                image = MPhoto.objects.filter(place=place, def_img=True)[0].get_profile_API_url()
+                image = MPhoto.objects.filter(place=place, def_img=True)[0].get_place_API_url()
                 #image = settings.HOST+image.get_place_API_url()
             else:
                 image = None
@@ -118,7 +118,7 @@ class PlaceHandler(AnonymousBaseHandler):
                 else:
                     c_img = ""
                 if comment.author.get_profile().get_photo():
-                    u_img = settings.HOST+comment.author.get_profile().get_photo().get_place_API_url()
+                    u_img = settings.HOST+comment.author.get_profile().get_photo().get_profile_API_url()
                 else:
                     u_img = ""
                 comment_list.append({
