@@ -180,6 +180,7 @@ INSTALLED_APPS = (
     'pages',
     'gunicorn',
     'piston',
+    'transmeta',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

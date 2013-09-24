@@ -11,6 +11,7 @@ from django.db.models import Count
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
+from transmeta import TransMeta
 
 DEFAULT_FROM_EMAIL = getattr(settings,'DEFAULT_FROM_EMAIL', '')
 EMAIL_NOTIFICATION = getattr(settings,'EMAIL_NOTIFICATION', '')
@@ -24,10 +25,11 @@ ACCESS_CHOICES = (
 
 
 class Place(models.Model):
+    __metaclass__ = TransMeta
     slug=models.SlugField(max_length=255, blank=True, null=True, unique=True, help_text="Sí está vacio se actualiza al guardar")
     name=models.CharField(max_length=255, verbose_name='Nombre')
     category=models.ForeignKey(Category, verbose_name='Categoría')
-    description=models.TextField(null=True, blank=True, verbose_name='Descripción')        
+    description =models.TextField(null=True, blank=True, verbose_name=u'Descripción')        
     address1=models.CharField(max_length=100, blank=True, verbose_name='Dirección 1')
     address2=models.CharField(max_length=100, blank=True, verbose_name='Dirección 2')
     postalcode=models.CharField(max_length=5, blank=True, verbose_name='Codigo postal')
@@ -137,6 +139,9 @@ class Place(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        translate = ('description',)
 
 
 class Access(models.Model):   

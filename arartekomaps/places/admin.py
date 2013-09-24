@@ -30,10 +30,10 @@ class mapWidgetP(forms.widgets.Input):
     def render(self, name, value, attrs=None):
         return render_to_string('mapwidgetp.html', locals())
 
-class PlaceAdminForm(forms.ModelForm):
-    map = forms.CharField(widget=mapWidgetP(), required=False) 
-    class Meta:
-        model = Place
+# class PlaceAdminForm(forms.ModelForm):
+#     map = forms.CharField(widget=mapWidgetP(), required=False) 
+#     class Meta:
+#         model = Place
         
 def export_excel(modeladmin, request, queryset):
     response = HttpResponse(mimetype='text/csv')
@@ -64,7 +64,7 @@ def export_excel_comments(modeladmin, request, queryset):
 export_excel_comments.short_description = 'Exportar comentarios'
 
 class PlaceAdmin(admin.ModelAdmin):
-    form = PlaceAdminForm
+    #form = PlaceAdminForm
     list_display = ('name','city','category','source')
     readonly_fields = ()
     search_fields = ('name',)

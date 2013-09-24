@@ -106,7 +106,7 @@ class PlaceHandler(AnonymousBaseHandler):
             place = Place.objects.get(slug=slug)
             if MPhoto.objects.filter(place=place, def_img=True).exists():
                 image = MPhoto.objects.filter(place=place, def_img=True)[0]
-                image = settings.HOST+image.get_place_API_url()
+                #image = settings.HOST+image.get_place_API_url()
             else:
                 image = None
 
@@ -133,11 +133,16 @@ class PlaceHandler(AnonymousBaseHandler):
             if place.tlf.find('-'):
                 place.tlf = place.tlf.split('-')[0].strip()
 
+            if lang == 'eu':
+                desc = place.description_eu
+            else:
+                desc = place.description_es
+
             json = {
                 "name": place.name,
                 "slug": place.slug,
                 "category": place.category.name,
-                "description": place.description,
+                "description": desc,
                 "address1": place.address1,
                 "address2": place.address2,
                 "postalcode": place.postalcode,
@@ -227,11 +232,15 @@ class PlacesHandler(AnonymousBaseHandler):
             places = Place.objects.filter(**args)
 
             for place in places:
+                if lang == 'eu':
+                    desc = place.description_eu
+                else:
+                    desc = place.description_es
                 json = {
                     "name": place.name,
                     "slug": place.slug,
                     "category": place.category.name,
-                    "description": place.description,
+                    "description": desc,
                     "address1": place.address1,
                     "address2": place.address2,
                     "postalcode": place.postalcode,
