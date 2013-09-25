@@ -75,6 +75,7 @@ class LocationsHandler(AnonymousBaseHandler):
         except:
             return {'lang': lang, 'action': 'get_cities', 'result': 'failed'}
 
+
 class CategoriesHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
     model = Category
@@ -94,36 +95,6 @@ class CategoriesHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_categories', 'result': 'success', 'values': json_loc}
         except:
             return {'lang': lang, 'action': 'get_categories', 'result': 'failed'}
-
-class GetCommentHandler(AnonymousBaseHandler):
-    allowed_methods = ('GET',)
-    model = Comment
-
-    slug = request.GET.get("slug","")
-    try:
-        place = Place.objects.get(slug=slug)
-        comments = Comment.objects.filter(parent=place)
-        comment_list = []
-        for comment in comments:
-            if comment.photo:
-                c_img = settings.HOST+comment.photo.get_place_API_url()
-            else:
-                c_img = ""
-            if comment.author.get_profile().get_photo():
-                u_img = settings.HOST+comment.author.get_profile().get_photo().get_profile_API_url()
-            else:
-                u_img = ""
-            comment_list.append({
-                "name": comment.author.get_profile().get_fullname(),
-                "user_photo": u_img,
-                "public_date": comment.public_date.date(),
-                "text": comment.body,
-                "photo": c_img,
-            })
-        if comment_list:    
-            return {'lang': lang, 'action': 'get_comments', 'result': 'success', 'value': comment_list}
-        else:
-            return {'lang': lang, 'action': 'get_comments', 'result': 'failed'}
 
 class PlaceHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
@@ -290,7 +261,6 @@ class PlacesHandler(AnonymousBaseHandler):
         except Exception, e:
             return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': str(e)}
 
-
 class UserHandler(AnonymousBaseHandler):
     allowed_methods = ('POST',)
     model = User
@@ -417,3 +387,33 @@ class CommentHandler(BaseHandler):
         else:
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token'}
 
+class GetCommentHandler(AnonymousBaseHandler):
+    allowed_methods = ('GET',)
+    model = Comment    
+
+    def read(self, request):
+        slug = request.GET.get("slug","")
+        lang = request.GET.get("lang","eu")
+        try:
+            place = Place.objects.get(slug=slug)
+            comments = Comment.objects.filter(parent=place)
+            comment_list = []
+            for comment in comments:
+                if comment.photo:
+                    c_img = settings.HOST+comment.photo.get_place_API_url()
+                else:
+                    c_img = ""
+                if comment.author.get_profile().get_photo():
+                    u_img = settings.HOST+comment.author.get_profile().get_photo().get_profile_API_url()
+                else:
+                    u_img = ""
+                comment_list.append({
+                    "name": comment.author.get_profile().get_fullname(),
+                    "user_photo": u_img,
+                    "public_date": comment.public_date.date(),
+                    "text": comment.body,
+                    "photo": c_img,
+                })
+            return {'lang': lang, 'action': 'get_comments', 'result': 'success', 'value': comment_list}
+        except Exception, e:
+            return {'lang': lang, 'action': 'get_comments', 'result': 'failed', 'value': 'comments_error: '+str(e)}
