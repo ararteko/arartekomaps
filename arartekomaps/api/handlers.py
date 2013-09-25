@@ -233,10 +233,10 @@ class PlacesHandler(AnonymousBaseHandler):
             places = Place.objects.filter(**args)
 
             for place in places:
-                if lang == 'eu':
-                    desc = place.description_eu
-                else:
-                    desc = place.description_es
+                # if lang == 'eu':
+                #     desc = place.description_eu
+                # else:
+                desc = place.description_es
                 json = {
                     "name": place.name,
                     "slug": place.slug,
