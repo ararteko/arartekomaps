@@ -83,7 +83,7 @@ class CategoriesHandler(AnonymousBaseHandler):
     def read(self, request):
         lang = request.GET.get("lang","eu")
         try:
-            categories = Category.objects.filter(parent=None).order_by('name')
+            categories = Category.objects.all().order_by('name')
             json_loc = []
             for cat in categories:
                 h = {
