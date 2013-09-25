@@ -134,10 +134,10 @@ class PlaceHandler(AnonymousBaseHandler):
             if place.tlf.find('-'):
                 place.tlf = place.tlf.split('-')[0].strip()
 
-            if lang == 'eu':
-                desc = place.description_eu
-            else:
-                desc = place.description_es
+            # if lang == 'eu':
+            #     desc = place.description_eu
+            # else:
+            desc = place.description_es
 
             json = {
                 "name": place.name,
