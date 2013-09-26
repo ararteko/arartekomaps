@@ -83,7 +83,7 @@ class CategoriesHandler(AnonymousBaseHandler):
     def read(self, request):
         lang = request.GET.get("lang","eu")
         try:
-            categories = Category.objects.all().order_by('name')
+            categories = Category.objects.filter(parent=None).order_by('name')
             json_loc = []
             for cat in categories:
                 h = {
@@ -202,7 +202,7 @@ class PlacesHandler(AnonymousBaseHandler):
             args['lon__range'] = (str(maxLon),str(minLon))
 
             if category:
-                args['category__slug'] = category
+                args['category__parent__slug'] = category
 
             if aphysic in ACCESS_KEYS:
                 if aphysic == "a":
