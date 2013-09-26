@@ -85,9 +85,14 @@ class CategoriesHandler(AnonymousBaseHandler):
         try:
             categories = Category.objects.filter(parent=None).order_by('name')
             json_loc = []
+            name = ''
             for cat in categories:
+                if lang == 'eu':
+                    name = cat.name_eu
+                else:
+                    name = cat.name_es
                 h = {
-                    'name': cat.name,
+                    'name': name,
                     'slug': cat.slug,
                     'icon': cat.icon()+'.png',
                 }
@@ -138,11 +143,16 @@ class PlaceHandler(AnonymousBaseHandler):
             #     desc = place.description_eu
             # else:
             desc = place.description_es
+            
+            if lang == 'eu':
+                cat = place.category.name_eu
+            else:
+                cat = place.category.name_es
 
             json = {
                 "name": place.name,
                 "slug": place.slug,
-                "category": place.category.name,
+                "category": cat,
                 "description": desc,
                 "address1": place.address1,
                 "address2": place.address2,
@@ -237,10 +247,16 @@ class PlacesHandler(AnonymousBaseHandler):
                 #     desc = place.description_eu
                 # else:
                 desc = place.description_es
+
+                if lang == 'eu':
+                    cat = place.category.name_eu
+                else:
+                    cat = place.category.name_es
+
                 json = {
                     "name": place.name,
                     "slug": place.slug,
-                    "category": place.category.name,
+                    "category": cat,
                     "description": desc,
                     "address1": place.address1,
                     "address2": place.address2,

@@ -72,7 +72,6 @@ PAGE_LANGUAGES = (
 
 LANGUAGES = list(PAGE_LANGUAGES)
 
-TRANSMETA_DEFAULT_LANGUAGE = 'es'
 TRANSMETA_LANGUAGES = LANGUAGES
 
 
@@ -180,7 +179,7 @@ INSTALLED_APPS = (
     'pages',
     'gunicorn',
     'piston',
-    'transmeta',
+    'modeltranslation',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -253,6 +252,10 @@ FACEBOOK_API_KEY = ''
 FACEBOOK_API_SECRET = ''
 
 PAGE_DEFAULT_TEMPLATE = 'pages/index.html'
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'es'
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('es', 'eu')
+
 
 USE_X_FORWARDED_HOST = True
 

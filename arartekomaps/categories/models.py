@@ -2,11 +2,11 @@ from django.db import models
 from mptt.models import MPTTModelBase, MPTTModel
 
 class Category(MPTTModel):
+
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
     name = models.CharField(max_length=50, unique=True)
     slug = models.CharField(max_length=255,unique=True, blank=True, null=True, help_text="Se actualiza al guardar")
-    
-
+       
     class MPTTMeta:
         order_insertion_by = ['name']
         parent_attr = 'parent'
