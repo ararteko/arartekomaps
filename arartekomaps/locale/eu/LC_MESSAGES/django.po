@@ -3,26 +3,25 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-21 11:50+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-10-04 16:18+0200\n"
+"PO-Revision-Date: 2013-10-04 16:21+0100\n"
+"Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: settings.py:60
+#: settings.py:62
 msgid "Espanol"
 msgstr "Español"
 
-#: settings.py:61
+#: settings.py:63
 msgid "Euskara"
 msgstr "Euskara"
 
@@ -38,23 +37,23 @@ msgstr "Nahikoa irisg."
 msgid "Accesible"
 msgstr "Irisgarria"
 
-#: views.py:16 places/models.py:43
+#: views.py:16 places/models.py:52
 msgid "aphysic"
 msgstr "Fisikoa"
 
-#: views.py:17 places/models.py:44
+#: views.py:17 places/models.py:53
 msgid "avisual"
 msgstr "Ikusizkoa"
 
-#: views.py:18 places/models.py:45
+#: views.py:18 places/models.py:54
 msgid "aaudio"
 msgstr "Entzutezkoa"
 
-#: views.py:19 places/models.py:46
+#: views.py:19 places/models.py:55
 msgid "aintelec"
 msgstr "Intelektuala"
 
-#: views.py:20 places/models.py:47
+#: views.py:20 places/models.py:56
 msgid "aorganic"
 msgstr "Organikoa"
 
@@ -73,15 +72,61 @@ msgstr "cat_%s"
 msgid "%(parentcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s (%(cityname)s)"
 
-#: places/models.py:43 places/models.py:44 places/models.py:45
-#: places/models.py:46 places/models.py:47
+#: mycomment/forms.py:8
+msgid "Image"
+msgstr "Irudia"
+
+#: mycomment/forms.py:8
+msgid "Accepted formats: jpg, png, gif."
+msgstr "Onartutako formatuak: jpg, png, gif."
+
+#: mycomment/forms.py:14
+msgid "Void messages not accepted. Please, type some text explaining!"
+msgstr "Mezu hutsak ez ditugu onartzen. Mesedez, idatzi azalpen testuren bat!"
+
+#: mycomment/forms.py:28
+#, python-format
+msgid ""
+"The name of the file (%s) has an non standard character and cannot be "
+"processed. Please rename the image before uploading!"
+msgstr ""
+"Fitxategiaren izenak (%s) karaktere ez-estandar bat du eta ezin dugu "
+"prozesatu. Mesedez aldatu izena berriz kargatu aurretik!"
+
+#: mycomment/forms.py:31
+#, python-format
+msgid ""
+"The name of the file (%s) is too long. Please rename the image before "
+"uploading!"
+msgstr ""
+"Fitxategiaren izena (%s) luzeegia da. Mesedez berrizendatu berriz kargatu "
+"aurretik!"
+
+#: mycomment/forms.py:36
+msgid ""
+"The format of the image is not valid. Please upload an image in an accepted "
+"format!"
+msgstr ""
+"Irudiaren formatua ez da egokia. Mesedez, kargatu irudia onartutako "
+"formatuetako batean!"
+
+#: mycomment/models.py:48
+msgid "[NEW COMMENT] "
+msgstr "[IRUZKIN BERRIA]"
+
+#: mycomment/models.py:48
+msgid "New comment saved: "
+msgstr "Iruzkin berria gorde dugu:"
+
+#: places/models.py:52 places/models.py:53 places/models.py:54
+#: places/models.py:55 places/models.py:56
 #, python-format
 msgid "access_%s"
 msgstr ""
 
 #: templates/404.html:4 templates/404.html.py:24
 msgid "Not Found error"
-msgstr ""
+msgstr "Errorea: ez dugu aurkitu!"
 
 #: templates/404.html:4 templates/about.html:4 templates/base.html:37
 #: templates/home.html:4 templates/listing.html:4 templates/location.html:4
@@ -97,7 +142,7 @@ msgstr "Home"
 
 #: templates/404.html:14
 msgid "NotFound"
-msgstr ""
+msgstr "Ez dugu aurkitu"
 
 #: templates/404.html:27
 msgid "Sorry, we didn't found what you requested."
@@ -155,7 +200,7 @@ msgstr "Nora joan:"
 msgid "Search"
 msgstr "Bilatu"
 
-#: templates/base.html:113 templates/place.html:101
+#: templates/base.html:113 templates/place.html:100
 msgid "Accessibility"
 msgstr "Irisgarritasuna"
 
@@ -407,116 +452,120 @@ msgstr "Euskal Kultura"
 msgid "especializada"
 msgstr "Espezializatua"
 
-#: templates/dummy_texts.html:71
+#: templates/dummy_texts.html:70
+msgid "musica"
+msgstr "Musika"
+
+#: templates/dummy_texts.html:72
 msgid "ayto"
 msgstr "Udalarena"
 
-#: templates/dummy_texts.html:72
+#: templates/dummy_texts.html:73
 msgid "auto"
 msgstr "Erkidegokoa"
 
-#: templates/dummy_texts.html:73
+#: templates/dummy_texts.html:74
 msgid "priv"
 msgstr "Pribatua"
 
-#: templates/dummy_texts.html:74
+#: templates/dummy_texts.html:75
 msgid "fora"
 msgstr "Aldundiarena"
 
-#: templates/dummy_texts.html:78
+#: templates/dummy_texts.html:79
 msgid "i"
 msgstr "Haurrena"
 
-#: templates/dummy_texts.html:79
+#: templates/dummy_texts.html:80
 msgid "v"
 msgstr "Ikertzekoa"
 
-#: templates/dummy_texts.html:80
+#: templates/dummy_texts.html:81
 msgid "t"
 msgstr "Ondarea gordetzekoa"
 
-#: templates/dummy_texts.html:84
+#: templates/dummy_texts.html:85
 msgid "l"
 msgstr "Librea"
 
-#: templates/dummy_texts.html:85
+#: templates/dummy_texts.html:86
 msgid "r"
 msgstr "Mugatua"
 
-#: templates/dummy_texts.html:89
+#: templates/dummy_texts.html:90
 msgid "p"
 msgstr "Publikoa"
 
-#: templates/dummy_texts.html:91 templates/home.html:64
+#: templates/dummy_texts.html:92 templates/home.html:64
 #: templates/listing.html:32
 msgid "filter"
 msgstr "Filtro aurreratua"
 
-#: templates/dummy_texts.html:92
+#: templates/dummy_texts.html:93
 msgid "search"
 msgstr "Bilatu"
 
-#: templates/dummy_texts.html:97
+#: templates/dummy_texts.html:98
 msgid "ejgv_biblio"
 msgstr "Eusko jaurlaritza. Liburutegi zerbitzua"
 
-#: templates/dummy_texts.html:98
+#: templates/dummy_texts.html:99
 msgid "ejgv-tur-rest"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:99
+#: templates/dummy_texts.html:100
 msgid "ejgv-tur-aloj"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:100
+#: templates/dummy_texts.html:101
 msgid "ejgv-tur-infos"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:101
+#: templates/dummy_texts.html:102
 msgid "Consultrans"
 msgstr "Ararteko"
 
-#: templates/dummy_texts.html:102
+#: templates/dummy_texts.html:103
 msgid "dfa"
 msgstr "Arabako Foru Aldundia"
 
-#: templates/dummy_texts.html:103
+#: templates/dummy_texts.html:104
 msgid "dfb"
 msgstr "Bizkaiko Foru Aldundia"
 
-#: templates/dummy_texts.html:104
+#: templates/dummy_texts.html:105
 msgid "dfg"
 msgstr "Gipuzkoako Foru Aldundia"
 
-#: templates/dummy_texts.html:105
+#: templates/dummy_texts.html:106
 msgid "fekoor"
 msgstr "FEKOOR"
 
-#: templates/dummy_texts.html:107
+#: templates/dummy_texts.html:108
 msgid "agi"
 msgstr "AGI"
 
-#: templates/dummy_texts.html:108
+#: templates/dummy_texts.html:109
 msgid "gorrak"
 msgstr "Euskalgorrak"
 
-#: templates/dummy_texts.html:109
+#: templates/dummy_texts.html:110
 msgid "itxaropena"
 msgstr "Itxaropena Elkartea"
 
-#: templates/dummy_texts.html:110
+#: templates/dummy_texts.html:111
 msgid "eginaren"
 msgstr "Eginaren eginez"
 
-#: templates/dummy_texts.html:111
+#: templates/dummy_texts.html:112
 msgid "once"
 msgstr "ONCE"
 
-#: templates/dummy_texts.html:112
+#: templates/dummy_texts.html:113
 msgid "fevapas"
 msgstr "Fevapas"
 
-#: templates/dummy_texts.html:113
+#: templates/dummy_texts.html:114
 msgid "elkartu"
 msgstr "Elkartu"
 
@@ -554,67 +603,63 @@ msgstr "Hurrengoak"
 msgid "Website"
 msgstr "Webgunea"
 
-#: templates/place.html:114
+#: templates/place.html:113
 msgid "detailed file"
 msgstr "Fitxa zehatza"
 
-#: templates/place.html:121
+#: templates/place.html:120
 msgid "Library"
 msgstr "Liburutegia"
 
-#: templates/place.html:123
+#: templates/place.html:122
 msgid "btype"
 msgstr "Mota"
 
-#: templates/place.html:125
+#: templates/place.html:124
 msgid "start_year"
 msgstr "Irekiera urtea"
 
-#: templates/place.html:127
+#: templates/place.html:126
 msgid "institution"
 msgstr "Erakundea"
 
-#: templates/place.html:129
+#: templates/place.html:128
 msgid "open_times"
 msgstr "Ordutegia"
 
-#: templates/place.html:131
+#: templates/place.html:130
 msgid "access_type"
 msgstr "Sarrera mota"
 
-#: templates/place.html:133
+#: templates/place.html:132
 msgid "center_type"
 msgstr "Zentru mota"
 
-#: templates/place.html:135
+#: templates/place.html:134
 msgid "topics"
 msgstr "Gaiak"
 
-#: templates/place.html:137
+#: templates/place.html:136
 msgid "services"
 msgstr "Zerbitzuak"
 
-#: templates/place.html:147
+#: templates/place.html:146
 msgid "data_source"
 msgstr "Datuen jatorria"
 
-#: templates/place.html:169
-msgid "User Images"
-msgstr "Erabiltzaileen irudiak"
-
-#: templates/place.html:187
-msgid "Add a photo"
-msgstr "Argazkia gehitu"
-
-#: templates/place.html:191
+#: templates/place.html:168
 msgid "Comments"
 msgstr "Iruzkinak"
 
-#: templates/place.html:225
+#: templates/place.html:175
+msgid "Gehitu"
+msgstr "Gehitu"
+
+#: templates/place.html:190
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:230
+#: templates/place.html:195
 msgid "Nearest places"
 msgstr "Gertuko tokiak"
 
@@ -653,6 +698,9 @@ msgstr "Irten"
 #: templates/useroptions.html:16
 msgid "Sign in"
 msgstr "Sartu"
+
+#~ msgid "Add a photo"
+#~ msgstr "Argazkia gehitu"
 
 #~ msgid "Basic account"
 #~ msgstr "Oinarrizko kontua"

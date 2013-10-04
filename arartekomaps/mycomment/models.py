@@ -4,6 +4,7 @@ from photologue.models import Photo
 from arartekomaps.places.models import Place
 from arartekomaps.utils.slug import *
 from django.db.models.signals import post_save
+from django.utils.translation import ugettext_lazy as _
 
 class Comment(models.Model):
     """ """
@@ -44,7 +45,7 @@ class Comment(models.Model):
 
 def send_comment_notification(sender, comment, **kwargs):
     if comment:
-        send_mail('[IRUZKIN BERRIA] ', 'Iruzkin berri bat gorde da: '+comment.body+'\n\n'+settings.HOST+'/admin/mycomment/comment/' + str(comment.id), DEFAULT_FROM_EMAIL,
+        send_mail(_('[NEW COMMENT] '), _('New comment saved: ')+comment.body+'\n\n'+settings.HOST+'/admin/mycomment/comment/' + str(comment.id), DEFAULT_FROM_EMAIL,
             [EMAIL_NOTIFICATION], fail_silently=True)   
     return True
 
