@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-04 16:18+0200\n"
-"PO-Revision-Date: 2013-10-04 16:21+0100\n"
+"POT-Creation-Date: 2013-10-07 11:22+0200\n"
+"PO-Revision-Date: 2013-10-07 11:28+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -484,88 +484,92 @@ msgstr "Ikertzekoa"
 msgid "t"
 msgstr "Ondarea gordetzekoa"
 
-#: templates/dummy_texts.html:85
+#: templates/dummy_texts.html:82
+msgid "e"
+msgstr "Espezializatua"
+
+#: templates/dummy_texts.html:86
 msgid "l"
 msgstr "Librea"
 
-#: templates/dummy_texts.html:86
+#: templates/dummy_texts.html:87
 msgid "r"
 msgstr "Mugatua"
 
-#: templates/dummy_texts.html:90
+#: templates/dummy_texts.html:91
 msgid "p"
 msgstr "Publikoa"
 
-#: templates/dummy_texts.html:92 templates/home.html:64
+#: templates/dummy_texts.html:93 templates/home.html:64
 #: templates/listing.html:32
 msgid "filter"
 msgstr "Filtro aurreratua"
 
-#: templates/dummy_texts.html:93
+#: templates/dummy_texts.html:94
 msgid "search"
 msgstr "Bilatu"
 
-#: templates/dummy_texts.html:98
+#: templates/dummy_texts.html:99
 msgid "ejgv_biblio"
 msgstr "Eusko jaurlaritza. Liburutegi zerbitzua"
 
-#: templates/dummy_texts.html:99
+#: templates/dummy_texts.html:100
 msgid "ejgv-tur-rest"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:100
+#: templates/dummy_texts.html:101
 msgid "ejgv-tur-aloj"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:101
+#: templates/dummy_texts.html:102
 msgid "ejgv-tur-infos"
 msgstr "Eusko Jaurlaritza. Turismo zuzendaritza"
 
-#: templates/dummy_texts.html:102
+#: templates/dummy_texts.html:103
 msgid "Consultrans"
 msgstr "Ararteko"
 
-#: templates/dummy_texts.html:103
+#: templates/dummy_texts.html:104
 msgid "dfa"
 msgstr "Arabako Foru Aldundia"
 
-#: templates/dummy_texts.html:104
+#: templates/dummy_texts.html:105
 msgid "dfb"
 msgstr "Bizkaiko Foru Aldundia"
 
-#: templates/dummy_texts.html:105
+#: templates/dummy_texts.html:106
 msgid "dfg"
 msgstr "Gipuzkoako Foru Aldundia"
 
-#: templates/dummy_texts.html:106
+#: templates/dummy_texts.html:107
 msgid "fekoor"
 msgstr "FEKOOR"
 
-#: templates/dummy_texts.html:108
+#: templates/dummy_texts.html:109
 msgid "agi"
 msgstr "AGI"
 
-#: templates/dummy_texts.html:109
+#: templates/dummy_texts.html:110
 msgid "gorrak"
 msgstr "Euskalgorrak"
 
-#: templates/dummy_texts.html:110
+#: templates/dummy_texts.html:111
 msgid "itxaropena"
 msgstr "Itxaropena Elkartea"
 
-#: templates/dummy_texts.html:111
+#: templates/dummy_texts.html:112
 msgid "eginaren"
 msgstr "Eginaren eginez"
 
-#: templates/dummy_texts.html:112
+#: templates/dummy_texts.html:113
 msgid "once"
 msgstr "ONCE"
 
-#: templates/dummy_texts.html:113
+#: templates/dummy_texts.html:114
 msgid "fevapas"
 msgstr "Fevapas"
 
-#: templates/dummy_texts.html:114
+#: templates/dummy_texts.html:115
 msgid "elkartu"
 msgstr "Elkartu"
 
