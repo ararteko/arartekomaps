@@ -185,7 +185,7 @@ msgstr "Argazkiaren deskribapena"
 
 #: templates/base.html:39
 msgid "Discover and share accessible places"
-msgstr "Aurkitu eta ezagutarazi toki irisgarriak"
+msgstr "Aurkitu eta partekatu toki irisgarriak"
 
 #: templates/base.html:61 templates/base.html.py:68
 #: templates/google_search.html:5 templates/home.html:61

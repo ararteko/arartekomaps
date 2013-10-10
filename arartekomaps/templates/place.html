@@ -58,10 +58,10 @@
 {% endblock %}
 
 {% block main_content %}
-<div id="placecol1">
+<div itemscope itemtype="http://schema.org/LocalBusiness" id="placecol1">
 <img src="{{STATIC_URL}}icn/{{place.icon}}.png" alt="{% trans place.category.str2trans %}" class="mainicon" />
 
-<h1>{{place.name}}</h1>
+<h1 itemprop="name">{{place.name}}</h1>
 
 {% if request.user.is_staff %}
 <a href="{% url admin:places_place_change place.id %}">Modificar este lugar</a>
@@ -77,19 +77,20 @@
 
 {% if def_images %}
   {% for image in def_images %}
-  <a href="{{image.image.url}}" rel="lightbox-group" title="{{image.name}}"><img src="{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
+  <a itemprop="image" href="{{image.image.url}}" rel="lightbox-group" title="{{image.name}}"><img src="{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
   {% endfor %}
 {% endif %}
 
 <address>
-{{place.address1}}
-{% if place.address2 %}<br />{{place.address2}}{% endif %}
+<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+<span itemprop="streetAddress">{{place.address1}}
+{% if place.address2 %}<br />{{place.address2}}{% endif %}</span>
 <br />
-{{place.postalcode}}-{% if place.locality %}{{place.locality}}{% endif %} {{place.city}} 
+<span itemprop="postalCode">{{place.postalcode}}</span>-<span itemprop="addressLocality">{% if place.locality %}{{place.locality}}{% endif %} {{place.city}}</span>
 ({{place.city.parent}})
-{% if place.tlf %}<br /><span class="tlf">{{place.tlf}}</span>{% endif %}
+{% if place.tlf %}<br /><span itemprop="telephone" class="tlf">{{place.tlf}}</span>{% endif %}
 {% if place.fax %}<br /><span class="fax">{{place.fax}}</span>{% endif %}
-{% if place.url %}<br /><span class="web"><a href="{{place.url}}">{% trans "Website" %}</a></span>{% endif %}
+{% if place.url %}<br /><span class="web"><a href="{{place.url}}" itemprop="url">{% trans "Website" %}</a></span>{% endif %}
 
 </p>
 </address>
