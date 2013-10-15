@@ -152,7 +152,7 @@ class PlaceHandler(AnonymousBaseHandler):
             json = {
                 "name": place.name,
                 "slug": place.slug,
-                "category": cat,
+                "category": {"name": cat, "slug": place.category.slug, "icon": place.category.icon()+'.png'},
                 "description": desc,
                 "address1": place.address1,
                 "address2": place.address2,
@@ -256,7 +256,7 @@ class PlacesHandler(AnonymousBaseHandler):
                 json = {
                     "name": place.name,
                     "slug": place.slug,
-                    "category": cat,
+                    "category": {"name": cat, "slug": place.category.slug, "icon": place.category.icon()+'.png'},
                     "description": desc,
                     "address1": place.address1,
                     "address2": place.address2,
