@@ -3,7 +3,7 @@ from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservi
 from arartekomaps.categories.models import Category
 from django import forms
 from django.template.loader import render_to_string
-from django.contrib.comments import Comment
+from arartekomaps.mycomment.models import Comment
 from django.http import HttpResponse
 from django.template import loader, Context
 
