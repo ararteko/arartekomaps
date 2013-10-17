@@ -18,6 +18,8 @@ class Comment(models.Model):
     photo = models.ForeignKey(Photo,null=True, blank=True)
 
     is_public = models.BooleanField(default = True, db_index=True)
+    #ALTER TABLE `mycomment_comment` ADD `is_deleted` BOOLEAN NOT NULL DEFAULT FALSE AFTER `is_public` ;
+    is_deleted = models.BooleanField(default = False, db_index=True)
     public_date = models.DateTimeField(db_index=True)
 
     ip_address  = models.IPAddressField('IP address', blank=True, null=True)    
