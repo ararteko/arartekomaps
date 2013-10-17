@@ -172,8 +172,8 @@ class PlaceHandler(AnonymousBaseHandler):
                 "comments": comment_list
             }
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
-        except:
-            return {'lang': lang, 'action': 'get_place', 'result': 'failed'}
+        except Exception, e::
+            return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': str(e)}
   
 
 class PlacesHandler(AnonymousBaseHandler):
