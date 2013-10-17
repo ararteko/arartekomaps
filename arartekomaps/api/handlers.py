@@ -172,7 +172,7 @@ class PlaceHandler(AnonymousBaseHandler):
                 "comments": comment_list
             }
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
-        except Exception, e::
+        except Exception, e:
             return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': str(e)}
   
 
