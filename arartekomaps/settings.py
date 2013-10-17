@@ -166,7 +166,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'django.contrib.comments',
+    #'django.contrib.comments',
     'arartekomaps',
     'arartekomaps.places',
     'arartekomaps.locations',
