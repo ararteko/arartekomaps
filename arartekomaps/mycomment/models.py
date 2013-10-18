@@ -46,9 +46,9 @@ class Comment(models.Model):
         verbose_name_plural = 'Erantzunak'
 
 
-def send_comment_notification(sender, comment, **kwargs):
-    if comment:
-        send_mail(_('[NUEVO COMENTARIO] '), _('Nuevo comentario guardado: ')+comment.body+'\n\n'+settings.HOST+'/admin/mycomment/comment/' + str(comment.id), settings.DEFAULT_FROM_EMAIL,
+def send_comment_notification(sender, instance, created, **kwargs)::
+    if created:
+        send_mail(_('[NUEVO COMENTARIO] '), _('Nuevo comentario guardado: ')+instance.body+'\n\n'+settings.HOST+'/admin/mycomment/comment/' + str(instance.id), settings.DEFAULT_FROM_EMAIL,
             [settings.EMAIL_NOTIFICATION], fail_silently=True)   
     return True
 
