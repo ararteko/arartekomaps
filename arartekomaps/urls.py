@@ -10,7 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     url(r'^$', 'arartekomaps.views.home', name='home'),
-    (r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /u/login/ ", mimetype="text/plain")),
+    (r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /u/login ", mimetype="text/plain")),
     url(r'^set_lang/$', 'arartekomaps.views.set_language', name='set_lang'),
     
     url(r'^p/save_location/$', 'arartekomaps.places.views.save_location', name='savelocation'),
