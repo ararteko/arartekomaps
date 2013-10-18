@@ -1,4 +1,5 @@
-from arartekomaps.mycomment.models import Comment
+from arartekomaps.mycomment.models import Comment as MyComment
+from django.contrib.comments import Comment
 from django.contrib import admin
 
 class CommentAdmin(admin.ModelAdmin):
@@ -8,4 +9,5 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ['body','author']
     date_hierarchy = 'public_date'
     
-admin.site.register(Comment, CommentAdmin)  
+admin.site.unregister(Comment)
+admin.site.register(MyComment, CommentAdmin)  

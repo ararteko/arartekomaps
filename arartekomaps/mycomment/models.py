@@ -6,6 +6,7 @@ from arartekomaps.utils.slug import *
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.core.mail import send_mail
 
 class Comment(models.Model):
     """ """
@@ -42,8 +43,8 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-added']
-        verbose_name = 'Erantzuna'        
-        verbose_name_plural = 'Erantzunak'
+        verbose_name = 'Iruzkina'        
+        verbose_name_plural = 'Iruzkinak'
 
 
 def send_comment_notification(sender, instance, created, **kwargs):
