@@ -212,7 +212,12 @@ class PlacesHandler(AnonymousBaseHandler):
             args['lon__range'] = (str(maxLon),str(minLon))
 
             if category:
-                args['category__parent__slug'] = category
+                cat = Category.objects.get(slug=category)
+                categories = []
+                for csl in cat.get_children():
+                    categories.append(csl.slug)
+                categories.append(cat.slug)
+                args['category__slug__in'] = categories
 
             if aphysic in ACCESS_KEYS:
                 if aphysic == "a":
