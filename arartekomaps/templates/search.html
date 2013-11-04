@@ -92,7 +92,7 @@
         <select id="cat" name="cat">
             <option value="">{% trans "Any" %}</option>
             {% for tcat in all_cats %}
-            <option value="{{tcat.id}}"{% ifequal tcat.id cat %} selected="selected"{% endifequal %}>{% trans tcat.str2trans %}</option>
+            <option value="{{tcat.id}}"{% ifequal tcat.id cat %} selected="selected"{% endifequal %}>{{tcat}}</option>
             {% endfor %}
         </select><br />
         <p class="frm_help">{% trans "Minimal accessibility" %}</p>
@@ -125,7 +125,7 @@
     <li>
     <img src="{{STATIC_URL}}icn/{% firstof place.icon "city" %}.png" alt="{% if place.category %}{% trans place.category.str2trans %}{% else %}{{ place.name }}{% endif %}" class="mainicon" />
     <h4><a href="{{ place.get_absolute_url }}">{{ place.name }}</a></h4>
-    <p>{% if place.category %}{% trans place.category.str2trans %}{% else %}{{ place.parent.name }}{% endif %}
+    <p>{% if place.category %}{{place.category}}{% else %}{{ place.parent.name }}{% endif %}
     {% if place.city %}- {{ place.city }}{% endif %}</p>
     <dl class="accessibility">
         {% for key,value,vkey,vvalue in place.access_list %}

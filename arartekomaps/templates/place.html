@@ -23,7 +23,11 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-    var contentString = '<p>{{place.name}}</p>';
+    var contentString = '<p>{{place.name}}</p><br /><div class="accessibility">';
+        {% for key,value,vkey,vvalue in place.access_list %}
+        contentString += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>'; 
+        {% endfor %}
+        contentString += '</div>';
     var infowindow = new google.maps.InfoWindow({
     content: contentString
     });    
@@ -67,7 +71,7 @@
 <a href="{% url admin:places_place_change place.id %}">Modificar este lugar</a>
 {% endif %}
 
-<p class="category_name">{% trans place.category.str2trans %}</p>
+<p class="category_name">{{place.category}}</p>
 <dl class="accessibility">
 {% for key,value,vkey,vvalue in place.access_list %}
 <dt class="access_term">{{ vkey }}:</dt>
@@ -200,7 +204,7 @@
     <li>
     <img src="{{STATIC_URL}}icn/{{nearest.icon}}.png" alt="{% trans nearest.category.str2trans %}" class="listicon" />
     <h4><a href="/p/{{nearest.slug}}/">{{nearest.name}}</a></h4>
-    <p>{% trans nearest.category.str2trans %} - {{nearest.city}} ({{dist}} m.)</p>
+    <p>{{nearest.category}} - {{nearest.city}} ({{dist}} m.)</p>
     
     <dl class="accessibility">
         {% for key,value,vkey,vvalue in nearest.access_list %}

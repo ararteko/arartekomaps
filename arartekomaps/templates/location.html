@@ -24,7 +24,11 @@
         var center = new google.maps.LatLng({{place.lat}}, {{place.lon}});
         bounds.extend(center);
         var image = '{{STATIC_URL}}icn/{{place.icon}}.png';        
-        var contentString_{{forloop.counter}} = '<p><a href="{{ place.get_absolute_url }}">{{place.name}}</a><br />{% trans place.category.str2trans %} - {{place.city}}</p>'
+        var contentString_{{forloop.counter}} = '<p><a href="{{ place.get_absolute_url }}">{{place.name}}</a><br />{{place.category}} -  {{ place.city }}</p><br /><div class="accessibility">';
+        {% for key,value,vkey,vvalue in place.access_list %}
+        contentString_{{forloop.parentloop.counter}} += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>'; 
+        {% endfor %}
+        contentString_{{forloop.counter}} += '</div>';
         var marker_{{forloop.counter}} = new google.maps.Marker({
             position: center,
             map: map,
@@ -69,7 +73,7 @@
 <ul id="menu1">
 {% for cat in rootcats %}
     {% ifequal cat.slug maincat %}<li class="selected">{% else %}<li>{% endifequal %}
-    <a href="{{city.get_absolute_url}}{{ cat.slug }}/">{% trans cat.str2trans %}</a></li>
+    <a href="{{city.get_absolute_url}}{{ cat.slug }}/">{{cat}}</a></li>
 {% endfor %}
 </ul>
 
@@ -77,7 +81,7 @@
 <ul id="menu2">
 {% for cat in subcats %}
     {% ifequal cat.slug subcat %}<li class="selected">{% else %}<li>{% endifequal %}
-    <a href="{{city.get_absolute_url}}{{maincat}}/{{ cat.slug }}/">{% trans cat.str2trans %}</a></li>
+    <a href="{{city.get_absolute_url}}{{maincat}}/{{ cat.slug }}/">{{cat}}</a></li>
 {% endfor %}
 </ul>
 {% endif %}
@@ -105,7 +109,7 @@
     <li>
     <img src="{{STATIC_URL}}icn/{{place.icon}}.png" alt="{% trans place.category.str2trans %}" class="mainicon" />
     <h4><a href="{{ place.get_absolute_url }}">{{ place.name }}</a></h4>
-    <p>{% trans place.category.str2trans %}</p>
+    <p>{{place.category}}</p>
     <dl class="accessibility">
         {% for key,value,vkey,vvalue in place.access_list %}
         <dt class="access_term">{{vkey}}</dt>

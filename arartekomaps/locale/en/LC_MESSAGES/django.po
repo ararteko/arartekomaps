@@ -1,0 +1,579 @@
+#: settings.py:62
+msgid "Espanol"
+msgstr ""
+
+#: settings.py:63
+msgid "Euskara"
+msgstr ""
+
+#: settings.py:64
+msgid "English"
+msgstr ""
+
+#: views.py:10 templates/search.html:82 templates/search.html.py:93
+msgid "Any"
+msgstr ""
+
+#: views.py:11
+msgid "Practicable"
+msgstr ""
+
+#: views.py:12
+msgid "Accesible"
+msgstr ""
+
+#: views.py:16 places/models.py:52
+msgid "aphysic"
+msgstr ""
+
+#: views.py:17 places/models.py:53
+msgid "avisual"
+msgstr ""
+
+#: views.py:18 places/models.py:54
+msgid "aaudio"
+msgstr ""
+
+#: views.py:19 places/models.py:55
+msgid "aintelec"
+msgstr ""
+
+#: views.py:20 places/models.py:56
+msgid "aorganic"
+msgstr ""
+
+#: locations/views.py:55
+#, python-format
+msgid "%(parentcatname)s: %(childcatname)s in %(cityname)s"
+msgstr ""
+
+#: locations/views.py:59
+#, python-format
+msgid "%(parentcatname)s in %(cityname)s"
+msgstr ""
+
+#: mycomment/forms.py:8
+msgid "Image"
+msgstr ""
+
+#: mycomment/forms.py:8
+msgid "Accepted formats: jpg, png, gif."
+msgstr ""
+
+#: mycomment/forms.py:14
+msgid "Void messages not accepted. Please, type some text explaining!"
+msgstr ""
+
+#: mycomment/forms.py:28
+#, python-format
+msgid ""
+"The name of the file (%s) has an non standard character and cannot be "
+"processed. Please rename the image before uploading!"
+msgstr ""
+
+#: mycomment/forms.py:31
+#, python-format
+msgid ""
+"The name of the file (%s) is too long. Please rename the image before "
+"uploading!"
+msgstr ""
+
+#: mycomment/forms.py:36
+msgid ""
+"The format of the image is not valid. Please upload an image in an accepted "
+"format!"
+msgstr ""
+
+#: mycomment/models.py:52
+msgid "[NUEVO COMENTARIO] "
+msgstr ""
+
+#: mycomment/models.py:52
+msgid "Nuevo comentario guardado: "
+msgstr ""
+
+#: places/models.py:52 places/models.py:53 places/models.py:54
+#: places/models.py:55 places/models.py:56
+#, python-format
+msgid "access_%s"
+msgstr ""
+
+#: templates/404.html:4 templates/404.html.py:24
+msgid "Not Found error"
+msgstr ""
+
+#: templates/404.html:4 templates/about.html:4 templates/base.html:37
+#: templates/home.html:4 templates/listing.html:4 templates/location.html:4
+#: templates/place.html:6 templates/search.html:4
+msgid "Ararteko maps"
+msgstr ""
+
+#: templates/404.html:12 templates/about.html:12 templates/location.html:56
+#: templates/place.html:47 templates/search.html:59
+#: templates/pages/index.html:12
+msgid "Home"
+msgstr ""
+
+#: templates/404.html:14
+msgid "NotFound"
+msgstr ""
+
+#: templates/404.html:27
+msgid "Sorry, we didn't found what you requested."
+msgstr ""
+
+#: templates/about.html:4 templates/about.html.py:14
+msgid "About"
+msgstr ""
+
+#: templates/about.html:24 templates/base.html:113 templates/home.html:73
+msgid "About the maps"
+msgstr ""
+
+#: templates/about.html:27 templates/home.html:75
+msgid "About: Paragraph 1"
+msgstr ""
+
+#: templates/about.html:31
+msgid "About: Paragraph 2"
+msgstr ""
+
+#: templates/addphoto.html:13 templates/addphoto.html.py:25
+msgid "Add photo"
+msgstr ""
+
+#: templates/addphoto.html:18
+msgid "Select your photo"
+msgstr ""
+
+#: templates/addphoto.html:21
+msgid "Name of the photo"
+msgstr ""
+
+#: templates/base.html:39
+msgid "Discover and share accessible places"
+msgstr ""
+
+#: templates/base.html:61 templates/base.html.py:68
+#: templates/google_search.html:5 templates/home.html:61
+#: templates/listing.html:29 templates/search.html:67
+msgid "Go to..."
+msgstr ""
+
+#: templates/base.html:63 templates/base.html.py:69
+#: templates/google_search.html:6 templates/home.html:62
+#: templates/listing.html:30 templates/search.html:68
+#: templates/search.html.py:114
+msgid "Search"
+msgstr ""
+
+#: templates/base.html:113 templates/place.html:101
+msgid "Accessibility"
+msgstr ""
+
+#: templates/base.html:114
+msgid "Privacy"
+msgstr ""
+
+#: templates/base.html:117
+msgid "Project supported by"
+msgstr ""
+
+#: templates/comments.html:23
+msgid "tell us what you think"
+msgstr ""
+
+#: templates/comments.html:29
+msgid "Comment"
+msgstr ""
+
+#: templates/comments.html:33
+msgid "Add comment"
+msgstr ""
+
+#: templates/comments.html:37
+msgid "Login to comment"
+msgstr ""
+
+#: templates/dummy_texts.html:3
+msgid "access_a"
+msgstr ""
+
+#: templates/dummy_texts.html:4
+msgid "access_p"
+msgstr ""
+
+#: templates/dummy_texts.html:5
+msgid "access_n"
+msgstr ""
+
+#: templates/dummy_texts.html:6
+msgid "access_s"
+msgstr ""
+
+#: templates/dummy_texts.html:11
+msgid "acceso_bbdd"
+msgstr ""
+
+#: templates/dummy_texts.html:12
+msgid "prestamo"
+msgstr ""
+
+#: templates/dummy_texts.html:13
+msgid "hemeroteca"
+msgstr ""
+
+#: templates/dummy_texts.html:14
+msgid "consulta"
+msgstr ""
+
+#: templates/dummy_texts.html:15
+msgid "wifi"
+msgstr ""
+
+#: templates/dummy_texts.html:16
+msgid "reprografia"
+msgstr ""
+
+#: templates/dummy_texts.html:17
+msgid "infor_bibliografica"
+msgstr ""
+
+#: templates/dummy_texts.html:18
+msgid "prestamo_domic"
+msgstr ""
+
+#: templates/dummy_texts.html:19
+msgid "internet_usuarios"
+msgstr ""
+
+#: templates/dummy_texts.html:20
+msgid "prestamo_inter"
+msgstr ""
+
+#: templates/dummy_texts.html:21
+msgid "bol_novedades"
+msgstr ""
+
+#: templates/dummy_texts.html:22
+msgid "selectiva"
+msgstr ""
+
+#: templates/dummy_texts.html:23
+msgid "infantil"
+msgstr ""
+
+#: templates/dummy_texts.html:24
+msgid "seccion_local"
+msgstr ""
+
+#: templates/dummy_texts.html:25
+msgid "comiteca"
+msgstr ""
+
+#: templates/dummy_texts.html:26
+msgid "fondo_antiguo"
+msgstr ""
+
+#: templates/dummy_texts.html:27
+msgid "formacion"
+msgstr ""
+
+#: templates/dummy_texts.html:28
+msgid "sala_estudio"
+msgstr ""
+
+#: templates/dummy_texts.html:29
+msgid "sala_investigacion"
+msgstr ""
+
+#: templates/dummy_texts.html:30
+msgid "visitas_guiadas"
+msgstr ""
+
+#: templates/dummy_texts.html:31
+msgid "publicaciones"
+msgstr ""
+
+#: templates/dummy_texts.html:32
+msgid "audicion"
+msgstr ""
+
+#: templates/dummy_texts.html:34
+msgid "mediateca"
+msgstr ""
+
+#: templates/dummy_texts.html:35
+msgid "lectura_facil"
+msgstr ""
+
+#: templates/dummy_texts.html:36
+msgid "seccion_xl"
+msgstr ""
+
+#: templates/dummy_texts.html:37
+msgid "audiolibros"
+msgstr ""
+
+#: templates/dummy_texts.html:39
+msgid "general"
+msgstr ""
+
+#: templates/dummy_texts.html:40
+msgid "euskalkultura"
+msgstr ""
+
+#: templates/dummy_texts.html:41
+msgid "especializada"
+msgstr ""
+
+#: templates/dummy_texts.html:42
+msgid "musica"
+msgstr ""
+
+#: templates/dummy_texts.html:44
+msgid "ayto"
+msgstr ""
+
+#: templates/dummy_texts.html:45
+msgid "auto"
+msgstr ""
+
+#: templates/dummy_texts.html:46
+msgid "priv"
+msgstr ""
+
+#: templates/dummy_texts.html:47
+msgid "fora"
+msgstr ""
+
+#: templates/dummy_texts.html:51
+msgid "i"
+msgstr ""
+
+#: templates/dummy_texts.html:52
+msgid "v"
+msgstr ""
+
+#: templates/dummy_texts.html:53
+msgid "t"
+msgstr ""
+
+#: templates/dummy_texts.html:54
+msgid "e"
+msgstr ""
+
+#: templates/dummy_texts.html:58
+msgid "l"
+msgstr ""
+
+#: templates/dummy_texts.html:59
+msgid "r"
+msgstr ""
+
+#: templates/dummy_texts.html:63
+msgid "p"
+msgstr ""
+
+#: templates/dummy_texts.html:65 templates/home.html:64
+#: templates/listing.html:32
+msgid "filter"
+msgstr ""
+
+#: templates/dummy_texts.html:66
+msgid "search"
+msgstr ""
+
+#: templates/dummy_texts.html:71
+msgid "ejgv_biblio"
+msgstr ""
+
+#: templates/dummy_texts.html:72
+msgid "ejgv-tur-rest"
+msgstr ""
+
+#: templates/dummy_texts.html:73
+msgid "ejgv-tur-aloj"
+msgstr ""
+
+#: templates/dummy_texts.html:74
+msgid "ejgv-tur-infos"
+msgstr ""
+
+#: templates/dummy_texts.html:75
+msgid "Consultrans"
+msgstr ""
+
+#: templates/dummy_texts.html:76
+msgid "dfa"
+msgstr ""
+
+#: templates/dummy_texts.html:77
+msgid "dfb"
+msgstr ""
+
+#: templates/dummy_texts.html:78
+msgid "dfg"
+msgstr ""
+
+#: templates/dummy_texts.html:79
+msgid "fekoor"
+msgstr ""
+
+#: templates/dummy_texts.html:81
+msgid "agi"
+msgstr ""
+
+#: templates/dummy_texts.html:82
+msgid "gorrak"
+msgstr ""
+
+#: templates/dummy_texts.html:83
+msgid "itxaropena"
+msgstr ""
+
+#: templates/dummy_texts.html:84
+msgid "eginaren"
+msgstr ""
+
+#: templates/dummy_texts.html:85
+msgid "once"
+msgstr ""
+
+#: templates/dummy_texts.html:86
+msgid "fevapas"
+msgstr ""
+
+#: templates/dummy_texts.html:87
+msgid "elkartu"
+msgstr ""
+
+#: templates/google_search.html:8 templates/search.html:69
+#: templates/search.html.py:118
+msgid "Advanced filter"
+msgstr ""
+
+#: templates/home.html:77
+msgid "Read more"
+msgstr ""
+
+#: templates/home.html:85
+msgid "Visit this places"
+msgstr ""
+
+#: templates/home.html:99
+msgid "Last places"
+msgstr ""
+
+#: templates/location.html:100
+#, python-format
+msgid "Visit full %(cityname)s"
+msgstr ""
+
+#: templates/location.html:120 templates/search.html:141
+msgid "Previous"
+msgstr ""
+
+#: templates/location.html:124 templates/search.html:145
+msgid "Next"
+msgstr ""
+
+#: templates/place.html:93
+msgid "Website"
+msgstr ""
+
+#: templates/place.html:114
+msgid "detailed file"
+msgstr ""
+
+#: templates/place.html:121
+msgid "Library"
+msgstr ""
+
+#: templates/place.html:123
+msgid "btype"
+msgstr ""
+
+#: templates/place.html:125
+msgid "start_year"
+msgstr ""
+
+#: templates/place.html:127
+msgid "institution"
+msgstr ""
+
+#: templates/place.html:129
+msgid "open_times"
+msgstr ""
+
+#: templates/place.html:131
+msgid "access_type"
+msgstr ""
+
+#: templates/place.html:133
+msgid "center_type"
+msgstr ""
+
+#: templates/place.html:135
+msgid "topics"
+msgstr ""
+
+#: templates/place.html:137
+msgid "services"
+msgstr ""
+
+#: templates/place.html:147
+msgid "data_source"
+msgstr ""
+
+#: templates/place.html:169
+msgid "Comments"
+msgstr ""
+
+#: templates/place.html:176
+msgid "Gehitu"
+msgstr ""
+
+#: templates/place.html:191
+msgid "Map"
+msgstr ""
+
+#: templates/place.html:196
+msgid "Nearest places"
+msgstr ""
+
+#: templates/search.html:4 templates/search.html.py:61
+msgid "Search results"
+msgstr ""
+
+#: templates/search.html:80
+msgid "City"
+msgstr ""
+
+#: templates/search.html:91
+msgid "Category"
+msgstr ""
+
+#: templates/search.html:98
+msgid "Minimal accessibility"
+msgstr ""
+
+#: templates/search.html:121
+msgid "Total results:"
+msgstr ""
+
+#: templates/useroptions.html:5
+msgid "User's photo"
+msgstr ""
+
+#: templates/useroptions.html:10
+msgid "Your profile"
+msgstr ""
+
+#: templates/useroptions.html:11
+msgid "Sign out"
+msgstr ""
+
+#: templates/useroptions.html:16
+msgid "Sign in"
+msgstr ""

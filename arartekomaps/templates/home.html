@@ -21,7 +21,12 @@
         var center = new google.maps.LatLng({{place.lat}}, {{place.lon}});
         bounds.extend(center);
         var image = '{{STATIC_URL}}icn/{{place.icon}}.png';        
-        var contentString_{{forloop.counter}} = '<p><a href="{{ place.get_absolute_url }}">{{place.name}}</a><br />{{place.category}} -  {{ place.city }}</p>'
+        var contentString_{{forloop.counter}} = '<p><a href="{{ place.get_absolute_url }}">{{place.name}}</a><br />{{place.category}} -  {{ place.city }}</p><br /><div class="accessibility">';
+        {% for key,value,vkey,vvalue in place.access_list %}
+        contentString_{{forloop.parentloop.counter}} += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>'; 
+        {% endfor %}
+        contentString_{{forloop.counter}} += '</div>'; 
+        //alert(contentString_{{forloop.counter}}); 
         var marker_{{forloop.counter}} = new google.maps.Marker({
             position: center,
             map: map,
@@ -102,7 +107,7 @@
     <li>
     <img src="{{STATIC_URL}}icn/{{place.icon}}.png" alt="{{place.category}}" class="mainicon" />
     <h4><a href="{{ place.get_absolute_url }}">{{ place.name }}</a></h4>
-    <p>{% trans place.category.str2trans %} - {{ place.city }}</p>
+    <p>{{place.category}} - {{ place.city }}</p>
     <dl class="accessibility">
         {% for key,value,vkey,vvalue in place.access_list %}
         <dt class="access_term">{{key}}</dt>

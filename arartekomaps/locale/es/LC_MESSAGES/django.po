@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-07 11:22+0200\n"
+"POT-Creation-Date: 2013-10-31 13:54+0100\n"
 "PO-Revision-Date: 2013-10-07 11:28+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,6 +25,10 @@ msgstr "Español"
 #: settings.py:63
 msgid "Euskara"
 msgstr "Euskara"
+
+#: settings.py:64
+msgid "English"
+msgstr ""
 
 #: views.py:10 templates/search.html:82 templates/search.html.py:93
 msgid "Any"
@@ -61,11 +66,6 @@ msgstr "Orgánica"
 #, python-format
 msgid "%(parentcatname)s: %(childcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s: %(childcatname)s en %(cityname)s"
-
-#: locations/views.py:55 locations/views.py:59
-#, python-format
-msgid "cat_%s"
-msgstr "cat_%s"
 
 #: locations/views.py:59
 #, python-format
@@ -110,12 +110,14 @@ msgstr ""
 "El formato de la imagen no es válido. Por favor carga una imagen en uno de "
 "los formatos aceptados!"
 
-#: mycomment/models.py:48
-msgid "[NEW COMMENT] "
+#: mycomment/models.py:52
+#, fuzzy
+msgid "[NUEVO COMENTARIO] "
 msgstr "[NUEVO COMENTARIO] "
 
-#: mycomment/models.py:48
-msgid "New comment saved: "
+#: mycomment/models.py:52
+#, fuzzy
+msgid "Nuevo comentario guardado: "
 msgstr "Nuevo comentario guardado: "
 
 #: places/models.py:52 places/models.py:53 places/models.py:54
@@ -199,7 +201,7 @@ msgstr "Ir a..."
 msgid "Search"
 msgstr "Buscar"
 
-#: templates/base.html:113 templates/place.html:100
+#: templates/base.html:113 templates/place.html:101
 msgid "Accessibility"
 msgstr "Accesibilidad"
 
@@ -228,347 +230,255 @@ msgid "Login to comment"
 msgstr "Entra para comentar"
 
 #: templates/dummy_texts.html:3
-msgid "cat_tourism"
-msgstr "Turismo"
-
-#: templates/dummy_texts.html:5
-msgid "cat_sleep"
-msgstr "Alojamiento"
-
-#: templates/dummy_texts.html:6
-msgid "cat_hotel"
-msgstr "Hotel"
-
-#: templates/dummy_texts.html:7
-msgid "cat_agroturismo"
-msgstr "Agroturismo"
-
-#: templates/dummy_texts.html:8
-msgid "cat_apartamento"
-msgstr "Apartamentos"
-
-#: templates/dummy_texts.html:9
-msgid "cat_camping"
-msgstr "Camping"
-
-#: templates/dummy_texts.html:10
-msgid "cat_casa-particular"
-msgstr "Casa particular"
-
-#: templates/dummy_texts.html:11
-msgid "cat_casa-rural"
-msgstr "Casa rural"
-
-#: templates/dummy_texts.html:12
-msgid "cat_hotel-apartamento"
-msgstr "Hotel-apartamento"
-
-#: templates/dummy_texts.html:13
-msgid "cat_pension"
-msgstr "Pensión"
-
-#: templates/dummy_texts.html:14
-msgid "cat_albergue"
-msgstr "Albergue"
-
-#: templates/dummy_texts.html:16
-msgid "cat_eat"
-msgstr "Comer"
-
-#: templates/dummy_texts.html:17
-msgid "cat_restaurant"
-msgstr "Restaurante"
-
-#: templates/dummy_texts.html:18
-msgid "cat_sidreria"
-msgstr "Sidrería"
-
-#: templates/dummy_texts.html:19
-msgid "cat_asador"
-msgstr "Asador"
-
-#: templates/dummy_texts.html:21
-msgid "cat_transportation"
-msgstr "Transporte"
-
-#: templates/dummy_texts.html:22
-msgid "cat_bus"
-msgstr "Autobús"
-
-#: templates/dummy_texts.html:23
-msgid "cat_train"
-msgstr "Tren"
-
-#: templates/dummy_texts.html:24
-msgid "cat_tram"
-msgstr "Tranvía"
-
-#: templates/dummy_texts.html:25
-msgid "cat_metro"
-msgstr "Metro"
-
-#: templates/dummy_texts.html:27
-msgid "cat_culture"
-msgstr "Cultura"
-
-#: templates/dummy_texts.html:28
-msgid "cat_library"
-msgstr "Biblioteca"
-
-#: templates/dummy_texts.html:29
-msgid "cat_museum"
-msgstr "Museo"
-
-#: templates/dummy_texts.html:31
 msgid "access_a"
 msgstr "Accesible"
 
-#: templates/dummy_texts.html:32
+#: templates/dummy_texts.html:4
 msgid "access_p"
 msgstr "Practicable"
 
-#: templates/dummy_texts.html:33
+#: templates/dummy_texts.html:5
 msgid "access_n"
 msgstr "No accesible"
 
-#: templates/dummy_texts.html:34
+#: templates/dummy_texts.html:6
 msgid "access_s"
 msgstr "Sin datos"
 
-#: templates/dummy_texts.html:39
+#: templates/dummy_texts.html:11
 msgid "acceso_bbdd"
 msgstr "Acceso a bases de datos"
 
-#: templates/dummy_texts.html:40
+#: templates/dummy_texts.html:12
 msgid "prestamo"
 msgstr "Préstamo"
 
-#: templates/dummy_texts.html:41
+#: templates/dummy_texts.html:13
 msgid "hemeroteca"
 msgstr "Hemeroteca"
 
-#: templates/dummy_texts.html:42
+#: templates/dummy_texts.html:14
 msgid "consulta"
 msgstr "Consulta"
 
-#: templates/dummy_texts.html:43
+#: templates/dummy_texts.html:15
 msgid "wifi"
 msgstr "Wi-fi"
 
-#: templates/dummy_texts.html:44
+#: templates/dummy_texts.html:16
 msgid "reprografia"
 msgstr "Reprografía"
 
-#: templates/dummy_texts.html:45
+#: templates/dummy_texts.html:17
 msgid "infor_bibliografica"
 msgstr "Información bibliográfica"
 
-#: templates/dummy_texts.html:46
+#: templates/dummy_texts.html:18
 msgid "prestamo_domic"
 msgstr "Préstamo domiciliario"
 
-#: templates/dummy_texts.html:47
+#: templates/dummy_texts.html:19
 msgid "internet_usuarios"
 msgstr "Internet para usuarios"
 
-#: templates/dummy_texts.html:48
+#: templates/dummy_texts.html:20
 msgid "prestamo_inter"
 msgstr "Préstamo interbibliotecario"
 
-#: templates/dummy_texts.html:49
+#: templates/dummy_texts.html:21
 msgid "bol_novedades"
 msgstr "Boletín de novedades"
 
-#: templates/dummy_texts.html:50
+#: templates/dummy_texts.html:22
 msgid "selectiva"
 msgstr "Selectiva"
 
-#: templates/dummy_texts.html:51
+#: templates/dummy_texts.html:23
 msgid "infantil"
 msgstr "Fondo infantil"
 
-#: templates/dummy_texts.html:52
+#: templates/dummy_texts.html:24
 msgid "seccion_local"
 msgstr "Fondo local"
 
-#: templates/dummy_texts.html:53
+#: templates/dummy_texts.html:25
 msgid "comiteca"
 msgstr "Comiteca"
 
-#: templates/dummy_texts.html:54
+#: templates/dummy_texts.html:26
 msgid "fondo_antiguo"
 msgstr "Fondo antiguo"
 
-#: templates/dummy_texts.html:55
+#: templates/dummy_texts.html:27
 msgid "formacion"
 msgstr "Formación de usuarios"
 
-#: templates/dummy_texts.html:56
+#: templates/dummy_texts.html:28
 msgid "sala_estudio"
 msgstr "Sala de estudio"
 
-#: templates/dummy_texts.html:57
+#: templates/dummy_texts.html:29
 msgid "sala_investigacion"
 msgstr "Sala de investigación"
 
-#: templates/dummy_texts.html:58
+#: templates/dummy_texts.html:30
 msgid "visitas_guiadas"
 msgstr "Visitas guiadas"
 
-#: templates/dummy_texts.html:59
+#: templates/dummy_texts.html:31
 msgid "publicaciones"
 msgstr "Publicaciones"
 
-#: templates/dummy_texts.html:60
+#: templates/dummy_texts.html:32
 msgid "audicion"
 msgstr "Audición"
 
-#: templates/dummy_texts.html:62
+#: templates/dummy_texts.html:34
 msgid "mediateca"
 msgstr "Mediateca"
 
-#: templates/dummy_texts.html:63
+#: templates/dummy_texts.html:35
 msgid "lectura_facil"
 msgstr "Lectura fácil"
 
-#: templates/dummy_texts.html:64
+#: templates/dummy_texts.html:36
 msgid "seccion_xl"
 msgstr "Sección XL"
 
-#: templates/dummy_texts.html:65
+#: templates/dummy_texts.html:37
 msgid "audiolibros"
 msgstr "Audiolibros"
 
-#: templates/dummy_texts.html:67
+#: templates/dummy_texts.html:39
 msgid "general"
 msgstr "General"
 
-#: templates/dummy_texts.html:68
+#: templates/dummy_texts.html:40
 msgid "euskalkultura"
 msgstr "Cultura vasca"
 
-#: templates/dummy_texts.html:69
+#: templates/dummy_texts.html:41
 msgid "especializada"
 msgstr "Especializada"
 
-#: templates/dummy_texts.html:70
+#: templates/dummy_texts.html:42
 msgid "musica"
 msgstr "Música"
 
-#: templates/dummy_texts.html:72
+#: templates/dummy_texts.html:44
 msgid "ayto"
 msgstr "Municipal"
 
-#: templates/dummy_texts.html:73
+#: templates/dummy_texts.html:45
 msgid "auto"
 msgstr "Autonómica"
 
-#: templates/dummy_texts.html:74
+#: templates/dummy_texts.html:46
 msgid "priv"
 msgstr "Privada"
 
-#: templates/dummy_texts.html:75
+#: templates/dummy_texts.html:47
 msgid "fora"
 msgstr "Foral"
 
-#: templates/dummy_texts.html:79
+#: templates/dummy_texts.html:51
 msgid "i"
 msgstr "Infantil"
 
-#: templates/dummy_texts.html:80
+#: templates/dummy_texts.html:52
 msgid "v"
 msgstr "Investigación"
 
-#: templates/dummy_texts.html:81
+#: templates/dummy_texts.html:53
 msgid "t"
 msgstr "Patrimonial"
 
-#: templates/dummy_texts.html:82
+#: templates/dummy_texts.html:54
 msgid "e"
 msgstr "Especializada"
 
-#: templates/dummy_texts.html:86
+#: templates/dummy_texts.html:58
 msgid "l"
 msgstr "Libre"
 
-#: templates/dummy_texts.html:87
+#: templates/dummy_texts.html:59
 msgid "r"
 msgstr "Restringido"
 
-#: templates/dummy_texts.html:91
+#: templates/dummy_texts.html:63
 msgid "p"
 msgstr "Público"
 
-#: templates/dummy_texts.html:93 templates/home.html:64
+#: templates/dummy_texts.html:65 templates/home.html:64
 #: templates/listing.html:32
 msgid "filter"
 msgstr "Filtro avanzado"
 
-#: templates/dummy_texts.html:94
+#: templates/dummy_texts.html:66
 msgid "search"
 msgstr "Buscar"
 
-#: templates/dummy_texts.html:99
+#: templates/dummy_texts.html:71
 msgid "ejgv_biblio"
 msgstr "Gobierno vasco. Servicio de Bibliotecas"
 
-#: templates/dummy_texts.html:100
+#: templates/dummy_texts.html:72
 msgid "ejgv-tur-rest"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:101
+#: templates/dummy_texts.html:73
 msgid "ejgv-tur-aloj"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:102
+#: templates/dummy_texts.html:74
 msgid "ejgv-tur-infos"
 msgstr "Gobierno vasco. Dirección de Turismo"
 
-#: templates/dummy_texts.html:103
+#: templates/dummy_texts.html:75
 msgid "Consultrans"
 msgstr "Ararteko"
 
-#: templates/dummy_texts.html:104
+#: templates/dummy_texts.html:76
 msgid "dfa"
 msgstr "Diputación Foral de Álava"
 
-#: templates/dummy_texts.html:105
+#: templates/dummy_texts.html:77
 msgid "dfb"
 msgstr "Diputación Foral de Bizkaia"
 
-#: templates/dummy_texts.html:106
+#: templates/dummy_texts.html:78
 msgid "dfg"
 msgstr "Diputación Foral de Gipuzkoa"
 
-#: templates/dummy_texts.html:107
+#: templates/dummy_texts.html:79
 msgid "fekoor"
 msgstr "FEKOOR"
 
-#: templates/dummy_texts.html:109
+#: templates/dummy_texts.html:81
 msgid "agi"
 msgstr "AGI"
 
-#: templates/dummy_texts.html:110
+#: templates/dummy_texts.html:82
 msgid "gorrak"
 msgstr "Euskalgorrak"
 
-#: templates/dummy_texts.html:111
+#: templates/dummy_texts.html:83
 msgid "itxaropena"
 msgstr "Asociación Itxaropena"
 
-#: templates/dummy_texts.html:112
+#: templates/dummy_texts.html:84
 msgid "eginaren"
 msgstr "Eginaren eginez"
 
-#: templates/dummy_texts.html:113
+#: templates/dummy_texts.html:85
 msgid "once"
 msgstr "ONCE"
 
-#: templates/dummy_texts.html:114
+#: templates/dummy_texts.html:86
 msgid "fevapas"
 msgstr "Fevapas"
 
-#: templates/dummy_texts.html:115
+#: templates/dummy_texts.html:87
 msgid "elkartu"
 msgstr "Elkartu"
 
@@ -602,67 +512,67 @@ msgstr "Anteriores"
 msgid "Next"
 msgstr "Siguientes"
 
-#: templates/place.html:92
+#: templates/place.html:93
 msgid "Website"
 msgstr "Sitio web"
 
-#: templates/place.html:113
+#: templates/place.html:114
 msgid "detailed file"
 msgstr "Ficha detallada"
 
-#: templates/place.html:120
+#: templates/place.html:121
 msgid "Library"
 msgstr "Biblioteca"
 
-#: templates/place.html:122
+#: templates/place.html:123
 msgid "btype"
 msgstr "Tipo"
 
-#: templates/place.html:124
+#: templates/place.html:125
 msgid "start_year"
 msgstr "Año apertura"
 
-#: templates/place.html:126
+#: templates/place.html:127
 msgid "institution"
 msgstr "Institución"
 
-#: templates/place.html:128
+#: templates/place.html:129
 msgid "open_times"
 msgstr "Horario"
 
-#: templates/place.html:130
+#: templates/place.html:131
 msgid "access_type"
 msgstr "Tipo de acceso"
 
-#: templates/place.html:132
+#: templates/place.html:133
 msgid "center_type"
 msgstr "Tipo de centro"
 
-#: templates/place.html:134
+#: templates/place.html:135
 msgid "topics"
 msgstr "Temas"
 
-#: templates/place.html:136
+#: templates/place.html:137
 msgid "services"
 msgstr "Servicios"
 
-#: templates/place.html:146
+#: templates/place.html:147
 msgid "data_source"
 msgstr "Fuente de los datos"
 
-#: templates/place.html:168
+#: templates/place.html:169
 msgid "Comments"
 msgstr "Comentarios"
 
-#: templates/place.html:175
+#: templates/place.html:176
 msgid "Gehitu"
 msgstr "Añadir"
 
-#: templates/place.html:190
+#: templates/place.html:191
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:195
+#: templates/place.html:196
 msgid "Nearest places"
 msgstr "Lugares cercanos"
 
@@ -701,6 +611,78 @@ msgstr "Salir"
 #: templates/useroptions.html:16
 msgid "Sign in"
 msgstr "Entrar"
+
+#~ msgid "cat_tourism"
+#~ msgstr "Turismo"
+
+#~ msgid "cat_sleep"
+#~ msgstr "Alojamiento"
+
+#~ msgid "cat_hotel"
+#~ msgstr "Hotel"
+
+#~ msgid "cat_agroturismo"
+#~ msgstr "Agroturismo"
+
+#~ msgid "cat_apartamento"
+#~ msgstr "Apartamentos"
+
+#~ msgid "cat_camping"
+#~ msgstr "Camping"
+
+#~ msgid "cat_casa-particular"
+#~ msgstr "Casa particular"
+
+#~ msgid "cat_casa-rural"
+#~ msgstr "Casa rural"
+
+#~ msgid "cat_hotel-apartamento"
+#~ msgstr "Hotel-apartamento"
+
+#~ msgid "cat_pension"
+#~ msgstr "Pensión"
+
+#~ msgid "cat_albergue"
+#~ msgstr "Albergue"
+
+#~ msgid "cat_eat"
+#~ msgstr "Comer"
+
+#~ msgid "cat_restaurant"
+#~ msgstr "Restaurante"
+
+#~ msgid "cat_sidreria"
+#~ msgstr "Sidrería"
+
+#~ msgid "cat_asador"
+#~ msgstr "Asador"
+
+#~ msgid "cat_transportation"
+#~ msgstr "Transporte"
+
+#~ msgid "cat_bus"
+#~ msgstr "Autobús"
+
+#~ msgid "cat_train"
+#~ msgstr "Tren"
+
+#~ msgid "cat_tram"
+#~ msgstr "Tranvía"
+
+#~ msgid "cat_metro"
+#~ msgstr "Metro"
+
+#~ msgid "cat_culture"
+#~ msgstr "Cultura"
+
+#~ msgid "cat_library"
+#~ msgstr "Biblioteca"
+
+#~ msgid "cat_museum"
+#~ msgstr "Museo"
+
+#~ msgid "cat_%s"
+#~ msgstr "cat_%s"
 
 #~ msgid "Add a photo"
 #~ msgstr "Añadir foto"

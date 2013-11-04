@@ -5,6 +5,7 @@ from arartekomaps.locations.models import Location
 from arartekomaps.locations.utils import slugify
 import xlrd, StringIO, urllib2
 from arartekomaps.utils.load_images import loadUrlImage
+import os
 
 class Command(BaseCommand):
     args = 'file_abs_path'
@@ -18,6 +19,7 @@ class Command(BaseCommand):
              'accesible': 'a'}
     
     def handle(self, *args, **options):
+        print os.listdir('.')
         f = xlrd.open_workbook(args[0])
         sh = f.sheet_by_index(0)
         kont = 1
@@ -102,7 +104,7 @@ class Command(BaseCommand):
             place.fax = fax[:15]
             place.url = url
             place.email = ''
-            place.save()
+            #place.save()
             
             access = Access()
             access.aphysic = self.ADICT[acc_fis.lower().strip()]
@@ -111,7 +113,7 @@ class Command(BaseCommand):
             access.aintelec = self.ADICT[acc_int.lower().strip()]
             access.aorganic = self.ADICT[acc_org.lower().strip()]
             access.place = place
-            access.save()
+            #access.save()
 
                         
                         
