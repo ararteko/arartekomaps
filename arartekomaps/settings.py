@@ -61,6 +61,7 @@ gettext_noop = lambda s: s
 PAGE_LANGUAGES = (
   ('es', gettext_noop('Espanol')),
   ('eu', gettext_noop('Euskara')),
+  ('en', gettext_noop('English')),
 )
 
 """
