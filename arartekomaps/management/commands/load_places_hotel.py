@@ -5,11 +5,13 @@ from arartekomaps.locations.models import Location
 from arartekomaps.locations.utils import slugify
 import xlrd, StringIO, urllib2
 from arartekomaps.utils.load_images import loadUrlImage
+from arartekomaps.settings import IMPORT_FILES_FOLDER
+
 import os
 
 class Command(BaseCommand):
     args = 'file_abs_path'
-    help = 'Upload places from file (CSV)'
+    help = 'Upload places from file (XLS)'
     ADICT = {'inaccesible':'n',
              'no_accesible':'n',
              'sin datos': 's',
@@ -19,8 +21,9 @@ class Command(BaseCommand):
              'accesible': 'a'}
     
     def handle(self, *args, **options):
-        print os.listdir('.')
-        f = xlrd.open_workbook(args[0])
+        filename = args[0]
+        full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
+        f = xlrd.open_workbook(full_path)
         sh = f.sheet_by_index(0)
         kont = 1
         ercnt =1
