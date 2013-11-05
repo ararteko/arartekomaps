@@ -21,6 +21,7 @@ class Command(BaseCommand):
              'accesible': 'a'}
     
     def handle(self, *args, **options):
+        saving = 1
         filename = args[0]
         full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
         f = xlrd.open_workbook(full_path)
@@ -37,7 +38,7 @@ class Command(BaseCommand):
         for rownum in range(sh.nrows)[1:]:
             fields = sh.row_values(rownum)
 
-            if len(fields)!=26:
+            if len(fields)!=25:
                 print 'Tenemos mas o menos de 25 campos'
                 n = 1
                 for field in fields:
@@ -56,9 +57,11 @@ class Command(BaseCommand):
             if len(rel_cat)>0:
                 cat_obj = Category.objects.get(slug=cat)
             else:
+                print 'WARNING: Missing cat:', rcat
                 parentcat = Category.objects.get(slug='sleep')
                 cat_obj = Category(slug=cat,name=cat,parent=parentcat)
-                cat_obj.save()
+                if saving:
+                    cat_obj.save()
                                  
             ent_origen = 'ejgv-tur-aloj'
                    
@@ -70,19 +73,24 @@ class Command(BaseCommand):
             if location:
                 loc_obj = location[0]
             else:
-                print ercnt,'ERROREA TOKI EZEZAGUNA', titulo, cp, pob, kont
+                print ercnt,'WARNING: New place', titulo, cp, pob, kont
                 uloc[pob]=uloc.get(pob,0)+1
                 ercnt = ercnt+1
                 break
      
-            place = Place()
-            place.slug = slugify(slug.split('/')[2])
+            places = Place.objects.filter(source_id=cod_origen)
+            if len(places)<1:
+                places = Place.objects.filter(source_id=str(int(cod_origen)))
+
+            if len(places)>0:
+                place = places[0]
+                print 'GUAY', slug, cod_origen
+            else:
+                place = Place()
+                place.slug = slugify(slug.split('/')[2])
+                print 'NEW!!', slug, cod_origen
             
-            try:
-                print kont, titulo, place.slug, loc_obj.name
-            except:
-                print place.slug
-            print "##%s##" % tel, len(tel) 
+
             place.name = titulo
             place.category = cat_obj
             place.description = desc
@@ -98,34 +106,42 @@ class Command(BaseCommand):
             place.locality = loc
             place.description = desc
             place.source = ent_origen
-            place.source_id = cod_origen
+            place.source_id = "%d" % int(cod_origen)
             if lat:
                 place.lat = lat
             if lon:
                 place.lon = lon
-            place.tlf = tel[:30]
-            place.fax = fax[:15]
+            place.tlf = ''.join(tel[:30].split())
+            place.fax = ''.join(fax[:15].split())
             place.url = url
             place.email = ''
-            #place.save()
+            if saving:
+                place.save()
             
-            access = Access()
+            accesses = Access.objects.filter(place=place)
+            if len(accesses)>0:
+                access = accesses[0]
+            else:
+                access = Access()
+                access.place = place
             access.aphysic = self.ADICT[acc_fis.lower().strip()]
             access.avisual = self.ADICT[acc_vis.lower().strip()]
             access.aaudio = self.ADICT[acc_aud.lower().strip()]
             access.aintelec = self.ADICT[acc_int.lower().strip()]
             access.aorganic = self.ADICT[acc_org.lower().strip()]
-            access.place = place
-            #access.save()
+            
+            if saving:
+                access.save()
 
                         
                         
             foto_x = foto_x.replace('http://turismo.euskadi.net/contenidos/a_alojamiento/ ','http://turismo.euskadi.net/x65-12375/es/contenidos/a_alojamiento/')
-            print foto_x
-            t_place = place #Place.objects.get(slug='bib-ikaztegieta')
+            #print foto_x
+            t_place = place
             has_point = foto_x.split('/')[-1].find('.')
             if has_point>-1:
-                image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )            
+                if saving:
+                    image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )            
             kont += 1
 
         print uloc

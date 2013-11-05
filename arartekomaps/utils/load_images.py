@@ -25,21 +25,28 @@ def _getUrlImage(url):
 
 
 def loadUrlImage(url, place, name='', format='jpg'):
-    """ """
+    """ 
+    Only called from importers. Be aware that we overwrite an image if
+    it exists!!
+    """
+    
     if not url:
         url = 'http://irudiak.argazkiak.org/1d3023545b4051907e533648e66329f8_c.jpg'
         name = 'Kakalardoa'
 
     if " " in url:
-        #import pdb
-        #pdb.set_trace()
         a=1
     image = _getUrlImage(url)
 
     if not image:
         return 0
 
-    photo = MPhoto()
+    photos = MPhoto.objects.filter(place=place)
+    if len(photos)>0:
+        photo = photos[0]
+    else:
+        photo = MPhoto()
+        
     photo.name = name[:100]
     photo.place = place
     
