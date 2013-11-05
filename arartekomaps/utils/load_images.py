@@ -45,7 +45,10 @@ def loadUrlImage(url, place, name='', format='jpg'):
     photo.place = place
     photo.def_img = True
     
-    image_t = Image.open(ContentFile(image.read()))
+    try:
+        image_t = Image.open(ContentFile(image.read()))
+    except:
+        return photo
     image_t = image_t.convert("RGB")
     f=StringIO()
     image_t.save(f,"JPEG")

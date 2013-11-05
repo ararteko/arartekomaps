@@ -45,7 +45,8 @@ class Command(BaseCommand):
 
         for rownum in range(sh.nrows)[1:]:
             fields = sh.row_values(rownum)
-
+            print '############################'
+            print kont
             if len(fields)!=25:
                 print 'Tenemos mas o menos de 25 campos'
                 n = 1
@@ -93,12 +94,12 @@ class Command(BaseCommand):
 
             if len(places)>0:
                 place = places[0]
-                print 'GUAY', slug, cod_origen
+                print 'EDIT:', slug, cod_origen
             else:
                 place = Place()
                 print slug
                 place.slug = slugify(slug.split('/')[2])
-                print 'NEW!!', slug, cod_origen
+                print 'NEW:', slug, cod_origen
             
 
             place.name = titulo
@@ -110,7 +111,7 @@ class Command(BaseCommand):
             place.address2 = direc2
             if len(cp)<5:
                 cp = "0%s" % cp
-            place.postalcode = cp
+            place.postalcode = cp.strip()
             try:
                 place.city = loc_obj
             except:

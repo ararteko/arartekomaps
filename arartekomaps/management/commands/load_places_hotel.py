@@ -82,11 +82,11 @@ class Command(BaseCommand):
 
             if len(places)>0:
                 place = places[0]
-                print 'GUAY', slug, cod_origen
+                print 'EDIT:', slug, cod_origen
             else:
                 place = Place()
                 place.slug = slugify(slug.split('/')[2])
-                print 'NEW!!', slug, cod_origen
+                print 'NEW:', slug, cod_origen
             
 
             place.name = titulo
@@ -98,7 +98,7 @@ class Command(BaseCommand):
             place.address2 = direc2
             if len(cp)<5:
                 cp = "0%s" % cp
-            place.postalcode = cp
+            place.postalcode = cp.strip()
             try:
                 place.city = loc_obj
             except:
