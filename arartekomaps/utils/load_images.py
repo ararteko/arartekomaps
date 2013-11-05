@@ -30,12 +30,6 @@ def loadUrlImage(url, place, name='', format='jpg'):
     it exists!!
     """
     
-    if not url:
-        url = 'http://irudiak.argazkiak.org/1d3023545b4051907e533648e66329f8_c.jpg'
-        name = 'Kakalardoa'
-
-    if " " in url:
-        a=1
     image = _getUrlImage(url)
 
     if not image:
@@ -46,9 +40,10 @@ def loadUrlImage(url, place, name='', format='jpg'):
         photo = photos[0]
     else:
         photo = MPhoto()
-        
+
     photo.name = name[:100]
     photo.place = place
+    photo.def_img = True
     
     image_t = Image.open(ContentFile(image.read()))
     image_t = image_t.convert("RGB")
@@ -59,17 +54,11 @@ def loadUrlImage(url, place, name='', format='jpg'):
     unique_slug = url.split('/')[-1].replace(' ','_')
     
     photo.image.save(unique_slug, ContentFile(f.read()))
-        
-    try:
-        a = 3
-    except Exception, e:
-        print 'Errorea irudi honekin RGB', photo.name, e
-        return photo      
 
     try:
         photo.save()
     except:
-        print 'Errorea irudi honekin', photo.name
+        print 'Error with this image', photo.name
 
     return photo
     

@@ -7,8 +7,6 @@ import xlrd, StringIO, urllib2
 from arartekomaps.utils.load_images import loadUrlImage
 from arartekomaps.settings import IMPORT_FILES_FOLDER
 
-import os
-
 class Command(BaseCommand):
     args = 'file_abs_path'
     help = 'Upload places from file (XLS)'
@@ -93,7 +91,9 @@ class Command(BaseCommand):
 
             place.name = titulo
             place.category = cat_obj
-            place.description = desc
+            place.description_eu = desc
+            place.description_es = desc
+            place.description_en = desc
             place.address1 = direc1
             place.address2 = direc2
             if len(cp)<5:
