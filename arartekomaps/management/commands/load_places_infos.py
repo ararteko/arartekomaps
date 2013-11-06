@@ -77,9 +77,9 @@ class Command(BaseCommand):
                 ercnt = ercnt+1
                 break
      
-            places = Place.objects.filter(source_id=cod_origen)
+            places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
             if len(places)<1:
-                places = Place.objects.filter(source_id=str(int(cod_origen)))
+                places = Place.objects.filter(source_id=str(int(cod_origen)), source=ent_origen)
 
             if len(places)>0:
                 place = places[0]
@@ -110,9 +110,9 @@ class Command(BaseCommand):
             place.source = ent_origen
             place.source_id = "%d" % int(cod_origen)
             if lat:
-                place.lat = lat
+                place.lat = str(lat)
             if lon:
-                place.lon = lon
+                place.lon = str(lon)
             place.tlf = ''.join(tel[:30].split())
             place.fax = ''.join(fax[:15].split())
             place.url = url

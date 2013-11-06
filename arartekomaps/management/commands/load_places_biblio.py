@@ -1,86 +1,135 @@
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
-from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice
+from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice, MPhoto
 from arartekomaps.locations.models import Location
 from arartekomaps.locations.utils import slugify
+
+import xlrd, StringIO, urllib2
+from arartekomaps.utils.load_images import loadUrlImage
+from arartekomaps.settings import IMPORT_FILES_FOLDER
 
 class Command(BaseCommand):
     args = 'file_abs_path'
     help = 'Upload places from file (CSV)'
     ADICT = {'inaccesible':'n',
              'no_accesible':'n',
+             'no_accesilbe':'n',
+             'no_acesible':'n',
+             'no_accedible':'n',
              'sin datos': 's',
              'sin_datos': 's',
              '':'s',
              'practicable': 'p',
-             'accesible': 'a'}
+             'accesible': 'a',
+             'accesble':'a'
+             }
              
     BDICT = {'Publikoa':'p',
              'Infantil':'i',
-             'Pribatua':'r'}
+             'Pribatua':'r',
+             '':'X'}
              
     IDICT = {'Ayuntamiento':'ayto',
              'Erakunde autonoma':'auto',
              'Erakunde autonomaa':'auto',
              'Erakunde autonomoa':'auto',
              'Pribatua':'priv',
+             '':'XXXX',
     
     }
 
-    ACDICT = {'Libre':'l'
+    ACDICT = {'Libre':'l',
+             '':'X',
     }
     
-    CDICT = {'Publico':'p'
+    CDICT = {'Publico':'p',
+             '':'X'
     
-    } 
+    }
+
+    BSDICT = {'EGIAZKOA':1,
+              1:1,
+              'FALTSUA':0,
+              '0':0,
+              0:0,
+
+    }
     
     
     def handle(self, *args, **options):
-        f = open(args[0],'r')
-        parent = Location.objects.get(slug='gipuzkoa')
-        #fix this, location's parent must be described in data file
-        kont = 1
-	for pl in f.readlines()[2:]:
-            (titulo, slug, ent_origen, cod_origen, cat, 
-            direc1, direc2, cp, pob, desc, tel, fax, url, 
-            email, foto, lat, lon, foto_x, foto_x_tit, foto_x_alt, 
-            acc_fis, acc_vis, acc_aud, acc_int, acc_org, tipo_biblio, 
-            ano_inicio, institution, institution_type, open_times, 
-            access_type, center_type, tem_general, tem_infantil, 
-            tem_religioso, ser_consulta, ser_reprografia, ser_hemeroteca, 
-            ser_wifi, ser_selectiva, ser_bol_novedades, ser_prestamo, 
-            ser_prestamo_inter, ser_prestamo_domic, ser_infor_bibliografica, 
-            ser_internet_usuarios, ser_acceso_bbdd) = pl.split('\t')[0:47]
+        saving = 1
+        filename = args[0]
+        full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
+        f = xlrd.open_workbook(full_path)
+        sh = f.sheet_by_index(0)
 
-            cat = 'biblioteka'
-            cat_obj = Category.objects.get(slug=cat)                     
-            cod_origen = "bib%04d" % (kont)
-            
-            
-            location_slug = slugify(pob)           
+        kont = 1
+
+        cat = 'library'
+        cat_obj = Category.objects.get(slug=cat)
+
+        for rownum in range(sh.nrows)[1:3]:
+            fields = sh.row_values(rownum)
+
+            if len(fields)!=51:
+                print 'Tenemos mas o menos de 51 campos'
+                n = 1
+                for field in fields:
+                    print n, field
+                    n = n+1
+                break
+            else:
+                (cod_origen, titulo, slug, ent_origen, cod_origen_vacio, cat, 
+                direc1, direc2, cp, pob, loc, desc, tel, fax, url, 
+                email, foto, lat, lon, foto_x, foto_x_tit, foto_x_alt, 
+                acc_fis, acc_vis, acc_aud, acc_int, acc_org, tipo_biblio, 
+                ano_inicio, institution, institution_type, open_times_eu, 
+                open_times_es, open_times_s_eu, open_times_s_es, 
+                access_type, center_type, tem_general, ser_consulta, 
+                ser_reprografia, ser_hemeroteca, 
+                ser_wifi, ser_selectiva, ser_bol_novedades, ser_prestamo, 
+                ser_prestamo_inter, ser_prestamo_domic, ser_infor_bibliografica, 
+                ser_internet_usuarios, ser_acceso_bbdd, latlon) = fields[:51]
+                  
+            cod_origen = "%4d" % cod_origen
+
+            location_slug = slugify(pob)
             location = Location.objects.filter(slug__startswith=location_slug)
             if location:
                 loc_obj = location[0]
             else:
                 print 'ERROREA', location_slug
                 break
-                     
-            place = Place()
-            place.slug = slugify("%s_%s" % ('bib',pob), instance=place)
             
-            print kont, titulo, place.slug, loc_obj.name, institution, self.IDICT[institution_type]
-            place.name = titulo.decode('utf-8')
+            places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
+
+            if len(places)>0:
+                place = places[0]
+                print 'EDIT:', place.slug, place.source, place.source_id, 
+            else:
+                place = Place()
+                place.slug = slugify(titulo, instance=place)
+                print 'NEW:', slug, cod_origen         
+
+            place.name = titulo
             place.category = cat_obj
-            place.description = desc.decode('utf-8')
+            place.description_es = desc
+            place.description_eu = desc
+            place.description_en = desc
             place.address1 = direc1
             place.address2 = direc2
             if len(cp)<5:
                 cp = "0%s" % cp
-            place.postalcode = cp
+            place.postalcode = cp.strip()
             place.city = loc_obj
-            place.description = desc
+            place.locality = loc
             place.source = ent_origen
             place.source_id = cod_origen
+            try:
+                (lat,lon) = latlon.split(',')
+            except:
+                pass
+
             if lat:
                 place.lat = lat
             if lon:
@@ -89,32 +138,64 @@ class Command(BaseCommand):
             place.fax = fax
             place.url = url
             place.email = email
-            place.save()
+
+            #get photo URL:
+            if foto:
+                startx = foto.find('img src=')
+                endx = foto.find('"', startx+10)
+                foto_x = foto[startx+9:endx]
+
+            if saving:
+                place.save()
+
+            #Load foto_x
+            t_place = place
+            has_point = foto_x.split('/')[-1].find('.')
+            if has_point>-1:
+                if saving:
+                    image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )            
             
-            access = Access()
+
+            # ACCESS
+            try:
+                access = place.access.all()[0]
+            except:
+                access = Access()
+                access.place = place
+
             access.aphysic = self.ADICT[acc_fis.lower().strip()]
             access.avisual = self.ADICT[acc_vis.lower().strip()]
             access.aaudio = self.ADICT[acc_aud.lower().strip()]
             access.aintelec = self.ADICT[acc_int.lower().strip()]
             access.aorganic = self.ADICT[acc_org.lower().strip()]
-            access.place = place
-            access.save()
-             
-            biblio = Biblio()
+            
+            if saving:
+                access.save()
+
+            #BIBLIO
+            try:
+                biblio = place.biblio.all()[0]
+            except:
+                biblio = Biblio()
+                biblio.place = place
+
             biblio.btype = self.BDICT[tipo_biblio.strip()]
-            ano_conv = ano_inicio.strip().replace('.','')
+            ano_conv = str(int(ano_inicio)).strip().replace('.','')
             try:
                 biblio.start_year = int(ano_conv)
             except:
                 biblio.start_year = 0
             biblio.institution = institution_type
             biblio.institution_type = self.IDICT[institution_type.strip()]
-            biblio.open_times = open_times
+            biblio.open_times = "%s %s" % (open_times_eu, open_times_es)
             biblio.access_type = self.ACDICT[access_type.strip()]
             biblio.center_type = self.CDICT[center_type.strip()]
-            biblio.place = place
-            biblio.save()
+
+            if saving:
+                biblio.save()
             
+            tem_infantil = ''
+            tem_religioso = ''
             bibtopics = {'general':tem_general, 'infantil':tem_infantil, 'religioso':tem_religioso}             
             for k,v in bibtopics.items():
                 if v:
@@ -125,7 +206,8 @@ class Command(BaseCommand):
                         print 'ERROR: no bibtopic called %s' % k
                         bibtopic_obj = Bibtopic()
                         bibtopic_obj.name = k
-                        bibtopic_obj.save()
+                        if saving:
+                            bibtopic_obj.save()
                     biblio.topics.add(bibtopic_obj)
                                                         
             bibservices = {'consulta':ser_consulta, 'reprografia':ser_reprografia, 
@@ -136,6 +218,7 @@ class Command(BaseCommand):
                            'acceso_bbdd':ser_acceso_bbdd
                            }                        
             for k,v in bibservices.items():
+                v=0 #Desaktibatuta
                 if v:
                     bibservice = Bibservice.objects.filter(name=k)
                     if bibservice:
@@ -144,10 +227,11 @@ class Command(BaseCommand):
                         print 'ERROR: no bibservice called %s' % k
                         bibservice_obj = Bibservice()
                         bibservice_obj.name = k
-                        bibservice_obj.save()
-                    biblio.services.add(bibservice_obj)                                  
+                        if saving:
+                            bibservice_obj.save()
+                    biblio.services.add(bibservice_obj)                                 
 
-
-            biblio.save()
+            if saving:
+                biblio.save()
             kont += 1
 
