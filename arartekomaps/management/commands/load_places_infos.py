@@ -83,7 +83,7 @@ class Command(BaseCommand):
 
             if len(places)>0:
                 place = places[0]
-                print 'EDIT:', slug, cod_origen
+                print 'EDIT:', place.slug, cod_origen
             else:
                 place = Place()
                 print slug
@@ -140,7 +140,7 @@ class Command(BaseCommand):
             has_point = foto_x.split('/')[-1].find('.')
             if has_point>-1:
                 if saving:
-                    image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )            
+                    image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )
             kont += 1
 
         print uloc

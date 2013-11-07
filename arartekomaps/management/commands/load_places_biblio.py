@@ -68,7 +68,7 @@ class Command(BaseCommand):
         cat = 'library'
         cat_obj = Category.objects.get(slug=cat)
 
-        for rownum in range(sh.nrows)[1:3]:
+        for rownum in range(sh.nrows)[98:]:
             fields = sh.row_values(rownum)
 
             if len(fields)!=51:
@@ -91,7 +91,8 @@ class Command(BaseCommand):
                 ser_prestamo_inter, ser_prestamo_domic, ser_infor_bibliografica, 
                 ser_internet_usuarios, ser_acceso_bbdd, latlon) = fields[:51]
                   
-            cod_origen = "%4d" % cod_origen
+            cod_origen = "%d" % cod_origen
+            ent_origen = 'ejgv_biblio'
 
             location_slug = slugify(pob)
             location = Location.objects.filter(slug__startswith=location_slug)
@@ -105,7 +106,7 @@ class Command(BaseCommand):
 
             if len(places)>0:
                 place = places[0]
-                print 'EDIT:', place.slug, place.source, place.source_id, 
+                print 'EDIT:', place.slug, place.source, place.source_id
             else:
                 place = Place()
                 place.slug = slugify(titulo, instance=place)
@@ -151,6 +152,8 @@ class Command(BaseCommand):
             #Load foto_x
             t_place = place
             has_point = foto_x.split('/')[-1].find('.')
+            if not foto_x_tit:
+                foto_x_tit = place.name[:]
             if has_point>-1:
                 if saving:
                     image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )            
@@ -180,7 +183,10 @@ class Command(BaseCommand):
                 biblio.place = place
 
             biblio.btype = self.BDICT[tipo_biblio.strip()]
-            ano_conv = str(int(ano_inicio)).strip().replace('.','')
+            if ano_inicio:
+                ano_conv = str(int(ano_inicio)).strip().replace('.','')
+            else:
+                ano_conv = ''
             try:
                 biblio.start_year = int(ano_conv)
             except:
@@ -196,7 +202,7 @@ class Command(BaseCommand):
             
             tem_infantil = ''
             tem_religioso = ''
-            bibtopics = {'general':tem_general, 'infantil':tem_infantil, 'religioso':tem_religioso}             
+            bibtopics = {'general':'1', 'infantil':tem_infantil, 'religioso':tem_religioso}             
             for k,v in bibtopics.items():
                 if v:
                     bibtopic = Bibtopic.objects.filter(name=k)
@@ -218,7 +224,6 @@ class Command(BaseCommand):
                            'acceso_bbdd':ser_acceso_bbdd
                            }                        
             for k,v in bibservices.items():
-                v=0 #Desaktibatuta
                 if v:
                     bibservice = Bibservice.objects.filter(name=k)
                     if bibservice:
