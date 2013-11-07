@@ -124,20 +124,27 @@
 <div id="biblio">
 <h3>{% trans "Library" %}</h3>
     <dl>
+      {% comment %}
         <dt>{% trans "btype" %}</dt>
         <dd>{% trans place.biblio_data.btype %}</dd>
+      {% endcomment %}
         <dt>{% trans "start_year" %}</dt>
         <dd>{{ place.biblio_data.start_year }}</dd>
+      {% comment %}
         <dt>{% trans "institution" %}</dt>
         <dd>{{place.biblio_data.institution}} ({% trans place.biblio_data.institution_type %})</dd>
+      {% endcomment %}
         <dt>{% trans "open_times" %}</dt>
         <dd>{{place.biblio_data.open_times}}</dd>
+      {% comment %}
         <dt>{% trans "access_type" %}</dt>
         <dd>{% trans place.biblio_data.access_type %}</dd>
         <dt>{% trans "center_type" %}</dt>
         <dd>{% trans place.biblio_data.center_type %}</dd>
+      
         <dt>{% trans "topics" %}</dt>
         <dd>{% for topic in place.biblio_data.topics.all %} {% trans topic.name %} {% endfor %} </dd>
+      {% endcomment %}
         <dt>{% trans "services" %}</dt>
         <dd>{% for service in place.biblio_data.services.all %} 
                 {% trans service.name %}{% if not forloop.last %},{% endif %}  

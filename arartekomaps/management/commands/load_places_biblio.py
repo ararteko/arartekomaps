@@ -68,7 +68,7 @@ class Command(BaseCommand):
         cat = 'library'
         cat_obj = Category.objects.get(slug=cat)
 
-        for rownum in range(sh.nrows)[98:]:
+        for rownum in range(sh.nrows)[1:]:
             fields = sh.row_values(rownum)
 
             if len(fields)!=51:
@@ -193,7 +193,8 @@ class Command(BaseCommand):
                 biblio.start_year = 0
             biblio.institution = institution_type
             biblio.institution_type = self.IDICT[institution_type.strip()]
-            biblio.open_times = "%s %s" % (open_times_eu, open_times_es)
+            open_times = "%s %s" % (open_times_eu, open_times_es)
+            biblio.open_times = open_times[:250]
             biblio.access_type = self.ACDICT[access_type.strip()]
             biblio.center_type = self.CDICT[center_type.strip()]
 
