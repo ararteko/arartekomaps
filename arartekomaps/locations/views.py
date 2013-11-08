@@ -22,7 +22,7 @@ def split_seq(seq, num_pieces):
 def listing(request, state):
     """ Listing cities in an state (probintziak) """
     mystate = Location.objects.get(slug=state)
-    cities = Location.objects.filter(parent=mystate)
+    cities = Location.objects.filter(parent=mystate).order_by('name')
     city_slices = split_seq(cities, 4)
     hidesearch = True
     return render_to_response('listing.html', locals(), context_instance=RequestContext(request)
