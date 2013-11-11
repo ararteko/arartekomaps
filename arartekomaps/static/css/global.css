@@ -67,7 +67,7 @@ header img{
     color:white;
     padding-top:28px;
     display:block;
-    width:340px;
+    width:320px;
     float:left;
     margin-left:10px;
     text-shadow:0 1px 1px #AE1BB4;
@@ -77,13 +77,12 @@ header img{
     float:right;
     margin-top:25px;
     font-size:80%;
-    margin-right:20px;
 }
 #utils a{
     color:white;
     text-decoration:none;
     float:right;
-    margin-left:20px;
+    margin-left:0.8em;
     padding:5px 8px;
     border-radius:5px;
     -moz-border-radius:5px;
