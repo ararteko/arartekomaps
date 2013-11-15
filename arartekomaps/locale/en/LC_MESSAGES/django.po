@@ -1,18 +1,30 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
 #: settings.py:62
 msgid "Espanol"
-msgstr ""
+msgstr "Español"
 
 #: settings.py:63
 msgid "Euskara"
-msgstr ""
+msgstr "Euskara"
 
 #: settings.py:64
 msgid "English"
-msgstr ""
+msgstr "English"
 
 #: views.py:10 templates/search.html:82 templates/search.html.py:93
 msgid "Any"
-msgstr ""
+msgstr "Any"
 
 #: views.py:11
 msgid "Practicable"
@@ -24,23 +36,23 @@ msgstr ""
 
 #: views.py:16 places/models.py:52
 msgid "aphysic"
-msgstr ""
+msgstr "Physical"
 
 #: views.py:17 places/models.py:53
 msgid "avisual"
-msgstr ""
+msgstr "Visual"
 
 #: views.py:18 places/models.py:54
 msgid "aaudio"
-msgstr ""
+msgstr "Audio"
 
 #: views.py:19 places/models.py:55
 msgid "aintelec"
-msgstr ""
+msgstr "Intelectual"
 
 #: views.py:20 places/models.py:56
 msgid "aorganic"
-msgstr ""
+msgstr "Organic"
 
 #: locations/views.py:55
 #, python-format
@@ -197,23 +209,23 @@ msgstr ""
 
 #: templates/dummy_texts.html:3
 msgid "access_a"
-msgstr ""
+msgstr "Accessible"
 
 #: templates/dummy_texts.html:4
 msgid "access_p"
-msgstr ""
+msgstr "Quite accessible"
 
 #: templates/dummy_texts.html:5
 msgid "access_n"
-msgstr ""
+msgstr "Non accessible"
 
 #: templates/dummy_texts.html:6
 msgid "access_s"
-msgstr ""
+msgstr "No data"
 
 #: templates/dummy_texts.html:11
 msgid "acceso_bbdd"
-msgstr ""
+msgstr "Database access"
 
 #: templates/dummy_texts.html:12
 msgid "prestamo"
