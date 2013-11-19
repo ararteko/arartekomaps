@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 13:54+0100\n"
+"POT-Creation-Date: 2013-11-19 15:28+0100\n"
 "PO-Revision-Date: 2013-10-07 11:28+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgstr "Euskara"
 msgid "English"
 msgstr ""
 
-#: views.py:10 templates/search.html:82 templates/search.html.py:93
+#: views.py:10 templates/search.html:84 templates/search.html.py:95
 msgid "Any"
 msgstr "Denak"
 
@@ -136,8 +136,8 @@ msgstr "Errorea: ez dugu aurkitu!"
 msgid "Ararteko maps"
 msgstr "Ararteko mapak"
 
-#: templates/404.html:12 templates/about.html:12 templates/location.html:56
-#: templates/place.html:47 templates/search.html:59
+#: templates/404.html:12 templates/about.html:12 templates/location.html:60
+#: templates/place.html:51 templates/search.html:61
 #: templates/pages/index.html:12
 msgid "Home"
 msgstr "Home"
@@ -154,11 +154,11 @@ msgstr "Sentitzen dugu. Ez dugu bila ari zarena aurkitu."
 msgid "About"
 msgstr "Honi buruz"
 
-#: templates/about.html:24 templates/base.html:113 templates/home.html:73
+#: templates/about.html:24 templates/base.html:113 templates/home.html:78
 msgid "About the maps"
 msgstr "Mapa hauen inguruan"
 
-#: templates/about.html:27 templates/home.html:75
+#: templates/about.html:27 templates/home.html:80
 msgid "About: Paragraph 1"
 msgstr ""
 "Informa zaitez nahi duzun lekura iristeko! Zure laguntzarekin, erraz "
@@ -190,19 +190,19 @@ msgid "Discover and share accessible places"
 msgstr "Aurkitu eta partekatu toki irisgarriak"
 
 #: templates/base.html:61 templates/base.html.py:68
-#: templates/google_search.html:5 templates/home.html:61
-#: templates/listing.html:29 templates/search.html:67
+#: templates/google_search.html:5 templates/home.html:66
+#: templates/listing.html:29 templates/search.html:69
 msgid "Go to..."
 msgstr "Nora joan:"
 
 #: templates/base.html:63 templates/base.html.py:69
-#: templates/google_search.html:6 templates/home.html:62
-#: templates/listing.html:30 templates/search.html:68
-#: templates/search.html.py:114
+#: templates/google_search.html:6 templates/home.html:67
+#: templates/listing.html:30 templates/search.html:70
+#: templates/search.html.py:116
 msgid "Search"
 msgstr "Bilatu"
 
-#: templates/base.html:113 templates/place.html:101
+#: templates/base.html:113 templates/place.html:105
 msgid "Accessibility"
 msgstr "Irisgarritasuna"
 
@@ -410,7 +410,7 @@ msgstr "Mugatua"
 msgid "p"
 msgstr "Publikoa"
 
-#: templates/dummy_texts.html:65 templates/home.html:64
+#: templates/dummy_texts.html:65 templates/home.html:69
 #: templates/listing.html:32
 msgid "filter"
 msgstr "Filtro aurreratua"
@@ -483,117 +483,97 @@ msgstr "Fevapas"
 msgid "elkartu"
 msgstr "Elkartu"
 
-#: templates/google_search.html:8 templates/search.html:69
-#: templates/search.html.py:118
+#: templates/google_search.html:8 templates/search.html:71
+#: templates/search.html.py:120
 msgid "Advanced filter"
 msgstr "Filtro aurreratua"
 
-#: templates/home.html:77
+#: templates/home.html:82
 msgid "Read more"
 msgstr "Gehiago irakurri"
 
-#: templates/home.html:85
+#: templates/home.html:90
 msgid "Visit this places"
 msgstr "Bisitatu toki hauek"
 
-#: templates/home.html:99
+#: templates/home.html:104
 msgid "Last places"
 msgstr "Azken tokiak"
 
-#: templates/location.html:100
+#: templates/location.html:104
 #, python-format
 msgid "Visit full %(cityname)s"
 msgstr "Bisitatu %(cityname)s osoa"
 
-#: templates/location.html:120 templates/search.html:141
+#: templates/location.html:124 templates/search.html:143
 msgid "Previous"
 msgstr "Aurrekoak"
 
-#: templates/location.html:124 templates/search.html:145
+#: templates/location.html:128 templates/search.html:147
 msgid "Next"
 msgstr "Hurrengoak"
 
-#: templates/place.html:93
+#: templates/place.html:97
 msgid "Website"
 msgstr "Webgunea"
 
-#: templates/place.html:114
+#: templates/place.html:118
 msgid "detailed file"
 msgstr "Fitxa zehatza"
 
-#: templates/place.html:121
+#: templates/place.html:125
 msgid "Library"
 msgstr "Liburutegia"
 
-#: templates/place.html:123
-msgid "btype"
-msgstr "Mota"
-
-#: templates/place.html:125
+#: templates/place.html:132
 msgid "start_year"
 msgstr "Irekiera urtea"
 
-#: templates/place.html:127
-msgid "institution"
-msgstr "Erakundea"
-
-#: templates/place.html:129
+#: templates/place.html:139
 msgid "open_times"
 msgstr "Ordutegia"
 
-#: templates/place.html:131
-msgid "access_type"
-msgstr "Sarrera mota"
-
-#: templates/place.html:133
-msgid "center_type"
-msgstr "Zentru mota"
-
-#: templates/place.html:135
-msgid "topics"
-msgstr "Gaiak"
-
-#: templates/place.html:137
+#: templates/place.html:151
 msgid "services"
 msgstr "Zerbitzuak"
 
-#: templates/place.html:147
+#: templates/place.html:161
 msgid "data_source"
 msgstr "Datuen jatorria"
 
-#: templates/place.html:169
+#: templates/place.html:183
 msgid "Comments"
 msgstr "Iruzkinak"
 
-#: templates/place.html:176
+#: templates/place.html:190
 msgid "Gehitu"
 msgstr "Gehitu"
 
-#: templates/place.html:191
+#: templates/place.html:205
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:196
+#: templates/place.html:210
 msgid "Nearest places"
 msgstr "Gertuko tokiak"
 
-#: templates/search.html:4 templates/search.html.py:61
+#: templates/search.html:4 templates/search.html.py:63
 msgid "Search results"
 msgstr "Bilaketa"
 
-#: templates/search.html:80
+#: templates/search.html:82
 msgid "City"
 msgstr "Herria"
 
-#: templates/search.html:91
+#: templates/search.html:93
 msgid "Category"
 msgstr "Kategoria"
 
-#: templates/search.html:98
+#: templates/search.html:100
 msgid "Minimal accessibility"
 msgstr "Gutxieneko irisgarritasuna"
 
-#: templates/search.html:121
+#: templates/search.html:123
 msgid "Total results:"
 msgstr "Emaitzak guztira:"
 
@@ -609,9 +589,32 @@ msgstr "Profila"
 msgid "Sign out"
 msgstr "Irten"
 
-#: templates/useroptions.html:16
+#: templates/useroptions.html:16 templates/mycomment/list.html:26
 msgid "Sign in"
 msgstr "Sartu"
+
+#: templates/mycomment/list.html:26
+msgid "There is no comment yet"
+msgstr "Ez dago iruzkinik oraindik"
+
+#: templates/mycomment/list.html:26
+msgid " to write a comment."
+msgstr " iruzkinak bidaltzeko."
+
+#~ msgid "btype"
+#~ msgstr "Mota"
+
+#~ msgid "institution"
+#~ msgstr "Erakundea"
+
+#~ msgid "access_type"
+#~ msgstr "Sarrera mota"
+
+#~ msgid "center_type"
+#~ msgstr "Zentru mota"
+
+#~ msgid "topics"
+#~ msgstr "Gaiak"
 
 #~ msgid "cat_tourism"
 #~ msgstr "Turismoa"

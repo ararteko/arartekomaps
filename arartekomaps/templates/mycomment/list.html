@@ -1,5 +1,7 @@
+{% load i18n %}
+
 <div id="comment_list">
-{% for comment in comments %}
+{% for comment in comments reversed %}
 <div class="comment">
 <p id="{{comment.id}}" class="commentauthor">
 	{% if comment.author.get_profile.get_photo %}

@@ -1,18 +1,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-19 15:28+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
 #: settings.py:62
 msgid "Espanol"
-msgstr "Español"
+msgstr "EspaÃ±ol"
 
 #: settings.py:63
 msgid "Euskara"
@@ -22,7 +24,7 @@ msgstr "Euskara"
 msgid "English"
 msgstr "English"
 
-#: views.py:10 templates/search.html:82 templates/search.html.py:93
+#: views.py:10 templates/search.html:84 templates/search.html.py:95
 msgid "Any"
 msgstr "Any"
 
@@ -120,8 +122,8 @@ msgstr ""
 msgid "Ararteko maps"
 msgstr ""
 
-#: templates/404.html:12 templates/about.html:12 templates/location.html:56
-#: templates/place.html:47 templates/search.html:59
+#: templates/404.html:12 templates/about.html:12 templates/location.html:60
+#: templates/place.html:51 templates/search.html:61
 #: templates/pages/index.html:12
 msgid "Home"
 msgstr ""
@@ -138,11 +140,11 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: templates/about.html:24 templates/base.html:113 templates/home.html:73
+#: templates/about.html:24 templates/base.html:113 templates/home.html:78
 msgid "About the maps"
 msgstr ""
 
-#: templates/about.html:27 templates/home.html:75
+#: templates/about.html:27 templates/home.html:80
 msgid "About: Paragraph 1"
 msgstr ""
 
@@ -167,19 +169,19 @@ msgid "Discover and share accessible places"
 msgstr ""
 
 #: templates/base.html:61 templates/base.html.py:68
-#: templates/google_search.html:5 templates/home.html:61
-#: templates/listing.html:29 templates/search.html:67
+#: templates/google_search.html:5 templates/home.html:66
+#: templates/listing.html:29 templates/search.html:69
 msgid "Go to..."
 msgstr ""
 
 #: templates/base.html:63 templates/base.html.py:69
-#: templates/google_search.html:6 templates/home.html:62
-#: templates/listing.html:30 templates/search.html:68
-#: templates/search.html.py:114
+#: templates/google_search.html:6 templates/home.html:67
+#: templates/listing.html:30 templates/search.html:70
+#: templates/search.html.py:116
 msgid "Search"
 msgstr ""
 
-#: templates/base.html:113 templates/place.html:101
+#: templates/base.html:113 templates/place.html:105
 msgid "Accessibility"
 msgstr ""
 
@@ -387,7 +389,7 @@ msgstr ""
 msgid "p"
 msgstr ""
 
-#: templates/dummy_texts.html:65 templates/home.html:64
+#: templates/dummy_texts.html:65 templates/home.html:69
 #: templates/listing.html:32
 msgid "filter"
 msgstr ""
@@ -460,117 +462,97 @@ msgstr ""
 msgid "elkartu"
 msgstr ""
 
-#: templates/google_search.html:8 templates/search.html:69
-#: templates/search.html.py:118
+#: templates/google_search.html:8 templates/search.html:71
+#: templates/search.html.py:120
 msgid "Advanced filter"
 msgstr ""
 
-#: templates/home.html:77
+#: templates/home.html:82
 msgid "Read more"
 msgstr ""
 
-#: templates/home.html:85
+#: templates/home.html:90
 msgid "Visit this places"
 msgstr ""
 
-#: templates/home.html:99
+#: templates/home.html:104
 msgid "Last places"
 msgstr ""
 
-#: templates/location.html:100
+#: templates/location.html:104
 #, python-format
 msgid "Visit full %(cityname)s"
 msgstr ""
 
-#: templates/location.html:120 templates/search.html:141
+#: templates/location.html:124 templates/search.html:143
 msgid "Previous"
 msgstr ""
 
-#: templates/location.html:124 templates/search.html:145
+#: templates/location.html:128 templates/search.html:147
 msgid "Next"
 msgstr ""
 
-#: templates/place.html:93
+#: templates/place.html:97
 msgid "Website"
 msgstr ""
 
-#: templates/place.html:114
+#: templates/place.html:118
 msgid "detailed file"
 msgstr ""
 
-#: templates/place.html:121
+#: templates/place.html:125
 msgid "Library"
 msgstr ""
 
-#: templates/place.html:123
-msgid "btype"
-msgstr ""
-
-#: templates/place.html:125
+#: templates/place.html:132
 msgid "start_year"
 msgstr ""
 
-#: templates/place.html:127
-msgid "institution"
-msgstr ""
-
-#: templates/place.html:129
+#: templates/place.html:139
 msgid "open_times"
 msgstr ""
 
-#: templates/place.html:131
-msgid "access_type"
-msgstr ""
-
-#: templates/place.html:133
-msgid "center_type"
-msgstr ""
-
-#: templates/place.html:135
-msgid "topics"
-msgstr ""
-
-#: templates/place.html:137
+#: templates/place.html:151
 msgid "services"
 msgstr ""
 
-#: templates/place.html:147
+#: templates/place.html:161
 msgid "data_source"
 msgstr ""
 
-#: templates/place.html:169
+#: templates/place.html:183
 msgid "Comments"
 msgstr ""
 
-#: templates/place.html:176
+#: templates/place.html:190
 msgid "Gehitu"
 msgstr ""
 
-#: templates/place.html:191
+#: templates/place.html:205
 msgid "Map"
 msgstr ""
 
-#: templates/place.html:196
+#: templates/place.html:210
 msgid "Nearest places"
 msgstr ""
 
-#: templates/search.html:4 templates/search.html.py:61
+#: templates/search.html:4 templates/search.html.py:63
 msgid "Search results"
 msgstr ""
 
-#: templates/search.html:80
+#: templates/search.html:82
 msgid "City"
 msgstr ""
 
-#: templates/search.html:91
+#: templates/search.html:93
 msgid "Category"
 msgstr ""
 
-#: templates/search.html:98
+#: templates/search.html:100
 msgid "Minimal accessibility"
 msgstr ""
 
-#: templates/search.html:121
+#: templates/search.html:123
 msgid "Total results:"
 msgstr ""
 
@@ -586,6 +568,14 @@ msgstr ""
 msgid "Sign out"
 msgstr ""
 
-#: templates/useroptions.html:16
+#: templates/useroptions.html:16 templates/mycomment/list.html:26
 msgid "Sign in"
+msgstr ""
+
+#: templates/mycomment/list.html:26
+msgid "There is no comment yet"
+msgstr ""
+
+#: templates/mycomment/list.html:26
+msgid " to write a comment."
 msgstr ""

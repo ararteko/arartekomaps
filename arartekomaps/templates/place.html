@@ -188,6 +188,8 @@
             </div>
 
     </form>
+    {% else %}
+    <p><a href='{% url cssocialprofile_user_login %}?next={{request.path}}'>{% trans  "Sign in" %}</a>{% trans  " to write a comment." %}</p>
     {% endif %}
 
     {% include "mycomment/list.html" %}
