@@ -179,6 +179,8 @@
 <div id="commentlist">
     <h3>{% trans "Comments" %}</h3>
 
+    {% include "mycomment/list.html" %}
+
     {% if user.is_authenticated %}
     <form method="post" action="" id="communityform" ENCTYPE="multipart/form-data">
             {% csrf_token %}
@@ -192,7 +194,6 @@
     <p><a href='{% url cssocialprofile_user_login %}?next={{request.path}}'>{% trans  "Sign in" %}</a>{% trans  " to write a comment." %}</p>
     {% endif %}
 
-    {% include "mycomment/list.html" %}
 </div>
 
 </div>
