@@ -99,7 +99,7 @@
 </p>
 </address>
 
-<p>{{place.description}}</p>
+<p>{{place.description|default_if_none:""}}</p>
 
 <div id="access">
 <h3>{% trans "Accessibility" %}</h3>
@@ -128,8 +128,10 @@
         <dt>{% trans "btype" %}</dt>
         <dd>{% trans place.biblio_data.btype %}</dd>
       {% endcomment %}
+      {% ifnotequal place.biblio_data.start_year 0 %}
         <dt>{% trans "start_year" %}</dt>
-        <dd>{{ place.biblio_data.start_year }}</dd>
+        <dd>{{ place.biblio_data.start_year}}</dd>
+      {% endifnotequal %}
       {% comment %}
         <dt>{% trans "institution" %}</dt>
         <dd>{{place.biblio_data.institution}} ({% trans place.biblio_data.institution_type %})</dd>
