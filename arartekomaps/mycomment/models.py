@@ -43,13 +43,13 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-added']
-        verbose_name = 'Iruzkina'        
-        verbose_name_plural = 'Iruzkinak'
+        verbose_name = 'Comment'        
+        verbose_name_plural = 'Comments'
 
 
 def send_comment_notification(sender, instance, created, **kwargs):
     if created:
-        send_mail(_('[NUEVO COMENTARIO] '), _('Nuevo comentario guardado: ')+instance.body+'\n\n'+settings.HOST+'/admin/mycomment/comment/' + str(instance.id), settings.DEFAULT_FROM_EMAIL,
+        send_mail(_('[NEW COMMENT] '), _('New comment saved: ')+instance.body+'\n\n'+settings.HOST+'/admin/mycomment/comment/' + str(instance.id), settings.DEFAULT_FROM_EMAIL,
             [settings.EMAIL_NOTIFICATION], fail_silently=True)   
     return True
 

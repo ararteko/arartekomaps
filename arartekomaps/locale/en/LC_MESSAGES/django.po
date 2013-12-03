@@ -2,11 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-19 15:28+0100\n"
+"POT-Creation-Date: 2013-12-03 12:59+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,11 +29,11 @@ msgstr "Any"
 
 #: views.py:11
 msgid "Practicable"
-msgstr ""
+msgstr "Quite accessible"
 
 #: views.py:12
 msgid "Accesible"
-msgstr ""
+msgstr "Accessible"
 
 #: views.py:16 places/models.py:52
 msgid "aphysic"
@@ -59,24 +58,24 @@ msgstr "Organic"
 #: locations/views.py:55
 #, python-format
 msgid "%(parentcatname)s: %(childcatname)s in %(cityname)s"
-msgstr ""
+msgstr "Accessible %(parentcatname)s: %(childcatname)s in %(cityname)s"
 
 #: locations/views.py:59
 #, python-format
 msgid "%(parentcatname)s in %(cityname)s"
-msgstr ""
+msgstr "Accessible %(parentcatname)s in %(cityname)s"
 
 #: mycomment/forms.py:8
 msgid "Image"
-msgstr ""
+msgstr "Image"
 
 #: mycomment/forms.py:8
 msgid "Accepted formats: jpg, png, gif."
-msgstr ""
+msgstr "Accepted formats: jpg, png, gif."
 
 #: mycomment/forms.py:14
 msgid "Void messages not accepted. Please, type some text explaining!"
-msgstr ""
+msgstr "Void messages not accepted. Please, type some text explaining!"
 
 #: mycomment/forms.py:28
 #, python-format
@@ -84,6 +83,8 @@ msgid ""
 "The name of the file (%s) has an non standard character and cannot be "
 "processed. Please rename the image before uploading!"
 msgstr ""
+"The name of the file (%s) has an non standard character and cannot be "
+"processed. Please rename the image before uploading!"
 
 #: mycomment/forms.py:31
 #, python-format
@@ -91,20 +92,24 @@ msgid ""
 "The name of the file (%s) is too long. Please rename the image before "
 "uploading!"
 msgstr ""
+"The name of the file (%s) is too long. Please rename the image before "
+"uploading!"
 
 #: mycomment/forms.py:36
 msgid ""
 "The format of the image is not valid. Please upload an image in an accepted "
 "format!"
 msgstr ""
+"The format of the image is not valid. Please upload an image in an accepted "
+"format!"
 
 #: mycomment/models.py:52
-msgid "[NUEVO COMENTARIO] "
-msgstr ""
+msgid "[NEW COMMENT] "
+msgstr "[NEW COMMENT] "
 
 #: mycomment/models.py:52
-msgid "Nuevo comentario guardado: "
-msgstr ""
+msgid "New comment saved: "
+msgstr "New comment saved: "
 
 #: places/models.py:52 places/models.py:53 places/models.py:54
 #: places/models.py:55 places/models.py:56
@@ -114,100 +119,106 @@ msgstr ""
 
 #: templates/404.html:4 templates/404.html.py:24
 msgid "Not Found error"
-msgstr ""
+msgstr "Not Found error"
 
 #: templates/404.html:4 templates/about.html:4 templates/base.html:37
 #: templates/home.html:4 templates/listing.html:4 templates/location.html:4
 #: templates/place.html:6 templates/search.html:4
 msgid "Ararteko maps"
-msgstr ""
+msgstr "Ararteko accessibility maps"
 
 #: templates/404.html:12 templates/about.html:12 templates/location.html:60
 #: templates/place.html:51 templates/search.html:61
 #: templates/pages/index.html:12
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: templates/404.html:14
 msgid "NotFound"
-msgstr ""
+msgstr "NotFound"
 
 #: templates/404.html:27
 msgid "Sorry, we didn't found what you requested."
-msgstr ""
+msgstr "Sorry, we didn't found what you requested."
 
 #: templates/about.html:4 templates/about.html.py:14
 msgid "About"
-msgstr ""
+msgstr "About"
 
 #: templates/about.html:24 templates/base.html:113 templates/home.html:78
 msgid "About the maps"
-msgstr ""
+msgstr "About the maps"
 
 #: templates/about.html:27 templates/home.html:80
 msgid "About: Paragraph 1"
 msgstr ""
+"Look for the place where you want to arrive! With your help we will get more "
+"accessible places..."
 
 #: templates/about.html:31
 msgid "About: Paragraph 2"
 msgstr ""
+"With Ararteko's collaborative maps we will be able to geotag with your "
+"contributions. Find here accessibility information about tourist spots, "
+"transportation, libraries ... Comment on the real accessibility of the "
+"places! The information is open and reusable. Use it."
 
 #: templates/addphoto.html:13 templates/addphoto.html.py:25
 msgid "Add photo"
-msgstr ""
+msgstr "Add photo"
 
 #: templates/addphoto.html:18
 msgid "Select your photo"
-msgstr ""
+msgstr "Select your photo"
 
 #: templates/addphoto.html:21
 msgid "Name of the photo"
-msgstr ""
+msgstr "Name of the photo"
 
 #: templates/base.html:39
 msgid "Discover and share accessible places"
-msgstr ""
+msgstr "Discover and share accessible places"
 
 #: templates/base.html:61 templates/base.html.py:68
 #: templates/google_search.html:5 templates/home.html:66
 #: templates/listing.html:29 templates/search.html:69
 msgid "Go to..."
-msgstr ""
+msgstr "Go to..."
 
 #: templates/base.html:63 templates/base.html.py:69
 #: templates/google_search.html:6 templates/home.html:67
 #: templates/listing.html:30 templates/search.html:70
 #: templates/search.html.py:116
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 #: templates/base.html:113 templates/place.html:105
 msgid "Accessibility"
-msgstr ""
+msgstr "Accessibility"
 
 #: templates/base.html:114
 msgid "Privacy"
-msgstr ""
+msgstr "Privacy"
 
 #: templates/base.html:117
 msgid "Project supported by"
-msgstr ""
+msgstr "Project supported by"
 
 #: templates/comments.html:23
 msgid "tell us what you think"
-msgstr ""
+msgstr "Tell us what you think"
 
 #: templates/comments.html:29
 msgid "Comment"
-msgstr ""
+msgstr "Comment"
 
-#: templates/comments.html:33
+#: templates/comments.html:33 templates/place.html:194
 msgid "Add comment"
-msgstr ""
+msgstr "Add comment"
 
 #: templates/comments.html:37
 msgid "Login to comment"
-msgstr ""
+msgstr "Login to comment"
 
 #: templates/dummy_texts.html:3
 msgid "access_a"
@@ -231,7 +242,7 @@ msgstr "Database access"
 
 #: templates/dummy_texts.html:12
 msgid "prestamo"
-msgstr ""
+msgstr "Library loan"
 
 #: templates/dummy_texts.html:13
 msgid "hemeroteca"
@@ -243,7 +254,7 @@ msgstr ""
 
 #: templates/dummy_texts.html:15
 msgid "wifi"
-msgstr ""
+msgstr "Wi-Fi"
 
 #: templates/dummy_texts.html:16
 msgid "reprografia"
@@ -255,11 +266,11 @@ msgstr ""
 
 #: templates/dummy_texts.html:18
 msgid "prestamo_domic"
-msgstr ""
+msgstr "Home loan"
 
 #: templates/dummy_texts.html:19
 msgid "internet_usuarios"
-msgstr ""
+msgstr "Internet for users"
 
 #: templates/dummy_texts.html:20
 msgid "prestamo_inter"
@@ -275,11 +286,11 @@ msgstr ""
 
 #: templates/dummy_texts.html:23
 msgid "infantil"
-msgstr ""
+msgstr "Kids"
 
 #: templates/dummy_texts.html:24
 msgid "seccion_local"
-msgstr ""
+msgstr "Local section"
 
 #: templates/dummy_texts.html:25
 msgid "comiteca"
@@ -287,27 +298,27 @@ msgstr ""
 
 #: templates/dummy_texts.html:26
 msgid "fondo_antiguo"
-msgstr ""
+msgstr "Old "
 
 #: templates/dummy_texts.html:27
 msgid "formacion"
-msgstr ""
+msgstr "Training"
 
 #: templates/dummy_texts.html:28
 msgid "sala_estudio"
-msgstr ""
+msgstr "Study room"
 
 #: templates/dummy_texts.html:29
 msgid "sala_investigacion"
-msgstr ""
+msgstr "Research room"
 
 #: templates/dummy_texts.html:30
 msgid "visitas_guiadas"
-msgstr ""
+msgstr "Guided tours"
 
 #: templates/dummy_texts.html:31
 msgid "publicaciones"
-msgstr ""
+msgstr "Publications"
 
 #: templates/dummy_texts.html:32
 msgid "audicion"
@@ -319,7 +330,7 @@ msgstr ""
 
 #: templates/dummy_texts.html:35
 msgid "lectura_facil"
-msgstr ""
+msgstr "Easy reading"
 
 #: templates/dummy_texts.html:36
 msgid "seccion_xl"
@@ -331,35 +342,35 @@ msgstr ""
 
 #: templates/dummy_texts.html:39
 msgid "general"
-msgstr ""
+msgstr "General"
 
 #: templates/dummy_texts.html:40
 msgid "euskalkultura"
-msgstr ""
+msgstr "Basque culture"
 
 #: templates/dummy_texts.html:41
 msgid "especializada"
-msgstr ""
+msgstr "Specialized"
 
 #: templates/dummy_texts.html:42
 msgid "musica"
-msgstr ""
+msgstr "Music"
 
 #: templates/dummy_texts.html:44
 msgid "ayto"
-msgstr ""
+msgstr "Local"
 
 #: templates/dummy_texts.html:45
 msgid "auto"
-msgstr ""
+msgstr "Autonomic (Basque Country)"
 
 #: templates/dummy_texts.html:46
 msgid "priv"
-msgstr ""
+msgstr "Private"
 
 #: templates/dummy_texts.html:47
 msgid "fora"
-msgstr ""
+msgstr "Provincial"
 
 #: templates/dummy_texts.html:51
 msgid "i"
@@ -392,190 +403,182 @@ msgstr ""
 #: templates/dummy_texts.html:65 templates/home.html:69
 #: templates/listing.html:32
 msgid "filter"
-msgstr ""
+msgstr "Filter"
 
 #: templates/dummy_texts.html:66
 msgid "search"
-msgstr ""
+msgstr "Search"
 
 #: templates/dummy_texts.html:71
 msgid "ejgv_biblio"
-msgstr ""
+msgstr "Basque Government Libraries Service"
 
 #: templates/dummy_texts.html:72
 msgid "ejgv-tur-rest"
-msgstr ""
+msgstr "Basque Government Tourism department"
 
 #: templates/dummy_texts.html:73
 msgid "ejgv-tur-aloj"
-msgstr ""
+msgstr "Basque Government Tourism department"
 
 #: templates/dummy_texts.html:74
 msgid "ejgv-tur-infos"
-msgstr ""
+msgstr "Basque Government Tourism department"
 
 #: templates/dummy_texts.html:75
 msgid "Consultrans"
-msgstr ""
+msgstr "Consultrans"
 
 #: templates/dummy_texts.html:76
 msgid "dfa"
-msgstr ""
+msgstr "Arabako Foru Aldundia"
 
 #: templates/dummy_texts.html:77
 msgid "dfb"
-msgstr ""
+msgstr "Bizkaiko Foru Aldundia"
 
 #: templates/dummy_texts.html:78
 msgid "dfg"
-msgstr ""
+msgstr "Gipuzkoako Foru Aldundia"
 
 #: templates/dummy_texts.html:79
 msgid "fekoor"
-msgstr ""
+msgstr "FEKOOR"
 
 #: templates/dummy_texts.html:81
 msgid "agi"
-msgstr ""
+msgstr "AGI"
 
 #: templates/dummy_texts.html:82
 msgid "gorrak"
-msgstr ""
+msgstr "Euskalgorrak"
 
 #: templates/dummy_texts.html:83
 msgid "itxaropena"
-msgstr ""
+msgstr "Asociación Itxaropena"
 
 #: templates/dummy_texts.html:84
 msgid "eginaren"
-msgstr ""
+msgstr "Eginaren Eginez"
 
 #: templates/dummy_texts.html:85
 msgid "once"
-msgstr ""
+msgstr "ONCE"
 
 #: templates/dummy_texts.html:86
 msgid "fevapas"
-msgstr ""
+msgstr "FEVAPAS"
 
 #: templates/dummy_texts.html:87
 msgid "elkartu"
-msgstr ""
+msgstr "Elkartu"
 
 #: templates/google_search.html:8 templates/search.html:71
 #: templates/search.html.py:120
 msgid "Advanced filter"
-msgstr ""
+msgstr "Advanced filter"
 
 #: templates/home.html:82
 msgid "Read more"
-msgstr ""
+msgstr "Read more"
 
 #: templates/home.html:90
 msgid "Visit this places"
-msgstr ""
+msgstr "Visit these places"
 
 #: templates/home.html:104
 msgid "Last places"
-msgstr ""
+msgstr "Last places"
 
 #: templates/location.html:104
 #, python-format
 msgid "Visit full %(cityname)s"
-msgstr ""
+msgstr "Visit full %(cityname)s"
 
 #: templates/location.html:124 templates/search.html:143
 msgid "Previous"
-msgstr ""
+msgstr "Previous"
 
 #: templates/location.html:128 templates/search.html:147
 msgid "Next"
-msgstr ""
+msgstr "Next"
 
 #: templates/place.html:97
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #: templates/place.html:118
 msgid "detailed file"
-msgstr ""
+msgstr "Detailed file"
 
 #: templates/place.html:125
 msgid "Library"
-msgstr ""
+msgstr "Library"
 
-#: templates/place.html:132
+#: templates/place.html:133
 msgid "start_year"
-msgstr ""
+msgstr "Opening year"
 
-#: templates/place.html:139
+#: templates/place.html:141
 msgid "open_times"
-msgstr ""
+msgstr "Open times"
 
-#: templates/place.html:151
+#: templates/place.html:153
 msgid "services"
-msgstr ""
+msgstr "Services"
 
-#: templates/place.html:161
+#: templates/place.html:163
 msgid "data_source"
-msgstr ""
+msgstr "Source of data"
 
-#: templates/place.html:183
+#: templates/place.html:185
 msgid "Comments"
-msgstr ""
+msgstr "Comments"
 
-#: templates/place.html:190
-msgid "Gehitu"
-msgstr ""
+#: templates/place.html:199 templates/useroptions.html:16
+msgid "Sign in"
+msgstr "Sign in"
 
-#: templates/place.html:205
-msgid "Map"
-msgstr ""
+#: templates/place.html:199
+msgid " to write a comment."
+msgstr " to write a comment."
 
 #: templates/place.html:210
+msgid "Map"
+msgstr "Map"
+
+#: templates/place.html:215
 msgid "Nearest places"
-msgstr ""
+msgstr "Nearest places"
 
 #: templates/search.html:4 templates/search.html.py:63
 msgid "Search results"
-msgstr ""
+msgstr "Search results"
 
 #: templates/search.html:82
 msgid "City"
-msgstr ""
+msgstr "City"
 
 #: templates/search.html:93
 msgid "Category"
-msgstr ""
+msgstr "Category"
 
 #: templates/search.html:100
 msgid "Minimal accessibility"
-msgstr ""
+msgstr "Minimal accessibility"
 
 #: templates/search.html:123
 msgid "Total results:"
-msgstr ""
+msgstr "Total results:"
 
 #: templates/useroptions.html:5
 msgid "User's photo"
-msgstr ""
+msgstr "User's photo"
 
 #: templates/useroptions.html:10
 msgid "Your profile"
-msgstr ""
+msgstr "Your profile"
 
 #: templates/useroptions.html:11
 msgid "Sign out"
-msgstr ""
-
-#: templates/useroptions.html:16 templates/mycomment/list.html:26
-msgid "Sign in"
-msgstr ""
-
-#: templates/mycomment/list.html:26
-msgid "There is no comment yet"
-msgstr ""
-
-#: templates/mycomment/list.html:26
-msgid " to write a comment."
-msgstr ""
+msgstr "Sign out"

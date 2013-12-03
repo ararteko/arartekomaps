@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-19 15:28+0100\n"
-"PO-Revision-Date: 2013-10-07 11:28+0100\n"
+"POT-Creation-Date: 2013-12-03 12:59+0100\n"
+"PO-Revision-Date: 2013-12-03 12:08+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -28,7 +28,7 @@ msgstr "Euskara"
 
 #: settings.py:64
 msgid "English"
-msgstr ""
+msgstr "English"
 
 #: views.py:10 templates/search.html:84 templates/search.html.py:95
 msgid "Any"
@@ -111,13 +111,11 @@ msgstr ""
 "los formatos aceptados!"
 
 #: mycomment/models.py:52
-#, fuzzy
-msgid "[NUEVO COMENTARIO] "
+msgid "[NEW COMMENT] "
 msgstr "[NUEVO COMENTARIO] "
 
 #: mycomment/models.py:52
-#, fuzzy
-msgid "Nuevo comentario guardado: "
+msgid "New comment saved: "
 msgstr "Nuevo comentario guardado: "
 
 #: places/models.py:52 places/models.py:53 places/models.py:54
@@ -221,7 +219,7 @@ msgstr "dinos lo que piensas sobre las condiciones de accesibilidad del lugar."
 msgid "Comment"
 msgstr "Comenta"
 
-#: templates/comments.html:33
+#: templates/comments.html:33 templates/place.html:194
 msgid "Add comment"
 msgstr "Añadir comentario"
 
@@ -524,35 +522,39 @@ msgstr "Ficha detallada"
 msgid "Library"
 msgstr "Biblioteca"
 
-#: templates/place.html:132
+#: templates/place.html:133
 msgid "start_year"
 msgstr "Año apertura"
 
-#: templates/place.html:139
+#: templates/place.html:141
 msgid "open_times"
 msgstr "Horario"
 
-#: templates/place.html:151
+#: templates/place.html:153
 msgid "services"
 msgstr "Servicios"
 
-#: templates/place.html:161
+#: templates/place.html:163
 msgid "data_source"
 msgstr "Fuente de los datos"
 
-#: templates/place.html:183
+#: templates/place.html:185
 msgid "Comments"
 msgstr "Comentarios"
 
-#: templates/place.html:190
-msgid "Gehitu"
-msgstr "Añadir"
+#: templates/place.html:199 templates/useroptions.html:16
+msgid "Sign in"
+msgstr "Entrar"
 
-#: templates/place.html:205
+#: templates/place.html:199
+msgid " to write a comment."
+msgstr " para comentar"
+
+#: templates/place.html:210
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:210
+#: templates/place.html:215
 msgid "Nearest places"
 msgstr "Lugares cercanos"
 
@@ -588,17 +590,11 @@ msgstr "Perfil"
 msgid "Sign out"
 msgstr "Salir"
 
-#: templates/useroptions.html:16 templates/mycomment/list.html:26
-msgid "Sign in"
-msgstr "Entrar"
+#~ msgid "Gehitu"
+#~ msgstr "Añadir"
 
-#: templates/mycomment/list.html:26
-msgid "There is no comment yet"
-msgstr "No hay ningún comentario"
-
-#: templates/mycomment/list.html:26
-msgid " to write a comment."
-msgstr " para comentar"
+#~ msgid "There is no comment yet"
+#~ msgstr "No hay ningún comentario"
 
 #~ msgid "btype"
 #~ msgstr "Tipo"
