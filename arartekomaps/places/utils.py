@@ -48,3 +48,4 @@ def slugify(s, entities=True, decimal=True, hexadecimal=True,
             slug = "%s-%s" % (s, counter)
             counter += 1
     return slug
+    

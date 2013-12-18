@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load place_extras %}
 
-{% block head_title%}{{place.name}}. {% trans place.category.str2trans %} - {% trans "Ararteko maps" %}{% endblock %}
+{% block head_title%}{{place.name}} {{ place.category }} - {% trans "Ararteko maps" %}{% endblock %}
 
 {% block extraheader %}
 <link rel="stylesheet" href="{{STATIC_URL}}css/slimbox2.css" type="text/css" media="screen" />
@@ -136,8 +136,10 @@
         <dt>{% trans "institution" %}</dt>
         <dd>{{place.biblio_data.institution}} ({% trans place.biblio_data.institution_type %})</dd>
       {% endcomment %}
+      {% if place.biblio_data.open_times.strip %}
         <dt>{% trans "open_times" %}</dt>
         <dd>{{place.biblio_data.open_times}}</dd>
+      {% endif %}
       {% comment %}
         <dt>{% trans "access_type" %}</dt>
         <dd>{% trans place.biblio_data.access_type %}</dd>
@@ -147,10 +149,12 @@
         <dt>{% trans "topics" %}</dt>
         <dd>{% for topic in place.biblio_data.topics.all %} {% trans topic.name %} {% endfor %} </dd>
       {% endcomment %}
+      {% if place.biblio_data.services.all %}
         <dt>{% trans "services" %}</dt>
         <dd>{% for service in place.biblio_data.services.all %} 
                 {% trans service.name %}{% if not forloop.last %},{% endif %}  
 	        {% endfor %}</dd>
+      {% endif %}
 	</dl>
 
 </div>
