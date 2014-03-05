@@ -41,6 +41,7 @@ class Place(models.Model):
     fax=models.CharField(max_length=15, blank=True, verbose_name='Fax')
     url=models.CharField(max_length=255, blank=True, verbose_name='URL')
     email=models.CharField(max_length=255, blank=True, verbose_name='Email')
+    modified_date=models.DateTimeField(auto_now=True, verbose_name='Fecha Modificación')
     
     def get_comments_count(self):
         return self.parent.all().count()

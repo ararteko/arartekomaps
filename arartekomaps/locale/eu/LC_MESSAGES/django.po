@@ -7,11 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-03 12:59+0100\n"
-"PO-Revision-Date: 2013-12-03 12:08+0100\n"
+"POT-Creation-Date: 2014-03-05 15:51+0100\n"
+"PO-Revision-Date: 2014-03-05 15:52+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,23 +41,23 @@ msgstr "Nahikoa irisg."
 msgid "Accesible"
 msgstr "Irisgarria"
 
-#: views.py:16 places/models.py:52
+#: views.py:16 places/models.py:53
 msgid "aphysic"
 msgstr "Fisikoa"
 
-#: views.py:17 places/models.py:53
+#: views.py:17 places/models.py:54
 msgid "avisual"
 msgstr "Ikusizkoa"
 
-#: views.py:18 places/models.py:54
+#: views.py:18 places/models.py:55
 msgid "aaudio"
 msgstr "Entzutezkoa"
 
-#: views.py:19 places/models.py:55
+#: views.py:19 places/models.py:56
 msgid "aintelec"
 msgstr "Intelektuala"
 
-#: views.py:20 places/models.py:56
+#: views.py:20 places/models.py:57
 msgid "aorganic"
 msgstr "Organikoa"
 
@@ -118,8 +117,8 @@ msgstr "[IRUZKIN BERRIA]"
 msgid "New comment saved: "
 msgstr "Iruzkin berria gorde dugu:"
 
-#: places/models.py:52 places/models.py:53 places/models.py:54
-#: places/models.py:55 places/models.py:56
+#: places/models.py:53 places/models.py:54 places/models.py:55
+#: places/models.py:56 places/models.py:57
 #, python-format
 msgid "access_%s"
 msgstr ""
@@ -220,7 +219,7 @@ msgstr "esaiguzu zer iruditzen zaizun toki honen irisgarritasuna."
 msgid "Comment"
 msgstr "Iruzkindu"
 
-#: templates/comments.html:33 templates/place.html:194
+#: templates/comments.html:33 templates/place.html:203
 msgid "Add comment"
 msgstr "Gehitu iruzkina"
 
@@ -527,35 +526,39 @@ msgstr "Liburutegia"
 msgid "start_year"
 msgstr "Irekiera urtea"
 
-#: templates/place.html:141
+#: templates/place.html:142
 msgid "open_times"
 msgstr "Ordutegia"
 
-#: templates/place.html:153
+#: templates/place.html:156
 msgid "services"
 msgstr "Zerbitzuak"
 
-#: templates/place.html:163
+#: templates/place.html:167
 msgid "data_source"
 msgstr "Datuen jatorria"
 
-#: templates/place.html:185
+#: templates/place.html:176
+msgid "modified_date"
+msgstr "Eguneraketa data"
+
+#: templates/place.html:194
 msgid "Comments"
 msgstr "Iruzkinak"
 
-#: templates/place.html:199 templates/useroptions.html:16
+#: templates/place.html:208 templates/useroptions.html:16
 msgid "Sign in"
 msgstr "Sartu"
 
-#: templates/place.html:199
+#: templates/place.html:208
 msgid " to write a comment."
 msgstr " iruzkinak bidaltzeko."
 
-#: templates/place.html:210
+#: templates/place.html:219
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:215
+#: templates/place.html:224
 msgid "Nearest places"
 msgstr "Gertuko tokiak"
 

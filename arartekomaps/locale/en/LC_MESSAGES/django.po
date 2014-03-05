@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-03 12:59+0100\n"
+"POT-Creation-Date: 2014-03-05 15:51+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
@@ -35,23 +35,23 @@ msgstr "Quite accessible"
 msgid "Accesible"
 msgstr "Accessible"
 
-#: views.py:16 places/models.py:52
+#: views.py:16 places/models.py:53
 msgid "aphysic"
 msgstr "Physical"
 
-#: views.py:17 places/models.py:53
+#: views.py:17 places/models.py:54
 msgid "avisual"
 msgstr "Visual"
 
-#: views.py:18 places/models.py:54
+#: views.py:18 places/models.py:55
 msgid "aaudio"
 msgstr "Audio"
 
-#: views.py:19 places/models.py:55
+#: views.py:19 places/models.py:56
 msgid "aintelec"
 msgstr "Intelectual"
 
-#: views.py:20 places/models.py:56
+#: views.py:20 places/models.py:57
 msgid "aorganic"
 msgstr "Organic"
 
@@ -111,8 +111,8 @@ msgstr "[NEW COMMENT] "
 msgid "New comment saved: "
 msgstr "New comment saved: "
 
-#: places/models.py:52 places/models.py:53 places/models.py:54
-#: places/models.py:55 places/models.py:56
+#: places/models.py:53 places/models.py:54 places/models.py:55
+#: places/models.py:56 places/models.py:57
 #, python-format
 msgid "access_%s"
 msgstr ""
@@ -212,7 +212,7 @@ msgstr "Tell us what you think"
 msgid "Comment"
 msgstr "Comment"
 
-#: templates/comments.html:33 templates/place.html:194
+#: templates/comments.html:33 templates/place.html:203
 msgid "Add comment"
 msgstr "Add comment"
 
@@ -338,7 +338,7 @@ msgstr ""
 
 #: templates/dummy_texts.html:37
 msgid "audiolibros"
-msgstr ""
+msgstr "Audiobooks"
 
 #: templates/dummy_texts.html:39
 msgid "general"
@@ -519,35 +519,39 @@ msgstr "Library"
 msgid "start_year"
 msgstr "Opening year"
 
-#: templates/place.html:141
+#: templates/place.html:142
 msgid "open_times"
 msgstr "Open times"
 
-#: templates/place.html:153
+#: templates/place.html:156
 msgid "services"
 msgstr "Services"
 
-#: templates/place.html:163
+#: templates/place.html:167
 msgid "data_source"
 msgstr "Source of data"
 
-#: templates/place.html:185
+#: templates/place.html:176
+msgid "modified_date"
+msgstr "Updated at"
+
+#: templates/place.html:194
 msgid "Comments"
 msgstr "Comments"
 
-#: templates/place.html:199 templates/useroptions.html:16
+#: templates/place.html:208 templates/useroptions.html:16
 msgid "Sign in"
 msgstr "Sign in"
 
-#: templates/place.html:199
+#: templates/place.html:208
 msgid " to write a comment."
 msgstr " to write a comment."
 
-#: templates/place.html:210
+#: templates/place.html:219
 msgid "Map"
 msgstr "Map"
 
-#: templates/place.html:215
+#: templates/place.html:224
 msgid "Nearest places"
 msgstr "Nearest places"
 
