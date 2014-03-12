@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-05 15:51+0100\n"
-"PO-Revision-Date: 2014-03-05 15:52+0100\n"
+"POT-Creation-Date: 2014-03-12 15:11+0100\n"
+"PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -151,11 +151,11 @@ msgstr "Sentitzen dugu. Ez dugu bila ari zarena aurkitu."
 msgid "About"
 msgstr "Honi buruz"
 
-#: templates/about.html:24 templates/base.html:113 templates/home.html:78
+#: templates/about.html:24 templates/base.html:113 templates/home.html:108
 msgid "About the maps"
 msgstr "Mapa hauen inguruan"
 
-#: templates/about.html:27 templates/home.html:80
+#: templates/about.html:27 templates/home.html:110
 msgid "About: Paragraph 1"
 msgstr ""
 "Informa zaitez nahi duzun lekura iristeko! Zure laguntzarekin, erraz "
@@ -187,13 +187,13 @@ msgid "Discover and share accessible places"
 msgstr "Aurkitu eta partekatu toki irisgarriak"
 
 #: templates/base.html:61 templates/base.html.py:68
-#: templates/google_search.html:5 templates/home.html:66
+#: templates/google_search.html:5 templates/home.html:96
 #: templates/listing.html:29 templates/search.html:69
 msgid "Go to..."
 msgstr "Nora joan:"
 
 #: templates/base.html:63 templates/base.html.py:69
-#: templates/google_search.html:6 templates/home.html:67
+#: templates/google_search.html:6 templates/home.html:97
 #: templates/listing.html:30 templates/search.html:70
 #: templates/search.html.py:116
 msgid "Search"
@@ -407,7 +407,7 @@ msgstr "Mugatua"
 msgid "p"
 msgstr "Publikoa"
 
-#: templates/dummy_texts.html:65 templates/home.html:69
+#: templates/dummy_texts.html:65 templates/home.html:99
 #: templates/listing.html:32
 msgid "filter"
 msgstr "Filtro aurreratua"
@@ -485,15 +485,34 @@ msgstr "Elkartu"
 msgid "Advanced filter"
 msgstr "Filtro aurreratua"
 
-#: templates/home.html:82
+#: templates/home.html:56
+msgid "question: want to download iPhone app"
+msgstr "iPhonerako gure aplikazioa deskargatu nahi duzu doan?"
+
+#: templates/home.html:69
+msgid "question: want to download Android app"
+msgstr "Androiderako gure aplikazioa deskargatu nahi duzu doan?"
+
+#: templates/home.html:112
 msgid "Read more"
 msgstr "Gehiago irakurri"
 
-#: templates/home.html:90
+#: templates/home.html:120
+msgid "Download our app"
+msgstr "Deskargatu gure telefonorako aplikazioak doan!"
+
+#: templates/home.html:121
+msgid "Download our apps presentation text"
+msgstr ""
+"Doako aplikazio hau zure telefonoan instalatuta, zuregandik gertu dauden "
+"toki irisgarriak ezagutu ahal izango dituzu eta bisitatzen dituzun tokien "
+"egoera errealaz emango diozu berri komunitateari."
+
+#: templates/home.html:131
 msgid "Visit this places"
 msgstr "Bisitatu toki hauek"
 
-#: templates/home.html:104
+#: templates/home.html:145
 msgid "Last places"
 msgstr "Azken tokiak"
 

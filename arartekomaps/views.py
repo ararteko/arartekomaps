@@ -25,7 +25,7 @@ def home(request):
     """"""
     template_name='home'
     hidesearch = True
-    places = Place.objects.all().order_by('?')[:10]
+    places = Place.objects.all().order_by('?')[:5]
     return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def filter(request):

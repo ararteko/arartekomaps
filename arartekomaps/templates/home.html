@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block head_title%}{% trans "Ararteko maps" %}{% endblock %}
+{% block head_title%}{% trans "Ararteko maps" %} - {% trans "Discover and share accessible places" %}{% endblock %}
 
 {% block extraheader %}
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -48,6 +48,36 @@
 
   }
 </script>
+
+
+<script type="text/javascript">
+  if( /iPhone|iPad/i.test(navigator.userAgent) ) {
+
+  var url=confirm("{% trans "question: want to download iPhone app" %}");
+    if (url==true)
+  {
+    var url = window.location.href = 'itms://itunes.apple.com/es/app/ararmapak/id727622778?mt=8';
+    url.show(); 
+  }
+    else
+  {
+
+  }
+  }
+  if( /Android/i.test(navigator.userAgent) ) {
+
+  var url=confirm("{% trans "question: want to download Android app" %}");
+    if (url==true)
+  {
+    var url = window.location.href = 'market://details?id=eu.akting.ararteko';
+    url.show(); 
+  }
+    else
+  {
+
+  }
+  }
+  </script>
 {% endblock %}
 
 {% block mainmenu %}  
@@ -86,6 +116,17 @@
 </div>
 
 <div id="homefeatured">
+  <h2>{% trans "Download our app" %}</h2>
+  <p>{% trans "Download our apps presentation text" %}</p>
+  <div id="appbadges">  
+    <a href="https://play.google.com/store/apps/details?id=eu.akting.ararteko">
+        <img alt="Ararteko mapak Android app on Google Play" src="https://developer.android.com/images/brand/es_app_rgb_wo_45.png" />
+    </a>
+    <a href="https://itunes.apple.com/es/app/ararmapak/id727622778?mt=8">
+        <img alt="Ararteko mapak iPhone app on Apple Store" src="{{STATIC_URL}}img/applebadge.png" />
+    </a>
+
+  </div>
   <h2>{% trans "Visit this places" %}</h2>
   
   <ul id="provinces">

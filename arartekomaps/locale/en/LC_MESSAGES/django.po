@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-05 15:51+0100\n"
+"POT-Creation-Date: 2014-03-12 15:11+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
@@ -145,11 +145,11 @@ msgstr "Sorry, we didn't found what you requested."
 msgid "About"
 msgstr "About"
 
-#: templates/about.html:24 templates/base.html:113 templates/home.html:78
+#: templates/about.html:24 templates/base.html:113 templates/home.html:108
 msgid "About the maps"
 msgstr "About the maps"
 
-#: templates/about.html:27 templates/home.html:80
+#: templates/about.html:27 templates/home.html:110
 msgid "About: Paragraph 1"
 msgstr ""
 "Look for the place where you want to arrive! With your help we will get more "
@@ -180,13 +180,13 @@ msgid "Discover and share accessible places"
 msgstr "Discover and share accessible places"
 
 #: templates/base.html:61 templates/base.html.py:68
-#: templates/google_search.html:5 templates/home.html:66
+#: templates/google_search.html:5 templates/home.html:96
 #: templates/listing.html:29 templates/search.html:69
 msgid "Go to..."
 msgstr "Go to..."
 
 #: templates/base.html:63 templates/base.html.py:69
-#: templates/google_search.html:6 templates/home.html:67
+#: templates/google_search.html:6 templates/home.html:97
 #: templates/listing.html:30 templates/search.html:70
 #: templates/search.html.py:116
 msgid "Search"
@@ -400,7 +400,7 @@ msgstr ""
 msgid "p"
 msgstr ""
 
-#: templates/dummy_texts.html:65 templates/home.html:69
+#: templates/dummy_texts.html:65 templates/home.html:99
 #: templates/listing.html:32
 msgid "filter"
 msgstr "Filter"
@@ -478,15 +478,34 @@ msgstr "Elkartu"
 msgid "Advanced filter"
 msgstr "Advanced filter"
 
-#: templates/home.html:82
+#: templates/home.html:56
+msgid "question: want to download iPhone app"
+msgstr "Do you want to download our free iPhone application?"
+
+#: templates/home.html:69
+msgid "question: want to download Android app"
+msgstr "Do you want to download our free Android application?"
+
+#: templates/home.html:112
 msgid "Read more"
 msgstr "Read more"
 
-#: templates/home.html:90
+#: templates/home.html:120
+msgid "Download our app"
+msgstr "Download our app!"
+
+#: templates/home.html:121
+msgid "Download our apps presentation text"
+msgstr ""
+"With this free app in your phone you will be able to check the most "
+"accesible spots close to you and you will be able to report the community "
+"about the real situation of the places you visit."
+
+#: templates/home.html:131
 msgid "Visit this places"
 msgstr "Visit these places"
 
-#: templates/home.html:104
+#: templates/home.html:145
 msgid "Last places"
 msgstr "Last places"
 

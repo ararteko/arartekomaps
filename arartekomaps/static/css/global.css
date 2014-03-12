@@ -309,6 +309,17 @@ header img{
     float:right;
     
 }
+#appbadges{
+    margin-top:0.5em;
+    margin-bottom:1.5em;
+}
+#appbadges img{
+    max-height:40px;
+    width:auto !important;
+}
+#appbadges a{
+    text-decoration:none;
+}
 #provinces, #cities{
    list-style-image:none;
    list-style:none;

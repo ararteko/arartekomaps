@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load place_extras %}
 
-{% block head_title%}{{place.name}} {{ place.category }} - {% trans "Ararteko maps" %}{% endblock %}
+{% block head_title%}{{place.name}} {{ place.category }}, {% trans "Accessibility" %} - {% trans "Ararteko maps" %}{% endblock %}
 
 {% block extraheader %}
 <link rel="stylesheet" href="{{STATIC_URL}}css/slimbox2.css" type="text/css" media="screen" />
