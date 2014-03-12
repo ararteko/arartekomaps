@@ -71,8 +71,8 @@ class Command(BaseCommand):
         for rownum in range(sh.nrows)[1:]:
             fields = sh.row_values(rownum)
 
-            if len(fields)!=51:
-                print 'Tenemos mas o menos de 51 campos'
+            if len(fields)!=44:
+                print 'Tenemos mas o menos de 44 campos'
                 n = 1
                 for field in fields:
                     print n, field
@@ -80,17 +80,27 @@ class Command(BaseCommand):
                 break
             else:
                 (cod_origen, titulo, slug, ent_origen, cod_origen_vacio, cat, 
-                direc1, direc2, cp, pob, loc, desc, tel, fax, url, 
+                direc1, direc2, cp, pob, desc, tel, fax, url, 
                 email, foto, lat, lon, foto_x, foto_x_tit, foto_x_alt, 
-                acc_fis, acc_vis, acc_aud, acc_int, acc_org, tipo_biblio, 
-                ano_inicio, institution, institution_type, open_times_eu, 
+                acc_fis, acc_vis, acc_aud, acc_int, acc_org,
+                ano_inicio, open_times_eu, 
                 open_times_es, open_times_s_eu, open_times_s_es, 
-                access_type, center_type, tem_general, ser_consulta, 
+                ser_consulta, 
                 ser_reprografia, ser_hemeroteca, 
                 ser_wifi, ser_selectiva, ser_bol_novedades, ser_prestamo, 
                 ser_prestamo_inter, ser_prestamo_domic, ser_infor_bibliografica, 
-                ser_internet_usuarios, ser_acceso_bbdd, latlon) = fields[:51]
-                  
+                ser_internet_usuarios, ser_acceso_bbdd, latlon) = fields[:44]
+            
+            # Set fields because not used anymore
+            loc = ''
+            tipo_biblio = ''
+            access_type = ''
+            center_type = ''
+            tem_general = ''
+            institution = ''
+            institution_type = ''
+
+
             cod_origen = "%d" % cod_origen
             ent_origen = 'ejgv_biblio'
 
