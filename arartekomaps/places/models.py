@@ -11,6 +11,7 @@ from django.db.models import Count
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
+from datetime import datetime
 
 DEFAULT_FROM_EMAIL = getattr(settings,'DEFAULT_FROM_EMAIL', '')
 EMAIL_NOTIFICATION = getattr(settings,'EMAIL_NOTIFICATION', '')
@@ -41,7 +42,7 @@ class Place(models.Model):
     fax=models.CharField(max_length=15, blank=True, verbose_name='Fax')
     url=models.CharField(max_length=255, blank=True, verbose_name='URL')
     email=models.CharField(max_length=255, blank=True, verbose_name='Email')
-    modified_date=models.DateTimeField(auto_now=True, verbose_name='Fecha Modificación')
+    modified_date=models.DateTimeField(auto_now=False, verbose_name='Fecha Modificación')
     
     def get_comments_count(self):
         return self.parent.all().count()
@@ -138,6 +139,11 @@ class Place(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def save(self):
+        if hasattr(self, 'custom_date'):
+            self.modified_date = self.custom_date
+        super(Place, self).save()
 
 
 class Access(models.Model):   
