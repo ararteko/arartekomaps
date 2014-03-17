@@ -1,5 +1,4 @@
-{% load i18n %}
-<!doctype html>
+<!doctype html>{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,9 +7,6 @@
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-</script>
-
     {% block extraheader %}
     {% endblock %}
 
@@ -40,7 +36,7 @@
     <div id="utils">
      {% for code,lang in LANGUAGES %}
        {% if code != LANGUAGE_CODE %}
-          <a href="{% url set_lang %}?language={{code}}&next={{request.path}}">{{lang}}</a>
+          <a href="{% url set_lang %}?language={{code}}&amp;next={{request.path}}">{{lang}}</a>
        {% endif %}
      {% endfor %}    
 <!--         <a href="{% url set_lang %}?language=es&next={{request.path}}">Español</a> -->
