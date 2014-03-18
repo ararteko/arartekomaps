@@ -81,7 +81,7 @@
 
 {% if def_images %}
   {% for image in def_images %}
-  <a itemprop="image" href="http://{{request.get_host}}{{image.image.url}}" rel="lightbox-group" title="{{image.name}}"><img src="http://{{request.get_host}}{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
+  <a itemprop="image" href="http://{{request.get_host}}{{image.get_fullscr_url}}" rel="lightbox-group" title="{{image.name}}"><img src="http://{{request.get_host}}{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
   {% endfor %}
 {% endif %}
 
