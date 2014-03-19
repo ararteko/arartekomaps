@@ -96,7 +96,18 @@
 {% if place.fax %}<br /><span class="fax">{{place.fax}}</span>{% endif %}
 {% if place.url %}<br /><span class="web"><a href="{{place.url}}" itemprop="url">{% trans "Website" %}</a></span>{% endif %}
 </span>
+<span class="geo">
+    <span class="latitude">
+      <span class="value-title" title="{{place.lat}}" ></span>
+    </span>
+    <span class="longitude">
+      <span class="value-title" title="{{place.lon}}"></span>
+    </span>
+</span>
 </address>
+
+
+
 
 
 <p>{{place.description|default_if_none:""}}</p>
