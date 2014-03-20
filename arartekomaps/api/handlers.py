@@ -120,7 +120,7 @@ class PlaceHandler(AnonymousBaseHandler):
             comment_list = []
             for comment in comments:
                 if comment.photo:
-                    c_img = settings.HOST+comment.photo.get_place_API_url()
+                    c_img = comment.photo.get_place_API_url()
                 else:
                     c_img = ""
                 if comment.author.get_profile().get_photo():

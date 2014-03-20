@@ -499,14 +499,14 @@ msgstr "Gehiago irakurri"
 
 #: templates/home.html:120
 msgid "Download our app"
-msgstr "Deskargatu gure telefonorako aplikazioak doan!"
+msgstr "Deskargatu doan gure telefonorako aplikazioa!"
 
 #: templates/home.html:121
 msgid "Download our apps presentation text"
 msgstr ""
-"Doako aplikazio hau zure telefonoan instalatuta, zuregandik gertu dauden "
+"Doako aplikazio hau zure telefonoan instalatuta, zugandik gertu dauden "
 "toki irisgarriak ezagutu ahal izango dituzu eta bisitatzen dituzun tokien "
-"egoera errealaz emango diozu berri komunitateari."
+"benetako egoeraren berri eman ahal izango diozu komunitateari."
 
 #: templates/home.html:131
 msgid "Visit this places"
