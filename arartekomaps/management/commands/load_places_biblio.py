@@ -1,10 +1,13 @@
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
-from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice, MPhoto
+from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice
+
 from arartekomaps.locations.models import Location
 from arartekomaps.locations.utils import slugify
+from datetime import datetime
 
-import xlrd, StringIO, urllib2
+import xlrd
+
 from arartekomaps.utils.load_images import loadUrlImage
 from arartekomaps.settings import IMPORT_FILES_FOLDER
 
@@ -64,6 +67,9 @@ class Command(BaseCommand):
         sh = f.sheet_by_index(0)
 
         kont = 1
+        now = datetime.now()
+        print 'NOW!:'
+        print now
 
         cat = 'library'
         cat_obj = Category.objects.get(slug=cat)
@@ -149,6 +155,7 @@ class Command(BaseCommand):
             place.fax = fax
             place.url = url
             place.email = email
+            place.modified_date = now
 
             #get photo URL:
             if foto:
@@ -166,7 +173,7 @@ class Command(BaseCommand):
                 foto_x_tit = place.name[:]
             if has_point>-1:
                 if saving:
-                    image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )            
+                    image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )
             
 
             # ACCESS

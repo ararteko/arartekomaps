@@ -11,7 +11,7 @@ from django.db.models import Count
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
-from datetime import datetime
+
 
 DEFAULT_FROM_EMAIL = getattr(settings,'DEFAULT_FROM_EMAIL', '')
 EMAIL_NOTIFICATION = getattr(settings,'EMAIL_NOTIFICATION', '')
