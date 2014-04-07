@@ -24,9 +24,11 @@ from social_auth.backends.twitter import TwitterBackend
 from social_auth.models import UserSocialAuth
 from social_auth.backends import get_backend
 from django.utils.translation import ugettext_lazy as _
-
+import logging
 import base64, urllib
 from math import radians, cos, sin, asin, sqrt, degrees
+
+logger = logging.getLogger(__name__)
 
 ACCESS_KEYS = ("a","p")
 
@@ -73,6 +75,7 @@ class LocationsHandler(AnonymousBaseHandler):
                 json_loc.append(h)
             return {'lang': lang, 'action': 'get_cities', 'result': 'success', 'values': json_loc}
         except:
+            logger.error("Couldn't get location information")
             return {'lang': lang, 'action': 'get_cities', 'result': 'failed'}
 
 
@@ -99,6 +102,7 @@ class CategoriesHandler(AnonymousBaseHandler):
                 json_loc.append(h)
             return {'lang': lang, 'action': 'get_categories', 'result': 'success', 'values': json_loc}
         except:
+            logger.error("Couldn't get categories")
             return {'lang': lang, 'action': 'get_categories', 'result': 'failed'}
 
 class PlaceHandler(AnonymousBaseHandler):
@@ -173,6 +177,7 @@ class PlaceHandler(AnonymousBaseHandler):
             }
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
         except Exception, e:
+            logger.error("ERROR: "+str(e))
             return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': str(e)}
   
 
@@ -280,6 +285,7 @@ class PlacesHandler(AnonymousBaseHandler):
                 return {'lang': lang, 'action': 'get_filtered_places', 'result': 'empty'}
             return {'lang': lang, 'action': 'get_filtered_places', 'result': 'success', 'values': json_list[:10]}
         except Exception, e:
+            logger.error("ERROR: "+str(e))
             return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': str(e)}
 
 class UserHandler(AnonymousBaseHandler):
@@ -304,6 +310,7 @@ class UserHandler(AnonymousBaseHandler):
 
         if origin == "": 
             if not username:
+                logger.error("ERROR: There is not enough data")
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
             elif passw and email:
                 try:
@@ -311,10 +318,13 @@ class UserHandler(AnonymousBaseHandler):
                     RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
                     return {'action': 'login_or_register', 'result': 'success'}
                 except IntegrityError, e:
+                    logger.error("ERROR: "+str(e))
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
                 except SMTPException, e:
+                    logger.error("ERROR: "+str(e))
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+str(e)}
                 except Exception as e:
+                    logger.error("ERROR: "+str(e))
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error: '+str(e)}
             elif passw and not email:
                 user = authenticate(username=username, password=passw)
@@ -326,11 +336,14 @@ class UserHandler(AnonymousBaseHandler):
                         return {'action': 'login_or_register', 'result': 'success', 'value': token}
                     else:
                         # Return a 'disabled account' error message
+                        logger.error("ERROR: User is not active")
                         return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
                 else:
                     # Return an 'invalid login' error message.
+                    logger.error("ERROR: User is not authenticated")
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated'}
             else:
+                logger.error("ERROR: Not enough data")
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
         elif origin in tuple(SOCIAL_ORIGIN.keys()):
             if origin == "1":
@@ -347,6 +360,7 @@ class UserHandler(AnonymousBaseHandler):
                     usa.extra_data = access_token
                     usa.save()
                 except IntegrityError, e:
+                    logger.error("ERROR:"+str(e))
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
 
             access_token = ast.literal_eval(access_token)
@@ -354,6 +368,7 @@ class UserHandler(AnonymousBaseHandler):
                 backend = get_backend(SOCIAL_ORIGIN[origin], request, request.path)
                 user = backend.do_auth(access_token['access_token'])
             except Exception as e:
+                logger.error("ERROR: "+str(e))
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error: '+str(e)}
             if user and user.is_active:
                 login(request, user)
@@ -362,8 +377,10 @@ class UserHandler(AnonymousBaseHandler):
                 return {'action': 'login_or_register', 'result': 'success', 'value': token}
             else:
                 # Return a 'disabled account' error message
+                logger.error("ERROR: User is not active!"
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
         else:
+            logger.error("ERROR: Wrong origin!")
             return {'action': 'login_or_register', 'result': 'failed', 'value': 'wrong_origin'}
 
 class CommentHandler(BaseHandler):
@@ -379,6 +396,7 @@ class CommentHandler(BaseHandler):
         try:
             user = User.objects.get(username=username)
         except:
+            logger.error("ERROR: Invalid username")
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username'}
         if default_token_generator.check_token(user,token):
             try:
@@ -404,8 +422,10 @@ class CommentHandler(BaseHandler):
                     return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found'}
 
             except Exception as e:
+                logger.error("ERROR: "+str(e))
                 return {'action': 'post_comment', 'result': 'failed', 'value': 'place_error: '+str(e)}
         else:
+            logger.error("ERROR: Invalid token")
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token'}
 
 class GetCommentHandler(AnonymousBaseHandler):
@@ -437,4 +457,5 @@ class GetCommentHandler(AnonymousBaseHandler):
                 })
             return {'lang': lang, 'action': 'get_comments', 'result': 'success', 'value': comment_list}
         except Exception, e:
+            logger.error("ERROR:"+str(e))
             return {'lang': lang, 'action': 'get_comments', 'result': 'failed', 'value': 'comments_error: '+str(e)}
