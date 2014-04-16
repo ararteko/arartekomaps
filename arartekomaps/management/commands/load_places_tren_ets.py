@@ -119,8 +119,8 @@ class Command(BaseCommand):
             place.locality = locality
             place.source = source
             place.source_id = source_id
-            place.lat = lat
-            place.lon = lon
+            place.lat = str(lat)
+            place.lon = str(lon)
             place.tlf = tlf
             place.fax = fax
             place.url = url
