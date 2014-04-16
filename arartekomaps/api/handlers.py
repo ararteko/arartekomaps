@@ -377,7 +377,7 @@ class UserHandler(AnonymousBaseHandler):
                 return {'action': 'login_or_register', 'result': 'success', 'value': token}
             else:
                 # Return a 'disabled account' error message
-                logger.error("ERROR: User is not active!"
+                logger.error("ERROR: User is not active!")
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
         else:
             logger.error("ERROR: Wrong origin!")
@@ -392,12 +392,17 @@ class CommentHandler(BaseHandler):
         token = request.POST.get("token","")
         text = request.POST.get("text","")
         slug = request.POST.get("slug","")
-         
+    
+        f = open('post_saiakerak.txt','w')
         try:
             user = User.objects.get(username=username)
+            f.write('[OK] Username: '+username+' | Text: '+text+' | Slug: '+slug+' | Token: '+token+'\n')
         except:
             logger.error("ERROR: Invalid username")
+            f.write('[ERROR] Username: '+username+' | Text: '+text+' | Slug: '+slug+' | Token: '+token+'\n')
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username'}
+        
+        f.close()
         if default_token_generator.check_token(user,token):
             try:
                 place = Place.objects.get(slug=slug)

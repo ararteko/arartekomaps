@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-25 15:25+0100\n"
+"POT-Creation-Date: 2014-04-16 12:48+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
@@ -50,7 +50,7 @@ msgstr "Audio"
 
 #: views.py:19 places/models.py:57
 msgid "aintelec"
-msgstr "Intelectual"
+msgstr "Intellectual"
 
 #: views.py:20 places/models.py:58
 msgid "aorganic"
@@ -446,31 +446,35 @@ msgstr "Gipuzkoako Foru Aldundia"
 msgid "fekoor"
 msgstr "FEKOOR"
 
-#: templates/dummy_texts.html:81
+#: templates/dummy_texts.html:80
+msgid "ETS"
+msgstr "Eusko Trenbide Sarea"
+
+#: templates/dummy_texts.html:82
 msgid "agi"
 msgstr "AGI"
 
-#: templates/dummy_texts.html:82
+#: templates/dummy_texts.html:83
 msgid "gorrak"
 msgstr "Euskalgorrak"
 
-#: templates/dummy_texts.html:83
+#: templates/dummy_texts.html:84
 msgid "itxaropena"
 msgstr "Asociación Itxaropena"
 
-#: templates/dummy_texts.html:84
+#: templates/dummy_texts.html:85
 msgid "eginaren"
 msgstr "Eginaren Eginez"
 
-#: templates/dummy_texts.html:85
+#: templates/dummy_texts.html:86
 msgid "once"
 msgstr "ONCE"
 
-#: templates/dummy_texts.html:86
+#: templates/dummy_texts.html:87
 msgid "fevapas"
 msgstr "FEVAPAS"
 
-#: templates/dummy_texts.html:87
+#: templates/dummy_texts.html:88
 msgid "elkartu"
 msgstr "Elkartu"
 

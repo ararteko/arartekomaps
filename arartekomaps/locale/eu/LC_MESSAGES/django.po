@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-25 15:25+0100\n"
+"POT-Creation-Date: 2014-04-16 12:48+0200\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -453,31 +453,35 @@ msgstr "Gipuzkoako Foru Aldundia"
 msgid "fekoor"
 msgstr "FEKOOR"
 
-#: templates/dummy_texts.html:81
+#: templates/dummy_texts.html:80
+msgid "ETS"
+msgstr "Eusko Trenbide Sarea"
+
+#: templates/dummy_texts.html:82
 msgid "agi"
 msgstr "AGI"
 
-#: templates/dummy_texts.html:82
+#: templates/dummy_texts.html:83
 msgid "gorrak"
 msgstr "Euskalgorrak"
 
-#: templates/dummy_texts.html:83
+#: templates/dummy_texts.html:84
 msgid "itxaropena"
 msgstr "Itxaropena Elkartea"
 
-#: templates/dummy_texts.html:84
+#: templates/dummy_texts.html:85
 msgid "eginaren"
 msgstr "Eginaren eginez"
 
-#: templates/dummy_texts.html:85
+#: templates/dummy_texts.html:86
 msgid "once"
 msgstr "ONCE"
 
-#: templates/dummy_texts.html:86
+#: templates/dummy_texts.html:87
 msgid "fevapas"
 msgstr "Fevapas"
 
-#: templates/dummy_texts.html:87
+#: templates/dummy_texts.html:88
 msgid "elkartu"
 msgstr "Elkartu"
 
@@ -572,7 +576,7 @@ msgstr "Sartu"
 
 #: templates/place.html:215
 msgid " to write a comment."
-msgstr " iruzkinak egiteko."
+msgstr "hemen iruzkinak egiteko."
 
 #: templates/place.html:226
 msgid "Map"
