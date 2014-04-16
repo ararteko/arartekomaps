@@ -374,7 +374,7 @@ class UserHandler(AnonymousBaseHandler):
                 login(request, user)
                 token = default_token_generator.make_token(user)
                 # Redirect to a success page.
-                return {'action': 'login_or_register', 'result': 'success', 'value': token}
+                return {'action': 'login_or_register', 'result': 'success', 'value': token, 'username': user.username}
             else:
                 # Return a 'disabled account' error message
                 logger.error("ERROR: User is not active!")
