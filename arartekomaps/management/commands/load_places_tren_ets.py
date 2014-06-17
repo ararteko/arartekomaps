@@ -142,6 +142,7 @@ class Command(BaseCommand):
             access.aaudio = self.ADICT[acc_aud.lower().strip()]
             access.aintelec = self.ADICT[acc_int.lower().strip()]
             access.aorganic = self.ADICT[acc_org.lower().strip()]
+            access.description = acc_desc
             
             if saving:
                 access.save()
