@@ -13,6 +13,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.db import IntegrityError, transaction
 from smtplib import SMTPException
 from registration.models import RegistrationProfile
+from cssocialprofile.models import CSSocialProfile
 
 from datetime import datetime
 from arartekomaps.utils.load_images import handle_photo_file
@@ -67,6 +68,7 @@ class LocationsHandler(AnonymousBaseHandler):
 
     def read(self, request):
         lang = request.GET.get("lang","eu")
+        translation.activate(lang)
         try:
             locations = Location.objects.filter(level=2).order_by('name')
             json_loc = []
@@ -76,7 +78,7 @@ class LocationsHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_cities', 'result': 'success', 'values': json_loc}
         except:
             logger.error("Couldn't get location information")
-            return {'lang': lang, 'action': 'get_cities', 'result': 'failed'}
+            return {'lang': lang, 'action': 'get_cities', 'result': 'failed', 'msg': _('Ezin izan da kokapen informazioa eskuratu')}
 
 
 class CategoriesHandler(AnonymousBaseHandler):
@@ -85,6 +87,7 @@ class CategoriesHandler(AnonymousBaseHandler):
 
     def read(self, request):
         lang = request.GET.get("lang","eu")
+        translation.activate(lang)
         try:
             categories = Category.objects.filter(parent=None).order_by('name')
             json_loc = []
@@ -103,7 +106,7 @@ class CategoriesHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_categories', 'result': 'success', 'values': json_loc}
         except:
             logger.error("Couldn't get categories")
-            return {'lang': lang, 'action': 'get_categories', 'result': 'failed'}
+            return {'lang': lang, 'action': 'get_categories', 'result': 'failed', 'msg': _('Ezin dira kategoriak eskuratu')}
 
 class PlaceHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
@@ -112,6 +115,7 @@ class PlaceHandler(AnonymousBaseHandler):
     def read(self, request):
         slug = request.GET.get("slug","")
         lang = request.GET.get("lang","eu")
+        translation.activate(lang)
         try:
             place = Place.objects.get(slug=slug)
             if MPhoto.objects.filter(place=place, def_img=True).exists():
@@ -178,7 +182,7 @@ class PlaceHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
         except Exception, e:
             logger.error("ERROR: "+str(e))
-            return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': str(e)}
+            return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': 'generic_error','msg': _('Sisteman errore bat gertatu da "lekua" eskuratzean: ')+str(e)}
   
 
 class PlacesHandler(AnonymousBaseHandler):
@@ -189,6 +193,7 @@ class PlacesHandler(AnonymousBaseHandler):
         location = request.GET.get("location","")
         category = request.GET.get("category","")
         lang = request.GET.get("lang","eu")
+        translation.activate(lang)
         aphysic = request.GET.get("aphysic","")
         avisual = request.GET.get("avisual","")
         aaudio = request.GET.get("aaudio","")
@@ -203,14 +208,14 @@ class PlacesHandler(AnonymousBaseHandler):
             if location:
                 loc = Location.objects.get(slug=location)
                 if not loc.lon or not loc.lat:
-                    return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'location_not_geolocalized'}
+                    return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'location_not_geolocalized', 'msg': _('Lekua ez dago geo-kokatuta. Jarri kontaktuan guneko administratzaileekin.')}
                 lon1 = float(loc.lon)
                 lat1 = float(loc.lat)
             elif lat and lon:
                 lat1 = float(lat)
                 lon1 = float(lon)
             else:
-                return {'lang': lang, 'action': 'get_places', 'result': 'failed'}
+                return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'not_lat_lon', 'msg': _('Latitude eta longitudeak ezin izan dira eskuratu.')}
 
             maxLat,minLat,maxLon,minLon = get_gps_box(lat1,lon1)
             args['lat__range'] = (str(minLat),str(maxLat))
@@ -282,11 +287,11 @@ class PlacesHandler(AnonymousBaseHandler):
                 json_list.append(json)
             json_list = sorted(json_list, key=lambda k: k['distance'])
             if not json_list:
-                return {'lang': lang, 'action': 'get_filtered_places', 'result': 'empty'}
+                return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': 'empty', 'msg': _('Egin duzun bilaketarako ez dugu ezer aurkitu.')}
             return {'lang': lang, 'action': 'get_filtered_places', 'result': 'success', 'values': json_list[:10]}
         except Exception, e:
             logger.error("ERROR: "+str(e))
-            return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': str(e)}
+            return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': 'generic_error', 'msg': _('Sisteman errore bat gertatu da "lekuak" eskuratzean: ')+str(e)}
 
 class UserHandler(AnonymousBaseHandler):
     allowed_methods = ('POST',)
@@ -298,6 +303,8 @@ class UserHandler(AnonymousBaseHandler):
         email = request.POST.get("email","")
         passw = request.POST.get("pass","")
         origin = request.POST.get("origin","")
+        lang = request.GET.get("lang","eu")
+        translation.activate(lang)
 
         full_name = request.POST.get("full_name","")
         biography = request.POST.get("biography","")
@@ -311,7 +318,7 @@ class UserHandler(AnonymousBaseHandler):
         if origin == "": 
             if not username:
                 logger.error("ERROR: There is not enough data")
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': _('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
             elif passw and email:
                 try:
                     site = Site.objects.get(id=settings.SITE_ID)
@@ -319,13 +326,13 @@ class UserHandler(AnonymousBaseHandler):
                     return {'action': 'login_or_register', 'result': 'success'}
                 except IntegrityError, e:
                     logger.error("ERROR: "+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error', 'msg': _('Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste izen bat.')}
                 except SMTPException, e:
                     logger.error("ERROR: "+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error: '+str(e)}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error', 'msg': _('Arazo bat egon da aktibazio eposta bidaltzean: ')+str(e)}
                 except Exception as e:
                     logger.error("ERROR: "+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error: '+str(e)}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error', 'msg': _('Erabiltzailea erregistratzean errore bat gertatu da: ')+str(e)}
             elif passw and not email:
                 user = authenticate(username=username, password=passw)
                 if user is not None:
@@ -337,14 +344,14 @@ class UserHandler(AnonymousBaseHandler):
                     else:
                         # Return a 'disabled account' error message
                         logger.error("ERROR: User is not active")
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active', 'msg': _('Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali dugun mezua eta jarraitu aktibazio pausoak.')}
                 else:
                     # Return an 'invalid login' error message.
                     logger.error("ERROR: User is not authenticated")
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated'}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated', 'msg': _('Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro.')}
             else:
                 logger.error("ERROR: Not enough data")
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data'}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': _('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
         elif origin in tuple(SOCIAL_ORIGIN.keys()):
             if origin == "1":
                 access_token = u'{"access_token": "'+oauth_token+'", "expires": "'+expires+'", "id": '+social_id+'}'
@@ -361,7 +368,7 @@ class UserHandler(AnonymousBaseHandler):
                     usa.save()
                 except IntegrityError, e:
                     logger.error("ERROR:"+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error: '+str(e)}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error', 'msg': _('Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste izen bat.')}
 
             access_token = ast.literal_eval(access_token)
             try:
@@ -369,7 +376,7 @@ class UserHandler(AnonymousBaseHandler):
                 user = backend.do_auth(access_token['access_token'])
             except Exception as e:
                 logger.error("ERROR: "+str(e))
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error: '+str(e)}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error', 'msg': _('Sare sozialetako autentikazioak huts egin du: ')+str(e)}
             if user and user.is_active:
                 login(request, user)
                 token = default_token_generator.make_token(user)
@@ -378,10 +385,10 @@ class UserHandler(AnonymousBaseHandler):
             else:
                 # Return a 'disabled account' error message
                 logger.error("ERROR: User is not active!")
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active'}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active', 'msg': _('Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali dugun mezua eta jarraitu aktibazio pausoak.')}
         else:
             logger.error("ERROR: Wrong origin!")
-            return {'action': 'login_or_register', 'result': 'failed', 'value': 'wrong_origin'}
+            return {'action': 'login_or_register', 'result': 'failed', 'value': 'wrong_origin', 'msg': _('Jatorri ezezaguneko erabiltzailea. Jarri administratzaileekin harremanetan.')}
 
 class CommentHandler(BaseHandler):
     allowed_methods = ('POST',)
@@ -389,18 +396,30 @@ class CommentHandler(BaseHandler):
 
     def create(self, request):
         username = request.POST.get("username","")
+        origin = request.POST.get("origin","")
+        social_id = request.POST.get("id","")
         token = request.POST.get("token","")
         text = request.POST.get("text","")
         slug = request.POST.get("slug","")
-    
+        lang = request.GET.get("lang","eu")
+        translation.activate(lang)
+
         f = open('post_saiakerak.txt','w')
         try:
-            user = User.objects.get(username=username)
-            f.write('[OK] Username: '+username+' | Text: '+text+' | Slug: '+slug+' | Token: '+token+'\n')
+            if origin in tuple(SOCIAL_ORIGIN.keys()):
+                if origin == "1":
+                    profile = CSSocialProfile.objects.get(facebook_id=username)
+                    user = profile.user
+                else:
+                    profile = CSSocialProfile.objects.get(twitter_id=username)
+                    user = profile.user
+            else:
+                user = User.objects.get(username=username)
+                f.write('[OK] Username: '+username+' | Text: '+text+' | Slug: '+slug+' | Token: '+token+'\n')
         except:
             logger.error("ERROR: Invalid username")
             f.write('[ERROR] Username: '+username+' | Text: '+text+' | Slug: '+slug+' | Token: '+token+'\n')
-            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username'}
+            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username', 'msg': _('Erabiltzaile hori ez da sisteman existitzen. Jarri administratzailearekin kontaktuan.')}
         
         f.close()
         if default_token_generator.check_token(user,token):
@@ -419,19 +438,19 @@ class CommentHandler(BaseHandler):
                         try:
                             photo = handle_photo_file(request.FILES['photo'], user.username) 
                         except Exception, e:
-                            return {'action': 'post_comment', 'result': 'failed', 'value': 'decoding_error: '+str(e)}           
+                            return {'action': 'post_comment', 'result': 'failed', 'value': 'decoding_error', 'msg': _('Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez.')+str(e)}           
                         comment.photo = photo
                     comment.save()
                     return {'action': 'post_comment', 'result': 'success'}
                 else:
-                    return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found'}
+                    return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found', 'msg': _('Iruzkinak ez dauka testurik. Testua beharrezkoa da.')}
 
             except Exception as e:
                 logger.error("ERROR: "+str(e))
-                return {'action': 'post_comment', 'result': 'failed', 'value': 'place_error: '+str(e)}
+                return {'action': 'post_comment', 'result': 'failed', 'value': 'place_error', 'msg': _('Iruzkina utzi nahi den "lekua" aurkitzean errorea: ')+str(e)}
         else:
             logger.error("ERROR: Invalid token")
-            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token'}
+            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token', 'msg': _('Erabiltzaile saioa iraungi da. Berriz sartu zure erabiltzaile eta pasahitzarekin.')}
 
 class GetCommentHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
@@ -440,6 +459,7 @@ class GetCommentHandler(AnonymousBaseHandler):
     def read(self, request):
         slug = request.GET.get("slug","")
         lang = request.GET.get("lang","eu")
+        translation.activate(lang)
         try:
             place = Place.objects.get(slug=slug)
             comments = Comment.objects.filter(parent=place)
@@ -463,4 +483,4 @@ class GetCommentHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_comments', 'result': 'success', 'value': comment_list}
         except Exception, e:
             logger.error("ERROR:"+str(e))
-            return {'lang': lang, 'action': 'get_comments', 'result': 'failed', 'value': 'comments_error: '+str(e)}
+            return {'lang': lang, 'action': 'get_comments', 'result': 'failed', 'value': 'comments_error', 'msg': _('Iruzkinak eskuratzean errore bat gertatu da: ')+str(e)}
