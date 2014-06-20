@@ -23,7 +23,7 @@
     {% endcomment %}
       <div id="searchbox">    
           <!-- Google CSE Search Box Begins -->
-          <form id="bigsf" action="{% url gsearch %}">
+          <form id="bigsf" action="{% url 'gsearch' %}">
               <input type="hidden" name="cx" value="002318387713884704423:4pwcgf1wug4" />
               <label for="q">{% trans "Go to..." %}</label> <input id="q" name="q" type="text" />
               <input class="searchbutton" type="submit" name="sa" value="{% trans "Search" %}" />

@@ -1,11 +1,11 @@
 from django.conf.urls.defaults import patterns, include, url
-from django.views.generic.simple import redirect_to
+from django.views.generic import RedirectView
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
     
-    url(r'^$', redirect_to, {'url': '/'}),
+    url(r'^$', RedirectView.as_view(url='/')),
     url(r'^(?P<state>[^/]+)/$', 'arartekomaps.locations.views.listing', name='listing'),
     url(r'^(?P<state>[^/]+)/(?P<city>[^/]+)/$', 'arartekomaps.locations.views.location', name='location'),
     url(r'^(?P<state>[^/]+)/(?P<city>[^/]+)/(?P<maincat>[^/]+)/$', 'arartekomaps.locations.views.location', name='location'),    

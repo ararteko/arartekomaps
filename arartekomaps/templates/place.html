@@ -68,7 +68,7 @@
 <h1 itemprop="name">{{place.name}}</h1>
 
 {% if request.user.is_staff %}
-<a href="{% url admin:places_place_change place.id %}">Modificar este lugar</a>
+<a href="{% url 'admin' places_place_change place.id %}">Modificar este lugar</a>
 {% endif %}
 
 <p class="category_name">{{place.category}}</p>
@@ -209,7 +209,7 @@
 
     </form>
     {% else %}
-    <p><a href='{% url cssocialprofile_user_login %}?next={{request.path}}'>{% trans  "Sign in" %}</a>{% trans  " to write a comment." %}</p>
+    <p><a href='{% url 'cssocialprofile_user_login' %}?next={{request.path}}'>{% trans  "Sign in" %}</a>{% trans  " to write a comment." %}</p>
     {% endif %}
 
 </div>

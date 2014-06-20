@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.generic.simple import redirect_to
 from django.http import HttpResponse
 from django.contrib import admin
 from settings import MEDIA_ROOT

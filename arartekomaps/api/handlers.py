@@ -25,6 +25,7 @@ from social_auth.backends.twitter import TwitterBackend
 from social_auth.models import UserSocialAuth
 from social_auth.backends import get_backend
 from django.utils.translation import ugettext_lazy as _
+from django.utils import translation
 import logging
 import base64, urllib
 from math import radians, cos, sin, asin, sqrt, degrees

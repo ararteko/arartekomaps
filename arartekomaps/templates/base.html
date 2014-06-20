@@ -36,10 +36,10 @@
     <div id="utils">
      {% for code,lang in LANGUAGES %}
        {% if code != LANGUAGE_CODE %}
-          <a href="{% url set_lang %}?language={{code}}&amp;next={{request.path}}">{{lang}}</a>
+          <a href="{% url 'set_lang' %}?language={{code}}&amp;next={{request.path}}">{{lang}}</a>
        {% endif %}
      {% endfor %}    
-<!--         <a href="{% url set_lang %}?language=es&next={{request.path}}">Español</a> -->
+<!--         <a href="{% url 'set_lang' %}?language=es&next={{request.path}}">Español</a> -->
       
       {% comment %}
 
@@ -58,7 +58,7 @@
             <input type="submit" value="{% trans "Search" %}" class="hsearchbutton" />
           </form> -->
 
-          <form method="get" action="{%url gsearch%}">
+          <form method="get" action="{% url 'gsearch' %}">
               <input type="hidden" name="cx" value="002318387713884704423:4pwcgf1wug4" />
               <label for="q">{% trans "Go to..." %}</label> <input id="q" name="q" type="text" />
               <input type="submit" name="sa" value="{% trans "Search" %}" class="hsearchbutton" />

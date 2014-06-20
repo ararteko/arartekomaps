@@ -97,7 +97,7 @@
 <h1>{{pagetitle}}</h1>
 
 {% if request.user.is_staff %}
-<a href="{% url admin:locations_location_change city.id %}">Modificar este lugar</a>
+<a href="{% url 'admin' locations_location_change city.id %}">Modificar este lugar</a>
 {% endif %}
 
 {% if maincat %}
