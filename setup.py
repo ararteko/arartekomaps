@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '5.10'
+version = '5.11'
 
 setup(name='arartekomaps',
       version=version,
