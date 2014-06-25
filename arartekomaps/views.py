@@ -96,7 +96,10 @@ def filter(request):
     
     prev_pars = request.GET.copy()
     next_pars = request.GET.copy()
-    prev_pars.update({'page':thispage.previous_page_number()})
+    if thispage.previous_page_number() >= 1:
+        prev_pars.update({'page':thispage.previous_page_number()})
+    else:
+        prev_pars.update({'page':1})
     next_pars.update({'page':thispage.next_page_number()})
     prev_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in prev_pars.items()])
     next_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in next_pars.items()])
