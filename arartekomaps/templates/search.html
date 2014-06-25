@@ -25,7 +25,7 @@
                 }
         );
     var infowindow = new google.maps.InfoWindow();
-    {% for place in pins %}{% if place.lat %}    
+    {% for place in places %}{% if place.lat %}    
         var center = new google.maps.LatLng({{place.lat}}, {{place.lon}});
         bounds.extend(center);
         var image = '{{STATIC_URL}}icn/{% firstof place.icon "city" %}.png';        
