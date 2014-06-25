@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n pagination_tags %}
 
 {% block head_title%}{% trans "Search results" %}: {{q}} - {% trans "Ararteko maps" %}{% endblock %}
 
@@ -123,7 +123,7 @@
 <p>{% trans "Total results:" %} {{results_number}}</p>
 
   <ul class="itemlist">
-  
+  {% autopaginate umapusers 10 %}
   {% for place in places %}
     <li>
     <img src="{{STATIC_URL}}icn/{% firstof place.icon "city" %}.png" alt="{% if place.category %}{% trans place.category.str2trans %}{% else %}{{ place.name }}{% endif %}" class="mainicon" />
@@ -139,6 +139,7 @@
     </li>
    {% endfor %}    
   </ul>
+  {% paginate %}
   
 <!--  {% if thispage.has_previous %}
  <a href="{{prev_url}}">{% trans "Previous" %}</a>
