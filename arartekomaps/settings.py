@@ -181,6 +181,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'piston',
     'modeltranslation',
+    'pagination',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
