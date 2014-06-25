@@ -74,8 +74,7 @@ def filter(request):
     if int(pagenumber)<1:
         pagenumber = 1
     
-    all_items = places
-    results_number = len(all_items)
+    results_number = len(places)
     
     # data for advanced form
     all_locations = []
@@ -91,7 +90,7 @@ def filter(request):
 
     # pages = Paginator(all_items,10)
     # thispage = pages.page(int(pagenumber))
-    # pins = thispage.object_list
+    #pins = thispage.object_list
     
     
     # prev_pars = request.GET.copy()
