@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n pagination_tags %}
+{% load i18n %}
 
 {% block head_title%}{% trans "Search results" %}: {{q}} - {% trans "Ararteko maps" %}{% endblock %}
 
@@ -123,7 +123,7 @@
 <p>{% trans "Total results:" %} {{results_number}}</p>
 
   <ul class="itemlist">
-  {% for place in places %}
+  {% for place in pins %}
     <li>
     <img src="{{STATIC_URL}}icn/{% firstof place.icon "city" %}.png" alt="{% if place.category %}{% trans place.category.str2trans %}{% else %}{{ place.name }}{% endif %}" class="mainicon" />
     <h4><a href="{{ place.get_absolute_url }}">{{ place.name }}</a></h4>
