@@ -81,7 +81,10 @@ def location(request,state,city,maincat='',subcat=''):
     prev_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in prev_pars.items()])
     next_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in next_pars.items()])
 
-    prev_url = "%s?page=%d" % (request.path,thispage.previous_page_number())
+    if pagenumber == '1':
+        prev_url = "%s?page=%d" % (request.path,'1')
+    else:
+        prev_url = "%s?page=%d" % (request.path,thispage.previous_page_number())
     next_url = "%s?page=%d" % (request.path,thispage.next_page_number())
     return render_to_response('location.html', locals(), context_instance=RequestContext(request)
     )
