@@ -99,7 +99,10 @@ def filter(request):
         prev_pars.update({'page':'1'})
     else:
         prev_pars.update({'page':thispage.previous_page_number()})
-    next_pars.update({'page':thispage.next_page_number()})
+    try:
+        next_pars.update({'page':thispage.next_page_number()})
+    except:
+        next_pars.update({'page':'1'})
     prev_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in prev_pars.items()])
     next_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in next_pars.items()])
     
@@ -141,7 +144,10 @@ def search(request):
         prev_pars.update({'page':'1'})
     else:
         prev_pars.update({'page':thispage.previous_page_number()})
-    next_pars.update({'page':thispage.next_page_number()})
+    try:
+        next_pars.update({'page':thispage.next_page_number()})
+    except:
+        next_pars.update({'page':'1'})
     prev_url = "/search/?%s" % "&".join(["%s=%s" % (k,v) for k,v in prev_pars.items()])
     next_url = "/search/?%s" % "&".join(["%s=%s" % (k,v) for k,v in next_pars.items()])
 

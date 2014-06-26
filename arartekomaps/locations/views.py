@@ -77,14 +77,20 @@ def location(request,state,city,maincat='',subcat=''):
         prev_pars.update({'page':'1'})
     else:
         prev_pars.update({'page':thispage.previous_page_number()})
-    next_pars.update({'page':thispage.next_page_number()})
+    try:
+        next_pars.update({'page':thispage.next_page_number()})
+    except:
+        next_pars.update({'page':'1'})
     prev_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in prev_pars.items()])
     next_url = "/filter/?%s" % "&".join(["%s=%s" % (k,v) for k,v in next_pars.items()])
 
     if pagenumber == '1':
-        prev_url = "%s?page=%d" % (request.path,'1')
+        prev_url = "%s?page=%d" % (request.path,1)
     else:
         prev_url = "%s?page=%d" % (request.path,thispage.previous_page_number())
-    next_url = "%s?page=%d" % (request.path,thispage.next_page_number())
+    try:
+        next_url = "%s?page=%d" % (request.path,thispage.next_page_number())
+    except:
+        next_url = "%s?page=%d" % (request.path,1)
     return render_to_response('location.html', locals(), context_instance=RequestContext(request)
     )
