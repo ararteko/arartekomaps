@@ -24,7 +24,6 @@ from social_auth.backends.facebook import FacebookBackend
 from social_auth.backends.twitter import TwitterBackend
 from social_auth.models import UserSocialAuth
 from social_auth.backends import get_backend
-from django.utils.translation import ugettext_lazy as _
 from django.utils import translation
 import logging
 import base64, urllib
@@ -79,7 +78,7 @@ class LocationsHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_cities', 'result': 'success', 'values': json_loc}
         except:
             logger.error("Couldn't get location information")
-            return {'lang': lang, 'action': 'get_cities', 'result': 'failed', 'msg': _('Ezin izan da kokapen informazioa eskuratu')}
+            return {'lang': lang, 'action': 'get_cities', 'result': 'failed', 'msg': translation.ugettext('Ezin izan da kokapen informazioa eskuratu')}
 
 
 class CategoriesHandler(AnonymousBaseHandler):
@@ -107,7 +106,7 @@ class CategoriesHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_categories', 'result': 'success', 'values': json_loc}
         except:
             logger.error("Couldn't get categories")
-            return {'lang': lang, 'action': 'get_categories', 'result': 'failed', 'msg': _('Ezin dira kategoriak eskuratu')}
+            return {'lang': lang, 'action': 'get_categories', 'result': 'failed', 'msg': translation.ugettext('Ezin dira kategoriak eskuratu')}
 
 class PlaceHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
@@ -183,7 +182,7 @@ class PlaceHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
         except Exception, e:
             logger.error("ERROR: "+str(e))
-            return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': 'generic_error','msg': _('Sisteman errore bat gertatu da "lekua" eskuratzean: ')+str(e)}
+            return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': 'generic_error','msg': translation.ugettext('Sisteman errore bat gertatu da "lekua" eskuratzean: ')+str(e)}
   
 
 class PlacesHandler(AnonymousBaseHandler):
@@ -209,14 +208,14 @@ class PlacesHandler(AnonymousBaseHandler):
             if location:
                 loc = Location.objects.get(slug=location)
                 if not loc.lon or not loc.lat:
-                    return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'location_not_geolocalized', 'msg': _('Lekua ez dago geo-kokatuta. Jarri kontaktuan guneko administratzaileekin.')}
+                    return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'location_not_geolocalized', 'msg': translation.ugettext('Lekua ez dago geo-kokatuta. Jarri kontaktuan guneko administratzaileekin.')}
                 lon1 = float(loc.lon)
                 lat1 = float(loc.lat)
             elif lat and lon:
                 lat1 = float(lat)
                 lon1 = float(lon)
             else:
-                return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'not_lat_lon', 'msg': _('Latitude eta longitudeak ezin izan dira eskuratu.')}
+                return {'lang': lang, 'action': 'get_places', 'result': 'failed', 'value': 'not_lat_lon', 'msg': translation.ugettext('Latitude eta longitudeak ezin izan dira eskuratu.')}
 
             maxLat,minLat,maxLon,minLon = get_gps_box(lat1,lon1)
             args['lat__range'] = (str(minLat),str(maxLat))
@@ -288,11 +287,11 @@ class PlacesHandler(AnonymousBaseHandler):
                 json_list.append(json)
             json_list = sorted(json_list, key=lambda k: k['distance'])
             if not json_list:
-                return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': 'empty', 'msg': _('Egin duzun bilaketarako ez dugu ezer aurkitu.')}
+                return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': 'empty', 'msg': translation.ugettext('Egin duzun bilaketarako ez dugu ezer aurkitu.')}
             return {'lang': lang, 'action': 'get_filtered_places', 'result': 'success', 'values': json_list[:10]}
         except Exception, e:
             logger.error("ERROR: "+str(e))
-            return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': 'generic_error', 'msg': _('Sisteman errore bat gertatu da "lekuak" eskuratzean: ')+str(e)}
+            return {'lang': lang, 'action': 'get_filtered_places', 'result': 'failed', 'value': 'generic_error', 'msg': translation.ugettext('Sisteman errore bat gertatu da "lekuak" eskuratzean: ')+str(e)}
 
 class UserHandler(AnonymousBaseHandler):
     allowed_methods = ('POST',)
@@ -319,7 +318,7 @@ class UserHandler(AnonymousBaseHandler):
         if origin == "": 
             if not username:
                 logger.error("ERROR: There is not enough data")
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': _('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': translation.ugettext('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
             elif passw and email:
                 try:
                     site = Site.objects.get(id=settings.SITE_ID)
@@ -327,13 +326,13 @@ class UserHandler(AnonymousBaseHandler):
                     return {'action': 'login_or_register', 'result': 'success'}
                 except IntegrityError, e:
                     logger.error("ERROR: "+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error', 'msg': _('Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste izen bat.')}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error', 'msg': translation.ugettext('Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste izen bat.')}
                 except SMTPException, e:
                     logger.error("ERROR: "+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error', 'msg': _('Arazo bat egon da aktibazio eposta bidaltzean')}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error', 'msg': translation.ugettext('Arazo bat egon da aktibazio eposta bidaltzean')}
                 except Exception as e:
                     logger.error("ERROR: "+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error', 'msg': _('Erabiltzailea erregistratzean errore bat gertatu da')}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error', 'msg': translation.ugettext('Erabiltzailea erregistratzean errore bat gertatu da')}
             elif passw and not email:
                 user = authenticate(username=username, password=passw)
                 if user is not None:
@@ -345,14 +344,14 @@ class UserHandler(AnonymousBaseHandler):
                     else:
                         # Return a 'disabled account' error message
                         logger.error("ERROR: User is not active")
-                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active', 'msg': _('Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali dugun mezua eta jarraitu aktibazio pausoak.')}
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active', 'msg': translation.ugettext('Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali dugun mezua eta jarraitu aktibazio pausoak.')}
                 else:
                     # Return an 'invalid login' error message.
                     logger.error("ERROR: User is not authenticated")
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated', 'msg': _('Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro.')}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated', 'msg': translation.ugettext('Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro.')}
             else:
                 logger.error("ERROR: Not enough data") 
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': _('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': translation.ugettext('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
         elif origin in tuple(SOCIAL_ORIGIN.keys()):
             if origin == "1":
                 access_token = u'{"access_token": "'+oauth_token+'", "expires": "'+expires+'", "id": '+social_id+'}'
@@ -369,7 +368,7 @@ class UserHandler(AnonymousBaseHandler):
                     usa.save()
                 except IntegrityError, e:
                     logger.error("ERROR:"+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error', 'msg': _('Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste izen bat.')}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error', 'msg': translation.ugettext('Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste izen bat.')}
 
             access_token = ast.literal_eval(access_token)
             try:
@@ -377,7 +376,7 @@ class UserHandler(AnonymousBaseHandler):
                 user = backend.do_auth(access_token['access_token'])
             except Exception as e:
                 logger.error("ERROR: "+str(e))
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error', 'msg': _('Sare sozialetako autentikazioak huts egin du: ')+str(e)}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'auth_error', 'msg': translation.ugettext('Sare sozialetako autentikazioak huts egin du: ')+str(e)}
             if user and user.is_active:
                 login(request, user)
                 token = default_token_generator.make_token(user)
@@ -386,10 +385,10 @@ class UserHandler(AnonymousBaseHandler):
             else:
                 # Return a 'disabled account' error message
                 logger.error("ERROR: User is not active!")
-                return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active', 'msg': _('Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali dugun mezua eta jarraitu aktibazio pausoak.')}
+                return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_not_active', 'msg': translation.ugettext('Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali dugun mezua eta jarraitu aktibazio pausoak.')}
         else:
             logger.error("ERROR: Wrong origin!")
-            return {'action': 'login_or_register', 'result': 'failed', 'value': 'wrong_origin', 'msg': _('Jatorri ezezaguneko erabiltzailea. Jarri administratzaileekin harremanetan.')}
+            return {'action': 'login_or_register', 'result': 'failed', 'value': 'wrong_origin', 'msg': translation.ugettext('Jatorri ezezaguneko erabiltzailea. Jarri administratzaileekin harremanetan.')}
 
 class CommentHandler(BaseHandler):
     allowed_methods = ('POST',)
@@ -420,7 +419,7 @@ class CommentHandler(BaseHandler):
         except:
             logger.error("ERROR: Invalid username")
             f.write('[ERROR] Username: '+username+' | Text: '+text+' | Slug: '+slug+' | Token: '+token+'\n')
-            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username', 'msg': _('Erabiltzaile hori ez da sisteman existitzen. Jarri administratzailearekin kontaktuan.')}
+            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username', 'msg': translation.ugettext('Erabiltzaile hori ez da sisteman existitzen. Jarri administratzailearekin kontaktuan.')}
         
         f.close()
         if default_token_generator.check_token(user,token):
@@ -439,19 +438,19 @@ class CommentHandler(BaseHandler):
                         try:
                             photo = handle_photo_file(request.FILES['photo'], user.username) 
                         except Exception, e:
-                            return {'action': 'post_comment', 'result': 'failed', 'value': 'decoding_error', 'msg': _('Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez.')+str(e)}           
+                            return {'action': 'post_comment', 'result': 'failed', 'value': 'decoding_error', 'msg': translation.ugettext('Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez.')+str(e)}           
                         comment.photo = photo
                     comment.save()
                     return {'action': 'post_comment', 'result': 'success'}
                 else:
-                    return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found', 'msg': _('Iruzkinak ez dauka testurik. Testua beharrezkoa da.')}
+                    return {'action': 'post_comment', 'result': 'failed', 'value': 'text_not_found', 'msg': translation.ugettext('Iruzkinak ez dauka testurik. Testua beharrezkoa da.')}
 
             except Exception as e:
                 logger.error("ERROR: "+str(e))
-                return {'action': 'post_comment', 'result': 'failed', 'value': 'place_error', 'msg': _('Iruzkina utzi nahi den "lekua" aurkitzean errorea: ')+str(e)}
+                return {'action': 'post_comment', 'result': 'failed', 'value': 'place_error', 'msg': translation.ugettext('Iruzkina utzi nahi den "lekua" aurkitzean errorea: ')+str(e)}
         else:
             logger.error("ERROR: Invalid token")
-            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token', 'msg': _('Erabiltzaile saioa iraungi da. Berriz sartu zure erabiltzaile eta pasahitzarekin.')}
+            return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_token', 'msg': translation.ugettext('Erabiltzaile saioa iraungi da. Berriz sartu zure erabiltzaile eta pasahitzarekin.')}
 
 class GetCommentHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
@@ -484,4 +483,4 @@ class GetCommentHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_comments', 'result': 'success', 'value': comment_list}
         except Exception, e:
             logger.error("ERROR:"+str(e))
-            return {'lang': lang, 'action': 'get_comments', 'result': 'failed', 'value': 'comments_error', 'msg': _('Iruzkinak eskuratzean errore bat gertatu da: ')+str(e)}
+            return {'lang': lang, 'action': 'get_comments', 'result': 'failed', 'value': 'comments_error', 'msg': translation.ugettext('Iruzkinak eskuratzean errore bat gertatu da: ')+str(e)}
