@@ -330,10 +330,10 @@ class UserHandler(AnonymousBaseHandler):
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'integrity_error', 'msg': _('Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste izen bat.')}
                 except SMTPException, e:
                     logger.error("ERROR: "+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error', 'msg': _('Arazo bat egon da aktibazio eposta bidaltzean: ')+str(e)}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'smtp_error', 'msg': _('Arazo bat egon da aktibazio eposta bidaltzean')}
                 except Exception as e:
                     logger.error("ERROR: "+str(e))
-                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error', 'msg': _('Erabiltzailea erregistratzean errore bat gertatu da: ')+str(e)}
+                    return {'action': 'login_or_register', 'result': 'failed', 'value': 'unknown_error', 'msg': _('Erabiltzailea erregistratzean errore bat gertatu da')}
             elif passw and not email:
                 user = authenticate(username=username, password=passw)
                 if user is not None:
@@ -351,7 +351,7 @@ class UserHandler(AnonymousBaseHandler):
                     logger.error("ERROR: User is not authenticated")
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated', 'msg': _('Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro.')}
             else:
-                logger.error("ERROR: Not enough data")
+                logger.error("ERROR: Not enough data") 
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': _('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
         elif origin in tuple(SOCIAL_ORIGIN.keys()):
             if origin == "1":

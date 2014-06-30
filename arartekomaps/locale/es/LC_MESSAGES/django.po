@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-16 12:48+0200\n"
+"POT-Creation-Date: 2014-06-30 16:07+0200\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,6 +61,102 @@ msgstr "Intelectual"
 #: views.py:20 places/models.py:58
 msgid "aorganic"
 msgstr "Orgánica"
+
+#: api/handlers.py:82
+msgid "Ezin izan da kokapen informazioa eskuratu"
+msgstr ""
+
+#: api/handlers.py:110
+msgid "Ezin dira kategoriak eskuratu"
+msgstr ""
+
+#: api/handlers.py:186
+msgid "Sisteman errore bat gertatu da \"lekua\" eskuratzean: "
+msgstr ""
+
+#: api/handlers.py:212
+msgid ""
+"Lekua ez dago geo-kokatuta. Jarri kontaktuan guneko administratzaileekin."
+msgstr ""
+
+#: api/handlers.py:219
+msgid "Latitude eta longitudeak ezin izan dira eskuratu."
+msgstr ""
+
+#: api/handlers.py:291
+msgid "Egin duzun bilaketarako ez dugu ezer aurkitu."
+msgstr ""
+
+#: api/handlers.py:295
+msgid "Sisteman errore bat gertatu da \"lekuak\" eskuratzean: "
+msgstr ""
+
+#: api/handlers.py:322 api/handlers.py:355
+msgid ""
+"Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta "
+"zaigu."
+msgstr ""
+
+#: api/handlers.py:330 api/handlers.py:372
+msgid ""
+"Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste "
+"izen bat."
+msgstr ""
+
+#: api/handlers.py:333
+msgid "Arazo bat egon da aktibazio eposta bidaltzean"
+msgstr ""
+
+#: api/handlers.py:336
+msgid "Erabiltzailea erregistratzean errore bat gertatu da"
+msgstr ""
+
+#: api/handlers.py:348 api/handlers.py:389
+msgid ""
+"Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali "
+"dugun mezua eta jarraitu aktibazio pausoak."
+msgstr ""
+
+#: api/handlers.py:352
+msgid "Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro."
+msgstr ""
+
+#: api/handlers.py:380
+msgid "Sare sozialetako autentikazioak huts egin du: "
+msgstr ""
+
+#: api/handlers.py:392
+msgid ""
+"Jatorri ezezaguneko erabiltzailea. Jarri administratzaileekin harremanetan."
+msgstr ""
+
+#: api/handlers.py:423
+msgid ""
+"Erabiltzaile hori ez da sisteman existitzen. Jarri administratzailearekin "
+"kontaktuan."
+msgstr ""
+
+#: api/handlers.py:442
+msgid "Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez."
+msgstr ""
+
+#: api/handlers.py:447
+msgid "Iruzkinak ez dauka testurik. Testua beharrezkoa da."
+msgstr ""
+
+#: api/handlers.py:451
+msgid "Iruzkina utzi nahi den \"lekua\" aurkitzean errorea: "
+msgstr ""
+
+#: api/handlers.py:454
+msgid ""
+"Erabiltzaile saioa iraungi da. Berriz sartu zure erabiltzaile eta "
+"pasahitzarekin."
+msgstr ""
+
+#: api/handlers.py:487
+msgid "Iruzkinak eskuratzean errore bat gertatu da: "
+msgstr ""
 
 #: locations/views.py:55
 #, python-format
@@ -570,6 +666,7 @@ msgid "Comments"
 msgstr "Comentarios"
 
 #: templates/place.html:215 templates/useroptions.html:16
+#: templates/registration/login.html:6 templates/registration/login.html:43
 msgid "Sign in"
 msgstr "Entrar"
 
@@ -616,6 +713,46 @@ msgstr "Perfil"
 #: templates/useroptions.html:11
 msgid "Sign out"
 msgstr "Salir"
+
+#: templates/registration/login.html:9 templates/registration/login.html:51
+msgid "I'm new here. Create account"
+msgstr "Soy nuevo aquí. Crear cuenta"
+
+#: templates/registration/login.html:10
+msgid "Create account"
+msgstr "Crear una cuenta"
+
+#: templates/registration/login.html:13
+msgid "Sign in using Facebook or Twitter"
+msgstr "Entrar utilizando Facebook o Twitter"
+
+#: templates/registration/login.html:18
+msgid "You can use your Facebook or Twitter accounts to log in"
+msgstr "Puedes utilizar tu cuenta de Twitter o Facebook para entrar"
+
+#: templates/registration/login.html:26
+msgid "Log in"
+msgstr "Entrar"
+
+#: templates/registration/login.html:29
+msgid "You are already logged in"
+msgstr "Ya estás dentro"
+
+#: templates/registration/login.html:35
+msgid "Your username and password do not match. Please try again."
+msgstr "Tu usuario y contraseña no coinciden. Por favor inténtalo otra vez."
+
+#: templates/registration/login.html:38
+msgid "Username"
+msgstr ""
+
+#: templates/registration/login.html:40
+msgid "Password"
+msgstr "Contraseña"
+
+#: templates/registration/login.html:50
+msgid "I have forgotten my password"
+msgstr "He olvidado mi contraseña"
 
 #~ msgid "Gehitu"
 #~ msgstr "Añadir"
@@ -758,9 +895,6 @@ msgstr "Salir"
 #~ "Tu cuenta ya ha sido creada. Ahora puedes utilizar el usuario y "
 #~ "lacontraseña que nos has dado"
 
-#~ msgid "Log in"
-#~ msgstr "Entrar"
-
 #~ msgid "Hello"
 #~ msgstr "Hola"
 
@@ -777,30 +911,6 @@ msgstr "Salir"
 
 #~ msgid "Account activation on"
 #~ msgstr "Activación de la cuenta de"
-
-#~ msgid "I'm new here. Create account"
-#~ msgstr "Soy nuevo aquí. Crear cuenta"
-
-#~ msgid "Create account"
-#~ msgstr "Crear una cuenta"
-
-#~ msgid "Sign in using Facebook or Twitter"
-#~ msgstr "Entrar utilizando Facebook o Twitter"
-
-#~ msgid "You can use your Facebook or Twitter accounts to log in"
-#~ msgstr "Puedes utilizar tu cuenta de Twitter o Facebook para entrar"
-
-#~ msgid "You are already logged in"
-#~ msgstr "Ya estás dentro"
-
-#~ msgid "Your username and password do not match. Please try again."
-#~ msgstr "Tu usuario y contraseña no coinciden. Por favor inténtalo otra vez."
-
-#~ msgid "Password"
-#~ msgstr "Contraseña"
-
-#~ msgid "I have forgotten my password"
-#~ msgstr "He olvidado mi contraseña"
 
 #~ msgid "Reset password"
 #~ msgstr "Cambiar la contraseña"
