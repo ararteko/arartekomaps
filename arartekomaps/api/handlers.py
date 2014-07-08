@@ -78,7 +78,7 @@ class LocationsHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_cities', 'result': 'success', 'values': json_loc}
         except:
             logger.error("Couldn't get location information")
-            return {'lang': lang, 'action': 'get_cities', 'result': 'failed', 'msg': translation.ugettext('Ezin izan da kokapen informazioa eskuratu')}
+            return {'lang': lang, 'action': 'get_cities', 'result': 'failed', 'value': 'generic_error', 'msg': translation.ugettext('Ezin izan da kokapen informazioa eskuratu')}
 
 
 class CategoriesHandler(AnonymousBaseHandler):
@@ -106,7 +106,7 @@ class CategoriesHandler(AnonymousBaseHandler):
             return {'lang': lang, 'action': 'get_categories', 'result': 'success', 'values': json_loc}
         except:
             logger.error("Couldn't get categories")
-            return {'lang': lang, 'action': 'get_categories', 'result': 'failed', 'msg': translation.ugettext('Ezin dira kategoriak eskuratu')}
+            return {'lang': lang, 'action': 'get_categories', 'result': 'failed', 'value': 'generic_error', 'msg': translation.ugettext('Ezin dira kategoriak eskuratu')}
 
 class PlaceHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
@@ -179,7 +179,7 @@ class PlaceHandler(AnonymousBaseHandler):
                 "photo": image,
                 "comments": comment_list
             }
-            return {'lang': lang, 'action': 'get_place', 'result': 'success', 'value': json}
+            return {'lang': lang, 'action': 'get_place', 'result': 'success', 'values': json}
         except Exception, e:
             logger.error("ERROR: "+str(e))
             return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': 'generic_error','msg': translation.ugettext('Sisteman errore bat gertatu da "lekua" eskuratzean: ')+str(e)}
@@ -322,6 +322,8 @@ class UserHandler(AnonymousBaseHandler):
             elif passw and email:
                 try:
                     site = Site.objects.get(id=settings.SITE_ID)
+                    if not re.match(r'[\w-]+', username):
+                        return {'action': 'login_or_register', 'result': 'failed', 'value': 'invalid_form_values', 'msg': translation.ugettext('Erabiltzaile izenak hizki, zenbaki eta @/./+/-/_ karaktereak bakarrik izan ditzazke.')}
                     RegistrationProfile.objects.create_inactive_user(username, email, passw, site)
                     return {'action': 'login_or_register', 'result': 'success'}
                 except IntegrityError, e:
@@ -480,7 +482,7 @@ class GetCommentHandler(AnonymousBaseHandler):
                     "text": comment.body,
                     "photo": c_img,
                 })
-            return {'lang': lang, 'action': 'get_comments', 'result': 'success', 'value': comment_list}
+            return {'lang': lang, 'action': 'get_comments', 'result': 'success', 'values': comment_list}
         except Exception, e:
             logger.error("ERROR:"+str(e))
             return {'lang': lang, 'action': 'get_comments', 'result': 'failed', 'value': 'comments_error', 'msg': translation.ugettext('Iruzkinak eskuratzean errore bat gertatu da: ')+str(e)}
