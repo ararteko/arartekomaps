@@ -10,7 +10,7 @@ from django.template import loader, Context
 class AccessInline(admin.TabularInline):
     model = Access
     extra = 1
-    
+
 class BiblioInline(admin.TabularInline):
     model = Biblio
     extra = 1
@@ -31,10 +31,10 @@ class mapWidgetP(forms.widgets.Input):
         return render_to_string('mapwidgetp.html', locals())
 
 # class PlaceAdminForm(forms.ModelForm):
-#     map = forms.CharField(widget=mapWidgetP(), required=False) 
+#     map = forms.CharField(widget=mapWidgetP(), required=False)
 #     class Meta:
 #         model = Place
-        
+
 def export_excel(modeladmin, request, queryset):
     response = HttpResponse(mimetype='text/csv')
     response['Content-Disposition'] = 'attachment; filename=map_export.csv'
@@ -69,7 +69,10 @@ class PlaceAdmin(admin.ModelAdmin):
     readonly_fields = ()
     search_fields = ('name',)
     inlines = [AccessInline, BiblioInline]
-    list_filter = ('category','source', 'city')
+    list_filter = ('category','access__aphysic',
+        'access__avisual','access__aaudio',
+        'access__aintelec','access__aorganic',
+        'source', 'city',)
     actions = [export_excel,export_excel_comments]
 admin.site.register(Place, PlaceAdmin)
 

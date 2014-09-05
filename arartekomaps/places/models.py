@@ -28,7 +28,7 @@ class Place(models.Model):
     slug=models.SlugField(max_length=255, blank=True, null=True, unique=True, help_text="Sí está vacio se actualiza al guardar")
     name=models.CharField(max_length=255, verbose_name='Nombre')
     category=models.ForeignKey(Category, verbose_name='Categoría')
-    description =models.TextField(null=True, blank=True, verbose_name=u'Descripción')        
+    description =models.TextField(null=True, blank=True, verbose_name=u'Descripción')
     address1=models.CharField(max_length=100, blank=True, verbose_name='Dirección 1')
     address2=models.CharField(max_length=100, blank=True, verbose_name='Dirección 2')
     postalcode=models.CharField(max_length=5, blank=True, verbose_name='Codigo postal')
@@ -43,7 +43,7 @@ class Place(models.Model):
     url=models.CharField(max_length=255, blank=True, verbose_name='URL')
     email=models.CharField(max_length=255, blank=True, verbose_name='Email')
     modified_date=models.DateTimeField(auto_now=False, verbose_name='Fecha Modificación')
-    
+
     def get_comments_count(self):
         return self.parent.all().count()
 
@@ -90,20 +90,20 @@ class Place(models.Model):
             return biblio
         else:
             return
-            
+
     def get_places_within_25 (self):
         from django.db import connection, transaction
         cursor = connection.cursor()
-        cursor.execute("""SELECT id, ( 
-        3959 * acos( cos( radians(37) ) * cos( radians( lat ) ) * 
-        cos( radians( lon ) - radians(-122) ) + sin( radians(37) ) * 
+        cursor.execute("""SELECT id, (
+        3959 * acos( cos( radians(37) ) * cos( radians( lat ) ) *
+        cos( radians( lon ) - radians(-122) ) + sin( radians(37) ) *
         sin( radians( lat ) ) ) )
         AS distance FROM places_place HAVING distance < 25000
         ORDER BY distance LIMIT 0 , 10;""")
         ids = [row[0] for row in cursor.fetchall()]
 
         return Place.objects.filter(id__in=ids)
-        
+
     def nearby_locations(self, radius=2, max_results=10, use_miles=False):
         latitude = self.lat
         longitude =self.lon
@@ -130,10 +130,10 @@ class Place(models.Model):
         all_objs = [(int(dist_dict[obj.id]*1000),obj) for obj in objs]
         all_objs.sort()
         return all_objs[1:]
-                   
+
     def icon(self):
         return self.category.icon()
-        
+
     def get_absolute_url(self):
         return "/p/%s/" % (self.slug)
 
@@ -146,7 +146,7 @@ class Place(models.Model):
         super(Place, self).save()
 
 
-class Access(models.Model):   
+class Access(models.Model):
     aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Física')
     avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Visual')
     aaudio = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Audio')
@@ -159,17 +159,17 @@ class Access(models.Model):
 class Bibtopic(models.Model):
     """ """
     name = models.CharField(max_length=50, verbose_name='Nombre')
-    
+
     def __unicode__(self):
         return self.name
 
 class Bibservice(models.Model):
     """ """
     name = models.CharField(max_length=50, verbose_name='Nombre')
-    
+
     def __unicode__(self):
         return self.name
-    
+
 class Biblio(models.Model):
     """ """
     BTYPE_CHOICES = (
@@ -180,7 +180,7 @@ class Biblio(models.Model):
         ('t', 'Patrimonial'),
         ('e', 'Especializada')
     )
-    btype = models.CharField(max_length=1, choices=BTYPE_CHOICES, blank=True, verbose_name='Tipo')   
+    btype = models.CharField(max_length=1, choices=BTYPE_CHOICES, blank=True, verbose_name='Tipo')
     start_year = models.DecimalField(max_digits=4, decimal_places=0,null=True,blank=True, verbose_name='Año inicio')
     institution = models.CharField(max_length=100, blank=True, verbose_name='Institución')
     INST_TYPE_CHOICES = (
@@ -201,18 +201,18 @@ class Biblio(models.Model):
     )
     center_type = models.CharField(max_length=1, choices=CENTER_TYPE_CHOICES, blank=True, verbose_name='Tipo de centro')
     topics = models.ManyToManyField(Bibtopic, verbose_name='Temas')
-    services = models.ManyToManyField(Bibservice, verbose_name='Servicios')   
+    services = models.ManyToManyField(Bibservice, verbose_name='Servicios')
     place=models.ForeignKey(Place, unique=True, verbose_name='Place', related_name='biblio')
 
 class MPhoto(ImageModel):
     name=models.CharField(max_length=255, verbose_name='Nombre', blank=True)
     place=models.ForeignKey(Place, verbose_name='Place')
     user=models.ForeignKey(User, verbose_name='User', blank=True, null=True)
-    def_img = models.BooleanField(verbose_name='Default',default=False)    
-    
+    def_img = models.BooleanField(verbose_name='Default',default=False)
+
     def __unicode__(self):
         return self.name or self.place.name
-    
+
 
 def generate_place_slug(sender, instance, **kwargs):
     if not instance.slug:
@@ -223,11 +223,11 @@ def generate_place_slug(sender, instance, **kwargs):
         instance.slug = slug_proposal
 pre_save.connect(generate_place_slug, sender=Place)
 
-	
+
 def send_image_notification(sender, instance, created, **kwargs):
     if created:
         send_mail('[IRUDI BERRIA] ', 'Irudi berri bat gorde da: '+instance.name+'\n\n'+settings.HOST+'/admin/places/mphoto/' + str(instance.id), DEFAULT_FROM_EMAIL,
-            [EMAIL_NOTIFICATION], fail_silently=True)	
+            [EMAIL_NOTIFICATION], fail_silently=True)
     return True
 
 post_save.connect(send_image_notification, sender=MPhoto)
