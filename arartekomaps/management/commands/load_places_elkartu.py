@@ -30,7 +30,7 @@ class Command(BaseCommand):
     CATDICT = {
             'Bares':'bar',
             'Restaurante':'restaurant',
-            u'Pasteler\xeda':'eat',
+            u'Pasteler\xeda':'pasteleria',
             'Otros':'eat',
             u'Comida r\xe1pida':'fast-food',
             u'Comida R\xe1pida':'fast-food',
@@ -38,7 +38,7 @@ class Command(BaseCommand):
             }
 
     def handle(self, *args, **options):
-        saving = 0
+        saving = 1
         filename = args[0]
         full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
         f = xlrd.open_workbook(full_path)
