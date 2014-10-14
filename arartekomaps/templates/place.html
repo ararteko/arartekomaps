@@ -16,7 +16,7 @@
     var center = new google.maps.LatLng({{place.lat}},{{place.lon}});
     {% else %}
     var center = new google.maps.LatLng(43.0870530345, -2.54719734192);
-    {% endif %}    
+    {% endif %}
     var myOptions = {
       zoom: 17,
       center: center,
@@ -25,12 +25,12 @@
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     var contentString = '<p>{{place.name}}</p><br /><div class="accessibility">';
         {% for key,value,vkey,vvalue in place.access_list %}
-        contentString += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>'; 
+        contentString += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>';
         {% endfor %}
         contentString += '</div>';
     var infowindow = new google.maps.InfoWindow({
     content: contentString
-    });    
+    });
     var image = '{{STATIC_URL}}icn/{{place.icon}}.png';
     var myMarker = new google.maps.Marker({
         position: center,
@@ -106,7 +106,7 @@
 </span>
 </address>
 
-<p>{{place.description|default_if_none:""}}</p>
+<p>{{place.description|linebreaks|default_if_none:""|safe}}</p>
 
 <div id="access">
 <h3>{% trans "Accessibility" %}</h3>
@@ -152,14 +152,14 @@
         <dd>{% trans place.biblio_data.access_type %}</dd>
         <dt>{% trans "center_type" %}</dt>
         <dd>{% trans place.biblio_data.center_type %}</dd>
-      
+
         <dt>{% trans "topics" %}</dt>
         <dd>{% for topic in place.biblio_data.topics.all %} {% trans topic.name %} {% endfor %} </dd>
       {% endcomment %}
       {% if place.biblio_data.services.all %}
         <dt>{% trans "services" %}</dt>
-        <dd>{% for service in place.biblio_data.services.all %} 
-                {% trans service.name %}{% if not forloop.last %},{% endif %}  
+        <dd>{% for service in place.biblio_data.services.all %}
+                {% trans service.name %}{% if not forloop.last %},{% endif %}
 	        {% endfor %}</dd>
       {% endif %}
 	</dl>
@@ -168,7 +168,7 @@
 <!-- biblio end -->
 {% endif %}
 
-<p><em>{% trans "data_source" %}: 
+<p><em>{% trans "data_source" %}:
 
   {% ifequal place.source "nombre" %}
       {{place.name}}
@@ -177,7 +177,7 @@
   {% endifequal %}
   {% if place.modified_date %}
   <br />
-  {% trans "modified_date" %}: 
+  {% trans "modified_date" %}:
   {{place.modified_date|date:"Y-m-d"}}
   {% endif %}</em></p>
 
@@ -233,7 +233,7 @@
     <img src="{{STATIC_URL}}icn/{{nearest.icon}}.png" alt="{% trans nearest.category.str2trans %}" class="listicon" />
     <h4><a href="/p/{{nearest.slug}}/">{{nearest.name}}</a></h4>
     <p>{{nearest.category}} - {{nearest.city}} ({{dist}} m.)</p>
-    
+
     <dl class="accessibility">
         {% for key,value,vkey,vvalue in nearest.access_list %}
         <dt class="access_term">{{vkey}}</dt>
@@ -242,7 +242,7 @@
     </dl>
     </li>
    {% endfor %}
-  
+
   </ul>
 </div>
 <!-- nearest end -->

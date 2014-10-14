@@ -26,28 +26,28 @@ class Command(BaseCommand):
              'accesible': 'a',
              'accesble':'a'
              }
-             
+
     BDICT = {'Publikoa':'p',
              'Infantil':'i',
              'Pribatua':'r',
              '':'X'}
-             
+
     IDICT = {'Ayuntamiento':'ayto',
              'Erakunde autonoma':'auto',
              'Erakunde autonomaa':'auto',
              'Erakunde autonomoa':'auto',
              'Pribatua':'priv',
              '':'XXXX',
-    
+
     }
 
     ACDICT = {'Libre':'l',
              '':'X',
     }
-    
+
     CDICT = {'Publico':'p',
              '':'X'
-    
+
     }
 
     BSDICT = {'EGIAZKOA':1,
@@ -57,8 +57,8 @@ class Command(BaseCommand):
               0:0,
 
     }
-    
-    
+
+
     def handle(self, *args, **options):
         saving = 1
         filename = args[0]
@@ -77,26 +77,27 @@ class Command(BaseCommand):
         for rownum in range(sh.nrows)[1:]:
             fields = sh.row_values(rownum)
 
-            if len(fields)!=44:
-                print 'Tenemos mas o menos de 44 campos'
+            if len(fields)!=51:
+                print 'Tenemos mas o menos de 51 campos'
                 n = 1
                 for field in fields:
                     print n, field
                     n = n+1
                 break
             else:
-                (cod_origen, titulo, slug, ent_origen, cod_origen_vacio, cat, 
-                direc1, direc2, cp, pob, desc, tel, fax, url, 
-                email, foto, lat, lon, foto_x, foto_x_tit, foto_x_alt, 
-                acc_fis, acc_vis, acc_aud, acc_int, acc_org,
-                ano_inicio, open_times_eu, 
-                open_times_es, open_times_s_eu, open_times_s_es, 
-                ser_consulta, 
-                ser_reprografia, ser_hemeroteca, 
-                ser_wifi, ser_selectiva, ser_bol_novedades, ser_prestamo, 
-                ser_prestamo_inter, ser_prestamo_domic, ser_infor_bibliografica, 
-                ser_internet_usuarios, ser_acceso_bbdd, latlon) = fields[:44]
-            
+                (cod_origen, titulo, slug, ent_origen, cod_origen_vacio, cat,
+                direc1, direc2, cp, pob, city, desc, tel, fax, url,
+                email, foto, lat, lon, foto_x, foto_x_tit, foto_x_alt,
+                acc_fis, acc_vis, acc_aud, acc_int, acc_org, tipo_biblio,
+                ano_inicio, instit, tipo_inst, open_times_eu,
+                open_times_es, open_times_s_eu, open_times_s_es,
+                tipo_acceso, tipo_centro, tematica_general,
+                ser_consulta,
+                ser_reprografia, ser_hemeroteca,
+                ser_wifi, ser_selectiva, ser_bol_novedades, ser_prestamo,
+                ser_prestamo_inter, ser_prestamo_domic, ser_infor_bibliografica,
+                ser_internet_usuarios, ser_acceso_bbdd, latlon) = fields[:51]
+
             # Set fields because not used anymore
             loc = ''
             tipo_biblio = ''
@@ -110,14 +111,14 @@ class Command(BaseCommand):
             cod_origen = "%d" % cod_origen
             ent_origen = 'ejgv_biblio'
 
-            location_slug = slugify(pob)
+            location_slug = slugify(city or pob)
             location = Location.objects.filter(slug__startswith=location_slug)
             if location:
                 loc_obj = location[0]
             else:
                 print 'ERROREA', location_slug
                 break
-            
+
             places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
 
             if len(places)>0:
@@ -126,7 +127,7 @@ class Command(BaseCommand):
             else:
                 place = Place()
                 place.slug = slugify(titulo, instance=place)
-                print 'NEW:', slug, cod_origen         
+                print 'NEW:', slug, cod_origen
 
             place.name = titulo
             place.category = cat_obj
@@ -145,12 +146,14 @@ class Command(BaseCommand):
             try:
                 (lat,lon) = latlon.split(',')
             except:
+                print 'LATLONERROR', place.slug, latlon
                 pass
 
             if lat:
                 place.lat = lat
             if lon:
                 place.lon = lon
+            print place.lat, place.lon
             place.tlf = tel
             place.fax = fax
             place.url = url
@@ -167,6 +170,7 @@ class Command(BaseCommand):
                 place.save()
 
             #Load foto_x
+            print foto_x
             t_place = place
             has_point = foto_x.split('/')[-1].find('.')
             if not foto_x_tit:
@@ -174,7 +178,7 @@ class Command(BaseCommand):
             if has_point>-1:
                 if saving:
                     image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )
-            
+
 
             # ACCESS
             try:
@@ -188,7 +192,7 @@ class Command(BaseCommand):
             access.aaudio = self.ADICT[acc_aud.lower().strip()]
             access.aintelec = self.ADICT[acc_int.lower().strip()]
             access.aorganic = self.ADICT[acc_org.lower().strip()]
-            
+
             if saving:
                 access.save()
 
@@ -217,10 +221,10 @@ class Command(BaseCommand):
 
             if saving:
                 biblio.save()
-            
+
             tem_infantil = ''
             tem_religioso = ''
-            bibtopics = {'general':'1', 'infantil':tem_infantil, 'religioso':tem_religioso}             
+            bibtopics = {'general':'1', 'infantil':tem_infantil, 'religioso':tem_religioso}
             for k,v in bibtopics.items():
                 if v:
                     bibtopic = Bibtopic.objects.filter(name=k)
@@ -233,14 +237,14 @@ class Command(BaseCommand):
                         if saving:
                             bibtopic_obj.save()
                     biblio.topics.add(bibtopic_obj)
-                                                        
-            bibservices = {'consulta':ser_consulta, 'reprografia':ser_reprografia, 
-                           'hemeroteca':ser_hemeroteca, 'wifi':ser_wifi, 'selectiva':ser_selectiva, 
-                           'bol_novedades':ser_bol_novedades, 'prestamo':ser_prestamo, 
-                           'prestamo_inter':ser_prestamo_inter, 'prestamo_domic':ser_prestamo_domic, 
-                           'infor_bibliografica':ser_infor_bibliografica, 'internet_usuarios':ser_internet_usuarios, 
+
+            bibservices = {'consulta':ser_consulta, 'reprografia':ser_reprografia,
+                           'hemeroteca':ser_hemeroteca, 'wifi':ser_wifi, 'selectiva':ser_selectiva,
+                           'bol_novedades':ser_bol_novedades, 'prestamo':ser_prestamo,
+                           'prestamo_inter':ser_prestamo_inter, 'prestamo_domic':ser_prestamo_domic,
+                           'infor_bibliografica':ser_infor_bibliografica, 'internet_usuarios':ser_internet_usuarios,
                            'acceso_bbdd':ser_acceso_bbdd
-                           }                        
+                           }
             for k,v in bibservices.items():
                 if v:
                     bibservice = Bibservice.objects.filter(name=k)
@@ -252,7 +256,7 @@ class Command(BaseCommand):
                         bibservice_obj.name = k
                         if saving:
                             bibservice_obj.save()
-                    biblio.services.add(bibservice_obj)                                 
+                    biblio.services.add(bibservice_obj)
 
             if saving:
                 biblio.save()
