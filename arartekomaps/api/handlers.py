@@ -38,22 +38,22 @@ SOCIAL_BACKEND = {"1": FacebookBackend, "2": TwitterBackend}
 
 def haversine(lon1, lat1, lon2, lat2):
     """
-    Calculate the great circle distance between two points 
+    Calculate the great circle distance between two points
     on the earth (specified in decimal degrees)
     """
-    # convert decimal degrees to radians 
+    # convert decimal degrees to radians
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
-    # haversine formula 
-    dlon = lon2 - lon1 
-    dlat = lat2 - lat1 
+    # haversine formula
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
     a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a)) 
+    c = 2 * asin(sqrt(a))
     km = 6371 * c
     return km
 
 def get_gps_box(lat, lon):
     R = float(6371)
-    radius = float(5) 
+    radius = float(5)
     maxLon = lon - degrees(radius/R/cos(radians(lat)))
     minLon = lon + degrees(radius/R/cos(radians(lat)))
     maxLat = lat + degrees(radius/R)
@@ -143,15 +143,15 @@ class PlaceHandler(AnonymousBaseHandler):
                     "photo": c_img,
                 })
 
-            
+
             if place.tlf.find('-'):
                 place.tlf = place.tlf.split('-')[0].strip()
 
             # if lang == 'eu':
             #     desc = place.description_eu
             # else:
-            desc = place.description_es
-            
+            desc = place.description_es + '<br />' + place.access_data()['description']
+
             if lang == 'eu':
                 cat = place.category.name_eu
             else:
@@ -183,7 +183,7 @@ class PlaceHandler(AnonymousBaseHandler):
         except Exception, e:
             logger.error("ERROR: "+str(e))
             return {'lang': lang, 'action': 'get_place', 'result': 'failed', 'value': 'generic_error','msg': translation.ugettext('Sisteman errore bat gertatu da "lekua" eskuratzean: ')+str(e)}
-  
+
 
 class PlacesHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
@@ -282,7 +282,7 @@ class PlacesHandler(AnonymousBaseHandler):
                     "lon": place.lon,
                     "distance": haversine(place.lon, place.lat, lon1, lat1),
                     "accesibility": place.access_dict_list(),
-                    "comment_count": place.get_comments_count(), 
+                    "comment_count": place.get_comments_count(),
                 }
                 json_list.append(json)
             json_list = sorted(json_list, key=lambda k: k['distance'])
@@ -298,7 +298,7 @@ class UserHandler(AnonymousBaseHandler):
     model = User
 
     def create(self, request):
-        
+
         username = request.POST.get("username","")
         email = request.POST.get("email","")
         passw = request.POST.get("pass","")
@@ -315,7 +315,7 @@ class UserHandler(AnonymousBaseHandler):
         photo = request.POST.get("photo","")
 
 
-        if origin == "": 
+        if origin == "":
             if not username:
                 logger.error("ERROR: There is not enough data")
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': translation.ugettext('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
@@ -352,7 +352,7 @@ class UserHandler(AnonymousBaseHandler):
                     logger.error("ERROR: User is not authenticated")
                     return {'action': 'login_or_register', 'result': 'failed', 'value': 'user_is_not_authenticated', 'msg': translation.ugettext('Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro.')}
             else:
-                logger.error("ERROR: Not enough data") 
+                logger.error("ERROR: Not enough data")
                 return {'action': 'login_or_register', 'result': 'failed', 'value': 'not_enough_data', 'msg': translation.ugettext('Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta zaigu.')}
         elif origin in tuple(SOCIAL_ORIGIN.keys()):
             if origin == "1":
@@ -422,7 +422,7 @@ class CommentHandler(BaseHandler):
             logger.error("ERROR: Invalid username")
             f.write('[ERROR] Username: '+username+' | Text: '+text+' | Slug: '+slug+' | Token: '+token+'\n')
             return {'action': 'post_comment', 'result': 'failed', 'value': 'invalid_username', 'msg': translation.ugettext('Erabiltzaile hori ez da sisteman existitzen. Jarri administratzailearekin kontaktuan.')}
-        
+
         f.close()
         if default_token_generator.check_token(user,token):
             try:
@@ -432,15 +432,15 @@ class CommentHandler(BaseHandler):
                     comment = Comment()
                     comment.author = user
                     comment.is_public = True
-                    comment.public_date = datetime.today()  
-                    comment.parent = place     
+                    comment.public_date = datetime.today()
+                    comment.parent = place
                     comment.body = text
                     comment.ip_address = request.META.get("REMOTE_ADDR", None)
                     if 'photo' in request.FILES:
                         try:
-                            photo = handle_photo_file(request.FILES['photo'], user.username) 
+                            photo = handle_photo_file(request.FILES['photo'], user.username)
                         except Exception, e:
-                            return {'action': 'post_comment', 'result': 'failed', 'value': 'decoding_error', 'msg': translation.ugettext('Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez.')+str(e)}           
+                            return {'action': 'post_comment', 'result': 'failed', 'value': 'decoding_error', 'msg': translation.ugettext('Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez.')+str(e)}
                         comment.photo = photo
                     comment.save()
                     return {'action': 'post_comment', 'result': 'success'}
@@ -456,7 +456,7 @@ class CommentHandler(BaseHandler):
 
 class GetCommentHandler(AnonymousBaseHandler):
     allowed_methods = ('GET',)
-    model = Comment    
+    model = Comment
 
     def read(self, request):
         slug = request.GET.get("slug","")
