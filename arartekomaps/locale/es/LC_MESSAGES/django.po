@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-30 16:07+0200\n"
+"POT-Creation-Date: 2014-10-15 11:37+0200\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,99 +62,105 @@ msgstr "Intelectual"
 msgid "aorganic"
 msgstr "Orgánica"
 
-#: api/handlers.py:82
+#: api/handlers.py:81
 msgid "Ezin izan da kokapen informazioa eskuratu"
 msgstr ""
 
-#: api/handlers.py:110
+#: api/handlers.py:109
 msgid "Ezin dira kategoriak eskuratu"
 msgstr ""
 
-#: api/handlers.py:186
+#: api/handlers.py:185
 msgid "Sisteman errore bat gertatu da \"lekua\" eskuratzean: "
 msgstr ""
 
-#: api/handlers.py:212
+#: api/handlers.py:211
 msgid ""
 "Lekua ez dago geo-kokatuta. Jarri kontaktuan guneko administratzaileekin."
 msgstr ""
 
-#: api/handlers.py:219
+#: api/handlers.py:218
 msgid "Latitude eta longitudeak ezin izan dira eskuratu."
 msgstr ""
 
-#: api/handlers.py:291
+#: api/handlers.py:290
 msgid "Egin duzun bilaketarako ez dugu ezer aurkitu."
 msgstr ""
 
-#: api/handlers.py:295
+#: api/handlers.py:294
 msgid "Sisteman errore bat gertatu da \"lekuak\" eskuratzean: "
 msgstr ""
 
-#: api/handlers.py:322 api/handlers.py:355
+#: api/handlers.py:321 api/handlers.py:356
 msgid ""
 "Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta "
 "zaigu."
 msgstr ""
 
-#: api/handlers.py:330 api/handlers.py:372
+#: api/handlers.py:326
+msgid ""
+"Erabiltzaile izenak hizki, zenbaki eta @/./+/-/_ karaktereak bakarrik izan "
+"ditzazke."
+msgstr ""
+
+#: api/handlers.py:331 api/handlers.py:373
 msgid ""
 "Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste "
 "izen bat."
 msgstr ""
 
-#: api/handlers.py:333
+#: api/handlers.py:334
 msgid "Arazo bat egon da aktibazio eposta bidaltzean"
 msgstr ""
 
-#: api/handlers.py:336
+#: api/handlers.py:337
 msgid "Erabiltzailea erregistratzean errore bat gertatu da"
 msgstr ""
 
-#: api/handlers.py:348 api/handlers.py:389
+#: api/handlers.py:349 api/handlers.py:390
 msgid ""
 "Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali "
 "dugun mezua eta jarraitu aktibazio pausoak."
 msgstr ""
 
-#: api/handlers.py:352
+#: api/handlers.py:353
 msgid "Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro."
 msgstr ""
 
-#: api/handlers.py:380
+#: api/handlers.py:381
 msgid "Sare sozialetako autentikazioak huts egin du: "
 msgstr ""
 
-#: api/handlers.py:392
+#: api/handlers.py:393
 msgid ""
 "Jatorri ezezaguneko erabiltzailea. Jarri administratzaileekin harremanetan."
 msgstr ""
 
-#: api/handlers.py:423
+#: api/handlers.py:424
 msgid ""
 "Erabiltzaile hori ez da sisteman existitzen. Jarri administratzailearekin "
 "kontaktuan."
 msgstr ""
 
-#: api/handlers.py:442
+#: api/handlers.py:443
 msgid "Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez."
 msgstr ""
 
-#: api/handlers.py:447
+#: api/handlers.py:448
 msgid "Iruzkinak ez dauka testurik. Testua beharrezkoa da."
 msgstr ""
 
-#: api/handlers.py:451
+#: api/handlers.py:452
 msgid "Iruzkina utzi nahi den \"lekua\" aurkitzean errorea: "
 msgstr ""
 
-#: api/handlers.py:454
+#: api/handlers.py:455
 msgid ""
 "Erabiltzaile saioa iraungi da. Berriz sartu zure erabiltzaile eta "
 "pasahitzarekin."
 msgstr ""
 
-#: api/handlers.py:487
+#: api/handlers.py:488
 msgid "Iruzkinak eskuratzean errore bat gertatu da: "
 msgstr ""
 
@@ -579,6 +585,10 @@ msgstr "Fevapas"
 #: templates/dummy_texts.html:88
 msgid "elkartu"
 msgstr "Elkartu"
+
+#: templates/dummy_texts.html:89
+msgid "propio"
+msgstr "El responsable del recurso"
 
 #: templates/google_search.html:8 templates/search.html:71
 #: templates/search.html.py:120
