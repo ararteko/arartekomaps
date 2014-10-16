@@ -15,6 +15,9 @@ from smtplib import SMTPException
 from registration.models import RegistrationProfile
 from cssocialprofile.models import CSSocialProfile
 
+from django.utils import translation
+from django.utils.translation import ugettext_lazy as _
+
 from datetime import datetime
 from arartekomaps.utils.load_images import handle_photo_file
 from django.core.files.base import ContentFile
@@ -150,7 +153,7 @@ class PlaceHandler(AnonymousBaseHandler):
             # if lang == 'eu':
             #     desc = place.description_eu
             # else:
-            desc = place.description_es + '<br />' + place.access_data()['description']
+            desc = u"%s\n\n%s\n\n%s" % (place.description_es, _('Accessibility'), place.access_data()['description'])
 
             if lang == 'eu':
                 cat = place.category.name_eu
@@ -261,7 +264,9 @@ class PlacesHandler(AnonymousBaseHandler):
                 # if lang == 'eu':
                 #     desc = place.description_eu
                 # else:
-                desc = place.description_es
+
+
+                desc = u"%s\n\n%s\n\n%s" % (place.description_es, _('Accessibility'), place.access_data()['description'])
 
                 if lang == 'eu':
                     cat = place.category.name_eu
