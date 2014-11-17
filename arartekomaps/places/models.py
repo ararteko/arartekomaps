@@ -42,38 +42,46 @@ class Place(models.Model):
     fax=models.CharField(max_length=15, blank=True, verbose_name='Fax')
     url=models.CharField(max_length=255, blank=True, verbose_name='URL')
     email=models.CharField(max_length=255, blank=True, verbose_name='Email')
+
+    # ALTER TABLE `places_place` ADD `aphysic` VARCHAR(1) NOT NULL ;
+    # ALTER TABLE `places_place` ADD `avisual` VARCHAR(1) NOT NULL ;
+    # ALTER TABLE `places_place` ADD `aaudio` VARCHAR(1) NOT NULL ;
+    # ALTER TABLE `places_place` ADD `aintelec` VARCHAR(1) NOT NULL ;
+    # ALTER TABLE `places_place` ADD `aorganic` VARCHAR(1) NOT NULL ;
+    # ALTER TABLE `places_place` ADD `adescription` LONGTEXT;
+    # ALTER TABLE `places_place` ADD `afileurl` LONGTEXT;
+    aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Física')
+    avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Visual')
+    aaudio = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Audio')
+    aintelec = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Intelectual')
+    aorganic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Orgánica')
+    adescription = models.TextField(null=True, blank=True, verbose_name='Descripción')
+    afileurl = models.TextField(null=True, blank=True, verbose_name='URL ficha')
+
     modified_date=models.DateTimeField(auto_now=False, verbose_name='Fecha Modificación')
 
     def get_comments_count(self):
         return self.parent.all().count()
 
     def access_list(self):
-        if self.access.count()>0:
-            access = self.access.all()[0]
-            access_tuple = (
-            ('aphysic', access.aphysic, _('aphysic'), _("access_%s" % access.aphysic)),
-            ('avisual', access.avisual, _('avisual'), _("access_%s" % access.avisual)),
-            ('aaudio', access.aaudio, _('aaudio'), _("access_%s" % access.aaudio)),
-            ('aintelec', access.aintelec, _('aintelec'), _("access_%s" % access.aintelec)),
-            ('aorganic', access.aorganic, _('aorganic'), _("access_%s" % access.aorganic))
+        access_tuple = (
+            ('aphysic', self.aphysic, _('aphysic'), _("access_%s" % self.aphysic)),
+            ('avisual', self.avisual, _('avisual'), _("access_%s" % self.avisual)),
+            ('aaudio', self.aaudio, _('aaudio'), _("access_%s" % self.aaudio)),
+            ('aintelec', self.aintelec, _('aintelec'), _("access_%s" % self.aintelec)),
+            ('aorganic', self.aorganic, _('aorganic'), _("access_%s" % self.aorganic))
             )
-        else:
-            access_tuple = ()
         return access_tuple
 
     def access_dict_list(self):
-        if self.access.count()>0:
-            access = self.access.all()[0]
-            acc = dict(ACCESS_CHOICES)
-            access_dict = {
-                'aphysic': acc[access.aphysic],
-                'avisual': acc[access.avisual],
-                'aaudio': acc[access.aaudio],
-                'aintelec': acc[access.aintelec],
-                'aorganic': acc[access.aorganic]
-            }
-        else:
-            access_dict = {}
+        acc = dict(ACCESS_CHOICES)
+        access_dict = {
+            'aphysic': acc[self.aphysic],
+            'avisual': acc[self.avisual],
+            'aaudio': acc[self.aaudio],
+            'aintelec': acc[self.aintelec],
+            'aorganic': acc[self.aorganic]
+        }
         return access_dict
 
     def access_data(self):
@@ -81,7 +89,7 @@ class Place(models.Model):
             access = self.access.all()[0]
             access_dict = {'description': access.description or '', 'fileurl': access.fileurl or '',
                             'aphysic':access.aphysic, 'avisual':access.avisual, 'aaudio':access.aaudio,
-                            'aintelec':access.aintelec, 'avisual':access.aorganic}
+                            'aintelec':access.aintelec, 'aorganic':access.aorganic}
             return access_dict
 
     def biblio_data(self):

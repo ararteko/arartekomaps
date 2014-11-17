@@ -7,10 +7,6 @@ from arartekomaps.mycomment.models import Comment
 from django.http import HttpResponse
 from django.template import loader, Context
 
-class AccessInline(admin.TabularInline):
-    model = Access
-    extra = 1
-
 class BiblioInline(admin.TabularInline):
     model = Biblio
     extra = 1
@@ -68,10 +64,10 @@ class PlaceAdmin(admin.ModelAdmin):
     list_display = ('name','city','category','source')
     readonly_fields = ()
     search_fields = ('name',)
-    inlines = [AccessInline, BiblioInline]
-    list_filter = ('category','access__aphysic',
-        'access__avisual','access__aaudio',
-        'access__aintelec','access__aorganic',
+    inlines = [BiblioInline]
+    list_filter = ('category','aphysic',
+        'avisual','aaudio',
+        'aintelec','aorganic',
         'source', 'city',)
     actions = [export_excel,export_excel_comments]
 admin.site.register(Place, PlaceAdmin)
