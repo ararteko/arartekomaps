@@ -85,12 +85,10 @@ class Place(models.Model):
         return access_dict
 
     def access_data(self):
-        if self.access.count()==1:
-            access = self.access.all()[0]
-            access_dict = {'description': access.description or '', 'fileurl': access.fileurl or '',
-                            'aphysic':access.aphysic, 'avisual':access.avisual, 'aaudio':access.aaudio,
-                            'aintelec':access.aintelec, 'aorganic':access.aorganic}
-            return access_dict
+        access_dict = {'description': self.adescription or '', 'fileurl': self.afileurl or '',
+                        'aphysic': self.aphysic, 'avisual': self.avisual, 'aaudio': self.aaudio,
+                        'aintelec': self.aintelec, 'aorganic': self.aorganic}
+        return access_dict
 
     def biblio_data(self):
         if self.biblio.count()==1:
