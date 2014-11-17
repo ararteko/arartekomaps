@@ -40,8 +40,9 @@ class Place(models.Model):
     lon=models.DecimalField(max_digits=12, decimal_places=8,null=True,blank=True)
     tlf=models.CharField(max_length=30, blank=True, verbose_name='Telefono')
     fax=models.CharField(max_length=15, blank=True, verbose_name='Fax')
-    url=models.CharField(max_length=255, blank=True, verbose_name='URL')
-    email=models.CharField(max_length=255, blank=True, verbose_name='Email')
+    url_name = models.CharField(max_length=100, blank=True, verbose_name='Nombre URL')
+    url = models.CharField(max_length=255, blank=True, verbose_name='URL')
+    email = models.CharField(max_length=255, blank=True, verbose_name='Email')
 
     # ALTER TABLE `places_place` ADD `aphysic` VARCHAR(1) NOT NULL ;
     # ALTER TABLE `places_place` ADD `avisual` VARCHAR(1) NOT NULL ;
