@@ -94,7 +94,7 @@
 ({{place.city.parent}})
 {% if place.tlf %}<br /><span itemprop="telephone" class="tlf">{{place.tlf}}</span>{% endif %}
 {% if place.fax %}<br /><span class="fax">{{place.fax}}</span>{% endif %}
-{% if place.url %}<br /><span class="web"><a href="{{place.url}}" itemprop="url">{% trans "Website" %}</a></span>{% endif %}
+{% if place.url %}<br /><span class="web"><a href="{{place.url}}" itemprop="url">{% if place.url_name %}{{place.url_name}}{% else %}{% trans "Website" %}{% endif %}</a></span>{% endif %}
 </span>
 <span class="geo">
     <span class="latitude">
@@ -118,8 +118,8 @@
     {% endifnotequal %}
     {% endfor %}
     </dl>
-    {% if place.access_data.description %}
-    <p>{{place.access_data.description|linebreaks}}</p>
+    {% if place.access_data.adescription %}
+    <p>{{place.access_data.adescription|linebreaks}}</p>
     {% endif %}
     {% if place.access_data.fileurl %}
     <p><a href="{{place.access_data.fileurl}}">{% trans "detailed file" %}</a> (PDF)</p>
