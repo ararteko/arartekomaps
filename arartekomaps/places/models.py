@@ -11,7 +11,7 @@ from django.db.models import Count
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
-
+from django.contrib.auth.models import User
 
 DEFAULT_FROM_EMAIL = getattr(settings,'DEFAULT_FROM_EMAIL', '')
 EMAIL_NOTIFICATION = getattr(settings,'EMAIL_NOTIFICATION', '')
@@ -43,14 +43,6 @@ class Place(models.Model):
     url_name = models.CharField(max_length=100, blank=True, verbose_name='Nombre URL')
     url = models.CharField(max_length=255, blank=True, verbose_name='URL')
     email = models.CharField(max_length=255, blank=True, verbose_name='Email')
-
-    # ALTER TABLE `places_place` ADD `aphysic` VARCHAR(1) NOT NULL ;
-    # ALTER TABLE `places_place` ADD `avisual` VARCHAR(1) NOT NULL ;
-    # ALTER TABLE `places_place` ADD `aaudio` VARCHAR(1) NOT NULL ;
-    # ALTER TABLE `places_place` ADD `aintelec` VARCHAR(1) NOT NULL ;
-    # ALTER TABLE `places_place` ADD `aorganic` VARCHAR(1) NOT NULL ;
-    # ALTER TABLE `places_place` ADD `adescription` LONGTEXT;
-    # ALTER TABLE `places_place` ADD `afileurl` LONGTEXT;
     aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Física')
     avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Visual')
     aaudio = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Audio')
@@ -59,6 +51,9 @@ class Place(models.Model):
     adescription = models.TextField(null=True, blank=True, verbose_name='Descripción')
     afileurl = models.TextField(null=True, blank=True, verbose_name='URL ficha')
 
+    #ALTER TABLE `places_place` ADD `author_id` INT(11) NOT NULL , ADD `added` DATETIME NOT NULL ;
+    author = models.ForeignKey(User,null=True, blank=True, verbose_name='Autor')
+    added = models.DateTimeField(auto_now_add=True, verbose_name='Fecha creación')
     modified_date=models.DateTimeField(auto_now=False, verbose_name='Fecha Modificación')
 
     def get_comments_count(self):
