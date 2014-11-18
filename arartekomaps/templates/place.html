@@ -118,11 +118,11 @@
     {% endifnotequal %}
     {% endfor %}
     </dl>
-    {% if place.access_data.adescription %}
-    <p>{{place.access_data.adescription|linebreaks}}</p>
+    {% if place.adescription %}
+    <p>{{place.adescription|linebreaks}}</p>
     {% endif %}
-    {% if place.access_data.fileurl %}
-    <p><a href="{{place.access_data.fileurl}}">{% trans "detailed file" %}</a> (PDF)</p>
+    {% if place.afileurl %}
+    <p><a href="{{place.afileurl}}">{% trans "detailed file" %}</a> (PDF)</p>
     {% endif %}
 </div>
 <!-- access end -->
