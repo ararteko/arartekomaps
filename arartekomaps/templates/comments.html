@@ -34,5 +34,5 @@ function checkForm(form){
          </form>
 </div>
 {%else%}
-<p><a href="{%url cssocialprofile_user_login %}?next={{request.path}}#commentlist">{% trans "Login to comment" %}</a></p> 
+<p><a href="{%url cssocialuser_user_login %}?next={{request.path}}#commentlist">{% trans "Login to comment" %}</a></p> 
 {%endif%}

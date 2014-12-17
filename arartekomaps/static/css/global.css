@@ -120,6 +120,80 @@ header img{
     line-height:24px;
 }
 
+#placeform{
+    background-color: #efefef;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px 30px 40px;
+}
+
+#placeform label {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    text-align: right;
+    width: 75px;
+}
+
+#placeform p, #map_container {
+    padding-bottom: 15px;
+}
+
+#placeform input.submit {
+    background-color: #d021d8;
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.698);
+    color: white;
+    cursor: pointer;
+    margin-left: 85px;
+    margin-top: 10px;
+    padding: 5px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+#placeform span{
+    margin-left: 85px;
+}
+
+.btn-primary {
+    background-color: #d021d8;
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.698);
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+    text-transform: uppercase;
+    text-decoration:none;
+}
+/*********myplace*************/
+form table{
+    margin-top:20px;
+    width:100%;
+}
+form table input, form table select{
+    height:25px;
+    border:1px solid #ccc;
+}
+form table thead td{
+    background-color:#efefef;
+}
+form table input.btn-primary{
+    width:auto;
+}
+form table th{
+    background-color:#ccc;
+    padding:5px;
+}
+form table td{
+    padding:5px;
+}
+form table tbody td{
+    border:1px solid #efefef;
+}
 .hsearchbutton{
     background-color:#efefef;
     border:1px solid #ccc;

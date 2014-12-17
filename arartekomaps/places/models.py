@@ -6,12 +6,11 @@ from arartekomaps.locations.models import Location
 from arartekomaps.categories.models import Category
 from photologue.models import ImageModel
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
+from arartekomaps.arartekouser.models import ArartekoUser as User
 from django.db.models import Count
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
-from django.contrib.auth.models import User
 
 DEFAULT_FROM_EMAIL = getattr(settings,'DEFAULT_FROM_EMAIL', '')
 EMAIL_NOTIFICATION = getattr(settings,'EMAIL_NOTIFICATION', '')
@@ -25,36 +24,39 @@ ACCESS_CHOICES = (
 
 
 class Place(models.Model):
-    slug=models.SlugField(max_length=255, blank=True, null=True, unique=True, help_text="Sí está vacio se actualiza al guardar")
-    name=models.CharField(max_length=255, verbose_name='Nombre')
-    category=models.ForeignKey(Category, verbose_name='Categoría')
-    description =models.TextField(null=True, blank=True, verbose_name=u'Descripción')
-    address1=models.CharField(max_length=100, blank=True, verbose_name='Dirección 1')
-    address2=models.CharField(max_length=100, blank=True, verbose_name='Dirección 2')
-    postalcode=models.CharField(max_length=5, blank=True, verbose_name='Codigo postal')
-    city=models.ForeignKey(Location, verbose_name='Municipio')
-    locality=models.CharField(max_length=100, blank=True, verbose_name='Localidad')
-    source=models.CharField(max_length=20, blank=True, verbose_name='Codigo entidad')
-    source_id=models.CharField(max_length=20, blank=True, verbose_name='Codigo origen')
-    lat=models.DecimalField(max_digits=12, decimal_places=8,null=True,blank=True)
-    lon=models.DecimalField(max_digits=12, decimal_places=8,null=True,blank=True)
-    tlf=models.CharField(max_length=30, blank=True, verbose_name='Telefono')
-    fax=models.CharField(max_length=15, blank=True, verbose_name='Fax')
-    url_name = models.CharField(max_length=100, blank=True, verbose_name='Nombre URL')
-    url = models.CharField(max_length=255, blank=True, verbose_name='URL')
-    email = models.CharField(max_length=255, blank=True, verbose_name='Email')
-    aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Física')
-    avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Visual')
-    aaudio = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Audio')
-    aintelec = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Intelectual')
-    aorganic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Orgánica')
-    adescription = models.TextField(null=True, blank=True, verbose_name='Descripción')
-    afileurl = models.TextField(null=True, blank=True, verbose_name='URL ficha')
+    slug=models.SlugField(max_length=255, blank=True, null=True, unique=True, help_text=_('Si esta vacio se actualiza al guardar'))
+    name=models.CharField(max_length=255, verbose_name=_('Nombre'))
+    category=models.ForeignKey(Category, verbose_name=_('Categoria'))
+    description =models.TextField(null=True, blank=True, verbose_name=_('Description'), help_text=_('Descripcion del lugar'))
+    address1=models.CharField(max_length=100, blank=True, verbose_name=_('Address 1'), help_text=_('Direccion 1 del lugar'))
+    address2=models.CharField(max_length=100, blank=True, verbose_name=_('Address 2'), help_text=_('Direccion 2 del lugar'))
+    postalcode=models.CharField(max_length=5, blank=True, verbose_name=_('Codigo postal'), help_text=_('Codigo postal del municipio'))
+    city=models.ForeignKey(Location, verbose_name=_('Municipio'), help_text=_('Nombre del municipio'))
+    locality=models.CharField(max_length=100, blank=True, verbose_name=_('Localidad'), help_text=_('Nombre de localidad'))
+    source=models.CharField(max_length=20, blank=True, verbose_name=_('Codigo entidad'))
+    source_id=models.CharField(max_length=20, blank=True, verbose_name=_('Codigo origen'), help_text=_('Codigo de la ficha en la base de datos de origen'))
+    lat=models.DecimalField(max_digits=12, decimal_places=8,null=True,blank=True, verbose_name=_('Latitud'), help_text=_('Latitud GPS'))
+    lon=models.DecimalField(max_digits=12, decimal_places=8,null=True,blank=True, verbose_name=_('Longitud'), help_text=_('Longitud GPS'))
+    tlf=models.CharField(max_length=30, blank=True, verbose_name=_('Telefono'), help_text=_('Numero de telefono'))
+    fax=models.CharField(max_length=15, blank=True, verbose_name=_('Fax'), help_text=_('Numero de FAX'))
+    url_name = models.CharField(max_length=100, blank=True, verbose_name=_('Nombre URL'), help_text=_('Nombre descriptibo del URL'))
+    url = models.CharField(max_length=255, blank=True, verbose_name=_('URL'), help_text=_('URL del sitio web'))
+    email = models.CharField(max_length=255, blank=True, verbose_name=_('Email'), help_text=_('Email de contacto'))
+    aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Fisica'),default="s", help_text=_('Estado del acceso para minusvalia fisica'))
+    avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Visual'),default="s", help_text=_('Estado del acceso para minusvalia visual'))
+    aaudio = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Audio'),default="s", help_text=_('Estado del acceso para minusvalia auditiva'))
+    aintelec = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Intelectual'),default="s", help_text=_('Estado del acceso para minusvalia intelectual'))
+    aorganic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Organica'),default="s", help_text=_('Estado del acceso para minusvalia organica'))
+    adescription = models.TextField(null=True, blank=True, verbose_name=_('Description'), help_text=_('Descripcion de los datos de acceso'))
+    afileurl = models.TextField(null=True, blank=True, verbose_name=_('URL ficha'), help_text=_('URL de la ficha'))
 
     #ALTER TABLE `places_place` ADD `author_id` INT(11) NOT NULL , ADD `added` DATETIME NOT NULL ;
-    author = models.ForeignKey(User,null=True, blank=True, verbose_name='Autor')
-    added = models.DateTimeField(auto_now_add=True, verbose_name='Fecha creación')
-    modified_date=models.DateTimeField(auto_now=False, verbose_name='Fecha Modificación')
+    author = models.ForeignKey(User,null=True, blank=True, verbose_name=_('Autor'))
+    added = models.DateTimeField(auto_now_add=True, verbose_name=_('Fecha creacion'))
+    modified_date=models.DateTimeField(auto_now=True, verbose_name=_('Fecha Modificacion'))
+
+    #ALTER TABLE `places_place` ADD `is_public` BOOLEAN NOT NULL DEFAULT TRUE ;
+    is_public = models.BooleanField(default=True, help_text=_('Mostrar publicamente este lugar'),verbose_name=_('Es publica'))
 
     def get_comments_count(self):
         return self.parent.all().count()
@@ -149,25 +151,25 @@ class Place(models.Model):
 
 
 class Access(models.Model):
-    aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Física')
-    avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Visual')
-    aaudio = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Audio')
-    aintelec = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Intelectual')
-    aorganic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name='Orgánica')
-    description = models.TextField(null=True, blank=True, verbose_name='Descripción')
-    fileurl = models.TextField(null=True, blank=True, verbose_name='URL ficha')
-    place = models.ForeignKey(Place, unique=True, verbose_name='Place', related_name='access')
+    aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Fisica'))
+    avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Visual'))
+    aaudio = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Audio'))
+    aintelec = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Intelectual'))
+    aorganic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Organica'))
+    description = models.TextField(null=True, blank=True, verbose_name=_('Description'))
+    fileurl = models.TextField(null=True, blank=True, verbose_name=_('URL ficha'))
+    place = models.ForeignKey(Place, unique=True, verbose_name=_('Place'), related_name='access')
 
 class Bibtopic(models.Model):
     """ """
-    name = models.CharField(max_length=50, verbose_name='Nombre')
+    name = models.CharField(max_length=50, verbose_name=_('Nombre'))
 
     def __unicode__(self):
         return self.name
 
 class Bibservice(models.Model):
     """ """
-    name = models.CharField(max_length=50, verbose_name='Nombre')
+    name = models.CharField(max_length=50, verbose_name=_('Nombre'))
 
     def __unicode__(self):
         return self.name
@@ -182,35 +184,35 @@ class Biblio(models.Model):
         ('t', 'Patrimonial'),
         ('e', 'Especializada')
     )
-    btype = models.CharField(max_length=1, choices=BTYPE_CHOICES, blank=True, verbose_name='Tipo')
-    start_year = models.DecimalField(max_digits=4, decimal_places=0,null=True,blank=True, verbose_name='Año inicio')
-    institution = models.CharField(max_length=100, blank=True, verbose_name='Institución')
+    btype = models.CharField(max_length=1, choices=BTYPE_CHOICES, blank=True, verbose_name=_('Tipo'))
+    start_year = models.DecimalField(max_digits=4, decimal_places=0,null=True,blank=True, verbose_name=_('Ano inicio'))
+    institution = models.CharField(max_length=100, blank=True, verbose_name=_('Institucion'))
     INST_TYPE_CHOICES = (
         ('ayto', 'Ayuntamiento'),
         ('auto', 'Autónoma'),
         ('priv', 'Privado'),
         ('fora', 'Foral'),
     )
-    institution_type = models.CharField(max_length=4, choices=INST_TYPE_CHOICES, blank=True, verbose_name='Tipo institución')
-    open_times = models.CharField(max_length=255, null=True,blank=True, verbose_name='Horario apertura')
+    institution_type = models.CharField(max_length=4, choices=INST_TYPE_CHOICES, blank=True, verbose_name=_('Tipo institucion'))
+    open_times = models.CharField(max_length=255, null=True,blank=True, verbose_name=_('Horario apertura'))
     ACCESS_TYPE_CHOICES = (
         ('l', 'Libre'),
         ('r', 'Restringido'),
     )
-    access_type = models.CharField(max_length=1, choices=ACCESS_TYPE_CHOICES, blank=True, verbose_name='Tipo de acceso')
+    access_type = models.CharField(max_length=1, choices=ACCESS_TYPE_CHOICES, blank=True, verbose_name=_('Tipo de acceso'))
     CENTER_TYPE_CHOICES = (
         ('p', 'Público'),
     )
-    center_type = models.CharField(max_length=1, choices=CENTER_TYPE_CHOICES, blank=True, verbose_name='Tipo de centro')
-    topics = models.ManyToManyField(Bibtopic, verbose_name='Temas')
-    services = models.ManyToManyField(Bibservice, verbose_name='Servicios')
-    place=models.ForeignKey(Place, unique=True, verbose_name='Place', related_name='biblio')
+    center_type = models.CharField(max_length=1, choices=CENTER_TYPE_CHOICES, blank=True, verbose_name=_('Tipo de centro'))
+    topics = models.ManyToManyField(Bibtopic, verbose_name=_('Temas'))
+    services = models.ManyToManyField(Bibservice, verbose_name=_('Servicios'))
+    place=models.ForeignKey(Place, unique=True, verbose_name=_('Place'), related_name='biblio')
 
 class MPhoto(ImageModel):
-    name=models.CharField(max_length=255, verbose_name='Nombre', blank=True)
-    place=models.ForeignKey(Place, verbose_name='Place')
-    user=models.ForeignKey(User, verbose_name='User', blank=True, null=True)
-    def_img = models.BooleanField(verbose_name='Default',default=False)
+    name=models.CharField(max_length=255, verbose_name=_('Nombre'), blank=True)
+    place=models.ForeignKey(Place, verbose_name=_('Place'))
+    user=models.ForeignKey(User, verbose_name=_('User'), blank=True, null=True)
+    def_img = models.BooleanField(verbose_name=_('Default img'),default=False)
 
     def __unicode__(self):
         return self.name or self.place.name

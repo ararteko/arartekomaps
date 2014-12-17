@@ -3,12 +3,15 @@ from django.template import RequestContext
 from arartekomaps.settings import STATIC_URL
 from arartekomaps.locations.models import Location
 from arartekomaps.places.models import Place, MPhoto
+from arartekomaps.places.forms import PlaceForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from arartekomaps.utils.load_images import handle_photo_file
+from arartekomaps.categories.models import Category
 from arartekomaps.mycomment.forms import CommentForm
 from arartekomaps.mycomment.models import Comment
+from django.core.urlresolvers import reverse
 
 def placeview(request, slug=''):
     """ """
@@ -102,5 +105,73 @@ def addPhoto(request, slug=''):
         return HttpResponseRedirect(place.get_absolute_url()) # Redirect after POST
     else:
         return render_to_response('addphoto.html', locals(), context_instance=RequestContext(request)
-        )            
+        )   
 
+@login_required
+def my_places(request):
+    args = {}
+    name =  request.GET.get("name","")
+    category = Category.objects.filter(slug=request.GET.get("category",""))
+    city = Location.objects.filter(slug=request.GET.get("city",""))
+    if name:
+        args['name'] = name
+    if category:
+        args['category'] = category
+    if city:
+        args['city'] = city
+    args['author'] = request.user
+
+    my_places = Place.objects.filter(**args)
+    categories = Category.objects.filter(parent__isnull=False).order_by('name')
+    cities = Location.objects.filter(level=2).order_by('name')
+    return render_to_response('places/my_places.html', locals(), context_instance=RequestContext(request)
+            )  
+
+@login_required
+def delete_place(request, slug=None):
+    if slug:
+        place = get_object_or_404(Place, slug=slug)
+        place.delete()
+    return HttpResponseRedirect(reverse("edit_places"))
+
+@login_required
+def new_place(request):
+    template_name='newplace'  
+    user = request.user
+    if request.method == 'POST':
+        posta=request.POST.copy()
+        form = PlaceForm(posta)
+        if form.is_valid():
+            place = form.save(commit=False)
+            place.lat = float(request.POST.get("lat","0"))
+            place.lon = float(request.POST.get("lon","0"))
+            place.author = user
+            place.save()
+        else:
+            return render_to_response('places/new_place.html', locals(), context_instance=RequestContext(request))
+        return HttpResponseRedirect(reverse("edit_places"))
+    else:
+        form = PlaceForm()
+        return render_to_response('places/new_place.html', locals(), context_instance=RequestContext(request))
+
+@login_required
+def edit_place(request, slug=None):
+    template_name='editplace'  
+    user = request.user
+    if request.method == 'POST':
+        posta=request.POST.copy()
+        place = get_object_or_404(Place, slug=slug)
+        form = PlaceForm(posta, instance=place)
+        if form.is_valid():
+            place = form.save(commit=False)
+            place.lat = float(request.POST.get("lat","0"))
+            place.lon = float(request.POST.get("lon","0"))
+            place.author = user
+            place.save()
+            return HttpResponseRedirect(reverse("edit_places"))
+        else:
+            return render_to_response('places/edit_place.html', locals(), context_instance=RequestContext(request))
+    else:
+        place = get_object_or_404(Place, slug=slug)
+        form = PlaceForm(instance=place)
+        return render_to_response('places/edit_place.html', locals(), context_instance=RequestContext(request))

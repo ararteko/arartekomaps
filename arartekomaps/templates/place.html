@@ -106,7 +106,7 @@
 </span>
 </address>
 
-<p>{{place.description|default_if_none:""|linebreaks|safe}}</p>
+<p>{{place.description|default_if_none:""|safe}}</p>
 
 <div id="access">
 <h3>{% trans "Accessibility" %}</h3>
@@ -168,13 +168,16 @@
 <!-- biblio end -->
 {% endif %}
 
-<p><em>{% trans "data_source" %}:
+<p><em>
+  {% if place.source %}
+  {% trans "data_source" %}:
 
   {% ifequal place.source "nombre" %}
       {{place.name}}
   {% else %}
     {% trans place.source %}
   {% endifequal %}
+  {% endif %}
   {% if place.modified_date %}
   <br />
   {% trans "modified_date" %}:
@@ -209,7 +212,7 @@
 
     </form>
     {% else %}
-    <p><a href='{% url 'cssocialprofile_user_login' %}?next={{request.path}}'>{% trans  "Sign in" %}</a>{% trans  " to write a comment." %}</p>
+    <p><a href='{% url 'cssocialuser_user_login' %}?next={{request.path}}'>{% trans  "Sign in" %}</a>{% trans  " to write a comment." %}</p>
     {% endif %}
 
 </div>

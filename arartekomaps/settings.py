@@ -64,13 +64,6 @@ PAGE_LANGUAGES = (
   ('en', gettext_noop('English')),
 )
 
-"""
-PAGE_LANGUAGES = (
-  ('es', 'Espanol'),
-  ('eu', 'Euskara'),
-)
-"""
-
 LANGUAGES = list(PAGE_LANGUAGES)
 
 TRANSMETA_LANGUAGES = LANGUAGES
@@ -132,7 +125,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',    
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'pagination.middleware.PaginationMiddleware',  
 )
 
 ROOT_URLCONF = 'arartekomaps.urls'
@@ -168,22 +162,21 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.comments',
+    'pagination',
+    'social_auth',
+    'cssocialuser',
     'arartekomaps',
+    'arartekomaps.arartekouser',
     'arartekomaps.places',
     'arartekomaps.locations',
     'arartekomaps.categories',
     'arartekomaps.mycomment',
-    'cssocialprofile',
-    'social_auth',
     'registration',
     'photologue',
     'pages',
     'gunicorn',
     'piston',
     'modeltranslation',
-    'pagination',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 )
 
 #SMTP CONFIG
@@ -237,7 +230,8 @@ LOGIN_URL = '/u/'
 LOGOUT_URL = '/u/logout'
 PASSWORD_RESET_TIMEOUT_DAYS = 365
 
-AUTH_PROFILE_MODULE = 'cssocialprofile.CSSocialProfile'
+#AUTH_PROFILE_MODULE = 'cssocialuser.CSSocialProfile'
+AUTH_USER_MODEL = 'arartekouser.ArartekoUser'
 
 #Dajngo-registration settings
 ACCOUNT_ACTIVATION_DAYS = 5
@@ -262,6 +256,9 @@ MODELTRANSLATION_FALLBACK_LANGUAGES = ('es', 'eu')
 
 IMPORT_FILES_FOLDER = '/var/csmant/ararimport'
 
+
+SECRET_KEY = 'vw=d$ccwccb&m=wf2^cz*($bv_x+i9rxmd+%jkbmsa3^#cgv*r'
+ALLOWED_HOSTS = ['www.mapak.ararteko.net','mapak.ararteko.net','127.0.0.1','localhost']
 
 USE_X_FORWARDED_HOST = True
 

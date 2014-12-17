@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-15 11:37+0200\n"
+"POT-Creation-Date: 2014-12-17 12:10+0100\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,126 +42,135 @@ msgstr "Practicable"
 msgid "Accesible"
 msgstr "Accesible"
 
-#: views.py:16 places/models.py:54
+#: views.py:16 places/models.py:66
 msgid "aphysic"
 msgstr "Física"
 
-#: views.py:17 places/models.py:55
+#: views.py:17 places/models.py:67
 msgid "avisual"
 msgstr "Visual"
 
-#: views.py:18 places/models.py:56
+#: views.py:18 places/models.py:68
 msgid "aaudio"
 msgstr "Auditiva"
 
-#: views.py:19 places/models.py:57
+#: views.py:19 places/models.py:69
 msgid "aintelec"
 msgstr "Intelectual"
 
-#: views.py:20 places/models.py:58
+#: views.py:20 places/models.py:70
 msgid "aorganic"
 msgstr "Orgánica"
 
-#: api/handlers.py:81
+#: api/handlers.py:84
 msgid "Ezin izan da kokapen informazioa eskuratu"
 msgstr ""
 
-#: api/handlers.py:109
+#: api/handlers.py:112
 msgid "Ezin dira kategoriak eskuratu"
 msgstr ""
 
-#: api/handlers.py:185
+#: api/handlers.py:156 api/handlers.py:269 templates/base.html:93
+#: templates/place.html:6 templates/place.html.py:112
+msgid "Accessibility"
+msgstr "Accesibilidad"
+
+#: api/handlers.py:188
 msgid "Sisteman errore bat gertatu da \"lekua\" eskuratzean: "
 msgstr ""
 
-#: api/handlers.py:211
+#: api/handlers.py:214
 msgid ""
 "Lekua ez dago geo-kokatuta. Jarri kontaktuan guneko administratzaileekin."
 msgstr ""
 
-#: api/handlers.py:218
+#: api/handlers.py:221
 msgid "Latitude eta longitudeak ezin izan dira eskuratu."
 msgstr ""
 
-#: api/handlers.py:290
+#: api/handlers.py:295
 msgid "Egin duzun bilaketarako ez dugu ezer aurkitu."
 msgstr ""
 
-#: api/handlers.py:294
+#: api/handlers.py:299
 msgid "Sisteman errore bat gertatu da \"lekuak\" eskuratzean: "
 msgstr ""
 
-#: api/handlers.py:321 api/handlers.py:356
+#: api/handlers.py:326 api/handlers.py:361
 msgid ""
 "Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta "
 "zaigu."
 msgstr ""
 
-#: api/handlers.py:326
+#: api/handlers.py:331
 msgid ""
 "Erabiltzaile izenak hizki, zenbaki eta @/./+/-/_ karaktereak bakarrik izan "
 "ditzazke."
 msgstr ""
 
-#: api/handlers.py:331 api/handlers.py:373
+#: api/handlers.py:336 api/handlers.py:378
 msgid ""
 "Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste "
 "izen bat."
 msgstr ""
 
-#: api/handlers.py:334
+#: api/handlers.py:339
 msgid "Arazo bat egon da aktibazio eposta bidaltzean"
 msgstr ""
 
-#: api/handlers.py:337
+#: api/handlers.py:342
 msgid "Erabiltzailea erregistratzean errore bat gertatu da"
 msgstr ""
 
-#: api/handlers.py:349 api/handlers.py:390
+#: api/handlers.py:354 api/handlers.py:395
 msgid ""
 "Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali "
 "dugun mezua eta jarraitu aktibazio pausoak."
 msgstr ""
 
-#: api/handlers.py:353
+#: api/handlers.py:358
 msgid "Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro."
 msgstr ""
 
-#: api/handlers.py:381
+#: api/handlers.py:386
 msgid "Sare sozialetako autentikazioak huts egin du: "
 msgstr ""
 
-#: api/handlers.py:393
+#: api/handlers.py:398
 msgid ""
 "Jatorri ezezaguneko erabiltzailea. Jarri administratzaileekin harremanetan."
 msgstr ""
 
-#: api/handlers.py:424
+#: api/handlers.py:429
 msgid ""
 "Erabiltzaile hori ez da sisteman existitzen. Jarri administratzailearekin "
 "kontaktuan."
 msgstr ""
 
-#: api/handlers.py:443
+#: api/handlers.py:448
 msgid "Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez."
 msgstr ""
 
-#: api/handlers.py:448
+#: api/handlers.py:453
 msgid "Iruzkinak ez dauka testurik. Testua beharrezkoa da."
 msgstr ""
 
-#: api/handlers.py:452
+#: api/handlers.py:457
 msgid "Iruzkina utzi nahi den \"lekua\" aurkitzean errorea: "
 msgstr ""
 
-#: api/handlers.py:455
+#: api/handlers.py:460
 msgid ""
 "Erabiltzaile saioa iraungi da. Berriz sartu zure erabiltzaile eta "
 "pasahitzarekin."
 msgstr ""
 
-#: api/handlers.py:488
+#: api/handlers.py:493
 msgid "Iruzkinak eskuratzean errore bat gertatu da: "
+msgstr ""
+
+#: arartekouser/admin.py:62
+msgid "Permissions"
 msgstr ""
 
 #: locations/views.py:55
@@ -220,19 +229,301 @@ msgstr "[NUEVO COMENTARIO] "
 msgid "New comment saved: "
 msgstr "Nuevo comentario guardado: "
 
-#: places/models.py:54 places/models.py:55 places/models.py:56
-#: places/models.py:57 places/models.py:58
+#: places/forms.py:8 templates/search.html:82
+#: templates/places/my_places.html:40
+msgid "City"
+msgstr "Municipio"
+
+#: places/forms.py:8 places/models.py:34
+msgid "Nombre del municipio"
+msgstr "Seleccionar el municipio al que pertenece el pueblo, ciudad, etc."
+
+#: places/forms.py:9 templates/search.html:93
+#: templates/places/my_places.html:41
+msgid "Category"
+msgstr "Categoría"
+
+#: places/forms.py:9
+msgid "Elige una categoria del lugar"
+msgstr ""
+"En caso de no encontrar una categoría adecuada, ponerse en contacto con "
+"mapa@ararteko.net"
+
+#: places/forms.py:10
+msgid "Address"
+msgstr "Dirección"
+
+#: places/forms.py:10 places/models.py:31
+msgid "Direccion 1 del lugar"
+msgstr ""
+"Incluir en este espacio la dirección completa del recurso (incluido el "
+"número de la calle). Se puede usar la denominación en euskera o castellano. "
+"Recomendamos que una vez elegido uno de los dos idiomas, usemos el mismo en "
+"todos los recursos."
+
+#: places/forms.py:11 places/models.py:32
+msgid "Direccion 2 del lugar"
+msgstr ""
+"Incluir en este espacio las referencias a Barrios o indicaciones que "
+"completan el nombre de la calle."
+
+#: places/forms.py:12 places/models.py:51 places/models.py:160
+msgid "URL ficha"
+msgstr ""
+
+#: places/forms.py:12 places/models.py:51
+msgid "URL de la ficha"
+msgstr ""
+
+#: places/models.py:27
+msgid "Si esta vacio se actualiza al guardar"
+msgstr ""
+
+#: places/models.py:28 places/models.py:165 places/models.py:172
+#: places/models.py:212
+msgid "Nombre"
+msgstr ""
+
+#: places/models.py:29
+msgid "Categoria"
+msgstr "Categoría"
+
+#: places/models.py:30 places/models.py:50 places/models.py:159
+msgid "Description"
+msgstr "Descripción"
+
+#: places/models.py:30
+msgid "Descripcion del lugar"
+msgstr "Información de carácter general sobre el recurso"
+
+#: places/models.py:31
+msgid "Address 1"
+msgstr "Dirección 1"
+
+#: places/models.py:32
+msgid "Address 2"
+msgstr "Dirección 2"
+
+#: places/models.py:33
+msgid "Codigo postal"
+msgstr "Código postal"
+
+#: places/models.py:33
+msgid "Codigo postal del municipio"
+msgstr "Código postal del municipio"
+
+#: places/models.py:34
+msgid "Municipio"
+msgstr ""
+
+#: places/models.py:35
+msgid "Localidad"
+msgstr ""
+
+#: places/models.py:35
+msgid "Nombre de localidad"
+msgstr ""
+"Usarlo en caso de localidades que pertenecen a un municipio mayor, donde no "
+"coinciden nombre de municipio y localidad"
+
+#: places/models.py:36
+msgid "Codigo entidad"
+msgstr ""
+
+#: places/models.py:37
+msgid "Codigo origen"
+msgstr ""
+
+#: places/models.py:37
+msgid "Codigo de la ficha en la base de datos de origen"
+msgstr """Si el dato proviene de una base de datos propia, por favor, indicar el código de identificación en dicha base."""
+
+#: places/models.py:38
+msgid "Latitud"
+msgstr ""
+
+#: places/models.py:38
+msgid "Latitud GPS"
+msgstr ""
+
+#: places/models.py:39
+msgid "Longitud"
+msgstr ""
+
+#: places/models.py:39
+msgid "Longitud GPS"
+msgstr ""
+
+#: places/models.py:40
+msgid "Telefono"
+msgstr ""
+
+#: places/models.py:40
+msgid "Numero de telefono"
+msgstr "Separar los números en grupos de tres"
+
+#: places/models.py:41
+msgid "Fax"
+msgstr ""
+
+#: places/models.py:41
+msgid "Numero de FAX"
+msgstr "Separar los números en grupos de tres"
+
+#: places/models.py:42
+msgid "Nombre URL"
+msgstr ""
+
+#: places/models.py:42
+msgid "Nombre descriptibo del URL"
+msgstr ""
+
+#: places/models.py:43
+msgid "URL"
+msgstr ""
+
+#: places/models.py:43
+msgid "URL del sitio web"
+msgstr ""
+
+#: places/models.py:44
+msgid "Email"
+msgstr "Email"
+
+#: places/models.py:44
+msgid "Email de contacto"
+msgstr "En caso de conocerlo, incluir el email de contacto"
+
+#: places/models.py:45 places/models.py:154
+msgid "Fisica"
+msgstr "Física"
+
+#: places/models.py:45
+msgid "Estado del acceso para minusvalia fisica"
+msgstr "Seleccionar un valor para la discapacidades física. Si desconocemos el dato seleccionar “Sin datos”"
+
+#: places/models.py:46 places/models.py:155
+msgid "Visual"
+msgstr "Visual"
+
+#: places/models.py:46
+msgid "Estado del acceso para minusvalia visual"
+msgstr "Seleccionar un valor para la discapacidades visual. Si desconocemos el dato seleccionar “Sin datos”"
+
+#: places/models.py:47 places/models.py:156
+msgid "Audio"
+msgstr "Audio"
+
+#: places/models.py:47
+msgid "Estado del acceso para minusvalia auditiva"
+msgstr "Seleccionar un valor para la discapacidades auditiva. Si desconocemos el dato seleccionar “Sin datos”"
+
+#: places/models.py:48 places/models.py:157
+msgid "Intelectual"
+msgstr "Intelectual"
+
+#: places/models.py:48
+msgid "Estado del acceso para minusvalia intelectual"
+msgstr "Seleccionar un valor para la discapacidades intelectual. Si desconocemos el dato seleccionar “Sin datos”"
+
+#: places/models.py:49 places/models.py:158
+msgid "Organica"
+msgstr "Orgánica"
+
+#: places/models.py:49
+msgid "Estado del acceso para minusvalia organica"
+msgstr "Seleccionar un valor para la discapacidades orgánica. Si desconocemos el dato seleccionar “Sin datos”"
+
+#: places/models.py:50
+msgid "Descripcion de los datos de acceso"
+msgstr "Información más detallada sobre las condiciones de accesibilidad de un recurso."
+
+#: places/models.py:54
+msgid "Autor"
+msgstr ""
+
+#: places/models.py:55
+msgid "Fecha creacion"
+msgstr ""
+
+#: places/models.py:56
+msgid "Fecha Modificacion"
+msgstr ""
+
+#: places/models.py:59
+msgid "Mostrar publicamente este lugar"
+msgstr ""
+
+#: places/models.py:59
+msgid "Es publica"
+msgstr "Es pública"
+
+#: places/models.py:66 places/models.py:67 places/models.py:68
+#: places/models.py:69 places/models.py:70
 #, python-format
 msgid "access_%s"
+msgstr ""
+
+#: places/models.py:161 places/models.py:209 places/models.py:213
+msgid "Place"
+msgstr ""
+
+#: places/models.py:187
+msgid "Tipo"
+msgstr ""
+
+#: places/models.py:188
+msgid "Ano inicio"
+msgstr ""
+
+#: places/models.py:189
+#, fuzzy
+msgid "Institucion"
+msgstr "Institución"
+
+#: places/models.py:196
+#, fuzzy
+msgid "Tipo institucion"
+msgstr "Institución"
+
+#: places/models.py:197
+msgid "Horario apertura"
+msgstr ""
+
+#: places/models.py:202
+msgid "Tipo de acceso"
+msgstr ""
+
+#: places/models.py:206
+msgid "Tipo de centro"
+msgstr ""
+
+#: places/models.py:207
+msgid "Temas"
+msgstr ""
+
+#: places/models.py:208
+#, fuzzy
+msgid "Servicios"
+msgstr "Servicios"
+
+#: places/models.py:214
+msgid "User"
+msgstr ""
+
+#: places/models.py:215
+msgid "Default img"
 msgstr ""
 
 #: templates/404.html:4 templates/404.html.py:24
 msgid "Not Found error"
 msgstr "Error: No Encontrado"
 
-#: templates/404.html:4 templates/about.html:4 templates/base.html:33
+#: templates/404.html:4 templates/about.html:4 templates/base.html:34
 #: templates/home.html:4 templates/listing.html:4 templates/location.html:4
 #: templates/place.html:6 templates/search.html:4
+#: templates/places/edit_place.html:4 templates/places/my_places.html:4
+#: templates/places/new_place.html:4
 msgid "Ararteko maps"
 msgstr "Mapas de Ararteko"
 
@@ -254,7 +545,7 @@ msgstr "Lo sentimos, no hemos encontrado lo que buscas."
 msgid "About"
 msgstr "Sobre esto"
 
-#: templates/about.html:24 templates/base.html:109 templates/home.html:108
+#: templates/about.html:24 templates/base.html:93 templates/home.html:108
 msgid "About the maps"
 msgstr "Sobre los mapas"
 
@@ -284,32 +575,26 @@ msgstr "Selecciona tu foto"
 msgid "Name of the photo"
 msgstr "Nombre de la foto"
 
-#: templates/base.html:35 templates/home.html:4
+#: templates/base.html:36 templates/home.html:4
 msgid "Discover and share accessible places"
 msgstr "Descubre y comparte lugares accesibles"
 
-#: templates/base.html:57 templates/base.html.py:64
-#: templates/google_search.html:5 templates/home.html:96
-#: templates/listing.html:29 templates/search.html:69
+#: templates/base.html:48 templates/google_search.html:5
+#: templates/home.html:96 templates/listing.html:29 templates/search.html:69
 msgid "Go to..."
 msgstr "Ir a..."
 
-#: templates/base.html:59 templates/base.html.py:65
-#: templates/google_search.html:6 templates/home.html:97
-#: templates/listing.html:30 templates/search.html:70
-#: templates/search.html.py:116
+#: templates/base.html:49 templates/google_search.html:6
+#: templates/home.html:97 templates/listing.html:30 templates/search.html:70
+#: templates/search.html.py:116 templates/places/my_places.html:35
 msgid "Search"
 msgstr "Buscar"
 
-#: templates/base.html:109 templates/place.html:6 templates/place.html.py:112
-msgid "Accessibility"
-msgstr "Accesibilidad"
-
-#: templates/base.html:110
+#: templates/base.html:94
 msgid "Privacy"
 msgstr "Privacidad"
 
-#: templates/base.html:113
+#: templates/base.html:97
 msgid "Project supported by"
 msgstr "Proyecto impulsado por"
 
@@ -321,7 +606,7 @@ msgstr "dinos lo que piensas sobre las condiciones de accesibilidad del lugar."
 msgid "Comment"
 msgstr "Comenta"
 
-#: templates/comments.html:33 templates/place.html:210
+#: templates/comments.html:33 templates/place.html:213
 msgid "Add comment"
 msgstr "Añadir comentario"
 
@@ -618,11 +903,11 @@ msgstr ""
 "accesibles que se encuentran cerca de ti y podrás informar a la comunidad de "
 "la situación real de los lugares que visitas."
 
-#: templates/home.html:134
+#: templates/home.html:132
 msgid "Visit this places"
 msgstr "Visita estos lugares"
 
-#: templates/home.html:148
+#: templates/home.html:146
 msgid "Last places"
 msgstr "Últimos lugares"
 
@@ -663,46 +948,38 @@ msgstr "Horario"
 msgid "services"
 msgstr "Servicios"
 
-#: templates/place.html:174
+#: templates/place.html:176
 msgid "data_source"
 msgstr "Fuente de los datos"
 
-#: templates/place.html:183
+#: templates/place.html:186
 msgid "modified_date"
 msgstr "Fecha de actualización"
 
-#: templates/place.html:201
+#: templates/place.html:204
 msgid "Comments"
 msgstr "Comentarios"
 
-#: templates/place.html:215 templates/useroptions.html:16
+#: templates/place.html:218 templates/useroptions.html:17
 #: templates/registration/login.html:6 templates/registration/login.html:43
 msgid "Sign in"
 msgstr "Entrar"
 
-#: templates/place.html:215
+#: templates/place.html:218
 msgid " to write a comment."
 msgstr " para comentar"
 
-#: templates/place.html:226
+#: templates/place.html:229
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:231
+#: templates/place.html:234
 msgid "Nearest places"
 msgstr "Lugares cercanos"
 
 #: templates/search.html:4 templates/search.html.py:63
 msgid "Search results"
 msgstr "Buscar"
-
-#: templates/search.html:82
-msgid "City"
-msgstr "Municipio"
-
-#: templates/search.html:93
-msgid "Category"
-msgstr "Categoría"
 
 #: templates/search.html:100
 msgid "Minimal accessibility"
@@ -716,13 +993,47 @@ msgstr "Total resultados"
 msgid "User's photo"
 msgstr "Foto del usuario"
 
-#: templates/useroptions.html:10
+#: templates/useroptions.html:10 templates/places/my_places.html:4
+#: templates/places/my_places.html.py:9
+msgid "My places"
+msgstr "Mis lugares"
+
+#: templates/useroptions.html:11
 msgid "Your profile"
 msgstr "Perfil"
 
-#: templates/useroptions.html:11
+#: templates/useroptions.html:12
 msgid "Sign out"
 msgstr "Salir"
+
+#: templates/places/edit_place.html:4 templates/places/edit_place.html:68
+msgid "Edit place"
+msgstr "Editar lugares"
+
+#: templates/places/edit_place.html:79 templates/places/new_place.html:76
+msgid "Search in Google"
+msgstr "Buscar en Google"
+
+#: templates/places/edit_place.html:97 templates/places/new_place.html:95
+msgid "Save"
+msgstr "Guardar"
+
+#: templates/places/edit_place.html:98
+msgid "Delete"
+msgstr "Eliminar"
+
+#: templates/places/my_places.html:10 templates/places/new_place.html:4
+#: templates/places/new_place.html.py:65
+msgid "New place"
+msgstr "Nuevo lugar"
+
+#: templates/places/my_places.html:39
+msgid "Name"
+msgstr "Nombre"
+
+#: templates/places/new_place.html:80
+msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
+msgstr ""
 
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"
@@ -764,6 +1075,10 @@ msgstr "Contraseña"
 msgid "I have forgotten my password"
 msgstr "He olvidado mi contraseña"
 
+#, fuzzy
+#~ msgid "Física"
+#~ msgstr "Música"
+
 #~ msgid "Gehitu"
 #~ msgstr "Añadir"
 
@@ -772,9 +1087,6 @@ msgstr "He olvidado mi contraseña"
 
 #~ msgid "btype"
 #~ msgstr "Tipo"
-
-#~ msgid "institution"
-#~ msgstr "Institución"
 
 #~ msgid "access_type"
 #~ msgstr "Tipo de acceso"
@@ -993,9 +1305,6 @@ msgstr "He olvidado mi contraseña"
 #~ msgid "Register"
 #~ msgstr "Registro"
 
-#~ msgid "Email"
-#~ msgstr "Email"
-
 #~ msgid "Confirm password"
 #~ msgstr "Confirma la contraseña"
 
@@ -1004,9 +1313,6 @@ msgstr "He olvidado mi contraseña"
 
 #~ msgid "Tus datos personales"
 #~ msgstr "Perfil"
-
-#~ msgid "Save"
-#~ msgstr "Guardar"
 
 #~ msgid "You don't have a photo yet"
 #~ msgstr "Todavía no tienes foto"

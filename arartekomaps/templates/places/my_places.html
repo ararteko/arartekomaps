@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n pagination_tags %}
+
+{% block head_title%}{% trans "My places" %} - {% trans "Ararteko maps" %}{% endblock %}
+
+
+{% block main_content %}
+
+<h1>{% trans "My places" %}</h1>
+<a class="btn-primary" href="{% url 'new_place' %}">{% trans 'New place' %}</a>
+
+<form action="{% url 'edit_places' %}">
+<table>
+    <thead>
+    <tr>
+        <td>
+            <input type="text" name="name"></input>
+        </td>
+        <td>
+            <select name="city">
+                    <option value="none">----</option>
+                    {% for city in cities %}
+                    <option value="{{city.slug}}">{{city.name}}</option>
+                    {% endfor %}
+            </select>
+        </td>
+        <td>
+            <select name="category">
+                    <option value="none">----</option>
+                    {% for cat in categories %}
+                    <option value="{{cat.slug}}">{{cat.name}}</option>
+                    {% endfor %}
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="btn-primary" type="submit" value="{% trans 'Search' %}"/>
+        </td>
+    </tr>
+    <tr>
+        <th>{% trans 'Name' %}</th>
+        <th>{% trans 'City' %}</th>
+        <th>{% trans 'Category' %}</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% autopaginate my_places 20 %}
+        {% for place in my_places %}
+        <tr>
+            <td><a href="{% url 'edit_place' place.slug %}">{{ place.name }}</a></td>
+            <td>{{place.city}}</td>
+            <td>{{place.category}}</td>
+        </tr>
+        {% endfor %}
+        {% paginate %}
+    </tbody>  
+</table>
+    </form>
+
+{% endblock %}

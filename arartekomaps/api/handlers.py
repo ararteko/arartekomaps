@@ -5,7 +5,7 @@ import ast
 from arartekomaps.locations.models import Location
 from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, MPhoto
-from django.contrib.auth.models import User
+from arartekomaps.arartekouser.models import ArartekoUser as User
 from arartekomaps.mycomment.models import Comment
 from django.contrib.auth import authenticate, login
 from django.contrib.sites.models import Site
@@ -13,7 +13,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.db import IntegrityError, transaction
 from smtplib import SMTPException
 from registration.models import RegistrationProfile
-from cssocialprofile.models import CSSocialProfile
+from cssocialuser.models import CSSocialUser
 
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
@@ -415,10 +415,10 @@ class CommentHandler(BaseHandler):
         try:
             if origin in tuple(SOCIAL_ORIGIN.keys()):
                 if origin == "1":
-                    profile = CSSocialProfile.objects.get(facebook_id=username)
+                    profile = CSSocialUser.objects.get(facebook_id=username)
                     user = profile.user
                 else:
-                    profile = CSSocialProfile.objects.get(twitter_id=username)
+                    profile = CSSocialUser.objects.get(twitter_id=username)
                     user = profile.user
             else:
                 user = User.objects.get(username=username)

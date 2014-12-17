@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from arartekomaps.arartekouser.models import ArartekoUser as User
 from photologue.models import Photo
 from arartekomaps.places.models import Place
 from arartekomaps.utils.slug import *

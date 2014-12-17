@@ -39,7 +39,7 @@ def location(request,state,city,maincat='',subcat=''):
 
     rootcats = []
     subcats = []
-    places_here = Place.objects.filter(city=city)
+    places_here = Place.objects.filter(city=city,is_public=True)
     for mplace in places_here:
         thiscat = mplace.category
         rootcat = thiscat.get_root()
@@ -53,14 +53,14 @@ def location(request,state,city,maincat='',subcat=''):
             parentcat = get_object_or_404(Category, slug=maincat) 
             childcat = get_object_or_404(Category, slug=subcat)
             pagetitle = _("%(parentcatname)s: %(childcatname)s in %(cityname)s") % {'parentcatname': parentcat.name, 'childcatname': childcat.name, 'cityname': city.name}
-            places = Place.objects.filter(city=city, category=childcat)
+            places = Place.objects.filter(city=city, category=childcat,is_public=True)
         else:    
             parentcat = get_object_or_404(Category, slug=maincat)
             pagetitle = _("%(parentcatname)s in %(cityname)s") % {'parentcatname': parentcat.name, 'cityname':city.name}
-            places = Place.objects.filter(city=city, category__in=parentcat.get_descendants(include_self=True))
+            places = Place.objects.filter(city=city, is_public=True, category__in=parentcat.get_descendants(include_self=True))
         pass
     else:
-        places = Place.objects.filter(city=city)
+        places = Place.objects.filter(city=city,is_public=True)
         pagetitle = city.name     
 
     pages = Paginator(places,10)

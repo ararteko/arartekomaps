@@ -31,8 +31,12 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
     url(r'^u/$','django.contrib.auth.views.login', name='erabiltzailea_user_login'),
-        
-    (r'^u/', include('cssocialprofile.urls')),
+    url(r'^u/my_places/$','arartekomaps.places.views.my_places', name='edit_places'),
+    url(r'^u/new_place/$','arartekomaps.places.views.new_place', name='new_place'),
+    url(r'^u/delete_place/(?P<slug>[^/]+)/$','arartekomaps.places.views.delete_place', name='delete_place'),
+    url(r'^u/edit_place/(?P<slug>[^/]+)/$','arartekomaps.places.views.edit_place', name='edit_place'),
+
+    (r'^u/', include('cssocialuser.urls')),
     (r'^photologue/', include('photologue.urls')),
 
     (r'^api/', include('arartekomaps.api.urls')),

@@ -25,7 +25,7 @@ def home(request):
     """"""
     template_name='home'
     hidesearch = True
-    places = Place.objects.all().order_by('?')[:5]
+    places = Place.objects.filter(is_public=True).order_by('?')[:5]
     return render_to_response('home.html', locals(), context_instance=RequestContext(request))
 
 def filter(request):
@@ -33,7 +33,7 @@ def filter(request):
     hidesearch = True
     action = 'filter'
 
-    places = Place.objects.all()
+    places = Place.objects.filter(is_public=True)
 
     # City
     try:
@@ -119,7 +119,7 @@ def search(request):
     
     # q
     if q: 
-        places = Place.objects.filter(name__search=q)
+        places = Place.objects.filter(name__search=q, is_public=True)
     else:
         places = []
 
@@ -175,7 +175,7 @@ def useroptions(request):
     return render_to_response('useroptions.html', locals(), context_instance=RequestContext(request))
     
 def gsearch(request):
-       q = request.GET.get('q','')
-       hidesearch = True
-       action = 'search'
-       return render_to_response('gsearch.html', locals(), context_instance=RequestContext(request))
+    q = request.GET.get('q','')
+    hidesearch = True
+    action = 'search'
+    return render_to_response('gsearch.html', locals(), context_instance=RequestContext(request))

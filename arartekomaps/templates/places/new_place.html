@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title%}{% trans "New place" %} - {% trans "Ararteko maps" %}{% endblock %}
+
+{% block extraheader %}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var geocoder;
+  var map;
+  var marker;
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var lat = document.getElementById("flat").value
+    var lon = document.getElementById("flon").value
+    var latlng = new google.maps.LatLng(lat, lon);
+    var myOptions = {
+      zoom: 16,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    marker = new google.maps.Marker({
+              map: map, 
+              position: latlng,
+              draggable: true
+          });
+             
+    google.maps.event.addListener(marker, "dragend", function(event) {
+        var latlon = marker.getPosition();
+          document.getElementById("flat").value=Math.round(latlon.lat()*10000000000)/10000000000;
+          document.getElementById("flon").value=Math.round(latlon.lng()*10000000000)/10000000000;
+    });
+    
+    google.maps.event.addListener(map, "click", function(event) {
+        var latlon = event.latLng;            
+          document.getElementById("flat").value=Math.round(latlon.lat()*10000000000)/10000000000;
+          document.getElementById("flon").value=Math.round(latlon.lng()*10000000000)/10000000000;
+        marker.setPosition(latlon);
+        }); 
+  }
+
+  function codeAddress() {
+    var address = document.getElementById("address").value;
+    if (geocoder) {
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          latlon = results[0].geometry.location;
+          map.setCenter(latlon); 
+          map.setZoom(16);
+          document.getElementById("flat").value=Math.round(latlon.lat()*10000000000)/10000000000;
+          document.getElementById("flon").value=Math.round(latlon.lng()*10000000000)/10000000000;
+          marker.setPosition(latlon);
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+  }
+</script>
+{% endblock %}
+
+{% block main_content %}
+
+<h1>{% trans "New place" %}</h1>
+
+<form method="post" action="{% url 'new_place' %}" enctype="multipart/form-data" id="placeform">
+    {% csrf_token %}
+    {{ form.errors }}
+    {% for field in form %}
+        {% if field.name == 'lat' or field.name == 'lon' %}
+            <input type="hidden" name="{{field.name}}" id="f{{field.name}}" value="{{field.value}}" />
+            {% if field.name == 'lon' %}
+                <input type="text" size="40" id="address" name="address" value="" />
+                <input type="button" value="{% trans 'Search in Google' %}" onclick="codeAddress()"/>
+                <div id="map_container">
+                    <div id="map_canvas" style="width: 500px; height: 300px">MAPA</div>
+                    <span class="helptext">{% trans 'Incluir la dirección completa del recurso para localizarlo en el mapa' %}</span>
+                </div>
+            {% endif %}
+        {% else %}
+            {% if field.name != 'address2'%}<p>{% endif %}
+                  {{ field.errors }}
+            {% if field.name == 'address2' %}
+            <label>&nbsp;</label>{{field}}<br/>
+            {% else %}
+                {{field.label_tag}} {{field}}<br/>
+            {% endif %}
+            <span class="helptext">{{field.help_text}}</span>
+              {% if field.name != 'address1'%}</p>{% endif %}
+        {% endif %}
+    {% endfor %}
+
+    <input type="submit" value="{% trans "Save" %}" class="submit" />
+</form>
+
+{% endblock %}
