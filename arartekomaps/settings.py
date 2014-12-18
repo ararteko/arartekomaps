@@ -1,7 +1,6 @@
 # Django settings for arartekomaps project.
 
 import os
-from django.utils.translation import ugettext_lazy as _
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -98,7 +97,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    
+
 )
 
 # List of finder classes that know how to find static files in
@@ -116,7 +115,7 @@ SECRET_KEY = '8k^83&=bw79j8@5&str!h!-s1fvg@c&33k#e(7t#bv5ocw^ufm'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -126,7 +125,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'pagination.middleware.PaginationMiddleware',  
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'arartekomaps.urls'
@@ -135,9 +134,6 @@ ROOT_URLCONF = 'arartekomaps.urls'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
     '%s/templates' % BASE_DIR,
 
 )
@@ -179,7 +175,7 @@ INSTALLED_APPS = (
     'modeltranslation',
 )
 
-#SMTP CONFIG
+# SMTP CONFIG
 EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
@@ -214,36 +210,36 @@ LOGGING = {
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.twitter.TwitterBackend',
     'social_auth.backends.facebook.FacebookBackend',
-    #'social_auth.backends.google.GoogleOAuthBackend',
-    #'social_auth.backends.google.GoogleOAuth2Backend',
-    #'social_auth.backends.google.GoogleBackend',
-    #'social_auth.backends.yahoo.YahooBackend',
-    #'social_auth.backends.contrib.linkedin.LinkedinBackend',
+    # 'social_auth.backends.google.GoogleOAuthBackend',
+    # 'social_auth.backends.google.GoogleOAuth2Backend',
+    # 'social_auth.backends.google.GoogleBackend',
+    # 'social_auth.backends.yahoo.YahooBackend',
+    # 'social_auth.backends.contrib.linkedin.LinkedinBackend',
     'social_auth.backends.OpenIDBackend',
-    #'social_auth.backends.contrib.livejournal.LiveJournalBackend',
+    # 'social_auth.backends.contrib.livejournal.LiveJournalBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
-#Login
+# Login
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/u/'
 LOGOUT_URL = '/u/logout'
 PASSWORD_RESET_TIMEOUT_DAYS = 365
 
-#AUTH_PROFILE_MODULE = 'cssocialuser.CSSocialProfile'
+# AUTH_PROFILE_MODULE = 'cssocialuser.CSSocialProfile'
 AUTH_USER_MODEL = 'arartekouser.ArartekoUser'
 
-#Dajngo-registration settings
+# Dajngo-registration settings
 ACCOUNT_ACTIVATION_DAYS = 5
 
-#Twitter API
+# Twitter API
 TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
 REQUEST_TOKEN = ''
 ACCESS_TOKEN = ''
 AUTHORIZE_URL = ''
 
-#Facebook API
+# Facebook API
 
 FACEBOOK_APP_ID = ''
 FACEBOOK_API_KEY = ''

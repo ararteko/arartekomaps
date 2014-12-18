@@ -50,12 +50,12 @@ class Place(models.Model):
     adescription = models.TextField(null=True, blank=True, verbose_name=_('Description'), help_text=_('Descripcion de los datos de acceso'))
     afileurl = models.TextField(null=True, blank=True, verbose_name=_('URL ficha'), help_text=_('URL de la ficha'))
 
-    #ALTER TABLE `places_place` ADD `author_id` INT(11) NOT NULL , ADD `added` DATETIME NOT NULL ;
+    # ALTER TABLE `places_place` ADD `author_id` INT(11) NOT NULL , ADD `added` DATETIME NOT NULL ;
     author = models.ForeignKey(User,null=True, blank=True, verbose_name=_('Autor'))
     added = models.DateTimeField(auto_now_add=True, verbose_name=_('Fecha creacion'))
     modified_date=models.DateTimeField(auto_now=True, verbose_name=_('Fecha Modificacion'))
 
-    #ALTER TABLE `places_place` ADD `is_public` BOOLEAN NOT NULL DEFAULT TRUE ;
+    # ALTER TABLE `places_place` ADD `is_public` BOOLEAN NOT NULL DEFAULT TRUE ;
     is_public = models.BooleanField(default=True, help_text=_('Mostrar publicamente este lugar'),verbose_name=_('Es publica'))
 
     def get_comments_count(self):
