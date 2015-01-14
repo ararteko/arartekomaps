@@ -657,7 +657,7 @@ dl.accesstext dt{
 }
 .helptext{
     clear:both;
-    font-size:90%;
+    font-size:80%;
     display:block;
     font-style: italic;
     color:#333;

@@ -21,23 +21,23 @@
     }
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     marker = new google.maps.Marker({
-              map: map, 
+              map: map,
               position: latlng,
               draggable: true
           });
-             
+
     google.maps.event.addListener(marker, "dragend", function(event) {
         var latlon = marker.getPosition();
           document.getElementById("flat").value=Math.round(latlon.lat()*10000000000)/10000000000;
           document.getElementById("flon").value=Math.round(latlon.lng()*10000000000)/10000000000;
     });
-    
+
     google.maps.event.addListener(map, "click", function(event) {
-        var latlon = event.latLng;            
+        var latlon = event.latLng;
           document.getElementById("flat").value=Math.round(latlon.lat()*10000000000)/10000000000;
           document.getElementById("flon").value=Math.round(latlon.lng()*10000000000)/10000000000;
         marker.setPosition(latlon);
-        }); 
+        });
   }
 
   function codeAddress() {
@@ -46,7 +46,7 @@
       geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           latlon = results[0].geometry.location;
-          map.setCenter(latlon); 
+          map.setCenter(latlon);
           map.setZoom(16);
           document.getElementById("flat").value=Math.round(latlon.lat()*10000000000)/10000000000;
           document.getElementById("flon").value=Math.round(latlon.lng()*10000000000)/10000000000;
@@ -90,6 +90,7 @@
               {% if field.name != 'address1'%}</p>{% endif %}
         {% endif %}
     {% endfor %}
+    <p><label for="id_photo">{% trans 'Image' %}:</label> <input type="file" id="id_photo" name="photo"> <span class="helptext">{% trans 'Accepted formats: jpg, png, gif.' %}</span></p>
 
     <input type="submit" value="{% trans "Save" %}" class="submit" />
 </form>

@@ -23,13 +23,13 @@ def placeview(request, slug=''):
         def_images = MPhoto.objects.filter(place=place, def_img=True)
     images = MPhoto.objects.filter(place=place,def_img=False).order_by('user')
     username = None
-    imgs = []  
+    imgs = []
     for i, image in enumerate(images):
         if not users:
             username = image.user
             imgs.append(image)
         elif username == image.user:
-            imgs.append(image)     
+            imgs.append(image)
         else:
             users.append({'user': username, 'images': imgs})
             imgs = image
@@ -46,12 +46,12 @@ def placeview(request, slug=''):
               comment = Comment()
               comment.author = request.user
               comment.is_public = True
-              comment.public_date = datetime.today()  
-              comment.parent = place     
+              comment.public_date = datetime.today()
+              comment.parent = place
               comment.body = form.cleaned_data['body']
               comment.ip_address = request.META.get("REMOTE_ADDR", None)
               if request.FILES.get('photo',''):
-                 photo = handle_photo_file(request.FILES['photo'], request.user.username)              
+                 photo = handle_photo_file(request.FILES['photo'], request.user.username)
                  comment.photo= photo
               comment.save()
     form = CommentForm()
@@ -89,13 +89,13 @@ def save_location(request):
             return HttpResponseRedirect(myPlace.get_absolute_url())
         else:
             return HttpResponseRedirect('/')
-            
+
 @login_required
 def addPhoto(request, slug=''):
     template_name='addphoto'
     place = get_object_or_404(Place, slug=slug)
     if request.method == 'POST': # If the form has been submitted...
-        if request.FILES.get('image',''):    
+        if request.FILES.get('image',''):
             photo = MPhoto()
             photo.name = request.REQUEST['name']
             photo.image = request.FILES['image']
@@ -105,7 +105,7 @@ def addPhoto(request, slug=''):
         return HttpResponseRedirect(place.get_absolute_url()) # Redirect after POST
     else:
         return render_to_response('addphoto.html', locals(), context_instance=RequestContext(request)
-        )   
+        )
 
 @login_required
 def my_places(request):
@@ -125,7 +125,7 @@ def my_places(request):
     categories = Category.objects.filter(parent__isnull=False).order_by('name')
     cities = Location.objects.filter(level=2).order_by('name')
     return render_to_response('places/my_places.html', locals(), context_instance=RequestContext(request)
-            )  
+            )
 
 @login_required
 def delete_place(request, slug=None):
@@ -136,7 +136,7 @@ def delete_place(request, slug=None):
 
 @login_required
 def new_place(request):
-    template_name='newplace'  
+    template_name='newplace'
     user = request.user
     if request.method == 'POST':
         posta=request.POST.copy()
@@ -147,6 +147,14 @@ def new_place(request):
             place.lon = float(request.POST.get("lon","0"))
             place.author = user
             place.save()
+            if request.FILES.get('photo',''):
+                photo = MPhoto()
+                photo.name = request.REQUEST['name']
+                photo.image = request.FILES['photo']
+                photo.user= user
+                photo.def_img = True
+                photo.place = place
+                photo.save()
         else:
             return render_to_response('places/new_place.html', locals(), context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse("edit_places"))
@@ -156,7 +164,7 @@ def new_place(request):
 
 @login_required
 def edit_place(request, slug=None):
-    template_name='editplace'  
+    template_name='editplace'
     user = request.user
     if request.method == 'POST':
         posta=request.POST.copy()
@@ -168,6 +176,14 @@ def edit_place(request, slug=None):
             place.lon = float(request.POST.get("lon","0"))
             place.author = user
             place.save()
+            if request.FILES.get('photo',''):
+                photo = MPhoto()
+                photo.name = request.REQUEST['name']
+                photo.image = request.FILES['photo']
+                photo.user= user
+                photo.def_img = True
+                photo.place = place
+                photo.save()
             return HttpResponseRedirect(reverse("edit_places"))
         else:
             return render_to_response('places/edit_place.html', locals(), context_instance=RequestContext(request))
