@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-17 12:10+0100\n"
+"POT-Creation-Date: 2015-01-20 11:36+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: settings.py:62
+#: settings.py:61
 msgid "Espanol"
 msgstr "Español"
 
-#: settings.py:63
+#: settings.py:62
 msgid "Euskara"
 msgstr "Euskara"
 
-#: settings.py:64
+#: settings.py:63
 msgid "English"
 msgstr "English"
 
@@ -177,7 +177,8 @@ msgstr "Accessible %(parentcatname)s: %(childcatname)s in %(cityname)s"
 msgid "%(parentcatname)s in %(cityname)s"
 msgstr "Accessible %(parentcatname)s in %(cityname)s"
 
-#: mycomment/forms.py:8
+#: mycomment/forms.py:8 templates/places/edit_place.html:97
+#: templates/places/new_place.html:93
 msgid "Image"
 msgstr "Image"
 
@@ -253,12 +254,14 @@ msgstr ""
 msgid "Direccion 2 del lugar"
 msgstr ""
 
-#: places/forms.py:12 places/models.py:51 places/models.py:160
-msgid "URL ficha"
+#: places/forms.py:12
+msgid "URL externa"
 msgstr ""
 
-#: places/forms.py:12 places/models.py:51
-msgid "URL de la ficha"
+#: places/forms.py:12
+msgid ""
+"Pagina web externa con informacion detallada sobre la accesibilidad del "
+"recurso"
 msgstr ""
 
 #: places/models.py:27
@@ -426,6 +429,14 @@ msgstr ""
 
 #: places/models.py:50
 msgid "Descripcion de los datos de acceso"
+msgstr ""
+
+#: places/models.py:51 places/models.py:160
+msgid "URL ficha"
+msgstr ""
+
+#: places/models.py:51
+msgid "URL de la ficha"
 msgstr ""
 
 #: places/models.py:54
@@ -1001,15 +1012,23 @@ msgstr "Sign out"
 msgid "Edit place"
 msgstr "Last places"
 
-#: templates/places/edit_place.html:79 templates/places/new_place.html:76
+#: templates/places/edit_place.html:78 templates/places/new_place.html:75
 msgid "Search in Google"
 msgstr ""
 
-#: templates/places/edit_place.html:97 templates/places/new_place.html:95
+#: templates/places/edit_place.html:81 templates/places/new_place.html:78
+msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
+msgstr ""
+
+#: templates/places/edit_place.html:97 templates/places/new_place.html:93
+msgid "Subir archivo jpg, png, gif con imagen del recurso"
+msgstr ""
+
+#: templates/places/edit_place.html:99 templates/places/new_place.html:95
 msgid "Save"
 msgstr ""
 
-#: templates/places/edit_place.html:98
+#: templates/places/edit_place.html:100
 msgid "Delete"
 msgstr ""
 
@@ -1021,10 +1040,6 @@ msgstr "Nearest places"
 
 #: templates/places/my_places.html:39
 msgid "Name"
-msgstr ""
-
-#: templates/places/new_place.html:80
-msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
 msgstr ""
 
 #: templates/registration/login.html:9 templates/registration/login.html:51

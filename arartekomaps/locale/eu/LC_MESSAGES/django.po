@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-17 12:10+0100\n"
+"POT-Creation-Date: 2015-01-20 11:36+0100\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: settings.py:62
+#: settings.py:61
 msgid "Espanol"
 msgstr "Español"
 
-#: settings.py:63
+#: settings.py:62
 msgid "Euskara"
 msgstr "Euskara"
 
-#: settings.py:64
+#: settings.py:63
 msgid "English"
 msgstr "English"
 
@@ -183,7 +183,8 @@ msgstr "%(parentcatname)s: %(childcatname)s (%(cityname)s)"
 msgid "%(parentcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s (%(cityname)s)"
 
-#: mycomment/forms.py:8
+#: mycomment/forms.py:8 templates/places/edit_place.html:97
+#: templates/places/new_place.html:93
 msgid "Image"
 msgstr "Irudia"
 
@@ -245,7 +246,8 @@ msgstr "Kategoria"
 
 #: places/forms.py:9
 msgid "Elige una categoria del lugar"
-msgstr "Kategoria egokia aurkitu ezean, jarri mapa@ararteko.net-ekin kontaktuan"
+msgstr ""
+"Kategoria egokia aurkitu ezean, jarri mapak@ararteko.net-ekin kontaktuan"
 
 #: places/forms.py:10
 msgid "Address"
@@ -253,19 +255,27 @@ msgstr "Helbidea"
 
 #: places/forms.py:10 places/models.py:31
 msgid "Direccion 1 del lugar"
-msgstr """Jarri eremu honetan tokiaren helbide osoa (kale zenbakia barne). Euskarazko edo gaztelaniazko deitura erabil daiteke. Behin hizkuntzetariko bat aukeratu ostean, gainerako toki guztietan berdina erabiltzea gomendatzen dugu."""
+msgstr ""
+"Jarri eremu honetan tokiaren helbide osoa (kale zenbakia barne). Euskarazko "
+"edo gaztelaniazko deitura erabil daiteke. Behin hizkuntzetariko bat aukeratu "
+"ostean, gainerako toki guztietan berdina erabiltzea gomendatzen dugu."
 
 #: places/forms.py:11 places/models.py:32
 msgid "Direccion 2 del lugar"
-msgstr """Jarri eremu honetan Auzoei erreferentzia egiten dien edota kale izena osatzen duten oharrak."""
+msgstr ""
+"Jarri eremu honetan Auzoei erreferentzia egiten dien edota kale izena "
+"osatzen duten oharrak."
 
-#: places/forms.py:12 places/models.py:51 places/models.py:160
-msgid "URL ficha"
-msgstr "URL fitxa"
+#: places/forms.py:12
+msgid "URL externa"
+msgstr "Kanpoko URLa"
 
-#: places/forms.py:12 places/models.py:51
-msgid "URL de la ficha"
-msgstr "Fitxaren URLa"
+#: places/forms.py:12
+msgid ""
+"Pagina web externa con informacion detallada sobre la accesibilidad del "
+"recurso"
+msgstr ""
+"""Baliabidearen irisgarritasunari buruz informazio xehea duen kanpoko webgunea"""
 
 #: places/models.py:27
 msgid "Si esta vacio se actualiza al guardar"
@@ -314,7 +324,9 @@ msgstr "Herria"
 
 #: places/models.py:35
 msgid "Nombre de localidad"
-msgstr """Erabili udalerri handigo baten parte diren herrien kasuan, non, udalerri eta herriaren izenak ez datozen bat."""
+msgstr ""
+"Erabili udalerri handigo baten parte diren herrien kasuan, non, udalerri eta "
+"herriaren izenak ez datozen bat."
 
 #: places/models.py:36
 msgid "Codigo entidad"
@@ -374,7 +386,7 @@ msgstr "URLa"
 
 #: places/models.py:43
 msgid "URL del sitio web"
-msgstr "Webgunearen URLa"
+msgstr "Baliabidearen kanpoko webgunea"
 
 #: places/models.py:44
 msgid "Email"
@@ -426,7 +438,16 @@ msgstr "Elbarritasun organikoaren irisgarritasun egoera"
 
 #: places/models.py:50
 msgid "Descripcion de los datos de acceso"
-msgstr "Toki honen irisgarritasun baldintzei buruzko xehetasun gehiagoko informazioa."
+msgstr ""
+"Toki honen irisgarritasun baldintzei buruzko xehetasun gehiagoko informazioa."
+
+#: places/models.py:51 places/models.py:160
+msgid "URL ficha"
+msgstr "URL fitxa"
+
+#: places/models.py:51
+msgid "URL de la ficha"
+msgstr "Fitxaren URLa"
 
 #: places/models.py:54
 msgid "Autor"
@@ -998,15 +1019,23 @@ msgstr "Irten"
 msgid "Edit place"
 msgstr "Editatu tokiak"
 
-#: templates/places/edit_place.html:79 templates/places/new_place.html:76
+#: templates/places/edit_place.html:78 templates/places/new_place.html:75
 msgid "Search in Google"
 msgstr "Bilatu Googlen"
 
-#: templates/places/edit_place.html:97 templates/places/new_place.html:95
+#: templates/places/edit_place.html:81 templates/places/new_place.html:78
+msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
+msgstr "Sartu tokiaren helbide osoa mapan aurkitu ahal izateko"
+
+#: templates/places/edit_place.html:97 templates/places/new_place.html:93
+msgid "Subir archivo jpg, png, gif con imagen del recurso"
+msgstr "Igo baliabidearen irudia duen jpb, png, gif fitxategia"
+
+#: templates/places/edit_place.html:99 templates/places/new_place.html:95
 msgid "Save"
 msgstr "Gorde"
 
-#: templates/places/edit_place.html:98
+#: templates/places/edit_place.html:100
 msgid "Delete"
 msgstr "Ezabatu"
 
@@ -1018,10 +1047,6 @@ msgstr "Toki berria"
 #: templates/places/my_places.html:39
 msgid "Name"
 msgstr "Izena"
-
-#: templates/places/new_place.html:80
-msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
-msgstr "Sartu tokiaren helbide osoa mapan aurkitu ahal izateko"
 
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-17 12:10+0100\n"
+"POT-Creation-Date: 2015-01-20 11:36+0100\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: settings.py:62
+#: settings.py:61
 msgid "Espanol"
 msgstr "Español"
 
-#: settings.py:63
+#: settings.py:62
 msgid "Euskara"
 msgstr "Euskara"
 
-#: settings.py:64
+#: settings.py:63
 msgid "English"
 msgstr "English"
 
@@ -183,7 +183,8 @@ msgstr "%(parentcatname)s: %(childcatname)s en %(cityname)s"
 msgid "%(parentcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s en %(cityname)s"
 
-#: mycomment/forms.py:8
+#: mycomment/forms.py:8 templates/places/edit_place.html:97
+#: templates/places/new_place.html:93
 msgid "Image"
 msgstr "Imagen"
 
@@ -247,7 +248,7 @@ msgstr "Categoría"
 msgid "Elige una categoria del lugar"
 msgstr ""
 "En caso de no encontrar una categoría adecuada, ponerse en contacto con "
-"mapa@ararteko.net"
+"mapak@ararteko.net"
 
 #: places/forms.py:10
 msgid "Address"
@@ -267,13 +268,17 @@ msgstr ""
 "Incluir en este espacio las referencias a Barrios o indicaciones que "
 "completan el nombre de la calle."
 
-#: places/forms.py:12 places/models.py:51 places/models.py:160
-msgid "URL ficha"
+#: places/forms.py:12
+msgid "URL externa"
 msgstr ""
 
-#: places/forms.py:12 places/models.py:51
-msgid "URL de la ficha"
+#: places/forms.py:12
+msgid ""
+"Pagina web externa con informacion detallada sobre la accesibilidad del "
+"recurso"
 msgstr ""
+"Página web externa con información detallada sobre la accesibilidad del "
+"recurso"
 
 #: places/models.py:27
 msgid "Si esta vacio se actualiza al guardar"
@@ -336,7 +341,9 @@ msgstr ""
 
 #: places/models.py:37
 msgid "Codigo de la ficha en la base de datos de origen"
-msgstr """Si el dato proviene de una base de datos propia, por favor, indicar el código de identificación en dicha base."""
+msgstr ""
+"Si el dato proviene de una base de datos propia, por favor, indicar el "
+"código de identificación en dicha base."
 
 #: places/models.py:38
 msgid "Latitud"
@@ -384,7 +391,7 @@ msgstr ""
 
 #: places/models.py:43
 msgid "URL del sitio web"
-msgstr ""
+msgstr "Página web externa del recurso"
 
 #: places/models.py:44
 msgid "Email"
@@ -400,7 +407,9 @@ msgstr "Física"
 
 #: places/models.py:45
 msgid "Estado del acceso para minusvalia fisica"
-msgstr "Seleccionar un valor para la discapacidades física. Si desconocemos el dato seleccionar “Sin datos”"
+msgstr ""
+"Seleccionar un valor para la discapacidades física. Si desconocemos el dato "
+"seleccionar “Sin datos”"
 
 #: places/models.py:46 places/models.py:155
 msgid "Visual"
@@ -408,7 +417,9 @@ msgstr "Visual"
 
 #: places/models.py:46
 msgid "Estado del acceso para minusvalia visual"
-msgstr "Seleccionar un valor para la discapacidades visual. Si desconocemos el dato seleccionar “Sin datos”"
+msgstr ""
+"Seleccionar un valor para la discapacidades visual. Si desconocemos el dato "
+"seleccionar “Sin datos”"
 
 #: places/models.py:47 places/models.py:156
 msgid "Audio"
@@ -416,7 +427,9 @@ msgstr "Audio"
 
 #: places/models.py:47
 msgid "Estado del acceso para minusvalia auditiva"
-msgstr "Seleccionar un valor para la discapacidades auditiva. Si desconocemos el dato seleccionar “Sin datos”"
+msgstr ""
+"Seleccionar un valor para la discapacidades auditiva. Si desconocemos el "
+"dato seleccionar “Sin datos”"
 
 #: places/models.py:48 places/models.py:157
 msgid "Intelectual"
@@ -424,7 +437,9 @@ msgstr "Intelectual"
 
 #: places/models.py:48
 msgid "Estado del acceso para minusvalia intelectual"
-msgstr "Seleccionar un valor para la discapacidades intelectual. Si desconocemos el dato seleccionar “Sin datos”"
+msgstr ""
+"Seleccionar un valor para la discapacidades intelectual. Si desconocemos el "
+"dato seleccionar “Sin datos”"
 
 #: places/models.py:49 places/models.py:158
 msgid "Organica"
@@ -432,11 +447,23 @@ msgstr "Orgánica"
 
 #: places/models.py:49
 msgid "Estado del acceso para minusvalia organica"
-msgstr "Seleccionar un valor para la discapacidades orgánica. Si desconocemos el dato seleccionar “Sin datos”"
+msgstr ""
+"Seleccionar un valor para la discapacidades orgánica. Si desconocemos el "
+"dato seleccionar “Sin datos”"
 
 #: places/models.py:50
 msgid "Descripcion de los datos de acceso"
-msgstr "Información más detallada sobre las condiciones de accesibilidad de un recurso."
+msgstr ""
+"Información más detallada sobre las condiciones de accesibilidad de un "
+"recurso."
+
+#: places/models.py:51 places/models.py:160
+msgid "URL ficha"
+msgstr ""
+
+#: places/models.py:51
+msgid "URL de la ficha"
+msgstr ""
 
 #: places/models.py:54
 msgid "Autor"
@@ -1010,15 +1037,23 @@ msgstr "Salir"
 msgid "Edit place"
 msgstr "Editar lugares"
 
-#: templates/places/edit_place.html:79 templates/places/new_place.html:76
+#: templates/places/edit_place.html:78 templates/places/new_place.html:75
 msgid "Search in Google"
 msgstr "Buscar en Google"
 
-#: templates/places/edit_place.html:97 templates/places/new_place.html:95
+#: templates/places/edit_place.html:81 templates/places/new_place.html:78
+msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
+msgstr ""
+
+#: templates/places/edit_place.html:97 templates/places/new_place.html:93
+msgid "Subir archivo jpg, png, gif con imagen del recurso"
+msgstr ""
+
+#: templates/places/edit_place.html:99 templates/places/new_place.html:95
 msgid "Save"
 msgstr "Guardar"
 
-#: templates/places/edit_place.html:98
+#: templates/places/edit_place.html:100
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -1030,10 +1065,6 @@ msgstr "Nuevo lugar"
 #: templates/places/my_places.html:39
 msgid "Name"
 msgstr "Nombre"
-
-#: templates/places/new_place.html:80
-msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
-msgstr ""
 
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"
@@ -1074,257 +1105,3 @@ msgstr "Contraseña"
 #: templates/registration/login.html:50
 msgid "I have forgotten my password"
 msgstr "He olvidado mi contraseña"
-
-#, fuzzy
-#~ msgid "Física"
-#~ msgstr "Música"
-
-#~ msgid "Gehitu"
-#~ msgstr "Añadir"
-
-#~ msgid "There is no comment yet"
-#~ msgstr "No hay ningún comentario"
-
-#~ msgid "btype"
-#~ msgstr "Tipo"
-
-#~ msgid "access_type"
-#~ msgstr "Tipo de acceso"
-
-#~ msgid "center_type"
-#~ msgstr "Tipo de centro"
-
-#~ msgid "topics"
-#~ msgstr "Temas"
-
-#~ msgid "cat_tourism"
-#~ msgstr "Turismo"
-
-#~ msgid "cat_sleep"
-#~ msgstr "Alojamiento"
-
-#~ msgid "cat_hotel"
-#~ msgstr "Hotel"
-
-#~ msgid "cat_agroturismo"
-#~ msgstr "Agroturismo"
-
-#~ msgid "cat_apartamento"
-#~ msgstr "Apartamentos"
-
-#~ msgid "cat_camping"
-#~ msgstr "Camping"
-
-#~ msgid "cat_casa-particular"
-#~ msgstr "Casa particular"
-
-#~ msgid "cat_casa-rural"
-#~ msgstr "Casa rural"
-
-#~ msgid "cat_hotel-apartamento"
-#~ msgstr "Hotel-apartamento"
-
-#~ msgid "cat_pension"
-#~ msgstr "Pensión"
-
-#~ msgid "cat_albergue"
-#~ msgstr "Albergue"
-
-#~ msgid "cat_eat"
-#~ msgstr "Comer"
-
-#~ msgid "cat_restaurant"
-#~ msgstr "Restaurante"
-
-#~ msgid "cat_sidreria"
-#~ msgstr "Sidrería"
-
-#~ msgid "cat_asador"
-#~ msgstr "Asador"
-
-#~ msgid "cat_transportation"
-#~ msgstr "Transporte"
-
-#~ msgid "cat_bus"
-#~ msgstr "Autobús"
-
-#~ msgid "cat_train"
-#~ msgstr "Tren"
-
-#~ msgid "cat_tram"
-#~ msgstr "Tranvía"
-
-#~ msgid "cat_metro"
-#~ msgstr "Metro"
-
-#~ msgid "cat_culture"
-#~ msgstr "Cultura"
-
-#~ msgid "cat_library"
-#~ msgstr "Biblioteca"
-
-#~ msgid "cat_museum"
-#~ msgstr "Museo"
-
-#~ msgid "cat_%s"
-#~ msgstr "cat_%s"
-
-#~ msgid "Add a photo"
-#~ msgstr "Añadir foto"
-
-#~ msgid "Account"
-#~ msgstr "Cuenta"
-
-#~ msgid "Basic account"
-#~ msgstr "Datos básicos"
-
-#~ msgid "Photo"
-#~ msgstr "Foto"
-
-#~ msgid "Social networks"
-#~ msgstr "Redes sociales"
-
-#~ msgid "Your account has been activated"
-#~ msgstr "Tu cuenta ha sido activada"
-
-#~ msgid ""
-#~ "Your account has been properly created. You can use the username and "
-#~ "password that you entered"
-#~ msgstr ""
-#~ "Tu cuenta ya ha sido creada. Ahora puedes utilizar el usuario y "
-#~ "lacontraseña que nos has dado"
-
-#~ msgid "to login in the site"
-#~ msgstr "para entrar en el sitio web"
-
-#~ msgid "Your account could not be activated"
-#~ msgstr "Tu cuenta no ha podido ser activada"
-
-#~ msgid ""
-#~ "We had a problem while activating your account. The link was probably "
-#~ "outdated. Please, try again"
-#~ msgstr ""
-#~ "Hemos tenido un problema con la activación de tu cuenta. Puede que "
-#~ "estécaducada. Inténtalo otra vez, por favor."
-
-#~ msgid "Your account has been successfully activated"
-#~ msgstr "Tu cuenta ha sido activada"
-
-#~ msgid ""
-#~ "Your account is activated. Now you can login with the username and "
-#~ "password you provided"
-#~ msgstr ""
-#~ "Tu cuenta ya ha sido creada. Ahora puedes utilizar el usuario y "
-#~ "lacontraseña que nos has dado"
-
-#~ msgid "Hello"
-#~ msgstr "Hola"
-
-#~ msgid "You have requested joining %(sitename)s."
-#~ msgstr "Has solicitado el registro en %(sitename)s."
-
-#~ msgid "Please click in this activation link before %(expirationdays)s days:"
-#~ msgstr ""
-#~ "Por favor, haz click en este enlace de activación antes de "
-#~ "%(expirationdays)s días:"
-
-#~ msgid "The team at %(site_name)s."
-#~ msgstr "El equipo de %(site_name)s."
-
-#~ msgid "Account activation on"
-#~ msgstr "Activación de la cuenta de"
-
-#~ msgid "Reset password"
-#~ msgstr "Cambiar la contraseña"
-
-#~ msgid "Enter your email to reset your password"
-#~ msgstr "Introduce tu email para cambiar la contraseña"
-
-#~ msgid "Submit"
-#~ msgstr "Enviar"
-
-#~ msgid "You have reset your password"
-#~ msgstr "Has cambiado tu contraseña"
-
-#~ msgid "New password"
-#~ msgstr "Nueva contraseña"
-
-#~ msgid "Please enter twice the new password"
-#~ msgstr "Por favor, introduce dos veces la contraseña"
-
-#~ msgid "Password reset failed"
-#~ msgstr "Falló la recuperación de la contraseña"
-
-#~ msgid ""
-#~ "We have sent to your email the needed information to reset your password"
-#~ msgstr ""
-#~ "Te hemos enviado un email con la información necesaria para cambiar la "
-#~ "contraseña"
-
-#~ msgid ""
-#~ "You are receiving this email because you requested resetting the password "
-#~ "at %(site_name)s."
-#~ msgstr ""
-#~ "Recibes este mensaje porque has solicitado cambiar la contraseña en "
-#~ "%(site_name)s."
-
-#~ msgid "All you have to do is click in this link and set your new password:"
-#~ msgstr ""
-#~ "Sólo tienes que hacer click en este enlace y definir tu nueva contraseña:"
-
-#~ msgid "Remember that you used the username: %(username)s."
-#~ msgstr "Recuerda que has utilizado el usuario: %(username)s."
-
-#~ msgid "Please write your email to reset your password"
-#~ msgstr "Por favor, escribe tu email para cambiar la contraseña"
-
-#~ msgid "Activate your account"
-#~ msgstr "Activa tu cuenta"
-
-#~ msgid ""
-#~ "In order to confirm your email, we have sent you by email the needed "
-#~ "information to activate your account. Please, read your email and "
-#~ "activate your account."
-#~ msgstr ""
-#~ "Con objeto de confirmar tu email, te hemos enviado un mensaje con toda la "
-#~ "información necesaria para activar tu cuenta. Por favor, revisa tu email "
-#~ "y activa la cuenta"
-
-#~ msgid "Check your email."
-#~ msgstr "Mira tu email."
-
-#~ msgid "Remember:"
-#~ msgstr "Recuerda"
-
-#~ msgid "Check your spam folder if you don't find our email."
-#~ msgstr "Mira también en la carpeta de spam si no encuentras el mensaje"
-
-#~ msgid "Contact us if you don't receive the email."
-#~ msgstr "Contacta con nosotros si definitivamente no encuentras el mensaje."
-
-#~ msgid "Register"
-#~ msgstr "Registro"
-
-#~ msgid "Confirm password"
-#~ msgstr "Confirma la contraseña"
-
-#~ msgid "Register using Facebook or Twitter"
-#~ msgstr "Regístrate utilizando Facebook o Twitter"
-
-#~ msgid "Tus datos personales"
-#~ msgstr "Perfil"
-
-#~ msgid "You don't have a photo yet"
-#~ msgstr "Todavía no tienes foto"
-
-#~ msgid "Twitter linked"
-#~ msgstr "Enlazado con Twitter"
-
-#~ msgid "Link Twitter for this user"
-#~ msgstr "Enlazar Twitter a este usuario"
-
-#~ msgid "Facebook linked"
-#~ msgstr "Enlazado con Facebook"
-
-#~ msgid "Enlazar Facebook para este usuario"
-#~ msgstr "Entrar utilizando Facebook o Twitter"
