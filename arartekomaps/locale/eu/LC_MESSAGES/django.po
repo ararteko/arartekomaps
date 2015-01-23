@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-20 11:36+0100\n"
+"POT-Creation-Date: 2015-01-23 13:25+0100\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -184,7 +184,7 @@ msgid "%(parentcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s (%(cityname)s)"
 
 #: mycomment/forms.py:8 templates/places/edit_place.html:97
-#: templates/places/new_place.html:93
+#: templates/places/new_place.html:184
 msgid "Image"
 msgstr "Irudia"
 
@@ -275,7 +275,7 @@ msgid ""
 "Pagina web externa con informacion detallada sobre la accesibilidad del "
 "recurso"
 msgstr ""
-"""Baliabidearen irisgarritasunari buruz informazio xehea duen kanpoko webgunea"""
+"Baliabidearen irisgarritasunari buruz informazio xehea duen kanpoko webgunea"
 
 #: places/models.py:27
 msgid "Si esta vacio se actualiza al guardar"
@@ -291,6 +291,7 @@ msgid "Categoria"
 msgstr "Kategoria"
 
 #: places/models.py:30 places/models.py:50 places/models.py:159
+#: templates/places/new_place.html:79 templates/places/new_place.html:167
 msgid "Description"
 msgstr "Deskribapena"
 
@@ -402,7 +403,8 @@ msgstr "Fisikoa"
 
 #: places/models.py:45
 msgid "Estado del acceso para minusvalia fisica"
-msgstr "Elbarritasun fisikoaren irisgarritasun egoera"
+msgstr "Aukeratu elbarritasun zehatz bakoitzarentzat balio bat. Datua "
+"ezagutzen ez bada, “Daturik gabe” aukeratu"
 
 #: places/models.py:46 places/models.py:155
 msgid "Visual"
@@ -1019,19 +1021,19 @@ msgstr "Irten"
 msgid "Edit place"
 msgstr "Editatu tokiak"
 
-#: templates/places/edit_place.html:78 templates/places/new_place.html:75
+#: templates/places/edit_place.html:78 templates/places/new_place.html:114
 msgid "Search in Google"
 msgstr "Bilatu Googlen"
 
-#: templates/places/edit_place.html:81 templates/places/new_place.html:78
+#: templates/places/edit_place.html:81 templates/places/new_place.html:118
 msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
 msgstr "Sartu tokiaren helbide osoa mapan aurkitu ahal izateko"
 
-#: templates/places/edit_place.html:97 templates/places/new_place.html:93
+#: templates/places/edit_place.html:97 templates/places/new_place.html:184
 msgid "Subir archivo jpg, png, gif con imagen del recurso"
 msgstr "Igo baliabidearen irudia duen jpb, png, gif fitxategia"
 
-#: templates/places/edit_place.html:99 templates/places/new_place.html:95
+#: templates/places/edit_place.html:99 templates/places/new_place.html:188
 msgid "Save"
 msgstr "Gorde"
 
@@ -1047,6 +1049,18 @@ msgstr "Toki berria"
 #: templates/places/my_places.html:39
 msgid "Name"
 msgstr "Izena"
+
+#: templates/places/new_place.html:80 templates/places/new_place.html:168
+msgid "Description [eu]"
+msgstr "Deskribapena [eu]"
+
+#: templates/places/new_place.html:81 templates/places/new_place.html:169
+msgid "Description [es]"
+msgstr "Deskribapena [es]"
+
+#: templates/places/new_place.html:82 templates/places/new_place.html:170
+msgid "Description [en]"
+msgstr "Deskribapena [en]"
 
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"

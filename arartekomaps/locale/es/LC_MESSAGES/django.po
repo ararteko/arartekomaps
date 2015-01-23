@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-20 11:36+0100\n"
+"POT-Creation-Date: 2015-01-23 13:25+0100\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -184,7 +184,7 @@ msgid "%(parentcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s en %(cityname)s"
 
 #: mycomment/forms.py:8 templates/places/edit_place.html:97
-#: templates/places/new_place.html:93
+#: templates/places/new_place.html:184
 msgid "Image"
 msgstr "Imagen"
 
@@ -294,6 +294,7 @@ msgid "Categoria"
 msgstr "Categoría"
 
 #: places/models.py:30 places/models.py:50 places/models.py:159
+#: templates/places/new_place.html:79 templates/places/new_place.html:167
 msgid "Description"
 msgstr "Descripción"
 
@@ -408,7 +409,7 @@ msgstr "Física"
 #: places/models.py:45
 msgid "Estado del acceso para minusvalia fisica"
 msgstr ""
-"Seleccionar un valor para la discapacidades física. Si desconocemos el dato "
+"Seleccionar un valor para la discapacidades concreta. Si desconocemos el dato "
 "seleccionar “Sin datos”"
 
 #: places/models.py:46 places/models.py:155
@@ -1037,19 +1038,19 @@ msgstr "Salir"
 msgid "Edit place"
 msgstr "Editar lugares"
 
-#: templates/places/edit_place.html:78 templates/places/new_place.html:75
+#: templates/places/edit_place.html:78 templates/places/new_place.html:114
 msgid "Search in Google"
 msgstr "Buscar en Google"
 
-#: templates/places/edit_place.html:81 templates/places/new_place.html:78
+#: templates/places/edit_place.html:81 templates/places/new_place.html:118
 msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
 msgstr ""
 
-#: templates/places/edit_place.html:97 templates/places/new_place.html:93
+#: templates/places/edit_place.html:97 templates/places/new_place.html:184
 msgid "Subir archivo jpg, png, gif con imagen del recurso"
 msgstr ""
 
-#: templates/places/edit_place.html:99 templates/places/new_place.html:95
+#: templates/places/edit_place.html:99 templates/places/new_place.html:188
 msgid "Save"
 msgstr "Guardar"
 
@@ -1065,6 +1066,18 @@ msgstr "Nuevo lugar"
 #: templates/places/my_places.html:39
 msgid "Name"
 msgstr "Nombre"
+
+#: templates/places/new_place.html:80 templates/places/new_place.html:168
+msgid "Description [eu]"
+msgstr "Descripción [eu]"
+
+#: templates/places/new_place.html:81 templates/places/new_place.html:169
+msgid "Description [es]"
+msgstr "Descripción  [es]"
+
+#: templates/places/new_place.html:82 templates/places/new_place.html:170
+msgid "Description [en]"
+msgstr "Descripción  [en]"
 
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"

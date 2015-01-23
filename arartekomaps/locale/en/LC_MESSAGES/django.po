@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-20 11:36+0100\n"
+"POT-Creation-Date: 2015-01-23 13:25+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
@@ -178,7 +178,7 @@ msgid "%(parentcatname)s in %(cityname)s"
 msgstr "Accessible %(parentcatname)s in %(cityname)s"
 
 #: mycomment/forms.py:8 templates/places/edit_place.html:97
-#: templates/places/new_place.html:93
+#: templates/places/new_place.html:184
 msgid "Image"
 msgstr "Image"
 
@@ -279,6 +279,7 @@ msgid "Categoria"
 msgstr "Category"
 
 #: places/models.py:30 places/models.py:50 places/models.py:159
+#: templates/places/new_place.html:79 templates/places/new_place.html:167
 msgid "Description"
 msgstr ""
 
@@ -1012,19 +1013,19 @@ msgstr "Sign out"
 msgid "Edit place"
 msgstr "Last places"
 
-#: templates/places/edit_place.html:78 templates/places/new_place.html:75
+#: templates/places/edit_place.html:78 templates/places/new_place.html:114
 msgid "Search in Google"
 msgstr ""
 
-#: templates/places/edit_place.html:81 templates/places/new_place.html:78
+#: templates/places/edit_place.html:81 templates/places/new_place.html:118
 msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
 msgstr ""
 
-#: templates/places/edit_place.html:97 templates/places/new_place.html:93
+#: templates/places/edit_place.html:97 templates/places/new_place.html:184
 msgid "Subir archivo jpg, png, gif con imagen del recurso"
 msgstr ""
 
-#: templates/places/edit_place.html:99 templates/places/new_place.html:95
+#: templates/places/edit_place.html:99 templates/places/new_place.html:188
 msgid "Save"
 msgstr ""
 
@@ -1040,6 +1041,18 @@ msgstr "Nearest places"
 
 #: templates/places/my_places.html:39
 msgid "Name"
+msgstr ""
+
+#: templates/places/new_place.html:80 templates/places/new_place.html:168
+msgid "Description [eu]"
+msgstr ""
+
+#: templates/places/new_place.html:81 templates/places/new_place.html:169
+msgid "Description [es]"
+msgstr ""
+
+#: templates/places/new_place.html:82 templates/places/new_place.html:170
+msgid "Description [en]"
 msgstr ""
 
 #: templates/registration/login.html:9 templates/registration/login.html:51

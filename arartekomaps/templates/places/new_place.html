@@ -66,31 +66,123 @@
 
 <form method="post" action="{% url 'new_place' %}" enctype="multipart/form-data" id="placeform">
     {% csrf_token %}
-    {{ form.errors }}
-    {% for field in form %}
-        {% if field.name == 'lat' or field.name == 'lon' %}
-            <input type="hidden" name="{{field.name}}" id="f{{field.name}}" value="{{field.value}}" />
-            {% if field.name == 'lon' %}
-                <input type="text" size="40" id="address" name="address" value="" />
-                <input type="button" value="{% trans 'Search in Google' %}" onclick="codeAddress()"/>
-                <div id="map_container">
-                    <div id="map_canvas" style="width: 500px; height: 300px">MAPA</div>
-                    <span class="helptext">{% trans 'Incluir la dirección completa del recurso para localizarlo en el mapa' %}</span>
-                </div>
-            {% endif %}
-        {% else %}
-            {% if field.name != 'address2'%}<p>{% endif %}
-                  {{ field.errors }}
-            {% if field.name == 'address2' %}
-            <label>&nbsp;</label>{{field}}<br/>
-            {% else %}
-                {{field.label_tag}} {{field}}<br/>
-            {% endif %}
-            <span class="helptext">{{field.help_text}}</span>
-              {% if field.name != 'address1'%}</p>{% endif %}
-        {% endif %}
-    {% endfor %}
-    <p><label for="id_photo">{% trans 'Image' %}:</label> <input type="file" id="id_photo" name="photo"> <span class="helptext">{% trans 'Subir archivo jpg, png, gif con imagen del recurso' %}</span></p>
+    <table>
+      <tr>
+        <td>{{form.name.errors}}<label for="{{form.name.id_for_label}}">{{form.name.label}}</label> {{form.name}}</td>
+      </tr>
+      <tr>
+        <td>{{form.category.errors}}<label for="{{form.category.id_for_label}}">{{form.category.label}}</label> {{form.category}}
+        <br/><span class="helptext">{{form.category.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label>{% trans 'Description' %}</label>
+          <textarea placeholder="{% trans 'Description [eu]' %}" rows="10" cols="28">{{form.description_eu.value|default:""}}</textarea>
+          <textarea placeholder="{% trans 'Description [es]' %}" rows="10" cols="28">{{form.description_es.value|default:""}}</textarea>
+          <textarea placeholder="{% trans 'Description [en]' %}" rows="10" cols="28">{{form.description_en.value|default:""}}</textarea><br/>
+          <span class="helptext">{{form.description_es.help_text}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>{{form.address1.errors}}<label for="{{form.address1.id_for_label}}">{{form.address1.label}}</label> {{form.address1}}
+        <br/><span class="helptext">{{form.address1.help_text}}</span><br/>
+        <label for="{{form.address2.id_for_label}}">&nbsp;</label>{{form.address2}}
+        <br/><span class="helptext">{{form.address2.help_text}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="{{form.postalcode.id_for_label}}">{{form.postalcode.label}}</label> {{form.postalcode}}
+        <br/><span class="helptext">{{form.postalcode.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td>{{form.city.errors}}<label for="{{form.city.id_for_label}}">{{form.city.label}}</label> {{form.city}}
+        <br/><span class="helptext">{{form.city.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="{{form.locality.id_for_label}}">{{form.locality.label}}</label> {{form.locality}}
+        <br/><span class="helptext">{{form.locality.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="{{form.source_id.id_for_label}}">{{form.source_id.label}}</label> {{form.source_id}}
+        <br/><span class="helptext">{{form.source_id.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td>{{form.lon.errors}}<input type="hidden" name="{{form.lat.name}}" id="f{{form.lat.name}}" value="{{form.lat.value}}" />
+            <input type="hidden" name="{{form.lon.name}}" id="f{{form.lon.name}}" value="{{form.lon.value}}" />
+            <label for="address">&nbsp;</label>
+            <input type="text" size="40" id="address" name="address" value="" />
+            <input type="button" value="{% trans 'Search in Google' %}" onclick="codeAddress()"/>
+            <div id="map_container">
+                <label for="map_canvas">&nbsp;</label>
+                <div id="map_canvas" style="width: 500px; height: 300px">MAPA</div>
+                <span class="helptext">{% trans 'Incluir la dirección completa del recurso para localizarlo en el mapa' %}</span>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="{{form.tlf.id_for_label}}">{{form.tlf.label}}</label> {{form.tlf}}
+        <br/><span class="helptext">{{form.tlf.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="{{form.fax.id_for_label}}">{{form.fax.label}}</label> {{form.fax}}
+        <br/><span class="helptext">{{form.fax.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="{{form.url_name_eu.id_for_label}}">{{form.url_name_eu.label}}</label> {{form.url_name_eu}}
+            <input type="text" placeholder="{{form.url_eu.help_text}}" value="{{form.url_eu.value|default:''}}" />
+        <br/><span class="helptext" for="{{form.url_name_eu.id_for_label}}">{{form.url_name_eu.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="{{form.url_name_es.id_for_label}}">{{form.url_name_es.label}}</label> {{form.url_name_es}}
+            <input type="text" placeholder="{{form.url_es.help_text}}" value="{{form.url_es.value|default:''}}" />
+        <br/><span class="helptext" for="{{form.url_name_es.id_for_label}}">{{form.url_name_es.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="{{form.url_name_en.id_for_label}}">{{form.url_name_en.label}}</label> {{form.url_name_en}}
+            <input type="text" placeholder="{{form.url_en.help_text}}" value="{{form.url_en.value|default:''}}" />
+        <br/><span class="helptext" for="{{form.url_name_en.id_for_label}}">{{form.url_name_en.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="{{form.email.id_for_label}}">{{form.email.label}}</label> {{form.email}}
+        <br/><span class="helptext">{{form.email.help_text}}</span></td>
+      </tr>
+      <tr><td><hr></td></tr>
+      <tr>
+        <td><label for="{{form.aphysic.id_for_label}}">{{form.aphysic.label}}</label> {{form.aphysic}}</td>
+      </tr>
+      <tr>
+        <td><label for="{{form.avisual.id_for_label}}">{{form.avisual.label}}</label> {{form.avisual}}</td>
+      </tr>
+      <tr>
+        <td><label for="{{form.aaudio.id_for_label}}">{{form.aaudio.label}}</label> {{form.aaudio}}</td>
+      </tr>
+      <tr>
+        <td><label for="{{form.aintelec.id_for_label}}">{{form.aintelec.label}}</label> {{form.aintelec}}</td>
+      </tr>
+      <tr>
+        <td><label for="{{form.aorganic.id_for_label}}">{{form.aorganic.label}}</label> {{form.aorganic}}
+        <br/><span class="helptext">{{form.aphysic.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label>{% trans 'Description' %}</label>
+          <textarea placeholder="{% trans 'Description [eu]' %}" rows="10" cols="28">{{form.adescription_eu.value|default:""}}</textarea>
+          <textarea placeholder="{% trans 'Description [es]' %}" rows="10" cols="28">{{form.adescription_es.value|default:""}}</textarea>
+          <textarea placeholder="{% trans 'Description [en]' %}" rows="10" cols="28">{{form.adescription_en.value|default:""}}</textarea><br/>
+          <span class="helptext">{{form.adescription_es.help_text}}</span>
+        </td>
+      </tr>
+      <tr><td><hr></td></tr>
+      <tr>
+        <td><label for="{{form.afileurl.id_for_label}}">{{form.afileurl.label}}</label> {{form.afileurl}}
+        <br/><span class="helptext">{{form.afileurl.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="{{form.is_public.id_for_label}}">{{form.is_public.label}}</label> {{form.is_public}}
+        <br/><span class="helptext">{{form.is_public.help_text}}</span></td>
+      </tr>
+      <tr>
+        <td><label for="id_photo">{% trans 'Image' %}:</label> <input type="file" id="id_photo" name="photo"> <span class="helptext">{% trans 'Subir archivo jpg, png, gif con imagen del recurso' %}</span></td>
+      </tr>
+    </table>
 
     <input type="submit" value="{% trans "Save" %}" class="submit" />
 </form>
