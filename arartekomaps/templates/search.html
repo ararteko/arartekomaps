@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title%}{% trans "Search results" %}: {{q}} - {% trans "Ararteko maps" %}{% endblock %}
+
+{% block extraheader %}
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    function refreshMarkers(map){
+        //alert(map.getBounds());
+    }
+    function initialize() {
+    var center = new google.maps.LatLng(43.0, -1.0);
+    var myOptions = {
+      zoom: 17,
+      center: center,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var bounds = new google.maps.LatLngBounds();
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    google.maps.event.addListener(map, 'idle',
+            function(){
+                refreshMarkers(map);
+                }
+        );
+    var infowindow = new google.maps.InfoWindow();
+    {% for place in pins %}{% if place.lat %}    
+        var center = new google.maps.LatLng({{place.lat}}, {{place.lon}});
+        bounds.extend(center);
+        var image = '{{STATIC_URL}}icn/{% firstof place.icon "city" %}.png';        
+        var contentString_{{forloop.counter}} = '<p><a href="{{ place.get_absolute_url }}">{{place.name}}</a><br />{% trans place.category.str2trans %} - {{place.city}}</p>'
+        var marker_{{forloop.counter}} = new google.maps.Marker({
+            position: center,
+            map: map,
+            icon: image,
+            title: "{{place.name}}"
+        });
+        google.maps.event.addListener(marker_{{forloop.counter}}, 'click',
+            function(){
+                infowindow.close();//hide the infowindow
+                infowindow.setContent(contentString_{{forloop.counter}});//update the content for this marker
+                infowindow.open(map, marker_{{forloop.counter}});//"move" the info window to the clicked marker and open it
+                }
+        );
+        {% endif %}{% endfor %}
+    map.fitBounds(bounds) 
+    if(infowindow) {
+      infowindow.close();
+    }
+  }
+  
+</script>
+
+<meta name="robots" content="noindex, follow" />
+{% endblock %}
+
+
+{% block breadcrumb %}
+<p id="breadcrumb">
+   <a href="/">{% trans "Home" %}</a>
+   &gt;
+   {% trans "Search results" %}
+</p>
+{% endblock %}
+
+{% block mainmenu %}
+    <form method="get" action="/search/" id="bigsf">
+        <label for="q">{% trans "Go to..." %}</label> <input type="text" name="q" id="q" value="{{q}}" />
+        <input type="submit" value="{% trans "Search" %}" class="searchbutton" />
+        <p><a href="/filter/">{% trans "Advanced filter" %}</a></p>
+    </form>
+{% endblock %} 
+
+{% block main_content %}
+<div id="locacol1">
+
+<h1>{% trans action %} {{q}}</h1>
+
+{% ifequal action 'filter' %}
+    <form method="get" action="/filter/" id="advsearch">
+        <label for="city">{% trans "City" %}</label>
+        <select id="city" name="city">
+            <option value="">{% trans "Any" %}</option>
+            {% for prov,cities in all_locations %}
+            <optgroup label="{{prov.name|upper}}">
+            {% for loc in cities %}
+              <option value="{{loc.id}}"{% ifequal loc.id city %} selected="selected"{% endifequal %}>{{loc.name}}</option>
+            {% endfor %}
+            </optgroup>
+            {% endfor %}
+        </select><br />
+        <label for="cat">{% trans "Category" %}</label> 
+        <select id="cat" name="cat">
+            <option value="">{% trans "Any" %}</option>
+            {% for tcat in all_cats %}
+            <option value="{{tcat.id}}"{% ifequal tcat.id cat %} selected="selected"{% endifequal %}>{{tcat}}</option>
+            {% endfor %}
+        </select><br />
+        <p class="frm_help">{% trans "Minimal accessibility" %}</p>
+        
+        <ul>
+        {% for k,v,optline in ac_form_set %}
+            <li><label for="{{k}}" class="access_definition {{k}}_a" title="{{v}}">{{v}}</label>
+            <select name="{{k}}" id="{{k}}">
+                {% for q,b,selected in optline %}
+                <option value="{{q}}"{% if selected %} selected="selected"{% endif %}>{{b}}</option>
+                {% endfor %}            
+            </select>
+            </li>
+        {% endfor %}
+        </ul>        
+        
+        
+        
+        <input type="submit" value="{% trans "Search" %}" />
+    </form>
+
+{% else %}
+<a href="/filter/">{% trans "Advanced filter" %}</a>
+{% endifequal %}
+
+<p>{% trans "Total results:" %} {{results_number}}</p>
+
+  <ul class="itemlist">
+  {% for place in pins %}
+    <li>
+    <img src="{{STATIC_URL}}icn/{% firstof place.icon "city" %}.png" alt="{% if place.category %}{% trans place.category.str2trans %}{% else %}{{ place.name }}{% endif %}" class="mainicon" />
+    <h4><a href="{{ place.get_absolute_url }}">{{ place.name }}</a></h4>
+    <p>{% if place.category %}{{place.category}}{% else %}{{ place.parent.name }}{% endif %}
+    {% if place.city %}- {{ place.city }}{% endif %}</p>
+    <dl class="accessibility">
+        {% for key,value,vkey,vvalue in place.access_list %}
+        <dt class="access_term">{{vkey}}</dt>
+        <dd class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></dd>
+        {% endfor %}
+    </dl>
+    </li>
+   {% endfor %}    
+  </ul>
+  
+  {% if thispage.has_previous %}
+    <a href="{{prev_url}}">{% trans "Previous" %}</a>
+  {% endif %}
+  
+  {% if thispage.has_next %}
+    <a href="{{next_url}}">{% trans "Next" %}</a>
+  {% endif %}
+</div>
+<!-- locacol1 end -->
+
+<div id="locacol2">
+    <div id="map_container">
+        <div id="map_canvas" style="width: 445px; height: 400px">MAPA</div>
+    </div>
+</div>
+<!-- locacol2 end -->
+
+{% endblock main_content %}

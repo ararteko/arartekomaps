@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+{% load comments %}
+{% load i18n %}
+{% load place_extras %}
+
+{% block head_title%}{{place.name}} {{ place.category }}, {% trans "Accessibility" %} - {% trans "Ararteko maps" %}{% endblock %}
+
+{% block extraheader %}
+<link rel="stylesheet" href="{{STATIC_URL}}css/slimbox2.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/slimbox2.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    function initialize() {
+    {% if place.lat %}
+    var center = new google.maps.LatLng({{place.lat}},{{place.lon}});
+    {% else %}
+    var center = new google.maps.LatLng(43.0870530345, -2.54719734192);
+    {% endif %}
+    var myOptions = {
+      zoom: 17,
+      center: center,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    var contentString = '<p>{{place.name}}</p><br /><div class="accessibility">';
+        {% for key,value,vkey,vvalue in place.access_list %}
+        contentString += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>';
+        {% endfor %}
+        contentString += '</div>';
+    var infowindow = new google.maps.InfoWindow({
+    content: contentString
+    });
+    var image = '{{STATIC_URL}}icn/{{place.icon}}.png';
+    var myMarker = new google.maps.Marker({
+        position: center,
+        map: map,
+        icon: image,
+        title: '{{place.name}}'
+    });
+    google.maps.event.addListener(myMarker, 'click', function() {
+    infowindow.open(map,myMarker);
+    });
+  }
+</script>
+{% endblock %}
+
+
+{% block breadcrumb %}
+<p id="breadcrumb">
+   <a href="/">{% trans "Home" %}</a>
+   &gt;
+   <a href="{{place.city.parent.get_absolute_url}}">{{place.city.parent.name}}</a>
+   &gt;
+   <a href="{{place.city.get_absolute_url}}">{{place.city.name}}</a>
+   &gt;
+   {{place.name}}
+</p>
+{% endblock %}
+
+{% block mainmenu %}
+{% endblock %}
+
+{% block main_content %}
+<div itemscope itemtype="http://schema.org/LocalBusiness" id="placecol1">
+<img src="{{STATIC_URL}}icn/{{place.icon}}.png" alt="{% trans place.category.str2trans %}" class="mainicon" />
+
+<h1 itemprop="name">{{place.name}}</h1>
+
+{% if request.user.is_staff %}
+<a href="{% url 'admin:places_place_change' place.id %}">Modificar este lugar</a>
+{% endif %}
+
+<p class="category_name">{{place.category}}</p>
+<dl class="accessibility">
+{% for key,value,vkey,vvalue in place.access_list %}
+<dt class="access_term">{{ vkey }}:</dt>
+<dd class="access_definition {{key}}_{{value}}" title="{{ vkey }}: {{ vvalue }}"><span>{{ vvalue }}</span></dd>
+{% endfor %}
+</dl>
+
+{% if def_images %}
+  {% for image in def_images %}
+  <a itemprop="image" href="http://{{request.get_host}}{{image.get_fullscr_url}}" rel="lightbox-group" title="{{image.name}}"><img src="http://{{request.get_host}}{{image.get_admin_thumbnail_url}}" alt="{{image.name}} ({{image.user}})" title="{{image.name}} ({{image.user}})" class="placethumb" /></a>
+  {% endfor %}
+{% endif %}
+
+<address>
+<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+<span itemprop="streetAddress">{{place.address1}}
+{% if place.address2 %}<br />{{place.address2}}{% endif %}</span>
+<br />
+<span itemprop="postalCode">{{place.postalcode}}</span>-<span itemprop="addressLocality">{% if place.locality %}{{place.locality}}{% endif %} {{place.city}}</span>
+({{place.city.parent}})
+{% if place.tlf %}<br /><span itemprop="telephone" class="tlf">{{place.tlf}}</span>{% endif %}
+{% if place.fax %}<br /><span class="fax">{{place.fax}}</span>{% endif %}
+{% if place.url %}<br /><span class="web"><a href="{{place.url}}" itemprop="url">{% if place.url_name %}{{place.url_name}}{% else %}{% trans "Website" %}{% endif %}</a></span>{% endif %}
+</span>
+<span class="geo">
+    <span class="latitude">
+      <span class="value-title" title="{{place.lat}}" ></span>
+    </span>
+    <span class="longitude">
+      <span class="value-title" title="{{place.lon}}"></span>
+    </span>
+</span>
+</address>
+
+<p>{{place.description|default_if_none:""|safe}}</p>
+
+<div id="access">
+<h3>{% trans "Accessibility" %}</h3>
+    <dl class="accesstext">
+    {% for key,value,vkey,vvalue in place.access_list %}
+    {% ifnotequal value 'access_s' %}
+    <dt>{{vkey}}</dt>
+    <dd title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></dd>
+    {% endifnotequal %}
+    {% endfor %}
+    </dl>
+    {% if place.adescription %}
+    <p>{{place.adescription|linebreaks}}</p>
+    {% endif %}
+    {% if place.afileurl %}
+    <p><a href="{{place.afileurl}}">{% trans "detailed file" %}</a> (PDF)</p>
+    {% endif %}
+</div>
+<!-- access end -->
+
+{% if place.biblio_data.btype %}
+<div id="biblio">
+<h3>{% trans "Library" %}</h3>
+    <dl>
+      {% comment %}
+        <dt>{% trans "btype" %}</dt>
+        <dd>{% trans place.biblio_data.btype %}</dd>
+      {% endcomment %}
+      {% ifnotequal place.biblio_data.start_year 0 %}
+        <dt>{% trans "start_year" %}</dt>
+        <dd>{{ place.biblio_data.start_year}}</dd>
+      {% endifnotequal %}
+      {% comment %}
+        <dt>{% trans "institution" %}</dt>
+        <dd>{{place.biblio_data.institution}} ({% trans place.biblio_data.institution_type %})</dd>
+      {% endcomment %}
+      {% if place.biblio_data.open_times.strip %}
+        <dt>{% trans "open_times" %}</dt>
+        <dd>{{place.biblio_data.open_times}}</dd>
+      {% endif %}
+      {% comment %}
+        <dt>{% trans "access_type" %}</dt>
+        <dd>{% trans place.biblio_data.access_type %}</dd>
+        <dt>{% trans "center_type" %}</dt>
+        <dd>{% trans place.biblio_data.center_type %}</dd>
+
+        <dt>{% trans "topics" %}</dt>
+        <dd>{% for topic in place.biblio_data.topics.all %} {% trans topic.name %} {% endfor %} </dd>
+      {% endcomment %}
+      {% if place.biblio_data.services.all %}
+        <dt>{% trans "services" %}</dt>
+        <dd>{% for service in place.biblio_data.services.all %}
+                {% trans service.name %}{% if not forloop.last %},{% endif %}
+	        {% endfor %}</dd>
+      {% endif %}
+	</dl>
+
+</div>
+<!-- biblio end -->
+{% endif %}
+
+<p><em>
+  {% if place.source %}
+  {% trans "data_source" %}:
+
+  {% ifequal place.source "nombre" %}
+      {{place.name}}
+  {% else %}
+    {% trans place.source %}
+  {% endifequal %}
+  {% endif %}
+  {% if place.modified_date %}
+  <br />
+  {% trans "modified_date" %}:
+  {{place.modified_date|date:"Y-m-d"}}
+  {% endif %}</em></p>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/{{LANGUAGE_CODE}}_ES/all.js#xfbml=1&appId=348250811907648";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like" data-href="http://mapak.ararteko.net{{place.get_absolute_url}}" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="arartekomapak" data-text="{% trans place.category.str2trans %} {{place.name}}, {{place.city}}" data-lang="{{LANGUAGE_CODE}}">Twittear</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<div id="commentlist">
+    <h3>{% trans "Comments" %}</h3>
+
+    {% include "mycomment/list.html" %}
+
+    {% if user.is_authenticated %}
+    <form method="post" action="" id="communityform" ENCTYPE="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="fieldWrapper">
+            <input type="submit" value="{% trans 'Add comment' %}" class="botoia" />
+            </div>
+
+    </form>
+    {% else %}
+    <p><a href='{% url 'cssocialuser_user_login' %}?next={{request.path}}'>{% trans  "Sign in" %}</a>{% trans  " to write a comment." %}</p>
+    {% endif %}
+
+</div>
+
+</div>
+
+
+<div id="placecol2">
+
+    <div id="map_container">
+        <div id="map_canvas" style="width: 445px; height: 200px">{% trans "Map" %}</div>
+    </div>
+
+   <!-- /map_container -->
+<div id="nearest" class="nocontent">
+<h3>{% trans "Nearest places" %}</h3>
+
+ <ul class="itemlist">
+   {% for dist,nearest in place.nearby_locations %}
+    <li>
+    <img src="{{STATIC_URL}}icn/{{nearest.icon}}.png" alt="{% trans nearest.category.str2trans %}" class="listicon" />
+    <h4><a href="/p/{{nearest.slug}}/">{{nearest.name}}</a></h4>
+    <p>{{nearest.category}} - {{nearest.city}} ({{dist}} m.)</p>
+
+    <dl class="accessibility">
+        {% for key,value,vkey,vvalue in nearest.access_list %}
+        <dt class="access_term">{{vkey}}</dt>
+        <dd class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></dd>
+    {% endfor %}
+    </dl>
+    </li>
+   {% endfor %}
+
+  </ul>
+</div>
+<!-- nearest end -->
+
+
+
+
+</div>
+<!-- placecol2 end -->
+{% endblock main_content %}

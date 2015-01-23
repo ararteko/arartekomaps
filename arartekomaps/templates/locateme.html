@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% load place_extras %}
+
+{% block head_title %}Locate me{% endblock %}
+
+{% block extraheader %}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var geocoder;
+  var map;
+  var marker;
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng({{df_lat}}, {{df_lon}});
+    var myOptions = {
+      zoom: 16,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    marker = new google.maps.Marker({
+              map: map, 
+              position: latlng,
+              draggable: true
+          });
+             
+    google.maps.event.addListener(marker, "dragend", function(event) {
+        var latlon = marker.getPosition();
+        document.getElementById("flat").value=latlon.lat();
+        document.getElementById("flon").value=latlon.lng();
+    });
+    
+    google.maps.event.addListener(map, "click", function(event) {
+        var latlon = event.latLng;            
+        document.getElementById("flat").value=latlon.lat();
+        document.getElementById("flon").value=latlon.lng();
+        marker.setPosition(latlon);
+        }); 
+  }
+
+  function codeAddress() {
+    var address = document.getElementById("address").value;
+    if (geocoder) {
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          latlon = results[0].geometry.location;
+          map.setCenter(latlon); 
+          map.setZoom(16);
+          document.getElementById("flat").value=latlon.lat();
+          document.getElementById("flon").value=latlon.lng();
+          marker.setPosition(latlon);
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+  }
+</script>
+{% endblock %}
+
+{% block template_id %}index{% endblock %}
+
+{% block main_content %}
+<h1>{{ place.name }}</h1>
+
+<div id="map_area">
+<div id="content_data">
+
+<div class="adr">
+  <div class="street-address">{{ place.address1 }}
+  {% if place.address2 %} <br />{{ place.address2 }}{% endif %}
+  </div>
+  <span class="postal-code">{{ place.postalcode }}</span>-<span class="locality">{{ place.city }}</span>
+  
+</div>
+
+<input type="text" size="40" id="address" name="address" value="{{ place.address1|normaltxo }} {{ place.address2 }}, {{place.postalcode}}-{{ place.city }}, ES" />
+
+
+<input type="submit" value="Search in Google" onclick="codeAddress()"/>
+
+
+<form action="/p/save_location/" method="post">{% csrf_token %}
+<input type="hidden" name="lat" id="flat" value="{{df_lat}}" /><br />
+<input type="hidden" name="lon" id="flon" value="{{df_lon}}" /><br />
+<input type="hidden" name="place_slug" value="{{ place.slug }}" />
+<input type="submit" value="Save" />
+</form>
+ 
+ </div>
+<!-- /content_data -->
+
+   <div id="map_container">
+   <div id="map_canvas" style="width: 500px; height: 300px">MAPA</div>
+  </div>
+   <!-- /map_container -->
+
+</div>
+<!-- /map_area -->
+   
+{% endblock %}

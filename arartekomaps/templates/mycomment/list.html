@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<div id="comment_list">
+{% for comment in comments reversed %}
+<div class="comment">
+<p id="{{comment.id}}" class="commentauthor">
+	{% if comment.author.get_profile.get_photo %}
+    <img class="userlogged" width="30" height="30" src="{{comment.author.get_profile.get_photo.get_profile_small_url}}" alt="Erabiltzailearen aurpegia" /></a>
+    {% endif %}
+	{{comment.author.get_profile.get_fullname}}</a> | 
+    <span class="data">{{ comment.public_date|date:"Y-m-d" }}</span> | <a href="{{comment.parent.get_absolute_url}}#{{comment.id}}">#{{forloop.counter}}</a>
+</p>
+
+<p>
+{{comment.body|safe|urlizetrunc:50|linebreaksbr}}
+</p>
+
+{% if comment.photo %}
+<div class="imageBox">
+    <a href="{{comment.photo.image.url}}" rel="lightbox-group-user" title="{{comment.photo.title}}"><img src="{{comment.photo.get_place_medium_url}}" alt="{{comment.photo.title}}" title="{{comment.photo.title}}" class="placethumb" /></a>
+</div>
+{% endif %}
+
+</div>
+{% endfor %}
+</div>

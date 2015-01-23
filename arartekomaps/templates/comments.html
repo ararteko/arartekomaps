@@ -1,0 +1,38 @@
+{% load comments %}
+{% load i18n %}
+
+{% if user.is_authenticated %}
+
+<script>
+function checkForm(form){
+   return true;    
+   alert(form.comment.value);
+    if(form.comment.value==''){
+       return false;
+    }else{
+      return true;    
+    }
+} 
+</script>
+
+
+<div class="comment_form">
+   {% get_comment_form for place as form %}
+      <form action="{% comment_form_target %}" method="post">
+      {% csrf_token %}
+         <p><strong>{{user.get_full_name}}</strong> {% trans "tell us what you think" %}</p>
+         {{form.content_type}}{{form.object_pk}}{{form.timestamp}}{{form.security_hash}} 
+          <input id="id_name" type="hidden" name="name" value="{{user.get_full_name}}" maxlength="50" /> 
+          <input type="hidden" name="email" id="id_email" value="{%if user.email.strip %}{{user.email}}{%else%}null@null.com{%endif%}"  /> 
+          <input type="hidden" name="url" value="" id="id_url" />  
+
+            <p><label for="comment">{% trans "Comment" %}</label>
+            {{form.comment}} {{form.comment.errors}}</p>  
+            <input type="hidden" value="" name="honeypot" id="id_honeypot" /> 
+            <input type="hidden" name="next" value="{{request.path}}" />
+            <input type="submit" name="post" onClick="return checkForm(this.form)" class="button addcomment" value="{% trans "Add comment" %}" />
+         </form>
+</div>
+{%else%}
+<p><a href="{%url cssocialuser_user_login %}?next={{request.path}}#commentlist">{% trans "Login to comment" %}</a></p> 
+{%endif%}

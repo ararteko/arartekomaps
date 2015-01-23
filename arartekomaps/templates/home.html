@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title%}{% trans "Ararteko maps" %} - {% trans "Discover and share accessible places" %}{% endblock %}
+
+{% block extraheader %}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    function initialize() {
+    var center = new google.maps.LatLng(43.0, -1.0);
+    var myOptions = {
+      zoom: 17,
+      center: center,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var bounds = new google.maps.LatLngBounds();
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    var infowindow = new google.maps.InfoWindow();
+
+    {% for place in places %}{% if place.lat %}    
+        var center = new google.maps.LatLng({{place.lat}}, {{place.lon}});
+        bounds.extend(center);
+        var image = '{{STATIC_URL}}icn/{{place.icon}}.png';        
+        var contentString_{{forloop.counter}} = '<p><a href="{{ place.get_absolute_url }}">{{place.name}}</a><br />{{place.category}} -  {{ place.city }}</p><br /><div class="accessibility">';
+        {% for key,value,vkey,vvalue in place.access_list %}
+        contentString_{{forloop.parentloop.counter}} += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>'; 
+        {% endfor %}
+        contentString_{{forloop.counter}} += '</div>'; 
+        //alert(contentString_{{forloop.counter}}); 
+        var marker_{{forloop.counter}} = new google.maps.Marker({
+            position: center,
+            map: map,
+            icon: image,
+            title: "{{place.name}}"
+        });
+        google.maps.event.addListener(marker_{{forloop.counter}}, 'click',
+            function(){
+                infowindow.close();//hide the infowindow
+                infowindow.setContent(contentString_{{forloop.counter}});//update the content for this marker
+                infowindow.open(map, marker_{{forloop.counter}});//"move" the info window to the clicked marker and open it
+                }
+        );
+        {% endif %}{% endfor %}
+    map.fitBounds(bounds) 
+    if(infowindow) {
+      infowindow.close();
+    }    
+
+  }
+</script>
+
+
+<script type="text/javascript">
+  if( /iPhone|iPad/i.test(navigator.userAgent) ) {
+
+  var url=confirm("{% trans "question: want to download iPhone app" %}");
+    if (url==true)
+  {
+    var url = window.location.href = 'itms://itunes.apple.com/es/app/ararmapak/id727622778?mt=8';
+    url.show(); 
+  }
+    else
+  {
+
+  }
+  }
+  if( /Android/i.test(navigator.userAgent) ) {
+
+  var url=confirm("{% trans "question: want to download Android app" %}");
+    if (url==true)
+  {
+    var url = window.location.href = 'market://details?id=eu.akting.ararteko';
+    url.show(); 
+  }
+    else
+  {
+
+  }
+  }
+  </script>
+{% endblock %}
+
+{% block mainmenu %}  
+   {% comment %} 
+    <form method="get" action="/search/" id="bigsf">
+        <label for="q">{% trans "Go to..." %}</label> <input type="text" name="q" id="q" value="{{q}}" />
+        <input type="submit" value="{% trans "Search" %}" class="searchbutton" />
+        <p><a href="/filter/">{% trans "Advanced filter" %}</a></p>
+    </form>
+    {% endcomment %}
+      <div id="searchbox">    
+          <!-- Google CSE Search Box Begins -->
+          <form id="bigsf" action="{% url 'gsearch' %}">
+              <input type="hidden" name="cx" value="002318387713884704423:4pwcgf1wug4" />
+              <label for="q">{% trans "Go to..." %}</label> <input id="q" name="q" type="text" />
+              <input class="searchbutton" type="submit" name="sa" value="{% trans "Search" %}" />
+              <input type="hidden" name="cof" value="FORID:11" />
+              <p><a href="/filter/">{% trans "filter" %}</a></p>
+          </form>
+          <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_001098326678246934980%3Afr8fiqutrzm"></script>
+          <!-- Google CSE Search Box Ends -->
+      </div>
+{% endblock %}
+
+{% block main_content %}
+<div id="homemap">
+  <h2>{% trans "About the maps" %}</h2>
+  <p>
+    {% blocktrans %}About: Paragraph 1{% endblocktrans %}
+  </p>
+  <p><a href="/pg/about/">{% trans "Read more" %}</a><br /><br /></p>
+
+    <div id="map_container">
+        <div id="map_canvas" style="width: 445px; height: 450px">MAPA</div>
+    </div>
+</div>
+
+<div id="homefeatured">
+
+  <h2>{% trans "Download our app" %}</h2>
+  <p>{% trans "Download our apps presentation text" %}</p>
+  <div id="appbadges">  
+    <a href="https://play.google.com/store/apps/details?id=eu.akting.ararteko">
+        <img alt="Ararteko mapak Android app on Google Play" src="https://developer.android.com/images/brand/es_app_rgb_wo_45.png" />
+    </a>
+    <a href="https://itunes.apple.com/es/app/ararmapak/id727622778?mt=8">
+        <img alt="Ararteko mapak iPhone app on Apple Store" src="{{STATIC_URL}}img/applebadge.png" />
+    </a>
+  </div>
+  
+  <h2>{% trans "Visit this places" %}</h2>
+  
+  <ul id="provinces">
+    <li><a href="/l/araba/">Araba</a></li>
+    <li><a href="/l/bizkaia/">Bizkaia</a></li>
+    <li><a href="/l/gipuzkoa/">Gipuzkoa</a></li>
+  </ul>
+  
+  <ul id="cities">
+    <li><a href="/l/araba/vitoria-gasteiz/">Vitoria-Gasteiz</a></li>
+    <li><a href="/l/bizkaia/bilbao/">Bilbao</a></li>
+    <li><a href="/l/gipuzkoa/donostia-san-sebastian/">Donostia-San Sebastian</a></li>
+  </ul>  
+  
+  <h3>{% trans "Last places" %}</h3>
+
+  <ul class="itemlist">
+ {% for place in places %}
+    <li>
+    <img src="{{STATIC_URL}}icn/{{place.icon}}.png" alt="{{place.category}}" class="mainicon" />
+    <h4><a href="{{ place.get_absolute_url }}">{{ place.name }}</a></h4>
+    <p>{{place.category}} - {{ place.city }}</p>
+    <dl class="accessibility">
+        {% for key,value,vkey,vvalue in place.access_list %}
+        <dt class="access_term">{{key}}</dt>
+        <dd class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></dd>
+        {% endfor %}
+    </dl>
+    </li>
+   {% endfor %}    
+  </ul>
+</div>
+{% endblock main_content %}

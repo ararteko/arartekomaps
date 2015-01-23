@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load pages_tags %}
+{% load i18n %}
+
+
+{% block head_title %} {% show_content current_page 'title' %} {% endblock %}
+
+{% block searchbox%}{% endblock %}
+
+{% block breadcrumb %}
+<p id="breadcrumb">
+   <a href="/">{% trans "Home" %}</a>
+   &gt;
+   {% show_content current_page 'title' %}
+</p>
+{% endblock %}
+
+
+{% block mainmenu %}   
+{% endblock %}
+
+{% block main_content %}
+<div id="static_content">
+
+{% placeholder title with TextInput as page_title %}
+
+<h1>{% show_content current_page 'title' %}</h1>
+        
+{% placeholder body with Textarea as page_content%}
+
+{% show_content current_page 'body' %}
+
+
+</div>
+{% endblock %}

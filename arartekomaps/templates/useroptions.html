@@ -1,0 +1,21 @@
+{% load i18n %}
+{% if user.is_authenticated %}
+  <div id="useroptions2">
+   {% if user.get_profile.get_photo %}  
+    <img class="userlogged" width="25" height="25" src="{{user.get_profile.get_photo.get_profile_thumb_url}}" alt="{% trans "User's photo" %}" />
+  {% endif %}
+    <div id="useroptionsname">
+      {{ user.get_profile.get_fullname }} | 
+     <span class="useroptions2">
+       {% if user.is_editor %}<a href="{% url 'edit_places' %}">{% trans "My places" %}</a> |{% endif %}
+       <a href="{% url 'cssocialuser_edit_profile' %}">{% trans "Your profile" %}</a> | 
+       <a href="{% url 'cssocialuser_logout' %}?next={{request.path}}">{% trans "Sign out" %}</a></span>
+    </div>
+  </div>
+{%else%}
+  <div id="userlogin">
+    <a href="{% url 'cssocialuser_user_login' %}?next={{request.path}}">{% trans "Sign in" %}</a>
+  </div>
+{%endif%}
+
+

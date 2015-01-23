@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title%}{{mystate.name}} - {% trans "Ararteko maps" %}{% endblock %}
+
+{% block breadcrumb %}
+<p id="breadcrumb">
+   <a href="/">Home</a>
+   &gt;
+   {{mystate.name}}
+</p>
+{% endblock %}
+
+
+
+{% block mainmenu %}
+    {% comment %}
+    <form method="get" action="/search/" id="bigsf">
+        <label for="q">{% trans "Go to..." %}</label> <input type="text" name="q" id="q" value="{{q}}" />
+        <input type="submit" value="{% trans "Search" %}" class="searchbutton" />
+        <p><a href="/filter/">{% trans "Advanced filter" %}</a></p>
+    </form>
+    {% endcomment %}
+      <div id="searchbox">    
+          <!-- Google CSE Search Box Begins -->
+          <form id="bigsf" action="{% url 'gsearch' %}">
+              <input type="hidden" name="cx" value="002318387713884704423:4pwcgf1wug4" />
+              <label for="q">{% trans "Go to..." %}</label> <input id="q" name="q" type="text" />
+              <input class="searchbutton" type="submit" name="sa" value="{% trans "Search" %}" />
+              <input type="hidden" name="cof" value="FORID:11" />
+              <p><a href="/filter/">{% trans "filter" %}</a></p>
+          </form>
+          <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_001098326678246934980%3Afr8fiqutrzm"></script>
+          <!-- Google CSE Search Box Ends -->
+      </div>
+{% endblock %}
+
+
+
+{% block main_content %}
+
+<h1>{{mystate.name}}</h1>
+  
+   {% for slice in city_slices %}
+   <ul class="locationlist">
+   {% for city in slice %}
+    <li><a href="{{city.get_absolute_url}}">{{city.name}}</a></li>
+   {% endfor %}
+   </ul>
+   {% endfor %}  
+
+{% endblock main_content %}

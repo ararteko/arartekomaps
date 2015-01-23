@@ -1,0 +1,4 @@
+global-exclude *pyc
+global-exclude *~
+global-exclude local_settings.py
+global-exclude server_settings.py
