@@ -76,9 +76,9 @@
       </tr>
       <tr>
         <td><label>{% trans 'Description' %}</label>
-          <textarea placeholder="{% trans 'Description [eu]' %}" rows="10" cols="28">{{form.description_eu.value|default:""}}</textarea>
-          <textarea placeholder="{% trans 'Description [es]' %}" rows="10" cols="28">{{form.description_es.value|default:""}}</textarea>
-          <textarea placeholder="{% trans 'Description [en]' %}" rows="10" cols="28">{{form.description_en.value|default:""}}</textarea><br/>
+          <textarea name="{{form.description_eu.name}}" placeholder="{% trans 'Description [eu]' %}" rows="10" cols="28">{{form.description_eu.value|default:""}}</textarea>
+          <textarea name="{{form.description_es.name}}" placeholder="{% trans 'Description [es]' %}" rows="10" cols="28">{{form.description_es.value|default:""}}</textarea>
+          <textarea name="{{form.description_en.name}}" placeholder="{% trans 'Description [en]' %}" rows="10" cols="28">{{form.description_en.value|default:""}}</textarea><br/>
           <span class="helptext">{{form.description_es.help_text}}</span>
         </td>
       </tr>
@@ -164,9 +164,9 @@
       </tr>
       <tr>
         <td><label>{% trans 'Description' %}</label>
-          <textarea placeholder="{% trans 'Description [eu]' %}" rows="10" cols="28">{{form.adescription_eu.value|default:""}}</textarea>
-          <textarea placeholder="{% trans 'Description [es]' %}" rows="10" cols="28">{{form.adescription_es.value|default:""}}</textarea>
-          <textarea placeholder="{% trans 'Description [en]' %}" rows="10" cols="28">{{form.adescription_en.value|default:""}}</textarea><br/>
+          <textarea name="{{form.adescription_eu.name}}" placeholder="{% trans 'Description [eu]' %}" rows="10" cols="28">{{form.adescription_eu.value|default:""}}</textarea>
+          <textarea name="{{form.adescription_es.name}}" placeholder="{% trans 'Description [es]' %}" rows="10" cols="28">{{form.adescription_es.value|default:""}}</textarea>
+          <textarea name="{{form.adescription_en.name}}" placeholder="{% trans 'Description [en]' %}" rows="10" cols="28">{{form.adescription_en.value|default:""}}</textarea><br/>
           <span class="helptext">{{form.adescription_es.help_text}}</span>
         </td>
       </tr>
