@@ -156,7 +156,11 @@ header img{
 #placeform span{
     margin-left: 85px;
 }
-
+#placeform span.required{
+    margin-left:10px;
+    font-size:80%;
+    color:red;
+}
 .btn-primary {
     background-color: #d021d8;
     border: medium none;

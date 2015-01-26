@@ -15,7 +15,6 @@ from django.core.urlresolvers import reverse
 
 def placeview(request, slug=''):
     """ """
-
     template_name='place'
     users = []
     place = get_object_or_404(Place, slug=slug)

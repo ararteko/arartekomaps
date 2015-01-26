@@ -68,10 +68,10 @@
     {% csrf_token %}
     <table>
       <tr>
-        <td>{{form.name.errors}}<label for="{{form.name.id_for_label}}">{{form.name.label}}</label> {{form.name}}</td>
+        <td>{{form.name.errors}}<label for="{{form.name.id_for_label}}">{{form.name.label}}</label> {{form.name}}<span class="required">{% trans 'Required' %}</span></td>
       </tr>
       <tr>
-        <td>{{form.category.errors}}<label for="{{form.category.id_for_label}}">{{form.category.label}}</label> {{form.category}}
+        <td>{{form.category.errors}}<label for="{{form.category.id_for_label}}">{{form.category.label}}</label> {{form.category}}<span class="required">{% trans 'Required' %}</span>
         <br/><span class="helptext">{{form.category.help_text}}</span></td>
       </tr>
       <tr>
@@ -83,7 +83,7 @@
         </td>
       </tr>
       <tr>
-        <td>{{form.address1.errors}}<label for="{{form.address1.id_for_label}}">{{form.address1.label}}</label> {{form.address1}}
+        <td>{{form.address1.errors}}<label for="{{form.address1.id_for_label}}">{{form.address1.label}}</label> {{form.address1}}<span class="required">{% trans 'Required' %}</span>
         <br/><span class="helptext">{{form.address1.help_text}}</span><br/>
         <label for="{{form.address2.id_for_label}}">&nbsp;</label>{{form.address2}}
         <br/><span class="helptext">{{form.address2.help_text}}</span>
@@ -94,7 +94,7 @@
         <br/><span class="helptext">{{form.postalcode.help_text}}</span></td>
       </tr>
       <tr>
-        <td>{{form.city.errors}}<label for="{{form.city.id_for_label}}">{{form.city.label}}</label> {{form.city}}
+        <td>{{form.city.errors}}<label for="{{form.city.id_for_label}}">{{form.city.label}}</label> {{form.city}}<span class="required">{% trans 'Required' %}</span>
         <br/><span class="helptext">{{form.city.help_text}}</span></td>
       </tr>
       <tr>
@@ -110,7 +110,7 @@
             <input type="hidden" name="{{form.lon.name}}" id="f{{form.lon.name}}" value="{{form.lon.value}}" />
             <label for="address">&nbsp;</label>
             <input type="text" size="40" id="address" name="address" value="" />
-            <input type="button" value="{% trans 'Search in Google' %}" onclick="codeAddress()"/>
+            <input type="button" value="{% trans 'Search in Google' %}" onclick="codeAddress()"/><span class="required">{% trans 'Required' %}</span>
             <div id="map_container">
                 <label for="map_canvas">&nbsp;</label>
                 <div id="map_canvas" style="width: 500px; height: 300px">MAPA</div>
@@ -119,11 +119,11 @@
         </td>
       </tr>
       <tr>
-        <td><label for="{{form.tlf.id_for_label}}">{{form.tlf.label}}</label> {{form.tlf}}
+        <td><label for="{{form.tlf.id_for_label}}">{{form.tlf.label}}{% if form.tlf.required %}<span class="required">*</span>{% endif %}</label> {{form.tlf}}
         <br/><span class="helptext">{{form.tlf.help_text}}</span></td>
       </tr>
       <tr>
-        <td><label for="{{form.fax.id_for_label}}">{{form.fax.label}}</label> {{form.fax}}
+        <td><label for="{{form.fax.id_for_label}}">{{form.fax.label}}{% if form.fax.required %}<span class="required">*</span>{% endif %}</label> {{form.fax}}
         <br/><span class="helptext">{{form.fax.help_text}}</span></td>
       </tr>
       <tr>
@@ -142,7 +142,7 @@
         <br/><span class="helptext" for="{{form.url_name_en.id_for_label}}">{{form.url_name_en.help_text}}</span></td>
       </tr>
       <tr>
-        <td><label for="{{form.email.id_for_label}}">{{form.email.label}}</label> {{form.email}}
+        <td><label for="{{form.email.id_for_label}}">{{form.email.label}}{% if form.email.required %}<span class="required">*</span>{% endif %}</label> {{form.email}}
         <br/><span class="helptext">{{form.email.help_text}}</span></td>
       </tr>
       <tr><td><hr></td></tr>
@@ -180,7 +180,7 @@
         <br/><span class="helptext">{{form.is_public.help_text}}</span></td>
       </tr>
       <tr>
-        <td><label for="id_photo">{% trans 'Image' %}:</label> <input type="file" id="id_photo" name="photo"> <span class="helptext">{% trans 'Subir archivo jpg, png, gif con imagen del recurso' %}</span></td>
+        <td><label for="id_photo">{% trans 'Image' %}{% if form.photo.required %}<span class="required">*</span>{% endif %}</label> <input type="file" id="id_photo" name="photo"> <span class="helptext">{% trans 'Subir archivo jpg, png, gif con imagen del recurso' %}</span></td>
       </tr>
     </table>
 

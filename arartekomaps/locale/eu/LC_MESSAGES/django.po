@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-23 13:25+0100\n"
+"POT-Creation-Date: 2015-01-26 12:05+0100\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,8 +183,8 @@ msgstr "%(parentcatname)s: %(childcatname)s (%(cityname)s)"
 msgid "%(parentcatname)s in %(cityname)s"
 msgstr "%(parentcatname)s (%(cityname)s)"
 
-#: mycomment/forms.py:8 templates/places/edit_place.html:97
-#: templates/places/new_place.html:184
+#: mycomment/forms.py:8 templates/places/edit_place.html:186
+#: templates/places/new_place.html:183
 msgid "Image"
 msgstr "Irudia"
 
@@ -291,7 +291,8 @@ msgid "Categoria"
 msgstr "Kategoria"
 
 #: places/models.py:30 places/models.py:50 places/models.py:159
-#: templates/places/new_place.html:79 templates/places/new_place.html:167
+#: templates/places/edit_place.html:81 templates/places/edit_place.html:169
+#: templates/places/new_place.html:78 templates/places/new_place.html:166
 msgid "Description"
 msgstr "Deskribapena"
 
@@ -403,8 +404,9 @@ msgstr "Fisikoa"
 
 #: places/models.py:45
 msgid "Estado del acceso para minusvalia fisica"
-msgstr "Aukeratu elbarritasun zehatz bakoitzarentzat balio bat. Datua "
-"ezagutzen ez bada, “Daturik gabe” aukeratu"
+msgstr ""
+"Aukeratu elbarritasun zehatz bakoitzarentzat balio bat. Datua ezagutzen ez "
+"bada, “Daturik gabe” aukeratu"
 
 #: places/models.py:46 places/models.py:155
 msgid "Visual"
@@ -1021,23 +1023,46 @@ msgstr "Irten"
 msgid "Edit place"
 msgstr "Editatu tokiak"
 
-#: templates/places/edit_place.html:78 templates/places/new_place.html:114
+#: templates/places/edit_place.html:74 templates/places/edit_place.html:77
+#: templates/places/edit_place.html:89 templates/places/edit_place.html:100
+#: templates/places/edit_place.html:116 templates/places/new_place.html:71
+#: templates/places/new_place.html.py:74 templates/places/new_place.html:86
+#: templates/places/new_place.html.py:97 templates/places/new_place.html:113
+msgid "Required"
+msgstr "Beharrezkoa"
+
+#: templates/places/edit_place.html:82 templates/places/edit_place.html:170
+#: templates/places/new_place.html:79 templates/places/new_place.html:167
+msgid "Description [eu]"
+msgstr "Deskribapena [eu]"
+
+#: templates/places/edit_place.html:83 templates/places/edit_place.html:171
+#: templates/places/new_place.html:80 templates/places/new_place.html:168
+msgid "Description [es]"
+msgstr "Deskribapena [es]"
+
+#: templates/places/edit_place.html:84 templates/places/edit_place.html:172
+#: templates/places/new_place.html:81 templates/places/new_place.html:169
+msgid "Description [en]"
+msgstr "Deskribapena [en]"
+
+#: templates/places/edit_place.html:116 templates/places/new_place.html:113
 msgid "Search in Google"
 msgstr "Bilatu Googlen"
 
-#: templates/places/edit_place.html:81 templates/places/new_place.html:118
+#: templates/places/edit_place.html:120 templates/places/new_place.html:117
 msgid "Incluir la dirección completa del recurso para localizarlo en el mapa"
 msgstr "Sartu tokiaren helbide osoa mapan aurkitu ahal izateko"
 
-#: templates/places/edit_place.html:97 templates/places/new_place.html:184
+#: templates/places/edit_place.html:186 templates/places/new_place.html:183
 msgid "Subir archivo jpg, png, gif con imagen del recurso"
 msgstr "Igo baliabidearen irudia duen jpb, png, gif fitxategia"
 
-#: templates/places/edit_place.html:99 templates/places/new_place.html:188
+#: templates/places/edit_place.html:190 templates/places/new_place.html:187
 msgid "Save"
 msgstr "Gorde"
 
-#: templates/places/edit_place.html:100
+#: templates/places/edit_place.html:191
 msgid "Delete"
 msgstr "Ezabatu"
 
@@ -1049,18 +1074,6 @@ msgstr "Toki berria"
 #: templates/places/my_places.html:39
 msgid "Name"
 msgstr "Izena"
-
-#: templates/places/new_place.html:80 templates/places/new_place.html:168
-msgid "Description [eu]"
-msgstr "Deskribapena [eu]"
-
-#: templates/places/new_place.html:81 templates/places/new_place.html:169
-msgid "Description [es]"
-msgstr "Deskribapena [es]"
-
-#: templates/places/new_place.html:82 templates/places/new_place.html:170
-msgid "Description [en]"
-msgstr "Deskribapena [en]"
 
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"
