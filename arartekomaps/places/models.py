@@ -51,7 +51,7 @@ class Place(models.Model):
     afileurl = models.TextField(null=True, blank=True, verbose_name=_('URL ficha'), help_text=_('URL de la ficha'))
 
     # ALTER TABLE `places_place` ADD `author_id` INT(11) NOT NULL , ADD `added` DATETIME NOT NULL ;
-    author = models.ForeignKey(User,null=True, blank=True, verbose_name=_('Autor'))
+    author = models.ForeignKey(User, verbose_name=_('Autor'))
     added = models.DateTimeField(auto_now_add=True, verbose_name=_('Fecha creacion'))
     modified_date=models.DateTimeField(auto_now=True, verbose_name=_('Fecha Modificacion'))
 
