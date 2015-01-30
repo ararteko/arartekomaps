@@ -150,6 +150,7 @@ class Place(models.Model):
         super(Place, self).save()
 
 
+
 class Access(models.Model):
     aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Fisica'))
     avisual = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Visual'))

@@ -169,14 +169,8 @@
 {% endif %}
 
 <p><em>
-  {% if place.source %}
-  {% trans "data_source" %}:
-
-  {% ifequal place.source "nombre" %}
-      {{place.name}}
-  {% else %}
-    {% trans place.source %}
-  {% endifequal %}
+  {% if place.author %}
+  {% trans "data_source" %}: {{place.author.get_fullname}}
   {% endif %}
   {% if place.modified_date %}
   <br />

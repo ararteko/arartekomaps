@@ -26,9 +26,12 @@ class ArartekoUser(CSAbstractSocialUser):
         """
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+    def get_fullname(self):
+        return self.fullname or self.username
+
     def __unicode__(self):
         return u'%s' % self.username
-       
+
     class Meta:
         verbose_name = 'Ararteko erabiltzailea'
         verbose_name_plural = 'Ararteko erabiltzailea'
