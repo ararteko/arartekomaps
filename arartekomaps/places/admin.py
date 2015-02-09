@@ -69,7 +69,9 @@ class PlaceAdmin(admin.ModelAdmin):
         'avisual','aaudio',
         'aintelec','aorganic',
         'source', 'city',)
+    exclude = ('description','adescription')
     actions = [export_excel,export_excel_comments]
+
 admin.site.register(Place, PlaceAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
