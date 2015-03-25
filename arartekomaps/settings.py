@@ -60,7 +60,7 @@ THOUSAND_SEPARATOR = '.'
 gettext_noop = lambda s: s
 
 PAGE_LANGUAGES = (
-  ('es', gettext_noop('Español')),
+  ('es', gettext_noop('Espanol')),
   ('eu', gettext_noop('Euskara')),
   ('en', gettext_noop('English')),
 )
@@ -163,7 +163,7 @@ INSTALLED_APPS = (
     'pagination',
     'social_auth',
     'registration',
-    'cssocialuser',
+    'cssocialprofile',
     'arartekomaps',
     'arartekomaps.arartekouser',
     'arartekomaps.places',
