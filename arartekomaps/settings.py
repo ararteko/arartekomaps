@@ -1,4 +1,6 @@
 # Django settings for arartekomaps project.
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import os
 
@@ -58,7 +60,7 @@ THOUSAND_SEPARATOR = '.'
 gettext_noop = lambda s: s
 
 PAGE_LANGUAGES = (
-  ('es', gettext_noop('Espanol')),
+  ('es', gettext_noop('Español')),
   ('eu', gettext_noop('Euskara')),
   ('en', gettext_noop('English')),
 )
@@ -160,6 +162,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'pagination',
     'social_auth',
+    'registration',
     'cssocialuser',
     'arartekomaps',
     'arartekomaps.arartekouser',
@@ -167,7 +170,6 @@ INSTALLED_APPS = (
     'arartekomaps.locations',
     'arartekomaps.categories',
     'arartekomaps.mycomment',
-    'registration',
     'photologue',
     'pages',
     'gunicorn',

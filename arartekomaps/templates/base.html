@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>{% block head_title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{STATIC_URL}}css/global.css" />
     <!--[if IE]>
@@ -39,7 +39,7 @@
        {% if code != LANGUAGE_CODE %}
           <a href="{% url 'set_lang' %}?language={{code}}&amp;next={{request.path}}">{{lang}}</a>
        {% endif %}
-     {% endfor %}    
+     {% endfor %}
 
 
       {% if not hidesearch %}
@@ -51,7 +51,7 @@
           </form>
           <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_001098326678246934980%3Afr8fiqutrzm"></script>
       {% endif %}
-      
+
       </div>
 </header>
 
@@ -93,7 +93,7 @@
         <p><a href="/pg/about/">{% trans "About the maps" %}</a> | <a href="/pg/accessibility/">{% trans "Accessibility" %}</a>
         <a href="/pg/privacy/">{% trans "Privacy" %}</a></p>
     </div>
-    
+
 <p>{% trans "Project supported by" %} <a href="http://www.ararteko.net/"><img src="{{STATIC_URL}}img/ararteko.gif" alt="Ararteko logo" /></a></p>
 
     <address>
@@ -101,7 +101,7 @@
         01005 Vitoria-Gasteiz<br />
         Tel: 945 13 51 18
     </address>
-</footer> 
+</footer>
 
 </body>
 </html>
