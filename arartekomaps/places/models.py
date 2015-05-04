@@ -6,9 +6,13 @@ from arartekomaps.locations.models import Location
 from arartekomaps.categories.models import Category
 from photologue.models import ImageModel
 from django.utils.translation import ugettext_lazy as _
-from arartekomaps.arartekouser.models import ArartekoUser as User
-from django.db.models import Count
 from django.conf import settings
+try:
+    from django.contrib.auth import get_user_model
+    User = settings.AUTH_USER_MODEL
+except ImportError:
+    from django.contrib.auth.models import User
+from django.db.models import Count
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 
@@ -51,7 +55,7 @@ class Place(models.Model):
     afileurl = models.TextField(null=True, blank=True, verbose_name=_('URL ficha'), help_text=_('URL de la ficha'))
 
     # ALTER TABLE `places_place` ADD `author_id` INT(11) NOT NULL , ADD `added` DATETIME NOT NULL ;
-    author = models.ForeignKey(User, verbose_name=_('Autor'))
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('Autor'))
     added = models.DateTimeField(auto_now_add=True, verbose_name=_('Fecha creacion'))
     modified_date=models.DateTimeField(auto_now=True, verbose_name=_('Fecha Modificacion'))
 
@@ -212,7 +216,7 @@ class Biblio(models.Model):
 class MPhoto(ImageModel):
     name=models.CharField(max_length=255, verbose_name=_('Nombre'), blank=True)
     place=models.ForeignKey(Place, verbose_name=_('Place'))
-    user=models.ForeignKey(User, verbose_name=_('User'), blank=True, null=True)
+    user=models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'), blank=True, null=True)
     def_img = models.BooleanField(verbose_name=_('Default img'),default=False)
 
     def __unicode__(self):

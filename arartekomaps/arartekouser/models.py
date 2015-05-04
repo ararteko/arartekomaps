@@ -10,12 +10,9 @@ MEMBER_PHOTO_SLUG=getattr(settings,'PROFILE_PHOTO_DEFAULT_SLUG','no-profile-phot
 class ArartekoUser(CSAbstractSocialUser):
     is_editor = models.BooleanField(default=False)
     last_updated = models.DateTimeField(auto_now_add=True,editable=False)
-    date_joined  = models.CharField(null=True,blank=True,max_length=245)
+    date_joined  = models.DateTimeField(auto_now_add=True,editable=False)
 
     objects = UserManager()
-
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email',]
 
     def get_profile(self):
         return self

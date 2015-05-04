@@ -5,7 +5,11 @@ import ast
 from arartekomaps.locations.models import Location
 from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, MPhoto
-from arartekomaps.arartekouser.models import ArartekoUser as User
+try:
+    from django.contrib.auth import get_user_model
+    User = settings.AUTH_USER_MODEL
+except ImportError:
+    from django.contrib.auth.models import User
 from arartekomaps.mycomment.models import Comment
 from django.contrib.auth import authenticate, login
 from django.contrib.sites.models import Site

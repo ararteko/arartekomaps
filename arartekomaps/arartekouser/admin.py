@@ -41,7 +41,7 @@ class MyUserCreationForm(ModelForm):
 
 
 
-class ArartekoUserAdmin(UserAdmin):
+class ArartekoUserAdmin(admin.ModelAdmin):
 
     form = MyUserChangeForm
     change_user_password_template = None
@@ -62,10 +62,10 @@ class ArartekoUserAdmin(UserAdmin):
         (_('Permissions'), {'fields': ('is_active','is_editor','is_staff','is_superuser',
                                        'groups', 'user_permissions','last_login'),
                             'classes': ['collapse',],}),
-                            
+
     )
-    
-    
+
+
     add_fieldsets = (
         (None, {
             'classes': ('wide',),

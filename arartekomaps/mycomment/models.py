@@ -1,5 +1,10 @@
 from django.db import models
-from arartekomaps.arartekouser.models import ArartekoUser as User
+from django.conf import settings
+try:
+    from django.contrib.auth import get_user_model
+    User = settings.AUTH_USER_MODEL
+except ImportError:
+    from django.contrib.auth.models import User
 from photologue.models import Photo
 from arartekomaps.places.models import Place
 from arartekomaps.utils.slug import *
@@ -13,7 +18,7 @@ class Comment(models.Model):
 
     slug = models.BigIntegerField(unique=True, db_index=True, editable=False)
 
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     parent = models.ForeignKey(Place, null=True, blank=True, related_name='parent')
     body = models.TextField(null=True, blank=True)

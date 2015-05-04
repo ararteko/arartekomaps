@@ -163,7 +163,7 @@ INSTALLED_APPS = (
     'pagination',
     'social_auth',
     'registration',
-    'cssocialprofile',
+    'cssocialuser',
     'arartekomaps',
     'arartekomaps.arartekouser',
     'arartekomaps.places',
@@ -222,13 +222,26 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.associate.associate_by_email',
+    'social_auth.backends.pipeline.user.get_username',
+    'social_auth.backends.pipeline.user.create_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.user.update_user_details',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'cssocialuser.pipeline.extra_values.twitter_extra_values',
+    'cssocialuser.pipeline.extra_values.facebook_extra_values',
+    'cssocialuser.pipeline.extra_values.openid_extra_values',
+)
+
 # Login
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/u/'
 LOGOUT_URL = '/u/logout'
 PASSWORD_RESET_TIMEOUT_DAYS = 365
 
-# AUTH_PROFILE_MODULE = 'cssocialuser.CSSocialProfile'
+#AUTH_PROFILE_MODULE = 'arartekouser.ArartekoUser'
 AUTH_USER_MODEL = 'arartekouser.ArartekoUser'
 
 # Dajngo-registration settings
