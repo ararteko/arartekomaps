@@ -1,0 +1,18 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% block cscontent %}
+<h1>{% trans "Activate your account" %}</h1>
+
+<p>
+ {% blocktrans %}In order to confirm your email, we have sent you by email the needed information to activate your account. Please, read your email and activate your account.{% endblocktrans %}
+</p>
+<p>{% trans "Check your email." %}</p>
+<p>{% trans "Remember:" %}</p>
+<ul>
+<li>{% trans "Check your spam folder if you don't find our email." %}</li>
+<li>{% trans "Contact us if you don't receive the email." %}</li>
+</ul>
+{% endblock %}
+
+{% block cssidebar %}
+{% endblock %}

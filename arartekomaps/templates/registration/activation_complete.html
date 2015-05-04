@@ -1,0 +1,14 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% block head_title %}Activación de cuenta{% endblock %}
+{% block cscontent %}
+
+<h1>{% trans "Your account has been successfully activated" %}</h1>
+<p>
+{% trans "Your account is activated. Now you can login with the username and password you provided" %}</p>
+
+<p><a href="{% url 'cssocialuser_user_login'%}">{% trans "Log in" %}</a>
+</p>
+
+{% endblock %}
+{% block cssidebar %}{% endblock %}
