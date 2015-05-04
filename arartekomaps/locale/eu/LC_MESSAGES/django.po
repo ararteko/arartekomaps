@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-26 12:05+0100\n"
+"POT-Creation-Date: 2015-05-04 17:07+0200\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: settings.py:61
+#: settings.py:63
 msgid "Espanol"
 msgstr "Español"
 
-#: settings.py:62
+#: settings.py:64
 msgid "Euskara"
 msgstr "Euskara"
 
-#: settings.py:63
+#: settings.py:65
 msgid "English"
 msgstr "English"
 
@@ -42,130 +42,130 @@ msgstr "Nahikoa irisg."
 msgid "Accesible"
 msgstr "Irisgarria"
 
-#: views.py:16 places/models.py:66
+#: views.py:16 places/models.py:70
 msgid "aphysic"
 msgstr "Fisikoa"
 
-#: views.py:17 places/models.py:67
+#: views.py:17 places/models.py:71
 msgid "avisual"
 msgstr "Ikusmenekoa"
 
-#: views.py:18 places/models.py:68
+#: views.py:18 places/models.py:72
 msgid "aaudio"
 msgstr "Entzumenekoa"
 
-#: views.py:19 places/models.py:69
+#: views.py:19 places/models.py:73
 msgid "aintelec"
 msgstr "Adimenekoa"
 
-#: views.py:20 places/models.py:70
+#: views.py:20 places/models.py:74
 msgid "aorganic"
 msgstr "Organikoa"
 
-#: api/handlers.py:84
+#: api/handlers.py:88
 msgid "Ezin izan da kokapen informazioa eskuratu"
 msgstr ""
 
-#: api/handlers.py:112
+#: api/handlers.py:116
 msgid "Ezin dira kategoriak eskuratu"
 msgstr ""
 
-#: api/handlers.py:156 api/handlers.py:269 templates/base.html:93
+#: api/handlers.py:160 api/handlers.py:273 templates/base.html:93
 #: templates/place.html:6 templates/place.html.py:112
 msgid "Accessibility"
 msgstr "Irisgarritasuna"
 
-#: api/handlers.py:188
+#: api/handlers.py:192
 msgid "Sisteman errore bat gertatu da \"lekua\" eskuratzean: "
 msgstr ""
 
-#: api/handlers.py:214
+#: api/handlers.py:218
 msgid ""
 "Lekua ez dago geo-kokatuta. Jarri kontaktuan guneko administratzaileekin."
 msgstr ""
 
-#: api/handlers.py:221
+#: api/handlers.py:225
 msgid "Latitude eta longitudeak ezin izan dira eskuratu."
 msgstr ""
 
-#: api/handlers.py:295
+#: api/handlers.py:299
 msgid "Egin duzun bilaketarako ez dugu ezer aurkitu."
 msgstr ""
 
-#: api/handlers.py:299
+#: api/handlers.py:303
 msgid "Sisteman errore bat gertatu da \"lekuak\" eskuratzean: "
 msgstr ""
 
-#: api/handlers.py:326 api/handlers.py:361
+#: api/handlers.py:330 api/handlers.py:365
 msgid ""
 "Datu gehiago behar ditugu. Erabiltzaile izena, eposta edo pasahitza falta "
 "zaigu."
 msgstr ""
 
-#: api/handlers.py:331
+#: api/handlers.py:335
 msgid ""
 "Erabiltzaile izenak hizki, zenbaki eta @/./+/-/_ karaktereak bakarrik izan "
 "ditzazke."
 msgstr ""
 
-#: api/handlers.py:336 api/handlers.py:378
+#: api/handlers.py:340 api/handlers.py:382
 msgid ""
 "Erabiltzaile izen hau lehendik ere existitzen da. Mesedez, erabili beste "
 "izen bat."
 msgstr ""
 
-#: api/handlers.py:339
+#: api/handlers.py:343
 msgid "Arazo bat egon da aktibazio eposta bidaltzean"
 msgstr ""
 
-#: api/handlers.py:342
+#: api/handlers.py:346
 msgid "Erabiltzailea erregistratzean errore bat gertatu da"
 msgstr ""
 
-#: api/handlers.py:354 api/handlers.py:395
+#: api/handlers.py:358 api/handlers.py:399
 msgid ""
 "Erabiltzailea ez dago aktibatuta. Mesedez, begiratu zure epostara bidali "
 "dugun mezua eta jarraitu aktibazio pausoak."
 msgstr ""
 
-#: api/handlers.py:358
+#: api/handlers.py:362
 msgid "Erabiltzailea edo pasahitz okerrak. Mesedez, saiatu berriro."
 msgstr ""
 
-#: api/handlers.py:386
+#: api/handlers.py:390
 msgid "Sare sozialetako autentikazioak huts egin du: "
 msgstr ""
 
-#: api/handlers.py:398
+#: api/handlers.py:402
 msgid ""
 "Jatorri ezezaguneko erabiltzailea. Jarri administratzaileekin harremanetan."
 msgstr ""
 
-#: api/handlers.py:429
+#: api/handlers.py:433
 msgid ""
 "Erabiltzaile hori ez da sisteman existitzen. Jarri administratzailearekin "
 "kontaktuan."
 msgstr ""
 
-#: api/handlers.py:448
+#: api/handlers.py:452
 msgid "Irudiaren formatua ez da egokia. JPG formatuan bidali mesedez."
 msgstr ""
 
-#: api/handlers.py:453
+#: api/handlers.py:457
 msgid "Iruzkinak ez dauka testurik. Testua beharrezkoa da."
 msgstr ""
 
-#: api/handlers.py:457
+#: api/handlers.py:461
 msgid "Iruzkina utzi nahi den \"lekua\" aurkitzean errorea: "
 msgstr ""
 
-#: api/handlers.py:460
+#: api/handlers.py:464
 msgid ""
 "Erabiltzaile saioa iraungi da. Berriz sartu zure erabiltzaile eta "
 "pasahitzarekin."
 msgstr ""
 
-#: api/handlers.py:493
+#: api/handlers.py:497
 msgid "Iruzkinak eskuratzean errore bat gertatu da: "
 msgstr ""
 
@@ -222,11 +222,11 @@ msgstr ""
 "Irudiaren formatua ez da egokia. Mesedez, kargatu irudia onartutako "
 "formatuetako batean!"
 
-#: mycomment/models.py:52
+#: mycomment/models.py:57
 msgid "[NEW COMMENT] "
 msgstr "[IRUZKIN BERRIA]"
 
-#: mycomment/models.py:52
+#: mycomment/models.py:57
 msgid "New comment saved: "
 msgstr "Iruzkin berria gorde dugu:"
 
@@ -235,7 +235,7 @@ msgstr "Iruzkin berria gorde dugu:"
 msgid "City"
 msgstr "Herria"
 
-#: places/forms.py:8 places/models.py:34
+#: places/forms.py:8 places/models.py:38
 msgid "Nombre del municipio"
 msgstr "Aukeratu herria, hiria, etab. zein udalerriari dagokion."
 
@@ -253,14 +253,14 @@ msgstr ""
 msgid "Address"
 msgstr "Helbidea"
 
-#: places/forms.py:10 places/models.py:31
+#: places/forms.py:10 places/models.py:35
 msgid "Direccion 1 del lugar"
 msgstr ""
 "Jarri eremu honetan tokiaren helbide osoa (kale zenbakia barne). Euskarazko "
 "edo gaztelaniazko deitura erabil daiteke. Behin hizkuntzetariko bat aukeratu "
 "ostean, gainerako toki guztietan berdina erabiltzea gomendatzen dugu."
 
-#: places/forms.py:11 places/models.py:32
+#: places/forms.py:11 places/models.py:36
 msgid "Direccion 2 del lugar"
 msgstr ""
 "Jarri eremu honetan Auzoei erreferentzia egiten dien edota kale izena "
@@ -277,253 +277,253 @@ msgid ""
 msgstr ""
 "Baliabidearen irisgarritasunari buruz informazio xehea duen kanpoko webgunea"
 
-#: places/models.py:27
+#: places/models.py:31
 msgid "Si esta vacio se actualiza al guardar"
 msgstr "Hutsa badago gordetzean eguneratzen da"
 
-#: places/models.py:28 places/models.py:165 places/models.py:172
-#: places/models.py:212
+#: places/models.py:32 places/models.py:170 places/models.py:177
+#: places/models.py:217
 msgid "Nombre"
 msgstr "Izena"
 
-#: places/models.py:29
+#: places/models.py:33
 msgid "Categoria"
 msgstr "Kategoria"
 
-#: places/models.py:30 places/models.py:50 places/models.py:159
+#: places/models.py:34 places/models.py:54 places/models.py:164
 #: templates/places/edit_place.html:81 templates/places/edit_place.html:169
 #: templates/places/new_place.html:78 templates/places/new_place.html:166
 msgid "Description"
 msgstr "Deskribapena"
 
-#: places/models.py:30
+#: places/models.py:34
 msgid "Descripcion del lugar"
 msgstr "Tokiari buruzko interes orokorreko informazioa"
 
-#: places/models.py:31
+#: places/models.py:35
 msgid "Address 1"
 msgstr "Helbidea 1"
 
-#: places/models.py:32
+#: places/models.py:36
 msgid "Address 2"
 msgstr "Helbidea 2"
 
-#: places/models.py:33
+#: places/models.py:37
 msgid "Codigo postal"
 msgstr "Posta kodea"
 
-#: places/models.py:33
+#: places/models.py:37
 msgid "Codigo postal del municipio"
 msgstr "Udalerriaren posta kodea"
 
-#: places/models.py:34
+#: places/models.py:38
 msgid "Municipio"
 msgstr "Udalerria"
 
-#: places/models.py:35
+#: places/models.py:39
 msgid "Localidad"
 msgstr "Herria"
 
-#: places/models.py:35
+#: places/models.py:39
 msgid "Nombre de localidad"
 msgstr ""
 "Erabili udalerri handigo baten parte diren herrien kasuan, non, udalerri eta "
 "herriaren izenak ez datozen bat."
 
-#: places/models.py:36
+#: places/models.py:40
 msgid "Codigo entidad"
 msgstr "Entitate kodea"
 
-#: places/models.py:37
+#: places/models.py:41
 msgid "Codigo origen"
 msgstr "Jatorri kodea"
 
-#: places/models.py:37
+#: places/models.py:41
 msgid "Codigo de la ficha en la base de datos de origen"
 msgstr "Fitxaren kodea jatorrizko datu basean"
 
-#: places/models.py:38
+#: places/models.py:42
 msgid "Latitud"
 msgstr "Latitudea"
 
-#: places/models.py:38
+#: places/models.py:42
 msgid "Latitud GPS"
 msgstr "GPS latitudea"
 
-#: places/models.py:39
+#: places/models.py:43
 msgid "Longitud"
 msgstr "Longitudea"
 
-#: places/models.py:39
+#: places/models.py:43
 msgid "Longitud GPS"
 msgstr "GPS longitudea"
 
-#: places/models.py:40
+#: places/models.py:44
 msgid "Telefono"
 msgstr "Telefonoa"
 
-#: places/models.py:40
+#: places/models.py:44
 msgid "Numero de telefono"
 msgstr "Bereiztu zenbakiak hiruko taldetan"
 
-#: places/models.py:41
+#: places/models.py:45
 msgid "Fax"
 msgstr "Faxa"
 
-#: places/models.py:41
+#: places/models.py:45
 msgid "Numero de FAX"
 msgstr "Bereiztu zenbakiak hiruko taldetan"
 
-#: places/models.py:42
+#: places/models.py:46
 msgid "Nombre URL"
 msgstr "URL izena"
 
-#: places/models.py:42
+#: places/models.py:46
 msgid "Nombre descriptibo del URL"
 msgstr "URLaren izen deskribatzailea"
 
-#: places/models.py:43
+#: places/models.py:47
 msgid "URL"
 msgstr "URLa"
 
-#: places/models.py:43
+#: places/models.py:47
 msgid "URL del sitio web"
 msgstr "Baliabidearen kanpoko webgunea"
 
-#: places/models.py:44
+#: places/models.py:48 templates/registration/registration_form.html:27
 msgid "Email"
 msgstr "Eposta"
 
-#: places/models.py:44
+#: places/models.py:48
 msgid "Email de contacto"
 msgstr "Kontakturako eposta"
 
-#: places/models.py:45 places/models.py:154
+#: places/models.py:49 places/models.py:159
 msgid "Fisica"
 msgstr "Fisikoa"
 
-#: places/models.py:45
+#: places/models.py:49
 msgid "Estado del acceso para minusvalia fisica"
 msgstr ""
 "Aukeratu elbarritasun zehatz bakoitzarentzat balio bat. Datua ezagutzen ez "
 "bada, “Daturik gabe” aukeratu"
 
-#: places/models.py:46 places/models.py:155
+#: places/models.py:50 places/models.py:160
 msgid "Visual"
 msgstr "Ikusmenekoa"
 
-#: places/models.py:46
+#: places/models.py:50
 msgid "Estado del acceso para minusvalia visual"
 msgstr "Ikusmeneko elbarritasunaren irisgarritasun egoera"
 
-#: places/models.py:47 places/models.py:156
+#: places/models.py:51 places/models.py:161
 msgid "Audio"
 msgstr "Entzumenekoa"
 
-#: places/models.py:47
+#: places/models.py:51
 msgid "Estado del acceso para minusvalia auditiva"
 msgstr "Entzumeneko elbarritasunaren irisgarritasun egoera"
 
-#: places/models.py:48 places/models.py:157
+#: places/models.py:52 places/models.py:162
 msgid "Intelectual"
 msgstr "Adimenekoa"
 
-#: places/models.py:48
+#: places/models.py:52
 msgid "Estado del acceso para minusvalia intelectual"
 msgstr "Adimeneko elbarritasunaren irisgarritasun egoera"
 
-#: places/models.py:49 places/models.py:158
+#: places/models.py:53 places/models.py:163
 msgid "Organica"
 msgstr "Organikoa"
 
-#: places/models.py:49
+#: places/models.py:53
 msgid "Estado del acceso para minusvalia organica"
 msgstr "Elbarritasun organikoaren irisgarritasun egoera"
 
-#: places/models.py:50
+#: places/models.py:54
 msgid "Descripcion de los datos de acceso"
 msgstr ""
 "Toki honen irisgarritasun baldintzei buruzko xehetasun gehiagoko informazioa."
 
-#: places/models.py:51 places/models.py:160
+#: places/models.py:55 places/models.py:165
 msgid "URL ficha"
 msgstr "URL fitxa"
 
-#: places/models.py:51
+#: places/models.py:55
 msgid "URL de la ficha"
 msgstr "Fitxaren URLa"
 
-#: places/models.py:54
+#: places/models.py:58
 msgid "Autor"
 msgstr "Egilea"
 
-#: places/models.py:55
+#: places/models.py:59
 msgid "Fecha creacion"
 msgstr "Sortze data"
 
-#: places/models.py:56
+#: places/models.py:60
 msgid "Fecha Modificacion"
 msgstr "Editatze data"
 
-#: places/models.py:59
+#: places/models.py:63
 msgid "Mostrar publicamente este lugar"
 msgstr "Erakutsi toki hau publikoki"
 
-#: places/models.py:59
+#: places/models.py:63
 msgid "Es publica"
 msgstr "Publikoa da"
 
-#: places/models.py:66 places/models.py:67 places/models.py:68
-#: places/models.py:69 places/models.py:70
+#: places/models.py:70 places/models.py:71 places/models.py:72
+#: places/models.py:73 places/models.py:74
 #, python-format
 msgid "access_%s"
 msgstr ""
 
-#: places/models.py:161 places/models.py:209 places/models.py:213
+#: places/models.py:166 places/models.py:214 places/models.py:218
 msgid "Place"
 msgstr "Tokia"
 
-#: places/models.py:187
+#: places/models.py:192
 msgid "Tipo"
 msgstr "Mota"
 
-#: places/models.py:188
+#: places/models.py:193
 msgid "Ano inicio"
 msgstr "Urte hasiera"
 
-#: places/models.py:189
+#: places/models.py:194
 msgid "Institucion"
 msgstr "Erakundea"
 
-#: places/models.py:196
+#: places/models.py:201
 msgid "Tipo institucion"
 msgstr "Erakundea"
 
-#: places/models.py:197
+#: places/models.py:202
 msgid "Horario apertura"
 msgstr "Irekiera ordutegia"
 
-#: places/models.py:202
+#: places/models.py:207
 msgid "Tipo de acceso"
 msgstr "Irisgarritasun mota"
 
-#: places/models.py:206
+#: places/models.py:211
 msgid "Tipo de centro"
 msgstr "Egoitza mota"
 
-#: places/models.py:207
+#: places/models.py:212
 msgid "Temas"
 msgstr "Gaiak"
 
-#: places/models.py:208
+#: places/models.py:213
 msgid "Servicios"
 msgstr "Zerbitzuak"
 
-#: places/models.py:214
+#: places/models.py:219
 msgid "User"
 msgstr "Erabiltzailea"
 
-#: places/models.py:215
+#: places/models.py:220
 msgid "Default img"
 msgstr "Defektuzko irudia"
 
@@ -619,7 +619,7 @@ msgstr "esaiguzu zer iruditzen zaizun toki honen irisgarritasuna."
 msgid "Comment"
 msgstr "Iruzkindu"
 
-#: templates/comments.html:33 templates/place.html:213
+#: templates/comments.html:33 templates/place.html:207
 msgid "Add comment"
 msgstr "Gehitu iruzkina"
 
@@ -965,28 +965,28 @@ msgstr "Zerbitzuak"
 msgid "data_source"
 msgstr "Datuen jatorria"
 
-#: templates/place.html:186
+#: templates/place.html:180
 msgid "modified_date"
 msgstr "Eguneraketa data"
 
-#: templates/place.html:204
+#: templates/place.html:198
 msgid "Comments"
 msgstr "Iruzkinak"
 
-#: templates/place.html:218 templates/useroptions.html:17
+#: templates/place.html:212 templates/useroptions.html:17
 #: templates/registration/login.html:6 templates/registration/login.html:43
 msgid "Sign in"
 msgstr "Sartu"
 
-#: templates/place.html:218
+#: templates/place.html:212
 msgid " to write a comment."
 msgstr "hemen iruzkinak egiteko."
 
-#: templates/place.html:229
+#: templates/place.html:223
 msgid "Map"
 msgstr "Mapa"
 
-#: templates/place.html:234
+#: templates/place.html:228
 msgid "Nearest places"
 msgstr "Gertuko tokiak"
 
@@ -1075,11 +1075,50 @@ msgstr "Toki berria"
 msgid "Name"
 msgstr "Izena"
 
+#: templates/registration/activation_complete.html:6
+msgid "Your account has been successfully activated"
+msgstr "Zure kontua aktibatua izan da"
+
+#: templates/registration/activation_complete.html:8
+msgid ""
+"Your account is activated. Now you can login with the username and password "
+"you provided"
+msgstr ""
+"Zure erabiltzaile kontua egoki sortu da. Orain erabiltzaile eta pasahitza "
+"erabili ditzazkezu"
+
+#: templates/registration/activation_complete.html:10
+#: templates/registration/login.html:26
+msgid "Log in"
+msgstr "Sartu"
+
+#: templates/registration/activation_email.txt:4
+msgid "Hello"
+msgstr "Kaixo"
+
+#: templates/registration/activation_email.txt:6
+#, python-format
+msgid "You have requested joining %(sitename)s."
+msgstr "%(sitename)s webgunean sarrera eskatu duzu."
+
+#: templates/registration/activation_email.txt:8
+#, python-format
+msgid "Please click in this activation link before %(expirationdays)s days:"
+msgstr ""
+"Mesedez, klik egin aktibazio lotura honetan %(expirationdays)s egun baino "
+"lehen:"
+
+#: templates/registration/activation_email.txt:12
+#, fuzzy, python-format
+msgid "The team at %(sitename)s."
+msgstr "%(sitename)s-ko lan taldea."
+
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"
 msgstr "Berria naiz hemen. Sortu kontu bat"
 
 #: templates/registration/login.html:10
+#: templates/registration/registration_form.html:42
 msgid "Create account"
 msgstr "Erabiltzaile kontua sortzea"
 
@@ -1091,11 +1130,8 @@ msgstr "Twitter edo Facebook bidez sartu"
 msgid "You can use your Facebook or Twitter accounts to log in"
 msgstr "Twitter edo Facebook bidez sartu"
 
-#: templates/registration/login.html:26
-msgid "Log in"
-msgstr "Sartu"
-
 #: templates/registration/login.html:29
+#: templates/registration/registration_form.html:7
 msgid "You are already logged in"
 msgstr "Jadanik barruan zaude."
 
@@ -1104,16 +1140,60 @@ msgid "Your username and password do not match. Please try again."
 msgstr "Zure erabiltzaile eta pasahitza ez datoz bat. Saiatu berriro mesedez."
 
 #: templates/registration/login.html:38
+#: templates/registration/registration_form.html:21
 msgid "Username"
 msgstr ""
 
 #: templates/registration/login.html:40
+#: templates/registration/registration_form.html:32
 msgid "Password"
 msgstr "Pasahitza"
 
 #: templates/registration/login.html:50
 msgid "I have forgotten my password"
 msgstr "Nire pasahitza ahaztu dut"
+
+#: templates/registration/registration_complete.html:4
+msgid "Activate your account"
+msgstr "Aktibatu zure erabiltzaile kontua"
+
+#: templates/registration/registration_complete.html:7
+msgid ""
+"In order to confirm your email, we have sent you by email the needed "
+"information to activate your account. Please, read your email and activate "
+"your account."
+msgstr ""
+"Zure helbidea konfirmatzeko, epostaz bidali dizugu zure erabiltzaile kontua "
+"aktibatzeko beharrezkoa den informazioa. Mesedez, begiratu zure eposta eta "
+"aktibatu zure erabiltzaile kontua"
+
+#: templates/registration/registration_complete.html:9
+msgid "Check your email."
+msgstr "Begiratu zure eposta."
+
+#: templates/registration/registration_complete.html:10
+msgid "Remember:"
+msgstr "Gogoratu"
+
+#: templates/registration/registration_complete.html:12
+msgid "Check your spam folder if you don't find our email."
+msgstr "Begiratu spam karpetan, ez baduzu mezua aurkitzen."
+
+#: templates/registration/registration_complete.html:13
+msgid "Contact us if you don't receive the email."
+msgstr "Jarri gurekin harremanetan ez baduzu eposta aurkitzen."
+
+#: templates/registration/registration_form.html:5
+msgid "Register"
+msgstr "Izena eman"
+
+#: templates/registration/registration_form.html:37
+msgid "Confirm password"
+msgstr "Pasahitza konfirmatu"
+
+#: templates/registration/registration_form.html:50
+msgid "Register using Facebook or Twitter"
+msgstr "Facebook edo Twitter erabiliz sartu"
 
 #, fuzzy
 #~ msgid "Física"
@@ -1244,30 +1324,6 @@ msgstr "Nire pasahitza ahaztu dut"
 #~ "Arazo bat izan dugu zure kontua aktibatzean. Balitek lotura zaharkituta "
 #~ "izatea. Mesedez, saiatu berriro"
 
-#~ msgid "Your account has been successfully activated"
-#~ msgstr "Zure kontua aktibatua izan da"
-
-#~ msgid ""
-#~ "Your account is activated. Now you can login with the username and "
-#~ "password you provided"
-#~ msgstr ""
-#~ "Zure erabiltzaile kontua egoki sortu da. Orain erabiltzaile eta pasahitza "
-#~ "erabili ditzazkezu"
-
-#~ msgid "Hello"
-#~ msgstr "Kaixo"
-
-#~ msgid "You have requested joining %(sitename)s."
-#~ msgstr "%(sitename)s webgunean sarrera eskatu duzu."
-
-#~ msgid "Please click in this activation link before %(expirationdays)s days:"
-#~ msgstr ""
-#~ "Mesedez, klik egin aktibazio lotura honetan %(expirationdays)s egun baino "
-#~ "lehen:"
-
-#~ msgid "The team at %(site_name)s."
-#~ msgstr "%(sitename)s-ko lan taldea."
-
 #~ msgid "Account activation on"
 #~ msgstr "Erabiltzaile kontu aktibazioa:"
 
@@ -1314,39 +1370,6 @@ msgstr "Nire pasahitza ahaztu dut"
 
 #~ msgid "Please write your email to reset your password"
 #~ msgstr "Sartu zure eposta pasahitza berrezartzeko"
-
-#~ msgid "Activate your account"
-#~ msgstr "Aktibatu zure erabiltzaile kontua"
-
-#~ msgid ""
-#~ "In order to confirm your email, we have sent you by email the needed "
-#~ "information to activate your account. Please, read your email and "
-#~ "activate your account."
-#~ msgstr ""
-#~ "Zure helbidea konfirmatzeko, epostaz bidali dizugu zure erabiltzaile "
-#~ "kontua aktibatzeko beharrezkoa den informazioa. Mesedez, begiratu zure "
-#~ "eposta eta aktibatu zure erabiltzaile kontua"
-
-#~ msgid "Check your email."
-#~ msgstr "Begiratu zure eposta."
-
-#~ msgid "Remember:"
-#~ msgstr "Gogoratu"
-
-#~ msgid "Check your spam folder if you don't find our email."
-#~ msgstr "Begiratu spam karpetan, ez baduzu mezua aurkitzen."
-
-#~ msgid "Contact us if you don't receive the email."
-#~ msgstr "Jarri gurekin harremanetan ez baduzu eposta aurkitzen."
-
-#~ msgid "Register"
-#~ msgstr "Izena eman"
-
-#~ msgid "Confirm password"
-#~ msgstr "Pasahitza konfirmatu"
-
-#~ msgid "Register using Facebook or Twitter"
-#~ msgstr "Facebook edo Twitter erabiliz sartu"
 
 #~ msgid "Your personal data"
 #~ msgstr "Zure informazio pertsonala"
