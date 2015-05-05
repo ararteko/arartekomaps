@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-04 17:12+0200\n"
+"POT-Creation-Date: 2015-05-05 15:04+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
@@ -1080,6 +1080,40 @@ msgstr ""
 #: templates/registration/activation_complete.html:10
 #: templates/registration/login.html:26
 msgid "Log in"
+msgstr ""
+
+#: templates/registration/activation_email.html:7
+msgid "registration"
+msgstr ""
+
+#: templates/registration/activation_email.html:12
+#, python-format
+msgid ""
+"\n"
+"    You (or someone pretending to be you) have asked to register an account "
+"at\n"
+"    %(site_name)s.  If this wasn't you, please ignore this email\n"
+"    and your address will be removed from our records.\n"
+"    "
+msgstr ""
+
+#: templates/registration/activation_email.html:19
+#, python-format
+msgid ""
+"\n"
+"    To activate this account, please click the following link within the "
+"next\n"
+"    %(expiration_days)s days:\n"
+"    "
+msgstr ""
+
+#: templates/registration/activation_email.html:31
+#, python-format
+msgid ""
+"\n"
+"    Sincerely,\n"
+"    %(site_name)s Management\n"
+"    "
 msgstr ""
 
 #: templates/registration/activation_email.txt:4

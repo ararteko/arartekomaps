@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-04 17:12+0200\n"
+"POT-Creation-Date: 2015-05-05 15:04+0200\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1092,6 +1092,41 @@ msgstr ""
 msgid "Log in"
 msgstr "Sartu"
 
+#: templates/registration/activation_email.html:7
+#, fuzzy
+msgid "registration"
+msgstr "Deskribapena"
+
+#: templates/registration/activation_email.html:12
+#, python-format
+msgid ""
+"\n"
+"    You (or someone pretending to be you) have asked to register an account "
+"at\n"
+"    %(site_name)s.  If this wasn't you, please ignore this email\n"
+"    and your address will be removed from our records.\n"
+"    "
+msgstr ""
+
+#: templates/registration/activation_email.html:19
+#, python-format
+msgid ""
+"\n"
+"    To activate this account, please click the following link within the "
+"next\n"
+"    %(expiration_days)s days:\n"
+"    "
+msgstr ""
+
+#: templates/registration/activation_email.html:31
+#, python-format
+msgid ""
+"\n"
+"    Sincerely,\n"
+"    %(site_name)s Management\n"
+"    "
+msgstr ""
+
 #: templates/registration/activation_email.txt:4
 msgid "Hello"
 msgstr "Kaixo"
@@ -1142,7 +1177,7 @@ msgstr "Zure erabiltzaile eta pasahitza ez datoz bat. Saiatu berriro mesedez."
 #: templates/registration/login.html:38
 #: templates/registration/registration_form.html:21
 msgid "Username"
-msgstr ""
+msgstr "Erabiltzaile izena"
 
 #: templates/registration/login.html:40
 #: templates/registration/registration_form.html:32
@@ -1194,197 +1229,3 @@ msgstr "Pasahitza konfirmatu"
 #: templates/registration/registration_form.html:50
 msgid "Register using Facebook or Twitter"
 msgstr "Facebook edo Twitter erabiliz sartu"
-
-#, fuzzy
-#~ msgid "Física"
-#~ msgstr "Musika"
-
-#~ msgid "Gehitu"
-#~ msgstr "Gehitu"
-
-#~ msgid "There is no comment yet"
-#~ msgstr "Ez dago iruzkinik oraindik"
-
-#~ msgid "btype"
-#~ msgstr "Mota"
-
-#~ msgid "access_type"
-#~ msgstr "Sarrera mota"
-
-#~ msgid "center_type"
-#~ msgstr "Zentru mota"
-
-#~ msgid "topics"
-#~ msgstr "Gaiak"
-
-#~ msgid "cat_tourism"
-#~ msgstr "Turismoa"
-
-#~ msgid "cat_sleep"
-#~ msgstr "Ostatua"
-
-#~ msgid "cat_hotel"
-#~ msgstr "Hotela"
-
-#~ msgid "cat_agroturismo"
-#~ msgstr "Nekazalturismoa"
-
-#~ msgid "cat_apartamento"
-#~ msgstr "Apartamentuak"
-
-#~ msgid "cat_camping"
-#~ msgstr "Kanpina"
-
-#~ msgid "cat_casa-particular"
-#~ msgstr "Etxe partikularra"
-
-#~ msgid "cat_casa-rural"
-#~ msgstr "Landetxea"
-
-#~ msgid "cat_hotel-apartamento"
-#~ msgstr "Hotel-apartamentuak"
-
-#~ msgid "cat_pension"
-#~ msgstr "Pentsioa"
-
-#~ msgid "cat_albergue"
-#~ msgstr "Aterpetxea"
-
-#~ msgid "cat_eat"
-#~ msgstr "Jan"
-
-#~ msgid "cat_restaurant"
-#~ msgstr "Jatetxea"
-
-#~ msgid "cat_sidreria"
-#~ msgstr "Sagardotegia"
-
-#~ msgid "cat_asador"
-#~ msgstr "Erretegia"
-
-#~ msgid "cat_transportation"
-#~ msgstr "Garraioa"
-
-#~ msgid "cat_bus"
-#~ msgstr "Autobusa"
-
-#~ msgid "cat_train"
-#~ msgstr "Trena"
-
-#~ msgid "cat_tram"
-#~ msgstr "Tranbia"
-
-#~ msgid "cat_metro"
-#~ msgstr "Metroa"
-
-#~ msgid "cat_culture"
-#~ msgstr "Kultura"
-
-#~ msgid "cat_library"
-#~ msgstr "Liburutegia"
-
-#~ msgid "cat_museum"
-#~ msgstr "Museoa"
-
-#~ msgid "cat_%s"
-#~ msgstr "cat_%s"
-
-#~ msgid "Add a photo"
-#~ msgstr "Argazkia gehitu"
-
-#~ msgid "Basic account"
-#~ msgstr "Oinarrizko kontua"
-
-#~ msgid "Photo"
-#~ msgstr "Argazkiak"
-
-#~ msgid "Social networks"
-#~ msgstr "Sare sozialak"
-
-#~ msgid "Your account has been activated"
-#~ msgstr "Zure kontua aktibatua izan da"
-
-#~ msgid ""
-#~ "Your account has been properly created. You can use the username and "
-#~ "password that you entered"
-#~ msgstr ""
-#~ "Zure erabiltzaile kontua egoki sortu da. Orain erabiltzaile eta pasahitza "
-#~ "erabili ditzazkezu"
-
-#~ msgid "to login in the site"
-#~ msgstr "webgunean sartzeko"
-
-#~ msgid "Your account could not be activated"
-#~ msgstr "Ezin izan dugu zure erabiltzaile kontua aktibatu"
-
-#~ msgid ""
-#~ "We had a problem while activating your account. The link was probably "
-#~ "outdated. Please, try again"
-#~ msgstr ""
-#~ "Arazo bat izan dugu zure kontua aktibatzean. Balitek lotura zaharkituta "
-#~ "izatea. Mesedez, saiatu berriro"
-
-#~ msgid "Account activation on"
-#~ msgstr "Erabiltzaile kontu aktibazioa:"
-
-#~ msgid "Reset password"
-#~ msgstr "Pasahitza berrezarri"
-
-#~ msgid "Enter your email to reset your password"
-#~ msgstr "Sartu zure eposta pasahitza berrezarri dezagun"
-
-#~ msgid "Submit"
-#~ msgstr "Bidali"
-
-#~ msgid "You have reset your password"
-#~ msgstr "Pasahitza berrezarri duzu"
-
-#~ msgid "New password"
-#~ msgstr "Pasahitz berria"
-
-#~ msgid "Please enter twice the new password"
-#~ msgstr "Mesedez emaiguzu bi aldiz pasahitza"
-
-#~ msgid "Password reset failed"
-#~ msgstr "Pasahitza berrezartzeak huts egin du"
-
-#~ msgid ""
-#~ "We have sent to your email the needed information to reset your password"
-#~ msgstr ""
-#~ "Mezu bat bidali dizugu pasahitza berrezartzeko beharrezko informazioarekin"
-
-#~ msgid ""
-#~ "You are receiving this email because you requested resetting the password "
-#~ "at %(site_name)s."
-#~ msgstr ""
-#~ "Mezu hau bidali dizugu, %(site_name)s webgunean pasahitza berrezartzea "
-#~ "eskatu duzulako."
-
-#~ msgid "All you have to do is click in this link and set your new password:"
-#~ msgstr ""
-#~ "Egin behar duzun guztia, lotura honetan klik egin eta zure pasahitza "
-#~ "ezartzea da:"
-
-#~ msgid "Remember that you used the username: %(username)s."
-#~ msgstr "Gogoratu zure erabiltzailea hau dela: %(username)s."
-
-#~ msgid "Please write your email to reset your password"
-#~ msgstr "Sartu zure eposta pasahitza berrezartzeko"
-
-#~ msgid "Your personal data"
-#~ msgstr "Zure informazio pertsonala"
-
-#~ msgid "You don't have a photo yet"
-#~ msgstr "Oraindik ez duzu argazkirik"
-
-#~ msgid "Twitter linked"
-#~ msgstr "Twitterrekin lotuta"
-
-#~ msgid "Link Twitter for this user"
-#~ msgstr "Lotu Twitter erabiltzaile honi"
-
-#~ msgid "Facebook linked"
-#~ msgstr "Facebookekin lotuta"
-
-#~ msgid "Link Facebook for this user"
-#~ msgstr "Lotu Facebook erabiltzaile honi"

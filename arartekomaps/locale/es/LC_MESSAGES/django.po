@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-04 17:12+0200\n"
+"POT-Creation-Date: 2015-05-05 15:04+0200\n"
 "PO-Revision-Date: 2015-05-04 16:42+0100\n"
 "Last-Translator: Urtzi Odriozola <urtzi.odriozola@gmail.com>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -172,7 +172,7 @@ msgstr ""
 
 #: arartekouser/admin.py:62
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 #: locations/views.py:55
 #, python-format
@@ -1089,40 +1089,6 @@ msgstr "Nuevo lugar"
 msgid "Name"
 msgstr "Nombre"
 
-#: templates/registration/activation_complete.html:6
-msgid "Your account has been successfully activated"
-msgstr ""
-
-#: templates/registration/activation_complete.html:8
-msgid ""
-"Your account is activated. Now you can login with the username and password "
-"you provided"
-msgstr ""
-
-#: templates/registration/activation_complete.html:10
-#: templates/registration/login.html:26
-msgid "Log in"
-msgstr "Entrar"
-
-#: templates/registration/activation_email.txt:4
-msgid "Hello"
-msgstr ""
-
-#: templates/registration/activation_email.txt:6
-#, python-format
-msgid "You have requested joining %(sitename)s."
-msgstr ""
-
-#: templates/registration/activation_email.txt:8
-#, python-format
-msgid "Please click in this activation link before %(expirationdays)s days:"
-msgstr ""
-
-#: templates/registration/activation_email.txt:12
-#, python-format
-msgid "The team at %(sitename)s."
-msgstr ""
-
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"
 msgstr "Soy nuevo aquí. Crear cuenta"
@@ -1163,43 +1129,5 @@ msgstr "Contraseña"
 msgid "I have forgotten my password"
 msgstr "He olvidado mi contraseña"
 
-#: templates/registration/registration_complete.html:4
-#, fuzzy
-msgid "Activate your account"
-msgstr "Crear una cuenta"
 
-#: templates/registration/registration_complete.html:7
-msgid ""
-"In order to confirm your email, we have sent you by email the needed "
-"information to activate your account. Please, read your email and activate "
-"your account."
-msgstr ""
 
-#: templates/registration/registration_complete.html:9
-msgid "Check your email."
-msgstr ""
-
-#: templates/registration/registration_complete.html:10
-msgid "Remember:"
-msgstr ""
-
-#: templates/registration/registration_complete.html:12
-msgid "Check your spam folder if you don't find our email."
-msgstr ""
-
-#: templates/registration/registration_complete.html:13
-msgid "Contact us if you don't receive the email."
-msgstr ""
-
-#: templates/registration/registration_form.html:5
-msgid "Register"
-msgstr ""
-
-#: templates/registration/registration_form.html:37
-msgid "Confirm password"
-msgstr ""
-
-#: templates/registration/registration_form.html:50
-#, fuzzy
-msgid "Register using Facebook or Twitter"
-msgstr "Entrar utilizando Facebook o Twitter"
