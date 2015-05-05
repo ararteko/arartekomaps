@@ -230,9 +230,9 @@ SOCIAL_AUTH_PIPELINE = (
     'social_auth.backends.pipeline.social.associate_user',
     'social_auth.backends.pipeline.user.update_user_details',
     'social_auth.backends.pipeline.social.load_extra_data',
-    'cssocialuser.pipeline.extra_values.twitter_extra_values',
-    'cssocialuser.pipeline.extra_values.facebook_extra_values',
-    'cssocialuser.pipeline.extra_values.openid_extra_values',
+    #'cssocialuser.pipeline.extra_values.twitter_extra_values',
+    #'cssocialuser.pipeline.extra_values.facebook_extra_values',
+    #'cssocialuser.pipeline.extra_values.openid_extra_values',
 )
 
 # Login
