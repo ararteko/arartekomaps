@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-05 15:04+0200\n"
+"POT-Creation-Date: 2015-05-12 17:35+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
@@ -1067,6 +1067,26 @@ msgstr "Nearest places"
 msgid "Name"
 msgstr ""
 
+#: templates/profile/base.html:9
+msgid "Account"
+msgstr ""
+
+#: templates/profile/base.html:11
+msgid "Basic account"
+msgstr ""
+
+#: templates/profile/base.html:12
+msgid "Photo"
+msgstr ""
+
+#: templates/profile/base.html:13
+msgid "Social networks"
+msgstr ""
+
+#: templates/profile/base.html:14
+msgid "Chage password"
+msgstr ""
+
 #: templates/registration/activation_complete.html:6
 msgid "Your account has been successfully activated"
 msgstr ""
@@ -1082,11 +1102,11 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: templates/registration/activation_email.html:7
+#: templates/registration/activation_email.html:6
 msgid "registration"
 msgstr ""
 
-#: templates/registration/activation_email.html:12
+#: templates/registration/activation_email.html:11
 #, python-format
 msgid ""
 "\n"
@@ -1097,7 +1117,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/registration/activation_email.html:19
+#: templates/registration/activation_email.html:18
 #, python-format
 msgid ""
 "\n"
@@ -1107,32 +1127,13 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/registration/activation_email.html:31
+#: templates/registration/activation_email.html:30
 #, python-format
 msgid ""
 "\n"
 "    Sincerely,\n"
 "    %(site_name)s Management\n"
 "    "
-msgstr ""
-
-#: templates/registration/activation_email.txt:4
-msgid "Hello"
-msgstr ""
-
-#: templates/registration/activation_email.txt:6
-#, python-format
-msgid "You have requested joining %(sitename)s."
-msgstr ""
-
-#: templates/registration/activation_email.txt:8
-#, python-format
-msgid "Please click in this activation link before %(expirationdays)s days:"
-msgstr ""
-
-#: templates/registration/activation_email.txt:12
-#, python-format
-msgid "The team at %(sitename)s."
 msgstr ""
 
 #: templates/registration/login.html:9 templates/registration/login.html:51

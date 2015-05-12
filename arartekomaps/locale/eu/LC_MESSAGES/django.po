@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-05 15:04+0200\n"
+"POT-Creation-Date: 2015-05-12 17:35+0200\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1075,6 +1075,28 @@ msgstr "Toki berria"
 msgid "Name"
 msgstr "Izena"
 
+#: templates/profile/base.html:9
+msgid "Account"
+msgstr ""
+
+#: templates/profile/base.html:11
+#, fuzzy
+msgid "Basic account"
+msgstr "Erabiltzaile kontua sortzea"
+
+#: templates/profile/base.html:12
+msgid "Photo"
+msgstr ""
+
+#: templates/profile/base.html:13
+msgid "Social networks"
+msgstr ""
+
+#: templates/profile/base.html:14
+#, fuzzy
+msgid "Chage password"
+msgstr "Pasahitza konfirmatu"
+
 #: templates/registration/activation_complete.html:6
 msgid "Your account has been successfully activated"
 msgstr "Zure kontua aktibatua izan da"
@@ -1092,12 +1114,12 @@ msgstr ""
 msgid "Log in"
 msgstr "Sartu"
 
-#: templates/registration/activation_email.html:7
+#: templates/registration/activation_email.html:6
 #, fuzzy
 msgid "registration"
 msgstr "Deskribapena"
 
-#: templates/registration/activation_email.html:12
+#: templates/registration/activation_email.html:11
 #, python-format
 msgid ""
 "\n"
@@ -1108,7 +1130,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/registration/activation_email.html:19
+#: templates/registration/activation_email.html:18
 #, python-format
 msgid ""
 "\n"
@@ -1118,7 +1140,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/registration/activation_email.html:31
+#: templates/registration/activation_email.html:30
 #, python-format
 msgid ""
 "\n"
@@ -1126,27 +1148,6 @@ msgid ""
 "    %(site_name)s Management\n"
 "    "
 msgstr ""
-
-#: templates/registration/activation_email.txt:4
-msgid "Hello"
-msgstr "Kaixo"
-
-#: templates/registration/activation_email.txt:6
-#, python-format
-msgid "You have requested joining %(sitename)s."
-msgstr "%(sitename)s webgunean sarrera eskatu duzu."
-
-#: templates/registration/activation_email.txt:8
-#, python-format
-msgid "Please click in this activation link before %(expirationdays)s days:"
-msgstr ""
-"Mesedez, klik egin aktibazio lotura honetan %(expirationdays)s egun baino "
-"lehen:"
-
-#: templates/registration/activation_email.txt:12
-#, fuzzy, python-format
-msgid "The team at %(sitename)s."
-msgstr "%(sitename)s-ko lan taldea."
 
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"
@@ -1229,3 +1230,18 @@ msgstr "Pasahitza konfirmatu"
 #: templates/registration/registration_form.html:50
 msgid "Register using Facebook or Twitter"
 msgstr "Facebook edo Twitter erabiliz sartu"
+
+#~ msgid "Hello"
+#~ msgstr "Kaixo"
+
+#~ msgid "You have requested joining %(sitename)s."
+#~ msgstr "%(sitename)s webgunean sarrera eskatu duzu."
+
+#~ msgid "Please click in this activation link before %(expirationdays)s days:"
+#~ msgstr ""
+#~ "Mesedez, klik egin aktibazio lotura honetan %(expirationdays)s egun baino "
+#~ "lehen:"
+
+#, fuzzy
+#~ msgid "The team at %(sitename)s."
+#~ msgstr "%(sitename)s-ko lan taldea."

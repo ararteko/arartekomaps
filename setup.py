@@ -19,6 +19,7 @@ setup(name='arartekomaps',
       zip_safe=False,
       install_requires=[
           # -*- Extra requirements: -*-
+          'cssocialuser',
       ],
       entry_points="""
       # -*- Entry points: -*-

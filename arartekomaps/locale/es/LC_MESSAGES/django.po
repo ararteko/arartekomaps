@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ararteko maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-05 15:04+0200\n"
+"POT-Creation-Date: 2015-05-12 17:35+0200\n"
 "PO-Revision-Date: 2015-05-04 16:42+0100\n"
 "Last-Translator: Urtzi Odriozola <urtzi.odriozola@gmail.com>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -1088,3 +1088,151 @@ msgstr "Nuevo lugar"
 #: templates/places/my_places.html:39
 msgid "Name"
 msgstr "Nombre"
+
+#: templates/profile/base.html:9
+msgid "Account"
+msgstr ""
+
+#: templates/profile/base.html:11
+msgid "Basic account"
+msgstr ""
+
+#: templates/profile/base.html:12
+msgid "Photo"
+msgstr ""
+
+#: templates/profile/base.html:13
+msgid "Social networks"
+msgstr ""
+
+#: templates/profile/base.html:14
+msgid "Chage password"
+msgstr ""
+
+#: templates/registration/activation_complete.html:6
+msgid "Your account has been successfully activated"
+msgstr ""
+
+#: templates/registration/activation_complete.html:8
+msgid ""
+"Your account is activated. Now you can login with the username and password "
+"you provided"
+msgstr ""
+
+#: templates/registration/activation_complete.html:10
+#: templates/registration/login.html:26
+msgid "Log in"
+msgstr ""
+
+#: templates/registration/activation_email.html:6
+msgid "registration"
+msgstr "registro"
+
+#: templates/registration/activation_email.html:11
+#, python-format
+msgid ""
+"\n"
+"    You (or someone pretending to be you) have asked to register an account "
+"at\n"
+"    %(site_name)s.  If this wasn't you, please ignore this email\n"
+"    and your address will be removed from our records.\n"
+"    "
+msgstr ""
+
+#: templates/registration/activation_email.html:18
+#, python-format
+msgid ""
+"\n"
+"    To activate this account, please click the following link within the "
+"next\n"
+"    %(expiration_days)s days:\n"
+"    "
+msgstr ""
+
+#: templates/registration/activation_email.html:30
+#, python-format
+msgid ""
+"\n"
+"    Sincerely,\n"
+"    %(site_name)s Management\n"
+"    "
+msgstr ""
+
+#: templates/registration/login.html:9 templates/registration/login.html:51
+msgid "I'm new here. Create account"
+msgstr ""
+
+#: templates/registration/login.html:10
+#: templates/registration/registration_form.html:42
+msgid "Create account"
+msgstr ""
+
+#: templates/registration/login.html:13
+msgid "Sign in using Facebook or Twitter"
+msgstr ""
+
+#: templates/registration/login.html:18
+msgid "You can use your Facebook or Twitter accounts to log in"
+msgstr ""
+
+#: templates/registration/login.html:29
+#: templates/registration/registration_form.html:7
+msgid "You are already logged in"
+msgstr ""
+
+#: templates/registration/login.html:35
+msgid "Your username and password do not match. Please try again."
+msgstr ""
+
+#: templates/registration/login.html:38
+#: templates/registration/registration_form.html:21
+msgid "Username"
+msgstr ""
+
+#: templates/registration/login.html:40
+#: templates/registration/registration_form.html:32
+msgid "Password"
+msgstr ""
+
+#: templates/registration/login.html:50
+msgid "I have forgotten my password"
+msgstr ""
+
+#: templates/registration/registration_complete.html:4
+msgid "Activate your account"
+msgstr ""
+
+#: templates/registration/registration_complete.html:7
+msgid ""
+"In order to confirm your email, we have sent you by email the needed "
+"information to activate your account. Please, read your email and activate "
+"your account."
+msgstr ""
+
+#: templates/registration/registration_complete.html:9
+msgid "Check your email."
+msgstr ""
+
+#: templates/registration/registration_complete.html:10
+msgid "Remember:"
+msgstr ""
+
+#: templates/registration/registration_complete.html:12
+msgid "Check your spam folder if you don't find our email."
+msgstr ""
+
+#: templates/registration/registration_complete.html:13
+msgid "Contact us if you don't receive the email."
+msgstr ""
+
+#: templates/registration/registration_form.html:5
+msgid "Register"
+msgstr ""
+
+#: templates/registration/registration_form.html:37
+msgid "Confirm password"
+msgstr ""
+
+#: templates/registration/registration_form.html:50
+msgid "Register using Facebook or Twitter"
+msgstr ""
