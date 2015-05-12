@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block main_content %}
+<div id="logcnt">
+{% block content %}
+
+{% block cscontent %}
+<h1>{% trans "Account" %}</h1>
+<ul class="tabs">
+<li {% if tab == 'personal' %}class="selected">{% trans "Basic account" %}{% else %}><a href="{% url 'cssocialuser_edit_profile' %}">{% trans "Basic account" %}</a>{% endif %}</li>
+<li {% if tab == 'photo' %}class="selected">{% trans "Photo" %}{% else %}><a href="{% url 'cssocialuser_edit_profile_photo' %}">{% trans "Photo" %}</a>{% endif %}</li>
+<li {% if tab == 'social' %}class="selected">{% trans "Social networks" %}{% else %}><a href="{% url 'cssocialuser_edit_profile_social' %}">{% trans "Social networks" %}</a>{% endif %}</li>
+<li {% if tab == 'pass' %}class="selected">{% trans "Chage password" %}{% else %}><a href="{% url 'cssocialuser_edit_profile_pass' %}">{% trans "Chage password" %}</a>{% endif %}</li>
+
+</ul>
+
+{% block perfil %}
+
+{% endblock%}
+
+{% endblock %}
+
+{% endblock %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% block cssidebar %}
+{% endblock %}
+{% endblock %}
