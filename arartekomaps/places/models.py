@@ -43,7 +43,7 @@ class Place(models.Model):
     lon=models.DecimalField(max_digits=12, decimal_places=8,null=True,blank=True, verbose_name=_('Longitud'), help_text=_('Longitud GPS'))
     tlf=models.CharField(max_length=30, blank=True, verbose_name=_('Telefono'), help_text=_('Numero de telefono'))
     fax=models.CharField(max_length=15, blank=True, verbose_name=_('Fax'), help_text=_('Numero de FAX'))
-    url_name = models.CharField(max_length=100, blank=True, verbose_name=_('Nombre URL'), help_text=_('Nombre descriptibo del URL'))
+    url_name = models.CharField(max_length=100, blank=True, verbose_name=_('Nombre URL'), help_text=_('Nombre descriptivo del URL'))
     url = models.CharField(max_length=255, blank=True, verbose_name=_('URL'), help_text=_('URL del sitio web'))
     email = models.CharField(max_length=255, blank=True, verbose_name=_('Email'), help_text=_('Email de contacto'))
     aphysic = models.CharField(max_length=1, choices=ACCESS_CHOICES, verbose_name=_('Fisica'),default="s", help_text=_('Estado del acceso para minusvalia fisica'))

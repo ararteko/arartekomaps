@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-12 17:35+0200\n"
+"POT-Creation-Date: 2015-05-18 16:47+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: \n"
@@ -365,7 +365,7 @@ msgid "Nombre URL"
 msgstr ""
 
 #: places/models.py:46
-msgid "Nombre descriptibo del URL"
+msgid "Nombre descriptivo del URL"
 msgstr ""
 
 #: places/models.py:47
@@ -1008,6 +1008,17 @@ msgstr "Your profile"
 #: templates/useroptions.html:12
 msgid "Sign out"
 msgstr "Sign out"
+
+#: templates/pagination/pagination.html:5
+#: templates/pagination/pagination.html:7
+#, fuzzy
+msgid "previous"
+msgstr "Previous"
+
+#: templates/pagination/pagination.html:21
+#: templates/pagination/pagination.html:23
+msgid "next"
+msgstr ""
 
 #: templates/places/edit_place.html:4 templates/places/edit_place.html:68
 #, fuzzy

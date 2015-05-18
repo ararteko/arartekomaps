@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ararteko mapak\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-12 17:35+0200\n"
+"POT-Creation-Date: 2015-05-18 16:47+0200\n"
 "PO-Revision-Date: 2014-03-12 15:27+0100\n"
 "Last-Translator: Gari Araolaza <garaolaza@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -379,7 +379,7 @@ msgid "Nombre URL"
 msgstr "URL izena"
 
 #: places/models.py:46
-msgid "Nombre descriptibo del URL"
+msgid "Nombre descriptivo del URL"
 msgstr "URLaren izen deskribatzailea"
 
 #: places/models.py:47
@@ -1019,6 +1019,16 @@ msgstr "Profila"
 msgid "Sign out"
 msgstr "Irten"
 
+#: templates/pagination/pagination.html:5
+#: templates/pagination/pagination.html:7
+msgid "previous"
+msgstr "aurrekoa"
+
+#: templates/pagination/pagination.html:21
+#: templates/pagination/pagination.html:23
+msgid "next"
+msgstr "hurrengoa"
+
 #: templates/places/edit_place.html:4 templates/places/edit_place.html:68
 msgid "Edit place"
 msgstr "Editatu tokiak"
@@ -1080,9 +1090,8 @@ msgid "Account"
 msgstr ""
 
 #: templates/profile/base.html:11
-#, fuzzy
 msgid "Basic account"
-msgstr "Erabiltzaile kontua sortzea"
+msgstr ""
 
 #: templates/profile/base.html:12
 msgid "Photo"
@@ -1093,26 +1102,23 @@ msgid "Social networks"
 msgstr ""
 
 #: templates/profile/base.html:14
-#, fuzzy
 msgid "Chage password"
-msgstr "Pasahitza konfirmatu"
+msgstr ""
 
 #: templates/registration/activation_complete.html:6
 msgid "Your account has been successfully activated"
-msgstr "Zure kontua aktibatua izan da"
+msgstr ""
 
 #: templates/registration/activation_complete.html:8
 msgid ""
 "Your account is activated. Now you can login with the username and password "
 "you provided"
 msgstr ""
-"Zure erabiltzaile kontua egoki sortu da. Orain erabiltzaile eta pasahitza "
-"erabili ditzazkezu"
 
 #: templates/registration/activation_complete.html:10
 #: templates/registration/login.html:26
 msgid "Log in"
-msgstr "Sartu"
+msgstr ""
 
 #: templates/registration/activation_email.html:6
 #, fuzzy
@@ -1151,47 +1157,48 @@ msgstr ""
 
 #: templates/registration/login.html:9 templates/registration/login.html:51
 msgid "I'm new here. Create account"
-msgstr "Berria naiz hemen. Sortu kontu bat"
+msgstr ""
 
 #: templates/registration/login.html:10
 #: templates/registration/registration_form.html:42
 msgid "Create account"
-msgstr "Erabiltzaile kontua sortzea"
+msgstr ""
 
 #: templates/registration/login.html:13
 msgid "Sign in using Facebook or Twitter"
-msgstr "Twitter edo Facebook bidez sartu"
+msgstr ""
 
 #: templates/registration/login.html:18
 msgid "You can use your Facebook or Twitter accounts to log in"
-msgstr "Twitter edo Facebook bidez sartu"
+msgstr ""
 
 #: templates/registration/login.html:29
 #: templates/registration/registration_form.html:7
 msgid "You are already logged in"
-msgstr "Jadanik barruan zaude."
+msgstr ""
 
 #: templates/registration/login.html:35
 msgid "Your username and password do not match. Please try again."
-msgstr "Zure erabiltzaile eta pasahitza ez datoz bat. Saiatu berriro mesedez."
+msgstr ""
 
 #: templates/registration/login.html:38
 #: templates/registration/registration_form.html:21
+#, fuzzy
 msgid "Username"
-msgstr "Erabiltzaile izena"
+msgstr "Erabiltzailea"
 
 #: templates/registration/login.html:40
 #: templates/registration/registration_form.html:32
 msgid "Password"
-msgstr "Pasahitza"
+msgstr ""
 
 #: templates/registration/login.html:50
 msgid "I have forgotten my password"
-msgstr "Nire pasahitza ahaztu dut"
+msgstr ""
 
 #: templates/registration/registration_complete.html:4
 msgid "Activate your account"
-msgstr "Aktibatu zure erabiltzaile kontua"
+msgstr ""
 
 #: templates/registration/registration_complete.html:7
 msgid ""
@@ -1199,49 +1206,31 @@ msgid ""
 "information to activate your account. Please, read your email and activate "
 "your account."
 msgstr ""
-"Zure helbidea konfirmatzeko, epostaz bidali dizugu zure erabiltzaile kontua "
-"aktibatzeko beharrezkoa den informazioa. Mesedez, begiratu zure eposta eta "
-"aktibatu zure erabiltzaile kontua"
 
 #: templates/registration/registration_complete.html:9
 msgid "Check your email."
-msgstr "Begiratu zure eposta."
+msgstr ""
 
 #: templates/registration/registration_complete.html:10
 msgid "Remember:"
-msgstr "Gogoratu"
+msgstr ""
 
 #: templates/registration/registration_complete.html:12
 msgid "Check your spam folder if you don't find our email."
-msgstr "Begiratu spam karpetan, ez baduzu mezua aurkitzen."
+msgstr ""
 
 #: templates/registration/registration_complete.html:13
 msgid "Contact us if you don't receive the email."
-msgstr "Jarri gurekin harremanetan ez baduzu eposta aurkitzen."
+msgstr ""
 
 #: templates/registration/registration_form.html:5
 msgid "Register"
-msgstr "Izena eman"
+msgstr ""
 
 #: templates/registration/registration_form.html:37
 msgid "Confirm password"
-msgstr "Pasahitza konfirmatu"
+msgstr ""
 
 #: templates/registration/registration_form.html:50
 msgid "Register using Facebook or Twitter"
-msgstr "Facebook edo Twitter erabiliz sartu"
-
-#~ msgid "Hello"
-#~ msgstr "Kaixo"
-
-#~ msgid "You have requested joining %(sitename)s."
-#~ msgstr "%(sitename)s webgunean sarrera eskatu duzu."
-
-#~ msgid "Please click in this activation link before %(expirationdays)s days:"
-#~ msgstr ""
-#~ "Mesedez, klik egin aktibazio lotura honetan %(expirationdays)s egun baino "
-#~ "lehen:"
-
-#, fuzzy
-#~ msgid "The team at %(sitename)s."
-#~ msgstr "%(sitename)s-ko lan taldea."
+msgstr ""
