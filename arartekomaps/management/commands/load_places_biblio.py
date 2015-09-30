@@ -1,5 +1,8 @@
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
+
+from arartekomaps.arartekouser.models import ArartekoUser as User
+
 from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice
 
 from arartekomaps.locations.models import Location
@@ -110,6 +113,7 @@ class Command(BaseCommand):
 
             cod_origen = "%d" % cod_origen
             ent_origen = 'ejgv_biblio'
+            author = User.objects.get(username=ent_origen)
 
             location_slug = slugify(city or pob)
             location = Location.objects.filter(slug__startswith=location_slug)
@@ -143,6 +147,7 @@ class Command(BaseCommand):
             place.locality = loc
             place.source = ent_origen
             place.source_id = cod_origen
+            place.author = author
             try:
                 (lat,lon) = latlon.split(',')
             except:
