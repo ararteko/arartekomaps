@@ -165,6 +165,13 @@ class Command(BaseCommand):
             place.email = email
             place.modified_date = now
 
+            # ACCESS
+            place.aphysic = self.ADICT[acc_fis.lower().strip()]
+            place.avisual = self.ADICT[acc_vis.lower().strip()]
+            place.aaudio = self.ADICT[acc_aud.lower().strip()]
+            place.aintelec = self.ADICT[acc_int.lower().strip()]
+            place.aorganic = self.ADICT[acc_org.lower().strip()]
+
             #get photo URL:
             if foto:
                 startx = foto.find('img src=')
@@ -185,21 +192,7 @@ class Command(BaseCommand):
                     image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )
 
 
-            # ACCESS
-            try:
-                access = place.access.all()[0]
-            except:
-                access = Access()
-                access.place = place
-
-            access.aphysic = self.ADICT[acc_fis.lower().strip()]
-            access.avisual = self.ADICT[acc_vis.lower().strip()]
-            access.aaudio = self.ADICT[acc_aud.lower().strip()]
-            access.aintelec = self.ADICT[acc_int.lower().strip()]
-            access.aorganic = self.ADICT[acc_org.lower().strip()]
-
-            if saving:
-                access.save()
+            
 
             #BIBLIO
             try:
