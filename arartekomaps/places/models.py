@@ -240,10 +240,10 @@ def send_image_notification(sender, instance, created, **kwargs):
             [EMAIL_NOTIFICATION], fail_silently=True)
     return True
 
-#def send_place_email(sender,instance, created, **kwargs):
-#    if created:
-#        send_mail('[LEKU BERRIA] ', 'Leku berri bat gorde da: '+instance.name+'\n\n'+settings.HOST+'/admin/places/place/' + str(instance.id), DEFAULT_FROM_EMAIL,
-#            [EMAIL_NOTIFICATION], fail_silently=True)
+def send_place_email(sender,instance, created, **kwargs):
+    if created:
+        send_mail('[LEKU BERRIA] ', 'Leku berri bat gorde da: '+instance.name+'\n\n'+settings.HOST+'/admin/places/place/' + str(instance.id), DEFAULT_FROM_EMAIL,
+            [EMAIL_NOTIFICATION], fail_silently=True)
 
-#post_save.connect(send_image_notification, sender=MPhoto)
-#post_save.connect(send_place_email, sender=Place)
+post_save.connect(send_image_notification, sender=MPhoto)
+post_save.connect(send_place_email, sender=Place)
