@@ -14,8 +14,14 @@ class ArartekoUser(CSAbstractSocialUser):
 
     objects = UserManager()
 
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
     def get_profile(self):
         return self
+
+    def getFullName(self):
+        return self.get_full_name() or self.username
 
     def email_user(self, subject, message, from_email=None, **kwargs):
         """

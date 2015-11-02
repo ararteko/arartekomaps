@@ -125,8 +125,9 @@ class Place(models.Model):
 
         sql = """SELECT id, (%f * acos( cos( radians(%f) ) * cos( radians( lat ) ) *
         cos( radians( lon ) - radians(%f) ) + sin( radians(%f) ) * sin( radians( lat ) ) ) )
-        AS distance FROM places_place HAVING distance < %d
-        ORDER BY distance LIMIT 0 , %d;""" % (distance_unit, latitude, longitude, latitude, int(radius), max_results)
+        AS distance FROM places_place WHERE (%f * acos( cos( radians(%f) ) * cos( radians( lat ) ) *
+        cos( radians( lon ) - radians(%f) ) + sin( radians(%f) ) * sin( radians( lat ) ) ) ) < %d
+        ORDER BY distance LIMIT 0 , %d;""" % (distance_unit, latitude, longitude, latitude ,distance_unit, latitude, longitude, latitude, int(radius), max_results)
         cursor.execute(sql)
 
         dist_dict = {}
@@ -239,10 +240,10 @@ def send_image_notification(sender, instance, created, **kwargs):
             [EMAIL_NOTIFICATION], fail_silently=True)
     return True
 
-def send_place_email(sender,instance, created, **kwargs):
-    if created:
-        send_mail('[LEKU BERRIA] ', 'Leku berri bat gorde da: '+instance.name+'\n\n'+settings.HOST+'/admin/places/place/' + str(instance.id), DEFAULT_FROM_EMAIL,
-            [EMAIL_NOTIFICATION], fail_silently=True)
+#def send_place_email(sender,instance, created, **kwargs):
+#    if created:
+#        send_mail('[LEKU BERRIA] ', 'Leku berri bat gorde da: '+instance.name+'\n\n'+settings.HOST+'/admin/places/place/' + str(instance.id), DEFAULT_FROM_EMAIL,
+#            [EMAIL_NOTIFICATION], fail_silently=True)
 
-post_save.connect(send_image_notification, sender=MPhoto)
-post_save.connect(send_place_email, sender=Place)
+#post_save.connect(send_image_notification, sender=MPhoto)
+#post_save.connect(send_place_email, sender=Place)

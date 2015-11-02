@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice, MPhoto
+from arartekomaps.arartekouser.models import ArartekoUser as User
 from arartekomaps.locations.models import Location
 from arartekomaps.locations.utils import slugify
 import xlrd, StringIO, urllib2
@@ -29,7 +30,8 @@ class Command(BaseCommand):
             }
      
     def handle(self, *args, **options):
-        saving = 1
+        saving = len(args)>1 and args[1] or 0
+        line = len(args)>2 and int(args[2]) or 1
         filename = args[0]
         full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
         f = xlrd.open_workbook(full_path)
@@ -43,7 +45,9 @@ class Command(BaseCommand):
 
         uloc = {}
 
-        for rownum in range(sh.nrows)[1:]:
+        new_rest = 0
+
+        for rownum in range(sh.nrows)[line:]:
             fields = sh.row_values(rownum)
             print '############################'
             print kont
@@ -60,21 +64,31 @@ class Command(BaseCommand):
                 foto_x, foto_x_tit, foto_x_alt, itinerarios, 
                 acc_fis, acc_vis, acc_aud, acc_int, 
                 acc_org ) = fields[:25]
-                
-            cat = slugify(rcat)
-            cat = self.RDICT.get(cat,cat)
-            rel_cat = Category.objects.filter(slug=cat)
-            if len(rel_cat)>0:
-                cat_obj = Category.objects.get(slug=cat)
-            else:
-                print 'WARNING: Missing cat:', cat
-                parentcat = Category.objects.get(slug='sleep')
-                cat_obj = Category(slug=cat,name=cat,parent=parentcat)
-                if saving:
-                    cat_obj.save()
-                                 
+
+
+            translation = False
             ent_origen = 'ejgv-tur-rest'
-                   
+            places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
+            if len(places)<1:
+                places = Place.objects.filter(source_id=str(int(cod_origen)), source=ent_origen)
+            if len(places)>0:
+                place = places[0]
+            if '_eu' in filename and place:
+                place.description_eu = desc
+                translation = True
+            elif '_en' in filename and place:
+                place.description_en = desc
+                translation = True
+            elif '_eu' in filename or '_en' in filename:
+                translation = True
+
+            if translation:
+                place.save()
+                continue
+                
+            #GET USER!!!!
+            author = User.objects.get(username=ent_origen)
+
             location_slug = slugify(pob)
 
             if CDICT.has_key(location_slug):
@@ -88,9 +102,6 @@ class Command(BaseCommand):
                 ercnt = ercnt+1
                 break
      
-            places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
-            if len(places)<1:
-                places = Place.objects.filter(source_id=str(int(cod_origen)), source=ent_origen)
 
             if len(places)>0:
                 place = places[0]
@@ -98,17 +109,32 @@ class Command(BaseCommand):
             else:
                 place = Place()
                 print slug
-                place.slug = slugify(slug.split('/')[2])
+                place.slug = slugify(slug.split('/')[2],instance=place)
                 print 'NEW:', slug, cod_origen
-            
 
+                if rcat: 
+                    cat = slugify(rcat)
+                    cat = self.RDICT.get(cat,cat)
+                    rel_cat = Category.objects.filter(slug=cat)
+                    if len(rel_cat)>0:
+                        cat_obj = Category.objects.get(slug=cat)
+                    else:
+                        print 'WARNING: Missing cat:', cat
+                        parentcat = Category.objects.get(slug='sleep')
+                        cat_obj = Category(slug=cat,name=cat,name_es=cat,name_eu=cat,name_en=cat,parent=parentcat)
+                        if saving:
+                            cat_obj.save()
+                else:
+                    cat_obj = Category.objects.get(slug='sleep')
+
+                place.category = cat_obj
+
+                new_rest +=1
+            
             place.name = titulo
-            place.category = cat_obj
             place.description_es = desc
-            place.description_eu = desc
-            place.description_en = desc
             place.address1 = direc1
-            place.address2 = direc2
+            place.address2 = ""
             if len(cp)<5:
                 cp = "0%s" % cp
             place.postalcode = cp.strip()
@@ -124,6 +150,9 @@ class Command(BaseCommand):
                 place.lat = str(lat)
             if lon:
                 place.lon = str(lon)
+
+            #SET USER!!!!!
+            place.author = author
             place.tlf = ''.join(tel[:30].split())
             place.fax = ''.join(fax[:15].split())
             place.url = url
@@ -157,5 +186,6 @@ class Command(BaseCommand):
                     image = loadUrlImage(foto_x, t_place, foto_x_tit, 'jpg', )            
             kont += 1
 
+        print "New restaurants: %d" % (new_rest)
         print uloc
         

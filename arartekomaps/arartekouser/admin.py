@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from arartekomaps.arartekouser.models import ArartekoUser
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib.auth.forms import AdminPasswordChangeForm,UserCreationForm, UserChangeForm
@@ -21,7 +22,7 @@ class MyUserCreationForm(ModelForm):
 
     class Meta:
         model = ArartekoUser
-        #fields = ('email', )
+        #fields = ('password1','password2','username' )
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -41,7 +42,7 @@ class MyUserCreationForm(ModelForm):
 
 
 
-class ArartekoUserAdmin(admin.ModelAdmin):
+class ArartekoUserAdmin(UserAdmin):
 
     form = MyUserChangeForm
     change_user_password_template = None
@@ -49,7 +50,6 @@ class ArartekoUserAdmin(admin.ModelAdmin):
     change_password_form = AdminPasswordChangeForm
 
     list_display = ('username','fullname','get_email','is_staff','is_active')
-
     list_display_links = ('fullname','username')
     search_fields = ['email','username','fullname']
     raw_id_fields = ('photo',)
@@ -69,7 +69,7 @@ class ArartekoUserAdmin(admin.ModelAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'password1', 'password2')}
+            'fields': ('username', 'password1', 'password2')}
         ),
     )
 

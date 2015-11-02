@@ -63,7 +63,7 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        saving = 1
+        saving = len(args)>1 and args[1] or 0
         filename = args[0]
         full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
         f = xlrd.open_workbook(full_path)

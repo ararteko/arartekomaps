@@ -61,7 +61,7 @@ export_excel_comments.short_description = 'Exportar comentarios'
 
 class PlaceAdmin(admin.ModelAdmin):
     #form = PlaceAdminForm
-    list_display = ('name','city','category','source','author')
+    list_display = ('name','city','category','lat','lon','source','author')
     readonly_fields = ()
     search_fields = ('name',)
     inlines = [BiblioInline]

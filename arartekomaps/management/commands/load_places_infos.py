@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice, MPhoto
+from arartekomaps.arartekouser.models import ArartekoUser as User
 from arartekomaps.locations.models import Location
 from arartekomaps.locations.utils import slugify
 import xlrd, StringIO, urllib2
@@ -29,8 +30,9 @@ class Command(BaseCommand):
             }
      
     def handle(self, *args, **options):
-        saving = 1
+        saving = len(args)>1 and args[1] or 0 
         filename = args[0]
+        line = len(args)>2 and int(args[2]) or 1
         full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
         f = xlrd.open_workbook(full_path)
         sh = f.sheet_by_index(0)
@@ -43,7 +45,7 @@ class Command(BaseCommand):
 
         uloc = {}
 
-        for rownum in range(sh.nrows)[1:]:
+        for rownum in range(sh.nrows)[line:]:
             fields = sh.row_values(rownum)
 
             if len(fields)!=24:
@@ -60,9 +62,39 @@ class Command(BaseCommand):
                 acc_fis, acc_vis, acc_aud, acc_int, 
                 acc_org ) = fields[:25]
                 
-            cat_obj = Category.objects.get(slug='tourism')
-                                 
+            
+            
+            translation = False
             ent_origen = 'ejgv-tur-infos'
+            places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
+            if len(places)<1:
+                places = Place.objects.filter(source_id=str(int(cod_origen)), source=ent_origen)
+            if len(places)>0:
+                place = places[0]
+            if '_eu' in filename and place:
+                place.description_eu = desc
+                translation = True
+            elif '_en' in filename and place:
+                place.description_en = desc
+                translation = True
+            elif '_eu' in filename or '_en' in filename:
+                translation = True
+
+            if translation:
+                place.save()
+                continue
+
+
+
+            if 'oficinas' in filename:
+                cat_obj = Category.objects.get(slug='tourist-office')
+            elif 'centros' in filename:
+                cat_obj = Category.objects.get(slug='interpretation-centre')
+            else:
+                cat_obj = Category.objects.get(slug='tourism')
+                                 
+            #GET USER
+            author = User.objects.get(username=ent_origen)
                    
             location_slug = slugify(pob)
 
@@ -76,10 +108,6 @@ class Command(BaseCommand):
                 uloc[pob]=uloc.get(pob,0)+1
                 ercnt = ercnt+1
                 break
-     
-            places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
-            if len(places)<1:
-                places = Place.objects.filter(source_id=str(int(cod_origen)), source=ent_origen)
 
             if len(places)>0:
                 place = places[0]
@@ -87,15 +115,13 @@ class Command(BaseCommand):
             else:
                 place = Place()
                 print slug
-                place.slug = slugify(slug.split('/')[2])
+                place.slug = slugify(slug.split('/')[2],instance=place)
                 print 'NEW:', slug, cod_origen
             
 
             place.name = titulo
             place.category = cat_obj
             place.description_es = desc
-            place.description_eu = desc
-            place.description_en = desc
             place.address1 = direc1
             place.address2 = direc2
             if len(cp)<5:
@@ -107,6 +133,9 @@ class Command(BaseCommand):
                 pass
             place.locality = loc
             place.description = desc
+
+            #SET USER
+            place.author = author
             place.source = ent_origen
             place.source_id = "%d" % int(cod_origen)
             if lat:

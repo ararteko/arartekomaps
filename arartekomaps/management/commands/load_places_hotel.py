@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice, MPhoto
+from arartekomaps.arartekouser.models import ArartekoUser as User
 from arartekomaps.locations.models import Location
 from arartekomaps.locations.utils import slugify
 import xlrd, StringIO, urllib2
@@ -19,7 +20,8 @@ class Command(BaseCommand):
              'accesible': 'a'}
     
     def handle(self, *args, **options):
-        saving = 1
+        saving = len(args)>1 and args[1] or 0
+        line = len(args)>2 and int(args[2]) or 1
         filename = args[0]
         full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
         f = xlrd.open_workbook(full_path)
@@ -33,7 +35,7 @@ class Command(BaseCommand):
 
         uloc = {}
 
-        for rownum in range(sh.nrows)[1:]:
+        for rownum in range(sh.nrows)[line:]:
             fields = sh.row_values(rownum)
 
             if len(fields)!=25:
@@ -50,6 +52,28 @@ class Command(BaseCommand):
                 acc_fis, acc_vis, acc_aud, acc_int, 
                 acc_org ) = fields[:25]
                 
+            
+            translation = False
+            ent_origen = 'ejgv-tur-aloj'
+            places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
+            if len(places)<1:
+                places = Place.objects.filter(source_id=str(int(cod_origen)), source=ent_origen)
+            if len(places)>0:
+                place = places[0]
+            if '_eu' in filename and place:
+                place.description_eu = desc
+                translation = True
+            elif '_en' in filename and place:
+                place.description_en = desc
+                translation = True
+            elif '_eu' in filename or '_en' in filename:
+                translation = True
+
+            if translation:
+                place.save()
+                continue
+
+
             cat = slugify(rcat)
             rel_cat = Category.objects.filter(slug=cat)
             if len(rel_cat)>0:
@@ -57,12 +81,13 @@ class Command(BaseCommand):
             else:
                 print 'WARNING: Missing cat:', rcat
                 parentcat = Category.objects.get(slug='sleep')
-                cat_obj = Category(slug=cat,name=cat,parent=parentcat)
+                cat_obj = Category(slug=cat,name=cat,name_es=cat,name_eu=cat,name_en=cat,parent=parentcat)
                 if saving:
                     cat_obj.save()
                                  
-            ent_origen = 'ejgv-tur-aloj'
-                   
+            #GET USER!!!!
+            author = User.objects.get(username=ent_origen)
+
             location_slug = slugify(pob)
 
             if CDICT.has_key(location_slug):
@@ -76,26 +101,22 @@ class Command(BaseCommand):
                 ercnt = ercnt+1
                 break
      
-            places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
-            if len(places)<1:
-                places = Place.objects.filter(source_id=str(int(cod_origen)), source=ent_origen)
 
             if len(places)>0:
                 place = places[0]
                 print 'EDIT:', slug, cod_origen
             else:
                 place = Place()
-                place.slug = slugify(slug.split('/')[2])
+                place.slug = slugify(slug.split('/')[2],instance=place)
                 print 'NEW:', slug, cod_origen
             
 
             place.name = titulo
             place.category = cat_obj
-            place.description_eu = desc
             place.description_es = desc
-            place.description_en = desc
-            place.address1 = direc1
+            place.address1 = direc1[:direc1.find("(")]
             place.address2 = direc2
+
             if len(cp)<5:
                 cp = "0%s" % cp
             place.postalcode = cp.strip()
@@ -103,10 +124,14 @@ class Command(BaseCommand):
                 place.city = loc_obj
             except:
                 pass
+
+            #SET USER!!!!!
+            place.author = author
             place.locality = loc
             place.description = desc
             place.source = ent_origen
             place.source_id = "%d" % int(cod_origen)
+
             if lat:
                 place.lat = str(lat)
             if lon:
