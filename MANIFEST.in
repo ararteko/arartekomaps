@@ -2,3 +2,16 @@ global-exclude *pyc
 global-exclude *~
 global-exclude local_settings.py
 global-exclude server_settings.py
+include *.md
+recursive-include arartekomaps *.css
+recursive-include arartekomaps *.csv
+recursive-include arartekomaps *.gif
+recursive-include arartekomaps *.htc
+recursive-include arartekomaps *.html
+recursive-include arartekomaps *.ico
+recursive-include arartekomaps *.jpg
+recursive-include arartekomaps *.js
+recursive-include arartekomaps *.png
+recursive-include arartekomaps *.po
+recursive-include arartekomaps *.txt
+
