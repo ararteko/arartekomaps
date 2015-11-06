@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice, MPhoto
@@ -142,7 +144,7 @@ class Command(BaseCommand):
                 place.city = loc_obj
             except:
                 pass
-            place.locality = loc
+            place.locality = pob != loc and loc or ""
             place.description = desc
             place.source = ent_origen
             place.source_id = "%d" % int(cod_origen)

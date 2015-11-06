@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice, MPhoto
@@ -7,6 +9,7 @@ from arartekomaps.locations.utils import slugify
 import xlrd, StringIO, urllib2
 from arartekomaps.utils.load_images import loadUrlImage
 from arartekomaps.settings import IMPORT_FILES_FOLDER
+import re
 
 class Command(BaseCommand):
     args = 'file_abs_path'
@@ -114,7 +117,14 @@ class Command(BaseCommand):
             place.name = titulo
             place.category = cat_obj
             place.description_es = desc
-            place.address1 = direc1[:direc1.find("(")]
+            mystring = direc1[:direc1.find("(")]
+            for word in mystring.split():
+                if '/' in word:
+                    delete_str = word[word.find("/"):]
+                    if "" in delete_str:
+                        delete_str = delete_str.replace(",","")
+                    mystring = mystring.replace(delete_str,"")
+            place.address1 = mystring.replace(u" Nº","")
             place.address2 = direc2
 
             if len(cp)<5:
@@ -127,7 +137,7 @@ class Command(BaseCommand):
 
             #SET USER!!!!!
             place.author = author
-            place.locality = loc
+            place.locality = pob != loc and loc or ""
             place.description = desc
             place.source = ent_origen
             place.source_id = "%d" % int(cod_origen)

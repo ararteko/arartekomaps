@@ -90,7 +90,7 @@
 <span itemprop="streetAddress">{{place.address1}}
 {% if place.address2 %}<br />{{place.address2}}{% endif %}</span>
 <br />
-<span itemprop="postalCode">{{place.postalcode}}</span>-<span itemprop="addressLocality">{% if place.locality %}{{place.locality}}{% endif %} {{place.city}}</span>
+<span itemprop="postalCode">{{place.postalcode}}</span> - <span itemprop="addressLocality">{% if place.locality %}{{place.locality}} {% endif %}{{place.city}}</span>
 ({{place.city.parent}})
 {% if place.tlf %}<br /><span itemprop="telephone" class="tlf">{{place.tlf}}</span>{% endif %}
 {% if place.fax %}<br /><span class="fax">{{place.fax}}</span>{% endif %}

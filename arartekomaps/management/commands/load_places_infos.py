@@ -131,7 +131,7 @@ class Command(BaseCommand):
                 place.city = loc_obj
             except:
                 pass
-            place.locality = loc
+            place.locality = pob != loc and loc or ""
             place.description = desc
 
             #SET USER
