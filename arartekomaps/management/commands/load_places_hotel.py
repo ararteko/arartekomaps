@@ -149,6 +149,9 @@ class Command(BaseCommand):
             place.tlf = ''.join(tel[:30].split())
             place.fax = ''.join(fax[:15].split())
             place.url = url
+            place.url_es = url
+            place.url_eu = url
+            place.url_en = url
             place.email = ''
             if saving:
                 place.save()

@@ -56,6 +56,9 @@ class Command(BaseCommand):
             place.tlf = tel
             place.fax = fax
             place.url = url
+            place.url_es = url
+            place.url_eu = url
+            place.url_en = url
             place.save()
             access = Access()
             access.aphysic = self.ADICT[acc_fis.lower().strip()]
