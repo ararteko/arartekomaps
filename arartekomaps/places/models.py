@@ -235,13 +235,13 @@ pre_save.connect(generate_place_slug, sender=Place)
 
 
 def send_image_notification(sender, instance, created, **kwargs):
-    if created:
+    if created and not settings.DEBUG:
         send_mail('[IRUDI BERRIA] ', 'Irudi berri bat gorde da: '+instance.name+'\n\n'+settings.HOST+'/admin/places/mphoto/' + str(instance.id), DEFAULT_FROM_EMAIL,
             [EMAIL_NOTIFICATION], fail_silently=True)
     return True
 
 def send_place_email(sender,instance, created, **kwargs):
-    if created:
+    if created and not settings.DEBUG:
         send_mail('[LEKU BERRIA] ', 'Leku berri bat gorde da: '+instance.name+'\n\n'+settings.HOST+'/admin/places/place/' + str(instance.id), DEFAULT_FROM_EMAIL,
             [EMAIL_NOTIFICATION], fail_silently=True)
 

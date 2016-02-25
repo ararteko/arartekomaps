@@ -41,7 +41,7 @@ class Command(BaseCommand):
         for rownum in range(sh.nrows)[line:]:
             fields = sh.row_values(rownum)
 
-            if len(fields)!=25:
+            if len(fields)!=26:
                 print 'Tenemos mas o menos de 25 campos'
                 n = 1
                 for field in fields:
@@ -53,7 +53,7 @@ class Command(BaseCommand):
                 direc1, direc2, cp, pob, loc, desc, lat, lon, tel, fax, url, 
                 foto_x, foto_x_tit, foto_x_alt, itinerarios, 
                 acc_fis, acc_vis, acc_aud, acc_int, 
-                acc_org ) = fields[:25]
+                acc_org,title_code ) = fields[:26]
                 
             
             translation = False
@@ -113,8 +113,10 @@ class Command(BaseCommand):
                 place.slug = slugify(slug.split('/')[2],instance=place)
                 print 'NEW:', slug, cod_origen
             
-
-            place.name = titulo
+            if title_code:
+                place.name = "%s %s" % (titulo, title_code)
+            else:
+                place.name = titulo
             place.category = cat_obj
             place.description_es = desc
             mystring = direc1[:direc1.find("(")]
