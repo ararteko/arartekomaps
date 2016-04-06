@@ -127,7 +127,7 @@
 </div>
 <!-- access end -->
 
-{% if place.biblio_data.btype %}
+{% if place.biblio_data %}
 <div id="biblio">
 <h3>{% trans "Library" %}</h3>
     <dl>
@@ -145,7 +145,7 @@
       {% endcomment %}
       {% if place.biblio_data.open_times.strip %}
         <dt>{% trans "open_times" %}</dt>
-        <dd>{{place.biblio_data.open_times|safe}}</dd>
+        <dd>{{place.biblio_data.open_times}}</dd>
       {% endif %}
       {% comment %}
         <dt>{% trans "access_type" %}</dt>
