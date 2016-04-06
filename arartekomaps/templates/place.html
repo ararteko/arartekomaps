@@ -145,7 +145,7 @@
       {% endcomment %}
       {% if place.biblio_data.open_times.strip %}
         <dt>{% trans "open_times" %}</dt>
-        <dd>{{place.biblio_data.open_times}}</dd>
+        <dd>{{place.biblio_data.open_times|safe}}</dd>
       {% endif %}
       {% comment %}
         <dt>{% trans "access_type" %}</dt>
