@@ -181,7 +181,6 @@ class Bibservice(models.Model):
         return self.name
 
 class Biblio(models.Model):
-    """ """
     BTYPE_CHOICES = (
         ('p', 'Publico'),
         ('r', 'Privado'),
@@ -190,29 +189,32 @@ class Biblio(models.Model):
         ('t', 'Patrimonial'),
         ('e', 'Especializada')
     )
-    btype = models.CharField(max_length=1, choices=BTYPE_CHOICES, blank=True, verbose_name=_('Tipo'))
+    btype = models.CharField(max_length=1, choices=BTYPE_CHOICES, null=True, blank=True, verbose_name=_('Tipo'))
     start_year = models.DecimalField(max_digits=4, decimal_places=0,null=True,blank=True, verbose_name=_('Ano inicio'))
-    institution = models.CharField(max_length=100, blank=True, verbose_name=_('Institucion'))
+    institution = models.CharField(max_length=100, null=True, blank=True, verbose_name=_('Institucion'))
     INST_TYPE_CHOICES = (
         ('ayto', 'Ayuntamiento'),
         ('auto', 'Autónoma'),
         ('priv', 'Privado'),
         ('fora', 'Foral'),
     )
-    institution_type = models.CharField(max_length=4, choices=INST_TYPE_CHOICES, blank=True, verbose_name=_('Tipo institucion'))
-    open_times = models.CharField(max_length=255, null=True,blank=True, verbose_name=_('Horario apertura'))
+    institution_type = models.CharField(max_length=4, choices=INST_TYPE_CHOICES, null=True, blank=True, verbose_name=_('Tipo institucion'))
+    open_times = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Horario apertura'))
     ACCESS_TYPE_CHOICES = (
         ('l', 'Libre'),
         ('r', 'Restringido'),
     )
-    access_type = models.CharField(max_length=1, choices=ACCESS_TYPE_CHOICES, blank=True, verbose_name=_('Tipo de acceso'))
+    access_type = models.CharField(max_length=1, choices=ACCESS_TYPE_CHOICES, null=True, blank=True, verbose_name=_('Tipo de acceso'))
     CENTER_TYPE_CHOICES = (
         ('p', 'Público'),
     )
-    center_type = models.CharField(max_length=1, choices=CENTER_TYPE_CHOICES, blank=True, verbose_name=_('Tipo de centro'))
+    center_type = models.CharField(max_length=1, choices=CENTER_TYPE_CHOICES, null=True, blank=True, verbose_name=_('Tipo de centro'))
     topics = models.ManyToManyField(Bibtopic, verbose_name=_('Temas'))
     services = models.ManyToManyField(Bibservice, verbose_name=_('Servicios'))
     place=models.ForeignKey(Place, unique=True, verbose_name=_('Place'), related_name='biblio')
+
+    def __unicode__(self):
+        return u"%d" % (self.id)
 
 class MPhoto(ImageModel):
     name=models.CharField(max_length=255, verbose_name=_('Nombre'), blank=True)
