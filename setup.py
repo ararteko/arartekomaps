@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-import sys, os
 
 version = '5.81.dev0'
 
@@ -8,7 +7,7 @@ setup(name='arartekomaps',
       description="Django application serving mapak.ararteko.net ",
       long_description="""\
 """,
-      classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       keywords='maps',
       author='Gari Araolaza',
       author_email='garaolaza@codesyntax.com',

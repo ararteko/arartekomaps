@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class OldUser(models.Model):
     username = models.CharField(max_length=230)
     first_name = models.CharField(max_length=230)
@@ -13,4 +14,4 @@ class OldUser(models.Model):
     date_joined = models.DateTimeField()
 
     class Meta:
-        db_table ='auth_user'
+        db_table = 'auth_user'

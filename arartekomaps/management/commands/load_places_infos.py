@@ -4,6 +4,7 @@ from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservi
 from arartekomaps.arartekouser.models import ArartekoUser as User
 from arartekomaps.locations.models import Location
 from arartekomaps.locations.utils import slugify
+from django.utils.html import strip_tags
 import xlrd, StringIO, urllib2
 from arartekomaps.utils.load_images import loadUrlImage
 from arartekomaps.settings import IMPORT_FILES_FOLDER
@@ -19,7 +20,7 @@ class Command(BaseCommand):
              '':'s',
              'practicable': 'p',
              'accesible': 'a'}
-    
+
     RDICT = {'restaurante':'restaurant',
             'sidreria':'sidreria',
             'asador':'asador',
@@ -28,9 +29,9 @@ class Command(BaseCommand):
             'comida-rapida':'fast-food',
             'pasteleria-confiteria':'pasteleria'
             }
-     
+
     def handle(self, *args, **options):
-        saving = len(args)>1 and args[1] or 0 
+        saving = len(args)>1 and args[1] or 0
         filename = args[0]
         line = len(args)>2 and int(args[2]) or 1
         full_path = "%s/%s" % (IMPORT_FILES_FOLDER,filename)
@@ -38,9 +39,9 @@ class Command(BaseCommand):
         sh = f.sheet_by_index(0)
         kont = 1
         ercnt =1
-        
+
         CDICT = {'legutiano':'legutio',
-                 'ribera-alta':'erriberagoitia', 
+                 'ribera-alta':'erriberagoitia',
         }
 
         uloc = {}
@@ -57,13 +58,13 @@ class Command(BaseCommand):
                 break
             else:
                 (titulo, slug, ent_origen, cod_origen,
-                direc1, direc2, cp, pob, loc, desc, lat, lon, tel, fax, url, 
-                foto_x, foto_x_tit, foto_x_alt, itinerarios, 
-                acc_fis, acc_vis, acc_aud, acc_int, 
+                direc1, direc2, cp, pob, loc, desc, lat, lon, tel, fax, url,
+                foto_x, foto_x_tit, foto_x_alt, itinerarios,
+                acc_fis, acc_vis, acc_aud, acc_int,
                 acc_org, title_code ) = fields[:26]
-                
-            
-            
+
+
+
             translation = False
             ent_origen = 'ejgv-tur-infos'
             places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
@@ -72,10 +73,10 @@ class Command(BaseCommand):
             if len(places)>0:
                 place = places[0]
             if '_eu' in filename and place:
-                place.description_eu = desc
+                place.description_eu = strip_tags(desc)
                 translation = True
             elif '_en' in filename and place:
-                place.description_en = desc
+                place.description_en = strip_tags(desc)
                 translation = True
             elif '_eu' in filename or '_en' in filename:
                 translation = True
@@ -92,14 +93,14 @@ class Command(BaseCommand):
                 cat_obj = Category.objects.get(slug='interpretation-centre')
             else:
                 cat_obj = Category.objects.get(slug='tourism')
-                                 
+
             #GET USER
             author = User.objects.get(username=ent_origen)
-                   
+
             location_slug = slugify(pob)
 
             if CDICT.has_key(location_slug):
-                location_slug = CDICT[location_slug]           
+                location_slug = CDICT[location_slug]
             location = Location.objects.filter(slug__startswith=location_slug)
             if location:
                 loc_obj = location[0]
@@ -117,14 +118,14 @@ class Command(BaseCommand):
                 print slug
                 place.slug = slugify(slug.split('/')[2],instance=place)
                 print 'NEW:', slug, cod_origen
-            
+
 
             if title_code:
                 place.name = "%s %s" % (titulo, title_code)
             else:
                 place.name = titulo
             place.category = cat_obj
-            place.description_es = desc
+            place.description_es = strip_tags(desc)
             place.address1 = direc1
             place.address2 = direc2
             if len(cp)<5:
@@ -135,7 +136,7 @@ class Command(BaseCommand):
             except:
                 pass
             place.locality = pob != loc and loc or ""
-            place.description = desc
+            place.description = strip_tags(desc)
 
             #SET USER
             place.author = author
@@ -154,7 +155,7 @@ class Command(BaseCommand):
             place.email = ''
             if saving:
                 place.save()
-            
+
             accesses = Access.objects.filter(place=place)
             if len(accesses)>0:
                 access = accesses[0]
@@ -166,7 +167,7 @@ class Command(BaseCommand):
             access.aaudio = self.ADICT[acc_aud.lower().strip()]
             access.aintelec = self.ADICT[acc_int.lower().strip()]
             access.aorganic = self.ADICT[acc_org.lower().strip()]
-            
+
             if saving:
                 access.save()
 
@@ -179,4 +180,3 @@ class Command(BaseCommand):
             kont += 1
 
         print uloc
-        
