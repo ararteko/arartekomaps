@@ -58,7 +58,7 @@ class ArartekoUserAdmin(UserAdmin):
         (None, {'fields': ('username','email','password')}),
 
         ('Datuak',
-        {'fields':('fullname','photo','bio')},),
+        {'fields':('fullname', 'fullname_es', 'fullname_eu', 'fullname_en', 'photo','bio')},),
         (_('Permissions'), {'fields': ('is_active','is_editor','is_staff','is_superuser',
                                        'groups', 'user_permissions','last_login'),
                             'classes': ['collapse',],}),
