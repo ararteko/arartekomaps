@@ -110,8 +110,7 @@ class Command(BaseCommand):
             institution = ''
             institution_type = ''
 
-
-            cod_origen = "%d" % cod_origen
+            cod_origen = "%d" % int(cod_origen)
             ent_origen = 'ejgv_biblio'
             author = User.objects.get(username=ent_origen)
 
