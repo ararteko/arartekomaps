@@ -57,6 +57,7 @@ class Command(BaseCommand):
                 acc_org,title_code ) = fields[:26]
 
 
+            pattern = re.compile("\s+\d+")
             translation = False
             ent_origen = 'ejgv-tur-aloj'
             places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
@@ -120,17 +121,21 @@ class Command(BaseCommand):
                 place.name = titulo
             place.category = cat_obj
             place.description_es = strip_tags(desc)
-            mystring = direc1[:direc1.find("(")]
-            for word in mystring.split():
-                if '/' in word:
-                    delete_str = word[word.find("/"):]
-                    if "" in delete_str:
-                        delete_str = delete_str.replace(",","")
-                    mystring = mystring.replace(delete_str,"")
-            place.address1 = mystring.replace(u" Nº","")
+            # mystring = direc1[:direc1.find("(")]
+            # for word in mystring.split():
+            #     if '/' in word:
+            #         delete_str = word[word.find("/"):]
+            #         if "" in delete_str:
+            #             delete_str = delete_str.replace(",","")
+            #         mystring = mystring.replace(delete_str,"")
+            repl = pattern.search(direc1)
+            if "," not in direc1 and "km" not in direc1 and repl:
+                repl = repl.group()
+                direc1 = direc1.replace(repl, ",%s" % repl).replace("  ", " ").replace(" ,", ",")
+            place.address1 = direc1.replace(u" Nº", "")
             place.address2 = direc2
 
-            if len(cp)<5:
+            if len(cp) < 5:
                 cp = "0%s" % cp
             place.postalcode = cp.strip()
             try:
@@ -138,7 +143,7 @@ class Command(BaseCommand):
             except:
                 pass
 
-            #SET USER!!!!!
+            # SET USER!!!!!
             place.author = author
             place.locality = pob != loc and loc or ""
             place.description = strip_tags(desc)
@@ -160,7 +165,8 @@ class Command(BaseCommand):
                 place.save()
 
             accesses = Access.objects.filter(place=place)
-            if len(accesses)>0:
+
+            if len(accesses) > 0:
                 access = accesses[0]
             else:
                 access = Access()
@@ -177,7 +183,7 @@ class Command(BaseCommand):
 
 
             foto_x = foto_x.replace('http://turismo.euskadi.net/contenidos/a_alojamiento/ ','http://turismo.euskadi.net/x65-12375/es/contenidos/a_alojamiento/')
-            #print foto_x
+            # print foto_x
             t_place = place
             has_point = foto_x.split('/')[-1].find('.')
             if has_point>-1:
