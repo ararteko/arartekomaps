@@ -197,7 +197,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': '/home/csmant/django/ararteko/logs/arartekomaps_error.log',
+            'filename': '/home/csmant/django/logs/arartekomaps_error.log',
         },
     },
     'loggers': {
@@ -265,7 +265,7 @@ PAGE_DEFAULT_TEMPLATE = 'pages/index.html'
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'es'
 MODELTRANSLATION_FALLBACK_LANGUAGES = ('es', 'eu')
 
-IMPORT_FILES_FOLDER = '/var/csmant/ararimport'
+IMPORT_FILES_FOLDER = '/home/csmant/django/ararimport'
 
 
 SECRET_KEY = 'vw=d$ccwccb&m=wf2^cz*($bv_x+i9rxmd+%jkbmsa3^#cgv*r'
