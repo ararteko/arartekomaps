@@ -4,7 +4,7 @@
 {% block head_title%}{% trans "Ararteko maps" %} - {% trans "Discover and share accessible places" %}{% endblock %}
 
 {% block extraheader %}
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyAWPp6H0Hd1SMtlIjxALbYxDo_Jk4vxAVc" async="" defer="defer" type="text/javascript"></script>
 <script type="text/javascript">
     function initialize() {
     var center = new google.maps.LatLng(43.0, -1.0);
@@ -17,16 +17,16 @@
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     var infowindow = new google.maps.InfoWindow();
 
-    {% for place in places %}{% if place.lat %}    
+    {% for place in places %}{% if place.lat %}
         var center = new google.maps.LatLng({{place.lat}}, {{place.lon}});
         bounds.extend(center);
-        var image = '{{STATIC_URL}}icn/{{place.icon}}.png';        
+        var image = '{{STATIC_URL}}icn/{{place.icon}}.png';
         var contentString_{{forloop.counter}} = '<p><a href="{{ place.get_absolute_url }}">{{place.name}}</a><br />{{place.category}} -  {{ place.city }}</p><br /><div class="accessibility">';
         {% for key,value,vkey,vvalue in place.access_list %}
-        contentString_{{forloop.parentloop.counter}} += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>'; 
+        contentString_{{forloop.parentloop.counter}} += '<div class="access_term">{{key}}</div><div class="access_definition {{key}}_{{value}}" title="{{vkey}} {{vvalue}}"><span>{{vvalue}}</span></div>';
         {% endfor %}
-        contentString_{{forloop.counter}} += '</div>'; 
-        //alert(contentString_{{forloop.counter}}); 
+        contentString_{{forloop.counter}} += '</div>';
+        //alert(contentString_{{forloop.counter}});
         var marker_{{forloop.counter}} = new google.maps.Marker({
             position: center,
             map: map,
@@ -41,10 +41,10 @@
                 }
         );
         {% endif %}{% endfor %}
-    map.fitBounds(bounds) 
+    map.fitBounds(bounds)
     if(infowindow) {
       infowindow.close();
-    }    
+    }
 
   }
 </script>
@@ -57,7 +57,7 @@
     if (url==true)
   {
     var url = window.location.href = 'itms://itunes.apple.com/es/app/ararmapak/id727622778?mt=8';
-    url.show(); 
+    url.show();
   }
     else
   {
@@ -70,7 +70,7 @@
     if (url==true)
   {
     var url = window.location.href = 'market://details?id=eu.akting.ararteko';
-    url.show(); 
+    url.show();
   }
     else
   {
@@ -80,15 +80,15 @@
   </script>
 {% endblock %}
 
-{% block mainmenu %}  
-   {% comment %} 
+{% block mainmenu %}
+   {% comment %}
     <form method="get" action="/search/" id="bigsf">
         <label for="q">{% trans "Go to..." %}</label> <input type="text" name="q" id="q" value="{{q}}" />
         <input type="submit" value="{% trans "Search" %}" class="searchbutton" />
         <p><a href="/filter/">{% trans "Advanced filter" %}</a></p>
     </form>
     {% endcomment %}
-      <div id="searchbox">    
+      <div id="searchbox">
           <!-- Google CSE Search Box Begins -->
           <form id="bigsf" action="{% url 'gsearch' %}">
               <input type="hidden" name="cx" value="002318387713884704423:4pwcgf1wug4" />
@@ -119,7 +119,7 @@
 
   <h2>{% trans "Download our app" %}</h2>
   <p>{% trans "Download our apps presentation text" %}</p>
-  <div id="appbadges">  
+  <div id="appbadges">
     <a href="https://play.google.com/store/apps/details?id=eu.akting.ararteko">
         <img alt="Ararteko mapak Android app on Google Play" src="https://developer.android.com/images/brand/es_app_rgb_wo_45.png" />
     </a>
@@ -127,21 +127,21 @@
         <img alt="Ararteko mapak iPhone app on Apple Store" src="{{STATIC_URL}}img/applebadge.png" />
     </a>
   </div>
-  
+
   <h2>{% trans "Visit this places" %}</h2>
-  
+
   <ul id="provinces">
     <li><a href="/l/araba/">Araba</a></li>
     <li><a href="/l/bizkaia/">Bizkaia</a></li>
     <li><a href="/l/gipuzkoa/">Gipuzkoa</a></li>
   </ul>
-  
+
   <ul id="cities">
     <li><a href="/l/araba/vitoria-gasteiz/">Vitoria-Gasteiz</a></li>
     <li><a href="/l/bizkaia/bilbao/">Bilbao</a></li>
     <li><a href="/l/gipuzkoa/donostia-san-sebastian/">Donostia-San Sebastian</a></li>
-  </ul>  
-  
+  </ul>
+
   <h3>{% trans "Last places" %}</h3>
 
   <ul class="itemlist">
@@ -157,7 +157,7 @@
         {% endfor %}
     </dl>
     </li>
-   {% endfor %}    
+   {% endfor %}
   </ul>
 </div>
 {% endblock main_content %}

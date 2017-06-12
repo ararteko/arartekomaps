@@ -5,7 +5,7 @@
 
 {% block extraheader %}
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyAWPp6H0Hd1SMtlIjxALbYxDo_Jk4vxAVc" async="" defer="defer" type="text/javascript"></script>
 <script type="text/javascript">
     function refreshMarkers(map){
         //alert(map.getBounds());
@@ -25,10 +25,10 @@
                 }
         );
     var infowindow = new google.maps.InfoWindow();
-    {% for place in pins %}{% if place.lat %}    
+    {% for place in pins %}{% if place.lat %}
         var center = new google.maps.LatLng({{place.lat}}, {{place.lon}});
         bounds.extend(center);
-        var image = '{{STATIC_URL}}icn/{% firstof place.icon "city" %}.png';        
+        var image = '{{STATIC_URL}}icn/{% firstof place.icon "city" %}.png';
         var contentString_{{forloop.counter}} = '<p><a href="{{ place.get_absolute_url }}">{{place.name}}</a><br />{% trans place.category.str2trans %} - {{place.city}}</p>'
         var marker_{{forloop.counter}} = new google.maps.Marker({
             position: center,
@@ -44,12 +44,12 @@
                 }
         );
         {% endif %}{% endfor %}
-    map.fitBounds(bounds) 
+    map.fitBounds(bounds)
     if(infowindow) {
       infowindow.close();
     }
   }
-  
+
 </script>
 
 <meta name="robots" content="noindex, follow" />
@@ -70,7 +70,7 @@
         <input type="submit" value="{% trans "Search" %}" class="searchbutton" />
         <p><a href="/filter/">{% trans "Advanced filter" %}</a></p>
     </form>
-{% endblock %} 
+{% endblock %}
 
 {% block main_content %}
 <div id="locacol1">
@@ -90,7 +90,7 @@
             </optgroup>
             {% endfor %}
         </select><br />
-        <label for="cat">{% trans "Category" %}</label> 
+        <label for="cat">{% trans "Category" %}</label>
         <select id="cat" name="cat">
             <option value="">{% trans "Any" %}</option>
             {% for tcat in all_cats %}
@@ -98,21 +98,21 @@
             {% endfor %}
         </select><br />
         <p class="frm_help">{% trans "Minimal accessibility" %}</p>
-        
+
         <ul>
         {% for k,v,optline in ac_form_set %}
             <li><label for="{{k}}" class="access_definition {{k}}_a" title="{{v}}">{{v}}</label>
             <select name="{{k}}" id="{{k}}">
                 {% for q,b,selected in optline %}
                 <option value="{{q}}"{% if selected %} selected="selected"{% endif %}>{{b}}</option>
-                {% endfor %}            
+                {% endfor %}
             </select>
             </li>
         {% endfor %}
-        </ul>        
-        
-        
-        
+        </ul>
+
+
+
         <input type="submit" value="{% trans "Search" %}" />
     </form>
 
@@ -136,13 +136,13 @@
         {% endfor %}
     </dl>
     </li>
-   {% endfor %}    
+   {% endfor %}
   </ul>
-  
+
   {% if thispage.has_previous %}
     <a href="{{prev_url}}">{% trans "Previous" %}</a>
   {% endif %}
-  
+
   {% if thispage.has_next %}
     <a href="{{next_url}}">{% trans "Next" %}</a>
   {% endif %}
