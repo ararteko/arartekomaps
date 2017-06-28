@@ -8,6 +8,7 @@ from django.utils.html import strip_tags
 import xlrd, StringIO, urllib2
 from arartekomaps.utils.load_images import loadUrlImage
 from arartekomaps.settings import IMPORT_FILES_FOLDER
+import re
 
 class Command(BaseCommand):
     args = 'file_abs_path'
@@ -64,7 +65,7 @@ class Command(BaseCommand):
                 acc_org, title_code ) = fields[:26]
 
 
-
+            pattern = re.compile("\s+\d+")
             translation = False
             ent_origen = 'ejgv-tur-infos'
             places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
@@ -126,7 +127,11 @@ class Command(BaseCommand):
                 place.name = titulo
             place.category = cat_obj
             place.description_es = strip_tags(desc)
-            place.address1 = direc1
+            repl = pattern.search(direc1)
+            if "," not in direc1 and "km" not in direc1 and repl:
+                repl = repl.group()
+                direc1 = direc1.replace(repl, ",%s" % repl).replace("  ", " ").replace(" ,", ",")
+            place.address1 = direc1.replace(u" Nº", "")
             place.address2 = direc2
             if len(cp)<5:
                 cp = "0%s" % cp

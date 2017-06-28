@@ -10,6 +10,7 @@ from django.utils.html import strip_tags
 import xlrd, StringIO, urllib2
 from arartekomaps.utils.load_images import loadUrlImage
 from arartekomaps.settings import IMPORT_FILES_FOLDER
+import re
 
 class Command(BaseCommand):
     args = 'file_abs_path'
@@ -63,12 +64,13 @@ class Command(BaseCommand):
                 break
             else:
                 (titulo, slug, ent_origen, cod_origen, rcat,
-                direc1, direc2, cp, pob, loc, desc, lat, lon, tel, fax, url, 
+                direc1, direc2, cp, pob, loc, desc, lat, lon, tel, fax, url,
                 foto_x, foto_x_tit, foto_x_alt, itinerarios,
                 acc_fis, acc_vis, acc_aud, acc_int,
                 acc_org, title_code ) = fields[:26]
 
 
+            pattern = re.compile("\s+\d+")
             translation = False
             ent_origen = 'ejgv-tur-rest'
             places = Place.objects.filter(source_id=cod_origen, source=ent_origen)
@@ -124,7 +126,7 @@ class Command(BaseCommand):
                     else:
                         print 'WARNING: Missing cat:', cat
                         parentcat = Category.objects.get(slug='sleep')
-                        cat_obj = Category(slug=cat,name=cat,name_es=cat,name_eu=cat,name_en=cat,parent=parentcat)
+                        cat_obj = Category(slug=cat, name=cat, name_es=cat, name_eu=cat, name_en=cat, parent=parentcat)
                         if saving:
                             cat_obj.save()
                 else:
@@ -132,16 +134,20 @@ class Command(BaseCommand):
 
                 place.category = cat_obj
 
-                new_rest +=1
+                new_rest += 1
 
             if title_code:
                 place.name = "%s %s" % (titulo, title_code)
             else:
                 place.name = titulo
             place.description_es = strip_tags(desc)
-            place.address1 = direc1
-            place.address2 = ""
-            if len(cp)<5:
+            repl = pattern.search(direc1)
+            if "," not in direc1 and "km" not in direc1 and repl:
+                repl = repl.group()
+                direc1 = direc1.replace(repl, ",%s" % repl).replace("  ", " ").replace(" ,", ",")
+            place.address1 = direc1.replace(u" Nº", "")
+            place.address2 = direc2
+            if len(cp) < 5:
                 cp = "0%s" % cp
             place.postalcode = cp.strip()
             try:

@@ -265,7 +265,7 @@ PAGE_DEFAULT_TEMPLATE = 'pages/index.html'
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'es'
 MODELTRANSLATION_FALLBACK_LANGUAGES = ('es', 'eu')
 
-IMPORT_FILES_FOLDER = '/home/csmant/django/ararimport'
+IMPORT_FILES_FOLDER = '/home/csmant/django/import'
 
 
 SECRET_KEY = 'vw=d$ccwccb&m=wf2^cz*($bv_x+i9rxmd+%jkbmsa3^#cgv*r'
