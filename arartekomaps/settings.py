@@ -269,7 +269,7 @@ IMPORT_FILES_FOLDER = '/home/csmant/django/import'
 
 
 SECRET_KEY = 'vw=d$ccwccb&m=wf2^cz*($bv_x+i9rxmd+%jkbmsa3^#cgv*r'
-ALLOWED_HOSTS = ['www.mapak.ararteko.net','mapak.ararteko.net','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['www.mapak.ararteko.net', 'mapak.ararteko.net', '127.0.0.1', 'localhost', 'mapak.ararteko.eus', 'www.mapak.ararteko.eus']
 
 USE_X_FORWARDED_HOST = True
 
