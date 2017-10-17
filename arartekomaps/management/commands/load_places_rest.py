@@ -119,7 +119,7 @@ class Command(BaseCommand):
 
                 if rcat:
                     cat = slugify(rcat)
-                    cat = self.RDICT.get(cat,cat)
+                    cat = self.RDICT.get(cat, cat)
                     rel_cat = Category.objects.filter(slug=cat)
                     if len(rel_cat)>0:
                         cat_obj = Category.objects.get(slug=cat)

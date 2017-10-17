@@ -43,6 +43,12 @@ ACCESS_KEYS = ("a","p")
 SOCIAL_ORIGIN = {"1": "facebook", "2": "twitter"}
 SOCIAL_BACKEND = {"1": FacebookBackend, "2": TwitterBackend}
 
+LANG_MAPPING = {
+    "EUSKARA": "eu",
+    "CASTELLANO": "es"
+}
+
+
 def haversine(lon1, lat1, lon2, lat2):
     """
     Calculate the great circle distance between two points
@@ -74,8 +80,8 @@ class LocationsHandler(AnonymousBaseHandler):
     model = Location
 
     def read(self, request):
-        lang = request.GET.get("lang","eu")
-        translation.activate(lang)
+        lang = request.GET.get("lang","EUSKARA")
+        translation.activate(LANG_MAPPING[lang])
         try:
             locations = Location.objects.filter(level=2).order_by('name')
             json_loc = []
@@ -93,14 +99,14 @@ class CategoriesHandler(AnonymousBaseHandler):
     model = Category
 
     def read(self, request):
-        lang = request.GET.get("lang","eu")
-        translation.activate(lang)
+        lang = request.GET.get("lang","EUSKARA")
+        translation.activate(LANG_MAPPING[lang])
         try:
             categories = Category.objects.filter(parent=None).order_by('name')
             json_loc = []
             name = ''
             for cat in categories:
-                if lang == 'eu':
+                if lang == 'EUSKARA':
                     name = cat.name_eu
                 else:
                     name = cat.name_es
@@ -121,8 +127,8 @@ class PlaceHandler(AnonymousBaseHandler):
 
     def read(self, request):
         slug = request.GET.get("slug","")
-        lang = request.GET.get("lang","eu")
-        translation.activate(lang)
+        lang = request.GET.get("lang","EUSKARA")
+        translation.activate(LANG_MAPPING[lang])
         try:
             place = Place.objects.get(slug=slug)
             if MPhoto.objects.filter(place=place, def_img=True).exists():
@@ -159,7 +165,7 @@ class PlaceHandler(AnonymousBaseHandler):
             # else:
             desc = u"%s\n\n%s\n\n%s" % (place.description_es, _('Accessibility'), place.access_data()['description'])
 
-            if lang == 'eu':
+            if lang == 'EUSKARA':
                 cat = place.category.name_eu
             else:
                 cat = place.category.name_es
@@ -199,8 +205,8 @@ class PlacesHandler(AnonymousBaseHandler):
     def read(self, request):
         location = request.GET.get("location","")
         category = request.GET.get("category","")
-        lang = request.GET.get("lang","eu")
-        translation.activate(lang)
+        lang = request.GET.get("lang","EUSKARA")
+        translation.activate(LANG_MAPPING[lang])
         aphysic = request.GET.get("aphysic","")
         avisual = request.GET.get("avisual","")
         aaudio = request.GET.get("aaudio","")
@@ -272,7 +278,7 @@ class PlacesHandler(AnonymousBaseHandler):
 
                 desc = u"%s\n\n%s\n\n%s" % (place.description_es, _('Accessibility'), place.access_data()['description'])
 
-                if lang == 'eu':
+                if lang == 'EUSKARA':
                     cat = place.category.name_eu
                 else:
                     cat = place.category.name_es
@@ -312,8 +318,8 @@ class UserHandler(AnonymousBaseHandler):
         email = request.POST.get("email","")
         passw = request.POST.get("pass","")
         origin = request.POST.get("origin","")
-        lang = request.GET.get("lang","eu")
-        translation.activate(lang)
+        lang = request.GET.get("lang","EUSKARA")
+        translation.activate(LANG_MAPPING[lang])
 
         full_name = request.POST.get("full_name","")
         biography = request.POST.get("biography","")
@@ -412,8 +418,8 @@ class CommentHandler(BaseHandler):
         token = request.POST.get("token","")
         text = request.POST.get("text","")
         slug = request.POST.get("slug","")
-        lang = request.GET.get("lang","eu")
-        translation.activate(lang)
+        lang = request.GET.get("lang","EUSKARA")
+        translation.activate(LANG_MAPPING[lang])
 
         f = open('post_saiakerak.txt','w')
         try:
@@ -469,8 +475,8 @@ class GetCommentHandler(AnonymousBaseHandler):
 
     def read(self, request):
         slug = request.GET.get("slug","")
-        lang = request.GET.get("lang","eu")
-        translation.activate(lang)
+        lang = request.GET.get("lang","EUSKARA")
+        translation.activate(LANG_MAPPING[lang])
         try:
             place = Place.objects.get(slug=slug)
             comments = Comment.objects.filter(parent=place)
