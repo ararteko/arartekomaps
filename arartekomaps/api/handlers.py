@@ -45,7 +45,9 @@ SOCIAL_BACKEND = {"1": FacebookBackend, "2": TwitterBackend}
 
 LANG_MAPPING = {
     "EUSKARA": "eu",
-    "CASTELLANO": "es"
+    "CASTELLANO": "es",
+    "eu": "eu",
+    "es": "es"
 }
 
 

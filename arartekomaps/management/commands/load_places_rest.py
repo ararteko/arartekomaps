@@ -53,8 +53,6 @@ class Command(BaseCommand):
 
         for rownum in range(sh.nrows)[line:]:
             fields = sh.row_values(rownum)
-            print '############################'
-            print kont
             if len(fields)!=26:
                 print 'Tenemos mas o menos de 25 campos'
                 n = 1
@@ -68,6 +66,9 @@ class Command(BaseCommand):
                 foto_x, foto_x_tit, foto_x_alt, itinerarios,
                 acc_fis, acc_vis, acc_aud, acc_int,
                 acc_org, title_code ) = fields[:26]
+
+            print '############################'
+            print kont, titulo
 
 
             pattern = re.compile("\s+\d+")
@@ -109,13 +110,12 @@ class Command(BaseCommand):
 
 
             if len(places)>0:
-                place = places[0]
                 print 'EDIT:', slug, cod_origen
+                place = places[0]
             else:
-                place = Place()
-                print slug
-                place.slug = slugify(slug.split('/')[2],instance=place)
                 print 'NEW:', slug, cod_origen
+                place = Place()
+                place.slug = slugify(slug.split('/')[2],instance=place)
 
                 if rcat:
                     cat = slugify(rcat)

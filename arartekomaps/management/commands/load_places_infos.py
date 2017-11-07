@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
 from arartekomaps.categories.models import Category
 from arartekomaps.places.models import Place, Access, Biblio, Bibtopic, Bibservice, MPhoto
