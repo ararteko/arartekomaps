@@ -4,6 +4,7 @@ import csv
 import time
 from django.template import loader, Context
 from arartekomaps.places.models import Place
+from django.conf import settings 
 
 def export_places():
     places = Place.objects.all()
@@ -19,11 +20,8 @@ def export_places():
     c = Context({
         'places': places,
     })
-
-    myFile = open('../media/places/places_'+str(time.strftime("%Y-%m-%d"))+'.csv', 'w')
-    myFile.write(t.render(c).encode('ascii', 'ignore'))
-    myFile.close()
-
+    with open("{}/places/place_{}.csv".format(settings.MEDIA_ROOT, str(time.strftime("%Y-%m-%d")), 'w') as myFile:
+        myFile.write(t.render(c).encode('ascii', 'ignore'))
     return True
 
 class Command(BaseCommand):
