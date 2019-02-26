@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.utils.translation import ugettext as _
 from django.utils.translation import activate
 
-def delete_places(date, action=None, lang="es"):
+def delete_places(date, action=False, lang="es"):
     activate(lang)
     delete_places = Place.objects.filter(Q(author__username__startswith='ejgv'), Q(category__parent=11) | Q(category__parent=21) | Q(category__parent=22) | Q(category=11) | Q(category=21) | Q(category__parent=22), Q(modified_date__lt=date)).order_by('modified_date')
 
@@ -21,7 +21,7 @@ class Command(BaseCommand):
     help = 'Delete not modified places'
 
     def handle(self, *args, **options):
-        action = len(args) > 1 and arg[1] == 'True' and True or None
+        action = len(args) > 1 and args[1] == 'True' and True or False
         lang = len(args) > 2 and args[2] or "es"
-        date = len(args) > 0 or datetime.now()
-        delete_places(action)
+        date = len(args) > 0 and args[0] or datetime.now().date
+        delete_places(date, action, lang)

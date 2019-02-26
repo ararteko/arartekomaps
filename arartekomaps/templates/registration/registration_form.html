@@ -45,14 +45,7 @@
 {% endif %}
 {% endblock %}
 {% block cssidebar %}
-{% if user.is_authenticated %}
-{% else %}
-<h2>{% trans "Register using Facebook or Twitter" %}</h2>
-<p>
-<a rel="nofollow" href="{% url 'socialauth_begin' "twitter" %}{% if next %}?next={{next}}{% endif %}"><img src="{{STATIC_URL}}img/twitter_login.jpg" alt="Twitter logo" /></a>
-<a rel="nofollow" href="{% url 'socialauth_begin' "facebook" %}{% if next %}?next={{next}}{% endif %}"><img src="{{STATIC_URL}}img/facebook_login.jpg" alt="Facebook logo" /></a>
-</p>
-{% endif %}
+
 {% endblock %}
 
 
