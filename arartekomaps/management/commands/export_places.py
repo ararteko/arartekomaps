@@ -4,6 +4,8 @@ import csv
 import time
 from django.template import loader, Context
 from arartekomaps.places.models import Place
+from django.conf import settings
+
 
 def export_places():
     places = Place.objects.all()
@@ -23,8 +25,9 @@ def export_places():
         myFile.write(t.render(c).encode('ascii', 'ignore'))
     return True
 
+
 class Command(BaseCommand):
-    help = 'Export places'
+    help = "Export places"
 
     def handle(self, *args, **options):
         export_places()
